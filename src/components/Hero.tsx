@@ -9,15 +9,8 @@ export const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
 
-  // Time limit: 3.1s single wave, pauses gracefully as arms rest on chair
-  const CUTOFF_TIME = 3.1;
-
-  const handleTimeUpdate = useCallback(() => {
-    if (!videoRef.current) return;
-    if (videoRef.current.currentTime >= CUTOFF_TIME) {
-      videoRef.current.pause();
-    }
-  }, [CUTOFF_TIME]);
+  // Single wave ends and arms rest completely on chair at ~2.25s
+  const CUTOFF_TIME = 2.25;
 
   useEffect(() => {
     const video = videoRef.current;
@@ -27,21 +20,40 @@ export const Hero: React.FC = () => {
     video.defaultMuted = true;
     video.volume = 0;
 
+    let animId: number;
+    const checkPause = () => {
+      if (!video) return;
+      if (video.currentTime >= CUTOFF_TIME) {
+        video.pause();
+        return;
+      }
+      animId = requestAnimationFrame(checkPause);
+    };
+
+    const handleTimeUpdate = () => {
+      if (video.currentTime >= CUTOFF_TIME) {
+        video.pause();
+      }
+    };
+
     video.addEventListener('timeupdate', handleTimeUpdate);
 
     const startPlay = () => {
       const promise = video.play();
       if (promise !== undefined) {
-        promise.catch(() => {});
+        promise.then(() => {
+          animId = requestAnimationFrame(checkPause);
+        }).catch(() => {});
       }
     };
 
     startPlay();
 
     return () => {
+      cancelAnimationFrame(animId);
       video.removeEventListener('timeupdate', handleTimeUpdate);
     };
-  }, [handleTimeUpdate]);
+  }, []);
 
   // 3D Stage Tilt Math on Mouse Move
   const mouseX = useMotionValue(0);
@@ -227,12 +239,12 @@ export const Hero: React.FC = () => {
           <video
             ref={videoRef}
             src={`${import.meta.env.BASE_URL}hero-video.mp4`}
-            poster={`${import.meta.env.BASE_URL}hero-portrait.jpg`}
+            poster={`${import.meta.env.BASE_URL}hero-studio-poster.jpg`}
             autoPlay
             muted
             playsInline
             onTimeUpdate={(e) => {
-              if (e.currentTarget.currentTime >= 3.1) {
+              if (e.currentTarget.currentTime >= 2.25) {
                 e.currentTarget.pause();
               }
             }}
