@@ -37,14 +37,9 @@ export const Projects: React.FC = () => {
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div>
-            <div className="text-xs uppercase tracking-[0.2em] text-[#D6C3B0] mb-3 font-medium">
-              Projects
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F5F5F7]">
-              Selected Projects
-            </h2>
-          </div>
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F5F5F7]">
+            Selected Projects
+          </h2>
 
           {/* Filter Tabs */}
           <div className="flex items-center gap-2 p-1 rounded-full bg-[#0A0A0C] border border-white/10 w-fit">

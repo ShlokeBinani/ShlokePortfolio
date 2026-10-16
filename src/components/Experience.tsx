@@ -11,14 +11,9 @@ export const Experience: React.FC = () => {
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-          <div>
-            <div className="text-xs uppercase tracking-[0.2em] text-[#D6C3B0] mb-3 font-medium">
-              Experience
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F5F5F7]">
-              Work Experience
-            </h2>
-          </div>
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F5F5F7]">
+            Work Experience
+          </h2>
           <p className="text-sm text-[#A1A1AA] max-w-sm leading-relaxed">
             Hands-on software engineering delivering performant backend services and automated pipelines.
           </p>

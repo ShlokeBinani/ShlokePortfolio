@@ -11,14 +11,9 @@ export const Leadership: React.FC = () => {
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-          <div>
-            <div className="text-xs uppercase tracking-[0.2em] text-[#D6C3B0] mb-3 font-medium">
-              Leadership
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F5F5F7]">
-              Leadership & Community
-            </h2>
-          </div>
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F5F5F7]">
+            Leadership & Community
+          </h2>
           <p className="text-sm text-[#A1A1AA] max-w-sm leading-relaxed">
             Driving chapter branding, competitive programming initiatives, and podium finishes at hackathons.
           </p>

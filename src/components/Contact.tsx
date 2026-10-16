@@ -41,10 +41,6 @@ export const Contact: React.FC = () => {
         {/* Main CTA Section */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 pb-20 border-b border-white/5">
           <div className="max-w-2xl space-y-4">
-            <div className="text-xs uppercase tracking-[0.2em] text-[#D6C3B0] font-medium">
-              Contact
-            </div>
-
             <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-[#F5F5F7]">
               Let's connect.
             </h2>
