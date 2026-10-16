@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
-import { Scene3D } from './components/Scene3D';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -10,7 +9,6 @@ import { Skills } from './components/Skills';
 import { Leadership } from './components/Leadership';
 import { Contact } from './components/Contact';
 import { ProjectDrawer } from './components/ProjectDrawer';
-import { webglState } from './utils/webglState';
 
 export function App() {
   useEffect(() => {
@@ -20,39 +18,13 @@ export function App() {
       smoothWheel: true,
     });
 
-    const handleWindowScroll = () => {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      if (total > 0) {
-        webglState.scrollProgress = Math.max(0, Math.min(1, window.scrollY / total));
-      }
-    };
-    window.addEventListener('scroll', handleWindowScroll, { passive: true });
-
-    lenis.on('scroll', (e: any) => {
-      if (typeof e.progress === 'number') {
-        webglState.scrollProgress = e.progress;
-      }
-      if (typeof e.velocity === 'number') {
-        webglState.scrollVelocity = e.velocity;
-      }
-    });
-
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
-    // Track mouse coordinates normalized between -1 and 1
-    const handleMouseMove = (e: MouseEvent) => {
-      webglState.mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      webglState.mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-    };
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-
     return () => {
-      window.removeEventListener('scroll', handleWindowScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
       lenis.destroy();
     };
   }, []);
@@ -69,17 +41,14 @@ export function App() {
         aria-hidden="true"
       />
 
-      {/* Persistent Full-Viewport WebGL Canvas (PeachWeb Architecture) */}
-      <Scene3D />
-
       {/* Top Floating Morphing Dock Navbar */}
       <Navbar />
 
       {/* Hero Section with Single-Wave Video & Volumetric Spotlight */}
       <Hero />
 
-      {/* Main Content Sections (Transparent backdrops over WebGL Canvas) */}
-      <main className="relative z-10">
+      {/* Main Content Sections */}
+      <main className="relative z-10 bg-black">
         <About />
         <Experience />
         <Projects />

@@ -5,83 +5,6 @@ import { GithubIcon, LinkedinIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 import { MagneticButton } from './Navbar';
 
-// Volumetric Spotlight Dust Motes Canvas
-const SpotlightMotesCanvas: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let width = (canvas.width = canvas.parentElement?.clientWidth || 500);
-    let height = (canvas.height = canvas.parentElement?.clientHeight || 500);
-
-    const handleResize = () => {
-      if (!canvas || !canvas.parentElement) return;
-      width = canvas.width = canvas.parentElement.clientWidth;
-      height = canvas.height = canvas.parentElement.clientHeight;
-    };
-    window.addEventListener('resize', handleResize);
-
-    // 25-35 warm champagne dust motes drifting along 45-degree angle
-    const moteCount = 32;
-    const motes = Array.from({ length: moteCount }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: Math.random() * 2.2 + 0.6,
-      opacity: Math.random() * 0.14 + 0.08,
-      speed: Math.random() * 0.35 + 0.15,
-      pulseSpeed: Math.random() * 0.02 + 0.01,
-      pulsePhase: Math.random() * Math.PI * 2,
-    }));
-
-    const render = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      motes.forEach((m) => {
-        // Drifting down and to the left (45 deg angle matching studio spotlight beam)
-        m.x -= m.speed * 0.707;
-        m.y += m.speed * 0.707;
-        m.pulsePhase += m.pulseSpeed;
-
-        if (m.x < -10) m.x = width + 10;
-        if (m.y > height + 10) m.y = -10;
-
-        const currentOpacity = m.opacity + Math.sin(m.pulsePhase) * 0.05;
-
-        // Draw soft glowing motes
-        const gradient = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.size * 2);
-        gradient.addColorStop(0, `rgba(244, 236, 225, ${Math.max(0.04, currentOpacity)})`);
-        gradient.addColorStop(1, 'rgba(244, 236, 225, 0)');
-
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(m.x, m.y, m.size * 2, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      animationFrameId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 pointer-events-none z-10 w-full h-full"
-    />
-  );
-};
-
 export const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
@@ -146,24 +69,14 @@ export const Hero: React.FC = () => {
     setTimeout(() => setCopiedEmail(false), 2200);
   };
 
-  const videoPath = `${import.meta.env.BASE_URL}hero-video.mp4`;
-  const posterPath = `${import.meta.env.BASE_URL}hero-studio-poster.jpg`;
-
   return (
     <section
       id="hero"
       onMouseMove={handleContainerMouseMove}
       onMouseLeave={handleContainerMouseLeave}
-      className="relative w-full min-h-screen lg:h-screen lg:max-h-[980px] bg-transparent overflow-hidden flex items-center justify-center pt-24 lg:pt-0"
+      className="relative w-full min-h-screen lg:h-screen lg:max-h-[980px] bg-black overflow-hidden flex items-center justify-center pt-24 lg:pt-0"
       style={{ perspective: 1200 }}
     >
-      {/* Subtle Studio Ambient Light Spill */}
-      <div 
-        className="pointer-events-none absolute top-0 right-0 w-[650px] h-[650px] z-0 opacity-40 mix-blend-screen"
-        style={{
-          background: 'radial-gradient(circle at 85% 15%, rgba(244, 236, 225, 0.16) 0%, rgba(78, 76, 130, 0.08) 45%, transparent 75%)',
-        }}
-      />
 
       {/* Main 3D Tilting Container */}
       <motion.div
@@ -309,58 +222,45 @@ export const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Right Column: Studio Spotlight Video Anchor + Volumetric Dust Motes */}
-        <div className="w-full lg:w-[45%] h-[48vh] sm:h-[55vh] lg:h-[88vh] lg:max-h-[820px] flex items-end lg:items-center justify-center lg:justify-end relative select-none">
-          <div className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[460px] h-full flex items-center justify-center bg-transparent">
-            
-            {/* Volumetric Dust Motes Canvas Layer spilling light into page */}
-            <SpotlightMotesCanvas />
-
-            {/* Spotlight Video with Pure Black Blend */}
-            <video
-              ref={videoRef}
-              src={videoPath}
-              poster={posterPath}
-              autoPlay
-              muted
-              playsInline
-              preload="auto"
-              className="spotlight-video video-blend-mask w-full h-full max-h-[780px] object-cover"
-              style={{
-                mixBlendMode: 'lighten',
-                filter: 'contrast(1.08) brightness(0.95)',
-              }}
-            />
-
-            {/* Seamless Vignette Overlays matching #000000 canvas */}
-            <div 
-              className="pointer-events-none absolute inset-y-0 left-0 w-[28%] z-20"
-              style={{
-                background: 'linear-gradient(to right, #000000 0%, rgba(0, 0, 0, 0.95) 30%, rgba(0, 0, 0, 0.6) 70%, transparent 100%)',
-              }}
-            />
-
-            <div 
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[22%] z-20"
-              style={{
-                background: 'linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.98) 25%, rgba(0, 0, 0, 0.6) 65%, transparent 100%)',
-              }}
-            />
-
-            <div 
-              className="pointer-events-none absolute inset-y-0 right-0 w-[14%] z-20"
-              style={{
-                background: 'linear-gradient(to left, #000000 0%, rgba(0, 0, 0, 0.9) 30%, transparent 100%)',
-              }}
-            />
-
-            <div 
-              className="pointer-events-none absolute top-0 right-0 w-36 h-36 z-10 opacity-60"
-              style={{
-                background: 'radial-gradient(circle at top right, rgba(244, 236, 225, 0.18), transparent 75%)',
-              }}
-            />
-          </div>
+        {/* Right Column: Seamless Spotlight Video */}
+        <div className="relative h-[88vh] lg:h-[94vh] aspect-[9/16] select-none pointer-events-none flex items-center justify-center overflow-hidden bg-black">
+          <video
+            ref={videoRef}
+            src={`${import.meta.env.BASE_URL}hero-video.mp4`}
+            poster={`${import.meta.env.BASE_URL}hero-portrait.jpg`}
+            autoPlay
+            muted
+            playsInline
+            onTimeUpdate={(e) => {
+              if (e.currentTarget.currentTime >= 3.1) {
+                e.currentTarget.pause();
+              }
+            }}
+            className="w-full h-full object-cover"
+            style={{
+              /* Crushes the #121212 dark grey studio backdrop to pure #000000 while keeping skin & spotlight warm */
+              filter: 'contrast(1.22) brightness(0.88)',
+              mixBlendMode: 'lighten',
+              /* 4-way CSS mask so Top, Right, Bottom, and Left edges cannot show a hard line */
+              WebkitMaskImage:
+                ' radial-gradient(ellipse 78% 80% at 55% 48%, #000 45%, transparent 96%)',
+              maskImage:
+                'radial-gradient(ellipse 78% 80% at 55% 48%, #000 45%, transparent 96%)',
+            }}
+          />
+          {/* Hard-enforced 4-sided black gradient feather overlay on top of the video */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: `
+                linear-gradient(to right, #000000 0%, rgba(0,0,0,0.85) 12%, transparent 38%),
+                linear-gradient(to left, #000000 0%, rgba(0,0,0,0.7) 8%, transparent 24%),
+                linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.65) 8%, transparent 25%),
+                linear-gradient(to top, #000000 0%, rgba(0,0,0,0.9) 10%, transparent 28%)
+              `,
+              boxShadow: 'inset 0 0 70px 35px #000000',
+            }}
+          />
         </div>
       </motion.div>
 

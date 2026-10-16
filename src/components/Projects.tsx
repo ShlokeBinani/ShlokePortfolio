@@ -113,7 +113,7 @@ export const Projects: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -15 }}
                       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                      className="rounded-3xl p-8 sm:p-10 bg-[#0A0A0C]/90 backdrop-blur-[24px] border border-white/15 hover:border-[#F4ECE1]/35 shadow-[0_20px_60px_rgba(0,0,0,0.85)] space-y-6"
+                      className="rounded-3xl p-8 sm:p-10 bg-[#0A0A0C] border border-white/10 hover:border-[#F4ECE1]/35 shadow-[0_20px_60px_rgba(0,0,0,0.85)] space-y-6"
                     >
                       {/* Meta Header */}
                       <div className="flex items-center justify-between pb-4 border-b border-white/10">
@@ -183,12 +183,77 @@ export const Projects: React.FC = () => {
                   </AnimatePresence>
                 </div>
 
-                {/* Right Column (6 Cols on Desktop): 3D Viewport Window Frame */}
-                <div className="hidden lg:flex lg:col-span-6 h-[480px] items-center justify-end pointer-events-none relative">
-                  <div className="p-4 rounded-2xl border border-white/5 bg-black/30 backdrop-blur-sm text-[10px] font-mono text-[#D6C3B0]/60 space-y-1">
-                    <div>3D WEBGL TELEMETRY STAGE</div>
-                    <div className="text-zinc-500">REAL-TIME THREE.JS PROCEDURAL SCULPTURE</div>
-                  </div>
+                {/* Right Column (6 Cols on Desktop): Architecture Telemetry Inspector Card */}
+                <div className="hidden lg:flex lg:col-span-6 z-20 w-full">
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    <motion.div
+                      key={`inspector-${activeProject.id}`}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+                      className="w-full rounded-3xl p-8 sm:p-10 bg-[#0A0A0C] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] space-y-6"
+                    >
+                      <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                        <span className="font-mono text-xs text-[#D6C3B0] tracking-widest uppercase">
+                          SYSTEM PIPELINE & ARCHITECTURE
+                        </span>
+                        <span className="font-mono text-[10px] text-zinc-500 uppercase">
+                          TELEMETRY VERIFIED
+                        </span>
+                      </div>
+
+                      {/* Pipeline Flow Steps */}
+                      <div className="space-y-3">
+                        <div className="text-[11px] font-mono uppercase text-zinc-400 tracking-wider">
+                          Dataflow Lifecycle
+                        </div>
+                        <div className="grid grid-cols-2 gap-2.5">
+                          {activeProject.pipelineFlow.map((step, sIdx) => (
+                            <div
+                              key={sIdx}
+                              className="p-3 rounded-xl bg-black/50 border border-white/5 flex items-center gap-2.5 text-xs text-zinc-300 font-mono"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#D6C3B0]" />
+                              <span className="truncate">{step}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* System Architecture Summary */}
+                      <div className="space-y-2">
+                        <div className="text-[11px] font-mono uppercase text-zinc-400 tracking-wider">
+                          Architecture Design
+                        </div>
+                        <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-mono">
+                          {activeProject.systemArchitecture}
+                        </p>
+                      </div>
+
+                      {/* Measured Impact */}
+                      <div className="p-4 rounded-2xl bg-black/70 border border-[#F4ECE1]/15 space-y-1">
+                        <div className="text-[10px] font-mono uppercase text-[#D6C3B0] tracking-wider">
+                          Engineering Impact
+                        </div>
+                        <div className="text-xs text-zinc-300 leading-relaxed">
+                          {activeProject.measuredImpact}
+                        </div>
+                      </div>
+
+                      {/* Tech Tags */}
+                      <div className="flex flex-wrap gap-2 pt-1">
+                        {activeProject.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2.5 py-1 rounded-lg text-[10px] font-mono bg-white/5 text-zinc-300 border border-white/5"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
 
               </div>
@@ -199,7 +264,7 @@ export const Projects: React.FC = () => {
               {projects.map((proj) => (
                 <div
                   key={proj.id}
-                  className="rounded-3xl p-8 sm:p-10 bg-[#0A0A0C]/85 backdrop-blur-xl border border-white/10 hover:border-[#F4ECE1]/35 transition-all flex flex-col justify-between group shadow-xl"
+                  className="rounded-3xl p-8 sm:p-10 bg-[#0A0A0C] border border-white/10 hover:border-[#F4ECE1]/35 transition-all flex flex-col justify-between group shadow-xl"
                 >
                   <div className="space-y-5">
                     <div className="flex items-center justify-between pb-4 border-b border-white/5">

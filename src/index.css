@@ -36,28 +36,10 @@ body {
   background: #3F3F46;
 }
 
-/* Zero-Seam Spotlight Video Blending */
-.spotlight-video {
-  mix-blend-mode: lighten;
-  filter: contrast(1.08) brightness(0.95);
+/* Zero-Seam Spotlight Video Blending (Pure #000000 Canvas) */
+video {
   transform: translateZ(0);
   will-change: transform, opacity;
-  object-fit: cover;
-  object-position: center top;
-}
-
-/* Multi-directional edge fade mask for seamless blending with pure #000000 */
-.video-blend-mask {
-  -webkit-mask-image: 
-    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 8%, rgba(0, 0, 0, 0.95) 20%, black 30%),
-    linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 6%, rgba(0, 0, 0, 0.95) 15%, black 25%),
-    linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.7) 4%, black 12%);
-  -webkit-mask-composite: source-in;
-  mask-image: 
-    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 8%, rgba(0, 0, 0, 0.95) 20%, black 30%),
-    linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 6%, rgba(0, 0, 0, 0.95) 15%, black 25%),
-    linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.7) 4%, black 12%);
-  mask-composite: intersect;
 }
 
 /* Studio ambient light flare */
