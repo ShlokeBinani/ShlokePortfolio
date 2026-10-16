@@ -44,7 +44,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="relative bg-black text-[#F5F5F7] overflow-hidden pt-28 pb-16 border-t border-white/5">
+    <footer id="contact" className="relative bg-transparent text-[#F5F5F7] overflow-hidden pt-28 pb-16 border-t border-white/5">
       
       {/* Warm Spotlight-Inspired Top Border Gradient */}
       <div 

@@ -1,4 +1,4 @@
-﻿import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView, animate } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
@@ -103,7 +103,7 @@ export const About: React.FC = () => {
   const [activeLayer, setActiveLayer] = useState<number>(0);
 
   return (
-    <section id="about" className="relative py-28 bg-black text-[#F5F5F7] border-t border-white/5">
+    <section id="about" className="relative py-28 bg-transparent text-[#F5F5F7] border-t border-white/5">
       {/* Background Studio Light Spill */}
       <div 
         className="pointer-events-none absolute left-0 top-1/4 w-[500px] h-[500px] opacity-15"

@@ -68,7 +68,7 @@ export const Leadership: React.FC = () => {
   const hackathons = portfolioData.hackathons;
 
   return (
-    <section id="leadership" className="relative py-28 bg-black text-[#F5F5F7] border-t border-white/5">
+    <section id="leadership" className="relative py-28 bg-transparent text-[#F5F5F7] border-t border-white/5">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         
         {/* Section Header */}

@@ -1,4 +1,4 @@
-﻿import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowDown, Mail, FileText, Check } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
@@ -154,7 +154,7 @@ export const Hero: React.FC = () => {
       id="hero"
       onMouseMove={handleContainerMouseMove}
       onMouseLeave={handleContainerMouseLeave}
-      className="relative w-full min-h-screen lg:h-screen lg:max-h-[980px] bg-black overflow-hidden flex items-center justify-center pt-24 lg:pt-0"
+      className="relative w-full min-h-screen lg:h-screen lg:max-h-[980px] bg-transparent overflow-hidden flex items-center justify-center pt-24 lg:pt-0"
       style={{ perspective: 1200 }}
     >
       {/* Subtle Studio Ambient Light Spill */}
@@ -180,14 +180,14 @@ export const Hero: React.FC = () => {
           className="w-full lg:w-[55%] flex flex-col justify-center py-8 lg:py-0 space-y-6 lg:space-y-7 z-20"
         >
           {/* Borderless Wide-Tracked Editorial Micro-Copy */}
-          <div className="tracking-[0.28em] text-[11px] uppercase text-[#D6C3B0]/80 font-mono font-medium select-none">
+          <div className="tracking-[0.3em] text-[11px] uppercase text-[#D6C3B0]/80 font-mono font-medium select-none">
             SOFTWARE ENGINEERING • DATA ANALYTICS • AI SYSTEMS
           </div>
 
           {/* Kinetic Typography Headline: 3D Origami Unfold */}
           <div className="space-y-3" style={{ perspective: 800 }}>
             <motion.h1
-              initial={{ y: 70, rotateX: -65, opacity: 0 }}
+              initial={{ y: 60, rotateX: -50, opacity: 0 }}
               animate={{ y: 0, rotateX: 0, opacity: 1 }}
               transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               style={{ transformOrigin: 'bottom center', transformStyle: 'preserve-3d' }}

@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
@@ -118,7 +118,7 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="relative py-28 bg-black text-[#F5F5F7] border-t border-white/5">
+    <section id="skills" className="relative py-28 bg-transparent text-[#F5F5F7] border-t border-white/5">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         
         {/* Section Header: Single Clean Title */}
