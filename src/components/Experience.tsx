@@ -57,7 +57,7 @@ export const Experience: React.FC = () => {
                 rotateY,
                 transformStyle: 'preserve-3d',
               }}
-              className="relative rounded-3xl p-8 sm:p-12 overflow-hidden bg-[#0A0A0C] border border-white/10 hover:border-[#F4ECE1]/30 transition-all duration-300"
+              className="relative rounded-3xl p-8 sm:p-12 overflow-hidden bg-[#0A0A0C]/80 backdrop-blur-xl border border-white/10 hover:border-[#F4ECE1]/30 transition-all duration-300"
             >
               {/* Dynamic Cursor Spotlight */}
               {mousePos.active && (

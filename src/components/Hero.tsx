@@ -311,7 +311,7 @@ export const Hero: React.FC = () => {
 
         {/* Right Column: Studio Spotlight Video Anchor + Volumetric Dust Motes */}
         <div className="w-full lg:w-[45%] h-[48vh] sm:h-[55vh] lg:h-[88vh] lg:max-h-[820px] flex items-end lg:items-center justify-center lg:justify-end relative select-none">
-          <div className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[460px] h-full flex items-center justify-center bg-black">
+          <div className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[460px] h-full flex items-center justify-center bg-transparent">
             
             {/* Volumetric Dust Motes Canvas Layer spilling light into page */}
             <SpotlightMotesCanvas />

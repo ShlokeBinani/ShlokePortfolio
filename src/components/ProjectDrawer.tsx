@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, ArrowLeft, Cpu, Activity, ShieldCheck, Database, Layers, CheckCircle } from 'lucide-react';
 import { portfolioData, Project } from '../data/portfolioData';
@@ -87,7 +87,7 @@ export const ProjectDrawer: React.FC = () => {
             <div className="px-6 sm:px-10 lg:px-12 py-6 border-b border-white/10 flex items-center justify-between bg-[#070709]/80 backdrop-blur-md shrink-0">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs text-[#D6C3B0] tracking-widest uppercase">
-                  PROJECT {currentProject.number} // 04
+                  PROJECT {currentProject.number} OF 04
                 </span>
                 <span className="text-zinc-600">·</span>
                 <span className="text-xs font-mono text-zinc-400">

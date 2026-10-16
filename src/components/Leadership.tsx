@@ -44,7 +44,7 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
           rotateY,
           transformStyle: 'preserve-3d',
         }}
-        className={`relative h-full rounded-3xl p-8 sm:p-10 overflow-hidden bg-[#0A0A0C] border border-white/10 hover:border-[#F4ECE1]/30 transition-all duration-300 flex flex-col justify-between ${className}`}
+        className={`relative h-full rounded-3xl p-8 sm:p-10 overflow-hidden bg-[#0A0A0C]/80 backdrop-blur-xl border border-white/10 hover:border-[#F4ECE1]/30 transition-all duration-300 flex flex-col justify-between ${className}`}
       >
         {/* Specular Spotlight Gradient */}
         {mousePos.active && (

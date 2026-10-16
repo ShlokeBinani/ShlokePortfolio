@@ -84,7 +84,7 @@ export const Contact: React.FC = () => {
             <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>SYS.STATUS: ACTIVE // OPEN TO ROLES</span>
+                <span>AVAILABLE FOR SOFTWARE & AI SYSTEMS ROLES</span>
               </span>
 
               <span className="text-zinc-500">

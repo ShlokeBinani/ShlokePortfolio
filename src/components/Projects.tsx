@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, ArrowRight, Cpu, Network, BarChart3, Sparkles, Activity, Layers } from 'lucide-react';
 import { portfolioData, Project } from '../data/portfolioData';
-import { webglState, setActiveDrawerProject, setViewMode, subscribeWebGL } from '../utils/webglState';
+import { webglState, setActiveDrawerProject, setViewMode, subscribeWebGL, setCurrentProjectIndex } from '../utils/webglState';
 import { MagneticButton } from './Navbar';
 
 export const Projects: React.FC = () => {
@@ -27,6 +27,7 @@ export const Projects: React.FC = () => {
       // 4 projects divided across 0 to 1
       const idx = Math.min(3, Math.max(0, Math.floor(latest * 4)));
       setCurrentIdx(idx);
+      setCurrentProjectIndex(idx);
     });
   }, [scrollYProgress]);
 
@@ -117,7 +118,7 @@ export const Projects: React.FC = () => {
                       {/* Meta Header */}
                       <div className="flex items-center justify-between pb-4 border-b border-white/10">
                         <span className="font-mono text-xs text-[#D6C3B0] tracking-widest uppercase">
-                          PROJECT {activeProject.number} // 04
+                          PROJECT {activeProject.number} OF 04
                         </span>
                         {activeProject.roleBadge && (
                           <span className="px-3 py-1 rounded-full text-[11px] font-mono bg-[#F4ECE1]/10 text-[#F4ECE1] border border-[#F4ECE1]/20">
@@ -203,7 +204,7 @@ export const Projects: React.FC = () => {
                   <div className="space-y-5">
                     <div className="flex items-center justify-between pb-4 border-b border-white/5">
                       <span className="font-mono text-xs text-[#D6C3B0] uppercase tracking-wider">
-                        PROJECT {proj.number} // 04
+                        PROJECT {proj.number} OF 04
                       </span>
                       {proj.roleBadge && (
                         <span className="px-3 py-1 rounded-full text-xs font-mono bg-[#F4ECE1]/10 text-[#F4ECE1] border border-[#F4ECE1]/20">
@@ -274,7 +275,7 @@ export const Projects: React.FC = () => {
                         : 'bg-black/60 text-zinc-400 border-white/10 hover:text-white hover:border-white/20'
                     }`}
                   >
-                    0{idx + 1} // {p.title}
+                    0{idx + 1} • {p.title}
                   </button>
                 ))}
               </div>

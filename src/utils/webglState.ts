@@ -1,5 +1,6 @@
 export interface WebGLState {
   scrollProgress: number;
+  scrollVelocity: number;
   mouseX: number;
   mouseY: number;
   activeDrawerProject: string | null;
@@ -9,6 +10,7 @@ export interface WebGLState {
 
 export const webglState: WebGLState = {
   scrollProgress: 0,
+  scrollVelocity: 0,
   mouseX: 0,
   mouseY: 0,
   activeDrawerProject: null,

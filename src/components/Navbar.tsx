@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useMotionValue } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
@@ -118,11 +118,7 @@ export const Navbar: React.FC = () => {
           </a>
         </MagneticButton>
 
-        {/* Live Z-Depth Telemetry Readout */}
-        <div className="hidden lg:flex items-center gap-2 pl-4 border-l border-white/10 font-mono text-[10px] tracking-[0.2em] text-[#D6C3B0]/70 select-none">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#D6C3B0] animate-pulse" />
-          <span>SYS.DEPTH // {formattedDepth}%</span>
-        </div>
+
       </div>
 
       {/* Floating Animated Morphing Dock */}

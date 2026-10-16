@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 import { Scene3D } from './components/Scene3D';
 import { Navbar } from './components/Navbar';
@@ -20,12 +20,20 @@ export function App() {
       smoothWheel: true,
     });
 
+    const handleWindowScroll = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (total > 0) {
+        webglState.scrollProgress = Math.max(0, Math.min(1, window.scrollY / total));
+      }
+    };
+    window.addEventListener('scroll', handleWindowScroll, { passive: true });
+
     lenis.on('scroll', (e: any) => {
       if (typeof e.progress === 'number') {
         webglState.scrollProgress = e.progress;
-      } else {
-        const total = document.documentElement.scrollHeight - window.innerHeight;
-        webglState.scrollProgress = total > 0 ? window.scrollY / total : 0;
+      }
+      if (typeof e.velocity === 'number') {
+        webglState.scrollVelocity = e.velocity;
       }
     });
 
@@ -43,6 +51,7 @@ export function App() {
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     return () => {
+      window.removeEventListener('scroll', handleWindowScroll);
       window.removeEventListener('mousemove', handleMouseMove);
       lenis.destroy();
     };
