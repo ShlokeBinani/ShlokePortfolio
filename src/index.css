@@ -2,8 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   color-scheme: dark;
+}
+
+html, body, #root {
+  background-color: #0C0C0C;
+  color: #F5F5F7;
+  font-family: 'Kanit', 'Inter', system-ui, sans-serif;
+  overflow-x: clip;
 }
 
 html {
@@ -12,13 +25,6 @@ html {
 
 section {
   scroll-margin-top: 5rem;
-}
-
-body {
-  background-color: #000000;
-  color: #F5F5F7;
-  font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  overflow-x: hidden;
 }
 
 /* Custom Scrollbar */
@@ -36,7 +42,50 @@ body {
   background: #3F3F46;
 }
 
-/* Zero-Seam Spotlight Video Blending (Pure #000000 Canvas) */
+/* Hero Heading Gradient Text */
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hollow / Solid Text Theme Utilities */
+.text-stroke-hollow {
+  -webkit-text-stroke: 1.5px rgba(215, 226, 234, 0.45);
+  color: transparent;
+  transition: all 0.3s ease;
+}
+.text-stroke-hollow:hover {
+  color: #D7E2EA;
+}
+
+.text-stroke-champagne {
+  -webkit-text-stroke: 1.5px rgba(244, 236, 225, 0.4);
+  color: transparent;
+  transition: all 0.3s ease;
+}
+.text-stroke-champagne:hover {
+  color: #F4ECE1;
+}
+
+.text-stroke-thick {
+  -webkit-text-stroke: 2px rgba(215, 226, 234, 0.35);
+  color: transparent;
+  transition: all 0.3s ease;
+}
+.text-stroke-thick:hover {
+  color: #D7E2EA;
+}
+
+/* Vibrant Radial Pill Contact Button */
+.contact-btn-glow {
+  background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%);
+  box-shadow: 0px 4px 4px rgba(181, 1, 167, 0.25), inset 4px 4px 12px #7721B1;
+  outline: 2px solid #FFFFFF;
+  outline-offset: -3px;
+}
+
+/* Zero-Seam Spotlight Video Blending (Pure #0C0C0C / #000000 Canvas) */
 video {
   transform: translateZ(0);
   will-change: transform, opacity;

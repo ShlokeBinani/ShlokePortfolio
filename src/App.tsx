@@ -3,11 +3,10 @@ import Lenis from 'lenis';
 import { VectorBackground } from './components/VectorBackground';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { MarqueeSection } from './components/MarqueeSection';
 import { About } from './components/About';
-import { Experience } from './components/Experience';
-import { Projects } from './components/Projects';
-import { Skills } from './components/Skills';
-import { Leadership } from './components/Leadership';
+import { ServicesSection } from './components/ServicesSection';
+import { ProjectsSection } from './components/ProjectsSection';
 import { Contact } from './components/Contact';
 import { ProjectDrawer } from './components/ProjectDrawer';
 
@@ -34,9 +33,9 @@ export function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-[#F5F5F7] selection:bg-[#F4ECE1] selection:text-black relative">
-      {/* Fixed Full-Screen Cinema Noise Grain Overlay (Tactile Studio Depth) */}
-      <div 
+    <div className="min-h-screen bg-[#0C0C0C] text-[#F5F5F7] selection:bg-[#F4ECE1] selection:text-black relative overflow-x-clip">
+      {/* Fixed Full-Screen Cinema Noise Grain Overlay */}
+      <div
         className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] select-none"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
@@ -48,25 +47,28 @@ export function App() {
       {/* High-Craft Animated SVG Vector Background */}
       <VectorBackground />
 
-      {/* Top Floating Morphing Dock Navbar */}
+      {/* Floating Navbar */}
       <Navbar />
 
-      {/* Hero Section with Single-Wave Video & Volumetric Spotlight */}
+      {/* 1. Hero Section with Video + Typographic Gradient */}
       <Hero />
 
-      {/* Main Content Sections */}
-      <main className="relative z-10 bg-black">
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Leadership />
-      </main>
+      {/* 2. Marquee Section with Dual-Row Scroll-Driven GIFs */}
+      <MarqueeSection />
+
+      {/* 3. About Section with 4 Corner 3D Magnets & Character-by-Character Scroll Reveal */}
+      <About />
+
+      {/* 4. Services Section (Editorial White Curve with 01-05 Offerings) */}
+      <ServicesSection />
+
+      {/* 5. Projects Section (Sticky-Stacking 3D Card Scale Deck) */}
+      <ProjectsSection />
 
       {/* Editorial Footer & Contact */}
       <Contact />
 
-      {/* Expandable 3D Camera-Dolly Case Study Drawer */}
+      {/* Case Study Drawer */}
       <ProjectDrawer />
     </div>
   );

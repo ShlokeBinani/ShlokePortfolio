@@ -35,7 +35,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        kanit: ['Kanit', 'sans-serif'],
+        sans: ['Kanit', 'Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       letterSpacing: {

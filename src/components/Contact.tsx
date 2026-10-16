@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Copy, Check, ArrowUp, Send, Mail } from 'lucide-react';
+import { Copy, Check, ArrowUp, Send, Mail, Sparkles } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
-import { MagneticButton } from './Navbar';
+import { Magnet } from './common/Magnet';
+import { FadeIn } from './common/FadeIn';
 
 export const Contact: React.FC = () => {
   const [copied, setCopied] = useState<boolean>(false);
@@ -44,57 +45,55 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="relative bg-transparent text-[#F5F5F7] overflow-hidden pt-28 pb-16 border-t border-white/5">
-      
-      {/* Warm Spotlight-Inspired Top Border Gradient */}
-      <div 
+    <footer id="contact" className="relative bg-[#0C0C0C] text-[#F5F5F7] overflow-x-clip pt-28 pb-16 border-t border-white/5 select-none">
+      {/* Top Border Accent Line */}
+      <div
         className="absolute top-0 left-0 right-0 h-[1px]"
         style={{
-          background: 'linear-gradient(90deg, transparent 0%, rgba(244, 236, 225, 0.5) 45%, rgba(78, 76, 130, 0.5) 75%, transparent 100%)',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(215, 226, 234, 0.4) 50%, transparent 100%)',
         }}
       />
 
-      {/* Subtle Ambient Glow */}
-      <div 
-        className="pointer-events-none absolute bottom-0 right-0 w-[600px] h-[400px] opacity-15"
-        style={{
-          background: 'radial-gradient(ellipse at bottom right, rgba(244, 236, 225, 0.2), transparent 70%)',
-        }}
-      />
-
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-        
-        {/* Main CTA Section */}
+      <div className="max-w-[1520px] mx-auto px-6 sm:px-10 lg:px-14">
+        {/* Main CTA Grid */}
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12 pb-20 border-b border-white/5">
-          
           <div className="max-w-2xl space-y-6">
-            <div className="text-[11px] font-mono uppercase tracking-[0.28em] text-[#D6C3B0]/80">
-              INITIATE TRANSMISSION
-            </div>
+            <FadeIn delay={0.05} y={15}>
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-medium tracking-[0.25em] text-[#D6C3B0] uppercase">
+                <Sparkles className="w-3.5 h-3.5 text-[#F4ECE1]" />
+                Initiate Project / Inquiries
+              </div>
+            </FadeIn>
 
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#F5F5F7]">
-              Let's connect.
-            </h2>
+            <FadeIn delay={0.1} y={30}>
+              <h2 className="font-kanit font-black text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-none uppercase">
+                <span className="hero-heading mr-3">Let&apos;s</span>
+                <span className="text-stroke-hollow">Connect.</span>
+              </h2>
+            </FadeIn>
 
-            <p className="text-base sm:text-lg text-[#A1A1AA] font-normal leading-relaxed max-w-xl">
-              Open to backend systems engineering opportunities, high-throughput distributed architectures, and machine learning telemetry pipelines.
-            </p>
+            <FadeIn delay={0.2} y={20}>
+              <p className="text-sm sm:text-base lg:text-lg text-[#D7E2EA]/80 font-kanit font-light leading-relaxed max-w-xl">
+                Open to 3D creative direction, high-scale software architectures, interactive spatial web applications, and collaborative engineering roles.
+              </p>
+            </FadeIn>
 
-            {/* Telemetry Status Line */}
-            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>AVAILABLE FOR SOFTWARE & AI SYSTEMS ROLES</span>
-              </span>
-
-              <span className="text-zinc-500">
-                AVG RESPONSE TIME &lt; 24H • UTC+5:30
-              </span>
-            </div>
+            {/* Availability Status */}
+            <FadeIn delay={0.3} y={15}>
+              <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono">
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>AVAILABLE FOR 3D, SWE & AI ROLES</span>
+                </span>
+                <span className="text-zinc-500">
+                  AVG RESPONSE TIME &lt; 24H • UTC+5:30
+                </span>
+              </div>
+            </FadeIn>
           </div>
 
           {/* 3D Interactive Direct Inquiries Card */}
-          <div style={{ perspective: 1200 }} className="w-full lg:w-auto min-w-[360px] sm:min-w-[420px]">
+          <div style={{ perspective: 1200 }} className="w-full lg:w-auto min-w-[340px] sm:min-w-[420px]">
             <motion.div
               ref={cardRef}
               onMouseMove={handleMouseMove}
@@ -104,14 +103,14 @@ export const Contact: React.FC = () => {
                 rotateY,
                 transformStyle: 'preserve-3d',
               }}
-              className="relative rounded-3xl p-8 sm:p-10 bg-[#0A0A0C] border border-white/10 hover:border-[#F4ECE1]/30 transition-all duration-300 flex flex-col gap-6"
+              className="relative rounded-3xl p-8 sm:p-10 bg-[#121217] border border-white/10 hover:border-[#D7E2EA]/40 transition-all duration-300 flex flex-col gap-6 shadow-2xl"
             >
               {/* Dynamic Cursor Spotlight */}
               {mousePos.active && (
                 <div
-                  className="pointer-events-none absolute -inset-px opacity-30 transition-opacity duration-300"
+                  className="pointer-events-none absolute -inset-px opacity-30 transition-opacity duration-300 rounded-3xl"
                   style={{
-                    background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(244, 236, 225, 0.2), transparent 80%)`,
+                    background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(215, 226, 234, 0.25), transparent 80%)`,
                   }}
                 />
               )}
@@ -123,16 +122,16 @@ export const Contact: React.FC = () => {
                     Direct Dispatch
                   </span>
                   <span className="text-[11px] font-mono text-zinc-500">
-                    PGP ENCRYPTED DISPATCH
+                    DIRECT INQUIRY
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between gap-3 p-3.5 rounded-2xl bg-black/80 border border-white/10 group">
+                <div className="flex items-center justify-between gap-3 p-3.5 rounded-2xl bg-[#0C0C0C] border border-white/10 group">
                   <span className="font-mono text-xs sm:text-sm text-[#F5F5F7] truncate select-all pl-2">
                     {email}
                   </span>
 
-                  <MagneticButton radius={20}>
+                  <Magnet padding={20} strength={4}>
                     <button
                       onClick={copyEmail}
                       title="Copy email address"
@@ -150,24 +149,30 @@ export const Contact: React.FC = () => {
                         </>
                       )}
                     </button>
-                  </MagneticButton>
+                  </Magnet>
                 </div>
 
-                <MagneticButton radius={30} className="w-full">
+                <Magnet padding={40} strength={4} className="w-full">
                   <a
                     href={`mailto:${email}`}
-                    className="inline-flex items-center justify-center gap-2.5 w-full py-4 rounded-2xl bg-[#F4ECE1] text-black font-semibold text-sm hover:bg-white transition-all shadow-[0_0_25px_rgba(244,236,225,0.25)] hover:shadow-[0_0_35px_rgba(244,236,225,0.4)]"
+                    className="inline-flex items-center justify-center gap-2.5 w-full py-4 rounded-2xl text-white font-semibold text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                    style={{
+                      background: 'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)',
+                      boxShadow: '0px 4px 4px rgba(181, 1, 167, 0.25), inset 4px 4px 12px #7721B1',
+                      outline: '2px solid #FFFFFF',
+                      outlineOffset: '-3px',
+                    }}
                   >
                     <Send className="w-4 h-4" />
-                    <span className="tracking-wide">Transmit Email Inquiry</span>
+                    <span>Send Message</span>
                   </a>
-                </MagneticButton>
+                </Magnet>
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Footer Meta & Tactile Magnetic Links */}
+        {/* Footer Meta & Tactile Links */}
         <div className="pt-12 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <span className="font-mono text-xs text-zinc-500">
@@ -175,13 +180,13 @@ export const Contact: React.FC = () => {
             </span>
             <span className="text-zinc-700">·</span>
             <span className="font-mono text-xs text-zinc-500">
-              ECE @ VIT Vellore • Signals to Systems
+              3D Creator & Systems Architecture
             </span>
           </div>
 
           {/* Social Links & Magnetic Scroll-to-Top */}
           <div className="flex items-center gap-4 sm:gap-6">
-            <MagneticButton radius={25}>
+            <Magnet padding={25} strength={4}>
               <a
                 href={github}
                 target="_blank"
@@ -191,9 +196,9 @@ export const Contact: React.FC = () => {
                 <GithubIcon className="w-4 h-4" />
                 <span>GitHub</span>
               </a>
-            </MagneticButton>
+            </Magnet>
 
-            <MagneticButton radius={25}>
+            <Magnet padding={25} strength={4}>
               <a
                 href={linkedin}
                 target="_blank"
@@ -203,9 +208,9 @@ export const Contact: React.FC = () => {
                 <LinkedinIcon className="w-4 h-4" />
                 <span>LinkedIn</span>
               </a>
-            </MagneticButton>
+            </Magnet>
 
-            <MagneticButton radius={25}>
+            <Magnet padding={25} strength={4}>
               <button
                 onClick={scrollToTop}
                 title="Return to top"
@@ -213,10 +218,9 @@ export const Contact: React.FC = () => {
               >
                 <ArrowUp className="w-4 h-4" />
               </button>
-            </MagneticButton>
+            </Magnet>
           </div>
         </div>
-
       </div>
     </footer>
   );

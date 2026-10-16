@@ -70,7 +70,7 @@ export const Navbar: React.FC = () => {
   }, [scrollYProgress]);
 
   useEffect(() => {
-    const sections = ['about', 'experience', 'projects', 'skills', 'leadership', 'contact'];
+    const sections = ['about', 'services', 'projects', 'contact'];
     const handleScroll = () => {
       const scrollPos = window.scrollY + 220;
       for (const section of sections) {
@@ -92,10 +92,8 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { label: 'About', href: '#about', id: 'about' },
-    { label: 'Experience', href: '#experience', id: 'experience' },
+    { label: 'Services', href: '#services', id: 'services' },
     { label: 'Projects', href: '#projects', id: 'projects' },
-    { label: 'Skills', href: '#skills', id: 'skills' },
-    { label: 'Leadership', href: '#leadership', id: 'leadership' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 
