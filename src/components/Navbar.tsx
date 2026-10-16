@@ -94,7 +94,7 @@ export const Navbar: React.FC = () => {
     { label: 'About', href: '#about', id: 'about' },
     { label: 'Experience', href: '#experience', id: 'experience' },
     { label: 'Projects', href: '#projects', id: 'projects' },
-    { label: 'Arsenal', href: '#skills', id: 'skills' },
+    { label: 'Skills', href: '#skills', id: 'skills' },
     { label: 'Leadership', href: '#leadership', id: 'leadership' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];

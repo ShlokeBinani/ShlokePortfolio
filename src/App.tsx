@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
+import { VectorBackground } from './components/VectorBackground';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -18,6 +19,8 @@ export function App() {
       smoothWheel: true,
     });
 
+    (window as any).__lenis = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -25,6 +28,7 @@ export function App() {
     requestAnimationFrame(raf);
 
     return () => {
+      delete (window as any).__lenis;
       lenis.destroy();
     };
   }, []);
@@ -40,6 +44,9 @@ export function App() {
         }}
         aria-hidden="true"
       />
+
+      {/* High-Craft Animated SVG Vector Background */}
+      <VectorBackground />
 
       {/* Top Floating Morphing Dock Navbar */}
       <Navbar />

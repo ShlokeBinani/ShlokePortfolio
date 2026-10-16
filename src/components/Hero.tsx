@@ -235,7 +235,7 @@ export const Hero: React.FC = () => {
         </motion.div>
 
         {/* Right Column: Seamless Spotlight Video */}
-        <div className="relative h-[88vh] lg:h-[94vh] aspect-[9/16] select-none pointer-events-none flex items-center justify-center overflow-hidden bg-black">
+        <div className="relative h-[86vh] lg:h-[92vh] aspect-[9/16] select-none pointer-events-none flex items-center justify-center overflow-hidden bg-black">
           <video
             ref={videoRef}
             src={`${import.meta.env.BASE_URL}hero-video.mp4`}
@@ -250,27 +250,25 @@ export const Hero: React.FC = () => {
             }}
             className="w-full h-full object-cover"
             style={{
-              /* Crushes the #121212 dark grey studio backdrop to pure #000000 while keeping skin & spotlight warm */
-              filter: 'contrast(1.22) brightness(0.88)',
+              filter: 'contrast(1.24) brightness(0.87)',
               mixBlendMode: 'lighten',
-              /* 4-way CSS mask so Top, Right, Bottom, and Left edges cannot show a hard line */
               WebkitMaskImage:
-                ' radial-gradient(ellipse 78% 80% at 55% 48%, #000 45%, transparent 96%)',
+                'radial-gradient(ellipse 75% 78% at 54% 48%, #000 42%, transparent 94%)',
               maskImage:
-                'radial-gradient(ellipse 78% 80% at 55% 48%, #000 45%, transparent 96%)',
+                'radial-gradient(ellipse 75% 78% at 54% 48%, #000 42%, transparent 94%)',
             }}
           />
-          {/* Hard-enforced 4-sided black gradient feather overlay on top of the video */}
+          {/* 4-sided black feather vignette so Top, Right, Bottom, and Left edges never show a line */}
           <div
             className="pointer-events-none absolute inset-0"
             style={{
               background: `
-                linear-gradient(to right, #000000 0%, rgba(0,0,0,0.85) 12%, transparent 38%),
-                linear-gradient(to left, #000000 0%, rgba(0,0,0,0.7) 8%, transparent 24%),
-                linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.65) 8%, transparent 25%),
-                linear-gradient(to top, #000000 0%, rgba(0,0,0,0.9) 10%, transparent 28%)
+                linear-gradient(to right, #000000 0%, rgba(0,0,0,0.9) 14%, transparent 40%),
+                linear-gradient(to left, #000000 0%, rgba(0,0,0,0.85) 10%, transparent 28%),
+                linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.8) 10%, transparent 28%),
+                linear-gradient(to top, #000000 0%, rgba(0,0,0,0.95) 12%, transparent 32%)
               `,
-              boxShadow: 'inset 0 0 70px 35px #000000',
+              boxShadow: 'inset 0 0 80px 40px #000000',
             }}
           />
         </div>

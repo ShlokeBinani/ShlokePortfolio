@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, useInView, animate } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
 interface TiltCardProps {
@@ -60,44 +60,6 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
   );
 };
 
-const AnimatedStat: React.FC<{ value: number; suffix?: string; decimals?: number; label: string; sub: string }> = ({
-  value,
-  suffix = '',
-  decimals = 0,
-  label,
-  sub,
-}) => {
-  const [currentVal, setCurrentVal] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
-
-  useEffect(() => {
-    if (isInView) {
-      const controls = animate(0, value, {
-        duration: 1.8,
-        ease: [0.16, 1, 0.3, 1],
-        onUpdate: (latest) => setCurrentVal(latest),
-      });
-      return () => controls.stop();
-    }
-  }, [isInView, value]);
-
-  return (
-    <div ref={ref} className="p-5 rounded-2xl bg-black/60 border border-white/5 flex flex-col justify-between">
-      <div>
-        <div className="text-3xl sm:text-4xl font-extrabold text-[#F4ECE1] font-mono tracking-tight">
-          {currentVal.toFixed(decimals)}
-          <span className="text-[#D6C3B0] text-xl ml-0.5">{suffix}</span>
-        </div>
-        <div className="text-xs font-semibold text-[#F5F5F7] mt-1.5">{label}</div>
-      </div>
-      <div className="text-[11px] font-mono text-[#A1A1AA] mt-2 border-t border-white/5 pt-2">
-        {sub}
-      </div>
-    </div>
-  );
-};
-
 export const About: React.FC = () => {
   const { education } = portfolioData.personal;
   const [activeLayer, setActiveLayer] = useState<number>(0);
@@ -127,12 +89,12 @@ export const About: React.FC = () => {
         {/* 3-Card 3D Interactive Tilt Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch" style={{ perspective: 1200 }}>
           
-          {/* Card 1: The Synthesis — Signals to Systems (7 Cols) */}
+          {/* Card 1: Academic Foundation (7 Cols) */}
           <TiltCard className="lg:col-span-7 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
                 <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#D6C3B0]">
-                  THE SYNTHESIS • SIGNALS TO SYSTEMS
+                  ACADEMIC FOUNDATION • VIT VELLORE
                 </span>
                 <span className="font-mono text-xs text-zinc-500">2023 — 2027</span>
               </div>
@@ -171,66 +133,90 @@ export const About: React.FC = () => {
             </div>
           </TiltCard>
 
-          {/* Card 2: Live Engineering Telemetry (5 Cols) */}
+          {/* Card 2: Core Engineering Focus & Domains (5 Cols) */}
           <TiltCard className="lg:col-span-5 flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+              <div className="flex items-center justify-between mb-4 pb-4 border-b border-white/10">
                 <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#D6C3B0]">
-                  LIVE ENGINEERING TELEMETRY
+                  CORE ENGINEERING FOCUS
                 </span>
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               </div>
 
-              <p className="text-xs text-[#A1A1AA] leading-relaxed mb-6 font-mono">
-                Key performance metrics achieved across research publications, production microservice deployments, and academic benchmarks.
-              </p>
-            </div>
+              {/* Animated SVG Oscilloscope / Signal Waveform Graphic */}
+              <div className="py-1 mb-4">
+                <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400 mb-1.5">
+                  <span>SIGNAL PROCESSING MONITOR</span>
+                  <span className="text-[#F4ECE1]">REAL-TIME DSP</span>
+                </div>
+                <div className="h-12 w-full rounded-2xl bg-black/60 border border-white/10 overflow-hidden flex items-center px-3 relative">
+                  <svg className="w-full h-8 overflow-visible" viewBox="0 0 400 30">
+                    <path
+                      d="M 0 15 Q 25 3, 50 15 T 100 15 T 150 4 T 200 26 T 250 15 T 300 8 T 350 20 T 400 15"
+                      fill="none"
+                      stroke="#F4ECE1"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M 0 15 Q 25 24, 50 15 T 100 15 T 150 26 T 200 4 T 250 15 T 300 22 T 350 10 T 400 15"
+                      fill="none"
+                      stroke="#D6C3B0"
+                      strokeWidth="1"
+                      strokeOpacity="0.4"
+                    />
+                  </svg>
+                </div>
+              </div>
 
-            <div className="grid grid-cols-2 gap-3.5">
-              <AnimatedStat
-                value={99.17}
-                suffix="%"
-                decimals={2}
-                label="QCNN Accuracy"
-                sub="MS-HQNet multi-channel EMG"
-              />
-              <AnimatedStat
-                value={60}
-                suffix="%"
-                decimals={0}
-                label="Latency Slashed"
-                sub="Voice-AI booking pipeline"
-              />
-              <AnimatedStat
-                value={30}
-                suffix="%"
-                decimals={0}
-                label="Reliability Gain"
-                sub="FastAPI microservice cluster"
-              />
-              <AnimatedStat
-                value={8.68}
-                suffix=""
-                decimals={2}
-                label="Current CGPA"
-                sub="VIT Vellore Class of '27"
-              />
+              {/* 3 Engineering Domains */}
+              <div className="space-y-2.5">
+                <div className="p-3 rounded-2xl bg-black/50 border border-white/5 space-y-1">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-[#F5F5F7] font-semibold">Distributed Backend Systems</span>
+                    <span className="text-[10px] text-[#D6C3B0]">FastAPI • Redis • Docker</span>
+                  </div>
+                  <p className="text-[11px] text-zinc-400 leading-normal">
+                    High-throughput microservices, asynchronous task queues, and resilient API gateways.
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-2xl bg-black/50 border border-white/5 space-y-1">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-[#F5F5F7] font-semibold">Data & Signal Processing</span>
+                    <span className="text-[10px] text-[#D6C3B0]">Python • SciPy • DSP</span>
+                  </div>
+                  <p className="text-[11px] text-zinc-400 leading-normal">
+                    Multi-channel filtering, stochastic noise suppression, and biosignal feature extraction.
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-2xl bg-black/50 border border-white/5 space-y-1">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-[#F5F5F7] font-semibold">Applied Machine Learning</span>
+                    <span className="text-[10px] text-[#D6C3B0]">PyTorch • QCNN • LLMs</span>
+                  </div>
+                  <p className="text-[11px] text-zinc-400 leading-normal">
+                    Hybrid quantum-classical CNNs, parameter compression, and automated AI evaluation.
+                  </p>
+                </div>
+              </div>
             </div>
           </TiltCard>
 
-          {/* Card 3: Interactive System Layer Stack (Full 12 Cols) */}
+          {/* Card 3: Engineering Architecture Layers (Full 12 Cols) */}
           <TiltCard className="lg:col-span-12">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8 pb-4 border-b border-white/10 gap-4">
               <div>
                 <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#D6C3B0]">
-                  INTERACTIVE SYSTEM LAYER STACK
+                  ENGINEERING ARCHITECTURE LAYERS
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold text-[#F5F5F7] mt-1">
-                  Three Structural Engineering Planes
+                  Three Foundational Engineering Planes
                 </h3>
               </div>
               <p className="text-xs font-mono text-[#A1A1AA]">
-                Hover layers to inspect execution strata
+                Hover layers to inspect focus areas
               </p>
             </div>
 

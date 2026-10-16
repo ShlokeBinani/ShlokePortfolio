@@ -125,10 +125,10 @@ export const Skills: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F5F5F7]">
-              Technical Arsenal
+              Technical Skills
             </h2>
             <p className="text-sm font-mono text-[#A1A1AA] mt-2 max-w-lg leading-relaxed">
-              Hover any tool to inspect cross-system deployment telemetry across research frameworks and production systems.
+              Languages, frameworks, and engineering tools applied across research and production systems.
             </p>
           </div>
 

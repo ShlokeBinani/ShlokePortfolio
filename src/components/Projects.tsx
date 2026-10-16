@@ -67,14 +67,14 @@ export const Projects: React.FC = () => {
           <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-4">
             <div>
               <div className="text-[11px] font-mono uppercase tracking-[0.28em] text-[#D6C3B0]/80 mb-2">
-                SELECTED WORK • KEYFRAMED 3D TELEMETRY
+                SELECTED WORK • FEATURED PROJECTS
               </div>
               <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F5F5F7]">
-                System Architectures
+                Featured Projects
               </h2>
             </div>
 
-            {/* View Mode Switcher: 3D Immersive Stage vs Editorial Grid */}
+            {/* View Mode Switcher: Featured vs Grid */}
             <div className="flex items-center gap-1.5 p-1 rounded-full bg-[#0A0A0C]/90 backdrop-blur-md border border-white/10 select-none shadow-xl">
               <button
                 onClick={() => handleToggleMode('stage')}
@@ -84,7 +84,7 @@ export const Projects: React.FC = () => {
                     : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
                 }`}
               >
-                [ 3D IMMERSIVE STAGE ]
+                Featured View
               </button>
               <button
                 onClick={() => handleToggleMode('grid')}
@@ -94,7 +94,7 @@ export const Projects: React.FC = () => {
                     : 'text-[#A1A1AA] hover:text-[#F5F5F7]'
                 }`}
               >
-                [ EDITORIAL GRID ]
+                Grid View
               </button>
             </div>
           </div>
@@ -167,14 +167,14 @@ export const Projects: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Action Button: Dolly Camera & Open Case Study Drawer */}
+                      {/* Action Button: View Project Details */}
                       <div className="pt-2 flex items-center gap-4">
                         <MagneticButton radius={25}>
                           <button
                             onClick={() => setActiveDrawerProject(activeProject.id)}
                             className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[#F4ECE1] text-black font-semibold text-xs sm:text-sm hover:bg-white transition-all shadow-[0_0_25px_rgba(244,236,225,0.25)]"
                           >
-                            <span>Explore System Architecture</span>
+                            <span>View Project Details</span>
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                           </button>
                         </MagneticButton>
@@ -183,7 +183,7 @@ export const Projects: React.FC = () => {
                   </AnimatePresence>
                 </div>
 
-                {/* Right Column (6 Cols on Desktop): Architecture Telemetry Inspector Card */}
+                {/* Right Column (6 Cols on Desktop): Architecture Inspector Card */}
                 <div className="hidden lg:flex lg:col-span-6 z-20 w-full">
                   <AnimatePresence mode="popLayout" initial={false}>
                     <motion.div
@@ -196,17 +196,17 @@ export const Projects: React.FC = () => {
                     >
                       <div className="flex items-center justify-between pb-4 border-b border-white/10">
                         <span className="font-mono text-xs text-[#D6C3B0] tracking-widest uppercase">
-                          SYSTEM PIPELINE & ARCHITECTURE
+                          SYSTEM ARCHITECTURE & PIPELINE
                         </span>
                         <span className="font-mono text-[10px] text-zinc-500 uppercase">
-                          TELEMETRY VERIFIED
+                          VERIFIED RESULTS
                         </span>
                       </div>
 
                       {/* Pipeline Flow Steps */}
                       <div className="space-y-3">
                         <div className="text-[11px] font-mono uppercase text-zinc-400 tracking-wider">
-                          Dataflow Lifecycle
+                          Pipeline Flow
                         </div>
                         <div className="grid grid-cols-2 gap-2.5">
                           {activeProject.pipelineFlow.map((step, sIdx) => (
@@ -234,7 +234,7 @@ export const Projects: React.FC = () => {
                       {/* Measured Impact */}
                       <div className="p-4 rounded-2xl bg-black/70 border border-[#F4ECE1]/15 space-y-1">
                         <div className="text-[10px] font-mono uppercase text-[#D6C3B0] tracking-wider">
-                          Engineering Impact
+                          Key Results & Impact
                         </div>
                         <div className="text-xs text-zinc-300 leading-relaxed">
                           {activeProject.measuredImpact}
@@ -317,7 +317,7 @@ export const Projects: React.FC = () => {
                         onClick={() => setActiveDrawerProject(proj.id)}
                         className="inline-flex items-center gap-2 text-xs font-mono text-[#F4ECE1] hover:text-white transition-colors"
                       >
-                        <span>Explore System Architecture →</span>
+                        <span>View Project Details →</span>
                       </button>
                     </MagneticButton>
                   </div>
@@ -326,7 +326,7 @@ export const Projects: React.FC = () => {
             </div>
           )}
 
-          {/* Bottom Telemetry Pagination Dots (in Stage Mode) */}
+          {/* Bottom Pagination Dots (in Stage Mode) */}
           {view === 'stage' && (
             <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between text-xs font-mono">
               <div className="flex items-center gap-3">
@@ -346,7 +346,7 @@ export const Projects: React.FC = () => {
               </div>
 
               <div className="hidden sm:block text-zinc-500">
-                SCROLL TO ADVANCE 3D STAGE • CLICK ARCHITECTURE FOR DOLLY ZOOM
+                SCROLL TO ADVANCE PROJECTS • CLICK TO VIEW DETAILS
               </div>
             </div>
           )}
