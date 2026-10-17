@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
+import { motion } from 'framer-motion';
+import { Preloader } from './components/Preloader';
 import { VectorBackground } from './components/VectorBackground';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -15,6 +17,8 @@ import { ProjectDrawer } from './components/ProjectDrawer';
 import { ToastContainer } from './components/common/Toast';
 
 export function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     document.title = 'Shloke Binani';
 
@@ -26,6 +30,15 @@ export function App() {
 
     (window as any).__lenis = lenis;
 
+    // Control scroll availability based on preloader state
+    if (isLoading) {
+      lenis.stop();
+      document.body.style.overflow = 'hidden';
+    } else {
+      lenis.start();
+      document.body.style.overflow = '';
+    }
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -33,61 +46,80 @@ export function App() {
     requestAnimationFrame(raf);
 
     return () => {
+      document.body.style.overflow = '';
       delete (window as any).__lenis;
       lenis.destroy();
     };
-  }, []);
+  }, [isLoading]);
 
   return (
     <div className="min-h-screen bg-[#0C0C0C] text-[#F5F5F7] selection:bg-[#F4ECE1] selection:text-black relative overflow-x-clip">
-      {/* Fixed Full-Screen Cinema Noise Grain Overlay */}
-      <div
-        className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] select-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: 'repeat',
+      {/* 0. Cinematic Editorial Intro Preloader */}
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+
+      {/* Main Portfolio Container with Subtle Entrance Transition */}
+      <motion.div
+        initial={false}
+        animate={{
+          scale: isLoading ? 0.985 : 1,
+          opacity: isLoading ? 0.85 : 1,
+          filter: isLoading ? 'blur(4px)' : 'blur(0px)',
         }}
-        aria-hidden="true"
-      />
+        transition={{
+          duration: 0.9,
+          ease: [0.76, 0, 0.24, 1],
+        }}
+        className="relative w-full"
+      >
+        {/* Fixed Full-Screen Cinema Noise Grain Overlay */}
+        <div
+          className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] select-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat',
+          }}
+          aria-hidden="true"
+        />
 
-      {/* High-Craft Animated SVG Vector Background */}
-      <VectorBackground />
+        {/* High-Craft Animated SVG Vector Background */}
+        <VectorBackground />
 
-      {/* Floating Navbar */}
-      <Navbar />
+        {/* Floating Navbar */}
+        <Navbar />
 
-      {/* 1. Hero Section with Video + Typographic Gradient */}
-      <Hero />
+        {/* 1. Hero Section with Video + Typographic Gradient */}
+        <Hero />
 
-      {/* 2. Marquee Section with Dual-Row Scroll-Driven GIFs */}
-      <MarqueeSection />
+        {/* 2. Marquee Section with Dual-Row Scroll-Driven GIFs */}
+        <MarqueeSection />
 
-      {/* 3. About Section with 4 Corner 3D Magnets & Character-by-Character Scroll Reveal */}
-      <About />
+        {/* 3. About Section with 4 Corner 3D Magnets & Character-by-Character Scroll Reveal */}
+        <About />
 
-      {/* 4. Services Section (Editorial White Curve with 01-05 Offerings) */}
-      <ServicesSection />
+        {/* 4. Services Section (Editorial White Curve with 01-05 Offerings) */}
+        <ServicesSection />
 
-      {/* 5. Work Experience (Kofuku Technologies with 3D Impact Metrics) */}
-      <Experience />
+        {/* 5. Work Experience (Kofuku Technologies with 3D Impact Metrics) */}
+        <Experience />
 
-      {/* 6. Projects Section (Sticky-Stacking 3D Card Scale Deck) */}
-      <ProjectsSection />
+        {/* 6. Projects Section (Sticky-Stacking 3D Card Scale Deck) */}
+        <ProjectsSection />
 
-      {/* 7. Leadership & Initiatives (IEEE Chapters & Hackathons) */}
-      <Leadership />
+        {/* 7. Leadership & Initiatives (IEEE Chapters & Hackathons) */}
+        <Leadership />
 
-      {/* 8. Verified Certifications */}
-      <Certifications />
+        {/* 8. Verified Certifications */}
+        <Certifications />
 
-      {/* 9. Editorial Footer & Contact */}
-      <Contact />
+        {/* 9. Editorial Footer & Contact */}
+        <Contact />
 
-      {/* Interactive Project Deep-Dive Drawer */}
-      <ProjectDrawer />
+        {/* Interactive Project Deep-Dive Drawer */}
+        <ProjectDrawer />
 
-      {/* Global Non-Intrusive Toast System */}
-      <ToastContainer />
+        {/* Global Non-Intrusive Toast System */}
+        <ToastContainer />
+      </motion.div>
     </div>
   );
 }

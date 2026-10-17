@@ -35,6 +35,7 @@ export default {
         },
       },
       fontFamily: {
+        italiana: ['Italiana', 'serif'],
         anton: ['Anton', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
         kanit: ['Kanit', 'sans-serif'],
