@@ -1,38 +1,42 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { FadeIn } from './common/FadeIn';
 
 const SERVICES = [
   {
     number: '01',
-    name: '3D Systems & Modeling',
+    name: 'Backend Engineering & Microservices',
     description:
-      'Creation of detailed objects, characters, and spatial environments tailored to specific client needs, ideal for games, products, interactive web platforms, and digital visualization.',
+      'Engineering fault-tolerant FastAPI and Python microservices, asynchronous queues, hardened REST contracts, and high-reliability API architectures built for scale.',
+    tags: ['FastAPI', 'Python', 'REST APIs', 'PostgreSQL', 'Microservices'],
   },
   {
     number: '02',
-    name: 'Rendering & Shaders',
+    name: 'LLM Voice-AI & Pipeline Automation',
     description:
-      'High-quality, photorealistic renders that showcase designs with custom lighting, textures, and material physics to bring conceptual visions to life.',
+      'Architecting streaming low-latency Voice-AI booking engines, automated event-driven workflows in n8n, and cross-platform operational synchronization.',
+    tags: ['LLM Voice-AI', 'n8n', 'Event Triggers', 'Workflow Automation'],
   },
   {
     number: '03',
-    name: 'Motion Design',
+    name: 'Quantum ML & Signal Processing',
     description:
-      'Dynamic animations, spatial choreography, and motion graphics that add energy, tangible physics, and storytelling to brands, products, and digital experiences.',
+      'Formulating multi-stream hybrid quantum-classical neural networks (MS-HQNet), spatial-temporal CNNs, and parameterized variational quantum circuit simulations for bio-signals.',
+    tags: ['Quantum ML (QCNN)', 'Spatial-Temporal CNN', 'NumPy / SciPy', 'Signal Processing'],
   },
   {
     number: '04',
-    name: 'Brand Identity',
+    name: 'Distributed Systems & 6G Telemetry',
     description:
-      'Crafting cohesive visual identities — from typography and spatial logos to comprehensive brand design systems — that communicate a clear, memorable presence.',
+      'Designing decentralized network simulation frameworks (ResiliNet), gossip protocols, dynamic multi-hop routing heuristics, and fault-tolerant mesh topologies without central bottlenecks.',
+    tags: ['Graph Algorithms', 'Decentralized 6G', 'Fault Tolerance', 'Network Routing'],
   },
   {
     number: '05',
-    name: 'Web & UI Engineering',
+    name: 'Predictive Analytics & Statistical ML',
     description:
-      'Designing clean, modern, and conversion-focused websites with obsessive attention to layout, micro-interactions, responsive typography, and tactile user experience.',
+      'Building full-lifecycle predictive churn models, statistical hypothesis testing (ANOVA/Chi-square), RFM cohort segmentation (PCA/DBSCAN), and executive Power BI suites.',
+    tags: ['Random Forest', 'SQL', 'Hypothesis Testing', 'PCA & DBSCAN', 'Power BI'],
   },
 ];
 
@@ -47,7 +51,7 @@ export const ServicesSection: React.FC = () => {
         <div className="text-center mb-16 sm:mb-20 md:mb-24">
           <FadeIn delay={0.05} y={20}>
             <span className="inline-block text-xs font-mono font-bold tracking-[0.25em] text-[#0C0C0C]/60 uppercase mb-3">
-              Capabilities & Offerings
+              Core Capabilities & Engineering Offerings
             </span>
           </FadeIn>
           <FadeIn delay={0.1} y={40}>
@@ -55,7 +59,7 @@ export const ServicesSection: React.FC = () => {
               className="font-kanit font-black uppercase tracking-tight text-[#0C0C0C] leading-none"
               style={{ fontSize: 'clamp(3rem, 12vw, 150px)' }}
             >
-              Services
+              Expertise
             </h2>
           </FadeIn>
         </div>
@@ -75,23 +79,35 @@ export const ServicesSection: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Right: Name + Description Stack */}
-                <div className="flex-1 flex flex-col justify-center space-y-2">
+                {/* Right: Name + Description + Tags Stack */}
+                <div className="flex-1 flex flex-col justify-center space-y-3">
                   <div className="flex items-center justify-between">
                     <h3
                       className="font-kanit font-semibold uppercase tracking-tight text-[#0C0C0C] group-hover:text-black transition-colors"
-                      style={{ fontSize: 'clamp(1.2rem, 2.4vw, 2.2rem)' }}
+                      style={{ fontSize: 'clamp(1.2rem, 2.2vw, 2rem)' }}
                     >
                       {service.name}
                     </h3>
                     <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#0C0C0C]/30 group-hover:text-[#0C0C0C] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                   </div>
+
                   <p
-                    className="font-kanit font-light text-[#0C0C0C]/70 leading-relaxed max-w-2xl"
-                    style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.2rem)' }}
+                    className="font-kanit font-light text-[#0C0C0C]/75 leading-relaxed max-w-2xl"
+                    style={{ fontSize: 'clamp(0.9rem, 1.4vw, 1.15rem)' }}
                   >
                     {service.description}
                   </p>
+
+                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                    {service.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-[#0C0C0C]/5 text-[#0C0C0C]/80 border border-[#0C0C0C]/10"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </FadeIn>

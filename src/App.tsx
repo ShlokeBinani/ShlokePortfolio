@@ -6,7 +6,9 @@ import { Hero } from './components/Hero';
 import { MarqueeSection } from './components/MarqueeSection';
 import { About } from './components/About';
 import { ServicesSection } from './components/ServicesSection';
+import { Experience } from './components/Experience';
 import { ProjectsSection } from './components/ProjectsSection';
+import { Leadership } from './components/Leadership';
 import { Contact } from './components/Contact';
 import { ProjectDrawer } from './components/ProjectDrawer';
 
@@ -62,13 +64,19 @@ export function App() {
       {/* 4. Services Section (Editorial White Curve with 01-05 Offerings) */}
       <ServicesSection />
 
-      {/* 5. Projects Section (Sticky-Stacking 3D Card Scale Deck) */}
+      {/* 5. Work Experience (Kofuku Technologies with 3D Impact Metrics) */}
+      <Experience />
+
+      {/* 6. Projects Section (Sticky-Stacking 3D Card Scale Deck) */}
       <ProjectsSection />
 
-      {/* Editorial Footer & Contact */}
+      {/* 7. Leadership & Initiatives (IEEE Chapters & Hackathons) */}
+      <Leadership />
+
+      {/* 8. Editorial Footer & Contact */}
       <Contact />
 
-      {/* Case Study Drawer */}
+      {/* Interactive Project Deep-Dive Drawer */}
       <ProjectDrawer />
     </div>
   );

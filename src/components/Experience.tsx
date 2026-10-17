@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Calendar, MapPin, ArrowUpRight } from 'lucide-react';
+import { Calendar, MapPin, CheckCircle2, Sparkles } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { FadeIn } from './common/FadeIn';
 
 export const Experience: React.FC = () => {
   const experiences = portfolioData.experience;
@@ -11,8 +12,8 @@ export const Experience: React.FC = () => {
   const y = useMotionValue(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0, active: false });
 
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [4, -4]), { stiffness: 200, damping: 25 });
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-5, 5]), { stiffness: 200, damping: 25 });
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [3, -3]), { stiffness: 200, damping: 25 });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-4, 4]), { stiffness: 200, damping: 25 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -31,16 +32,26 @@ export const Experience: React.FC = () => {
   };
 
   return (
-    <section id="experience" className="relative py-28 bg-transparent text-[#F5F5F7] border-t border-white/5">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-        
-        {/* Section Header: Single Clean Title */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F5F5F7]">
-            Work Experience
-          </h2>
-          <p className="text-sm font-mono text-[#A1A1AA] max-w-sm leading-relaxed">
-            Production microservices, low-latency streaming voice AI, and automated operational telemetry pipelines.
+    <section id="experience" className="relative py-28 bg-[#0C0C0C] text-[#F5F5F7] select-none">
+      <div className="max-w-[1520px] mx-auto px-6 sm:px-10 lg:px-14">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-6">
+          <div>
+            <FadeIn delay={0.05} y={15}>
+              <span className="inline-flex items-center gap-2 text-xs font-mono font-medium tracking-[0.25em] text-[#D6C3B0] uppercase mb-2">
+                <Sparkles className="w-3.5 h-3.5 text-[#F4ECE1]" />
+                Industry Experience
+              </span>
+            </FadeIn>
+            <FadeIn delay={0.1} y={30}>
+              <h2 className="font-kanit font-black text-4xl sm:text-6xl uppercase tracking-tight">
+                <span className="hero-heading mr-3">Work</span>
+                <span className="text-stroke-hollow">Experience</span>
+              </h2>
+            </FadeIn>
+          </div>
+          <p className="text-xs sm:text-sm font-mono text-[#D7E2EA]/70 max-w-sm leading-relaxed">
+            Production microservices, low-latency streaming voice AI, and automated operational pipelines.
           </p>
         </div>
 
@@ -57,14 +68,14 @@ export const Experience: React.FC = () => {
                 rotateY,
                 transformStyle: 'preserve-3d',
               }}
-              className="relative rounded-3xl p-8 sm:p-12 overflow-hidden bg-[#0A0A0C] border border-white/10 hover:border-[#F4ECE1]/30 transition-all duration-300"
+              className="relative rounded-[36px] p-8 sm:p-12 overflow-hidden bg-[#121217] border border-white/10 hover:border-[#D7E2EA]/40 transition-all duration-300 shadow-2xl"
             >
               {/* Dynamic Cursor Spotlight */}
               {mousePos.active && (
                 <div
-                  className="pointer-events-none absolute -inset-px opacity-30 transition-opacity duration-300"
+                  className="pointer-events-none absolute -inset-px opacity-25 transition-opacity duration-300 rounded-[36px]"
                   style={{
-                    background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(244, 236, 225, 0.15), transparent 80%)`,
+                    background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(215, 226, 234, 0.2), transparent 80%)`,
                   }}
                 />
               )}
@@ -83,10 +94,10 @@ export const Experience: React.FC = () => {
                       </span>
                     </div>
 
-                    <h3 className="text-2xl sm:text-4xl font-bold text-[#F5F5F7] tracking-tight">
+                    <h3 className="font-kanit text-2xl sm:text-4xl font-bold text-[#F5F5F7] tracking-tight">
                       {exp.role}
                     </h3>
-                    <div className="text-lg sm:text-xl text-[#D6C3B0] font-medium mt-1">
+                    <div className="text-lg sm:text-xl text-[#D6C3B0] font-medium mt-1 font-kanit">
                       {exp.company}
                     </div>
                   </div>
@@ -106,17 +117,17 @@ export const Experience: React.FC = () => {
                     {exp.metrics.map((metric, mIdx) => (
                       <div
                         key={mIdx}
-                        className="p-5 rounded-2xl bg-black/60 border border-white/5 hover:border-[#F4ECE1]/20 transition-all flex flex-col justify-between"
+                        className="p-6 rounded-2xl bg-[#0C0C0C] border border-white/10 hover:border-[#D7E2EA]/30 transition-all flex flex-col justify-between"
                       >
                         <div>
-                          <div className="text-3xl font-extrabold text-[#F4ECE1] font-mono tracking-tight">
+                          <div className="text-3xl sm:text-4xl font-extrabold text-[#F4ECE1] font-mono tracking-tight">
                             {metric.stat}
                           </div>
-                          <div className="text-sm font-semibold text-[#F5F5F7] mt-1">
+                          <div className="text-sm font-semibold text-[#F5F5F7] mt-1 font-kanit uppercase">
                             {metric.label}
                           </div>
                         </div>
-                        <p className="text-xs text-[#A1A1AA] leading-relaxed mt-3 border-t border-white/5 pt-3">
+                        <p className="text-xs text-[#A1A1AA] leading-relaxed mt-3 border-t border-white/5 pt-3 font-mono">
                           {metric.detail}
                         </p>
                       </div>
@@ -124,33 +135,25 @@ export const Experience: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Engineering Contributions */}
-                <div className="py-4 border-t border-white/5">
-                  <div className="text-xs font-mono uppercase tracking-[0.2em] text-[#D6C3B0] mb-4">
-                    SYSTEM RESPONSIBILITIES & CODEBASE ACHIEVEMENTS
-                  </div>
-                  <ul className="space-y-3.5">
-                    {exp.bullets.map((bullet, bIdx) => (
-                      <li
-                        key={bIdx}
-                        className="flex items-start gap-3 text-sm sm:text-base text-[#A1A1AA] leading-relaxed"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#D6C3B0] mt-2.5 shrink-0" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
+                {/* Key Deliverables & Bullets */}
+                <div className="space-y-3 pb-8 border-b border-white/10">
+                  {exp.bullets.map((bullet, bIdx) => (
+                    <div key={bIdx} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
+                      <p className="text-sm sm:text-base text-[#D7E2EA]/85 font-kanit font-light leading-relaxed">
+                        {bullet}
+                      </p>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Skills Tags */}
-                <div className="pt-6 border-t border-white/5 flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-mono text-zinc-500 mr-2">
-                    Production Stack:
-                  </span>
+                {/* Skills Chips */}
+                <div className="pt-6 flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-mono text-zinc-500 mr-2">TECH STACK:</span>
                   {exp.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-3 py-1 rounded-lg text-xs font-mono bg-white/5 text-[#D6C3B0] border border-white/5"
+                      className="px-3 py-1 rounded-full text-xs font-mono bg-white/5 text-[#D7E2EA] border border-white/10"
                     >
                       {skill}
                     </span>
@@ -160,7 +163,6 @@ export const Experience: React.FC = () => {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
