@@ -105,22 +105,19 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 transition-all duration-300 pointer-events-none">
-      {/* Borderless Architectural Monogram with Magnetic Cursor Pull */}
+      {/* Classic Serif Monogram with Magnetic Cursor Pull */}
       <div className="pointer-events-auto flex items-center gap-4">
         <MagneticButton radius={30}>
           <a
             href="#"
-            className="group flex items-baseline gap-1 py-1 px-1 text-[#F5F5F7] transition-colors"
+            className="group flex items-center py-1 px-1 transition-colors"
             aria-label="Home"
           >
-            <span className="font-mono text-base font-extrabold tracking-tighter text-[#F5F5F7] group-hover:text-[#F4ECE1] transition-colors">
+            <span className="font-serif text-xl font-bold tracking-tight text-[#F4ECE1] group-hover:text-white transition-colors">
               SB
             </span>
-            <span className="text-sm font-mono text-[#D6C3B0] font-bold">.</span>
           </a>
         </MagneticButton>
-
-
       </div>
 
       {/* Floating Animated Morphing Dock */}
