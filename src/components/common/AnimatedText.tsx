@@ -14,9 +14,9 @@ interface CharProps {
 }
 
 const Character: React.FC<CharProps> = ({ char, progress, range }) => {
-  const opacity = useTransform(progress, range, [0.2, 1]);
+  const opacity = useTransform(progress, range, [0.24, 1]);
   return (
-    <motion.span style={{ opacity }} className="transition-colors">
+    <motion.span style={{ opacity }} className="transition-opacity">
       {char}
     </motion.span>
   );
@@ -26,7 +26,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = ''
   const containerRef = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start 0.85', 'end 0.35'],
+    offset: ['start 0.88', 'end 0.35'],
   });
 
   const words = text.split(' ');
