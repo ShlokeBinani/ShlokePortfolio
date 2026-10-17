@@ -6,37 +6,16 @@ interface PreloaderProps {
 }
 
 export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
-  const [progress, setProgress] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
-  // Smooth counter animation
+  // Keep preloader for 7 seconds if not clicked to enter
   useEffect(() => {
-    const startTime = performance.now();
-    const duration = 1250; // 1.25s for the counter
+    const timer = setTimeout(() => {
+      setIsExiting(true);
+    }, 7000);
 
-    let animationFrameId: number;
-
-    const updateCounter = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      const rawProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
-
-      setProgress(rawProgress);
-
-      if (elapsed < duration) {
-        animationFrameId = requestAnimationFrame(updateCounter);
-      } else {
-        setProgress(100);
-        // Dramatic hold for 400ms, then start curtain lift
-        setTimeout(() => {
-          setIsExiting(true);
-        }, 400);
-      }
-    };
-
-    animationFrameId = requestAnimationFrame(updateCounter);
-
-    return () => cancelAnimationFrame(animationFrameId);
+    return () => clearTimeout(timer);
   }, []);
 
   // Quick skip on click or keyboard action
@@ -78,7 +57,6 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         transition={{
           duration: 0.95,
           ease: [0.76, 0, 0.24, 1],
-          delay: 0.15,
         }}
         onAnimationComplete={handleAnimationComplete}
         onClick={handleSkip}
@@ -105,21 +83,8 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           aria-hidden="true"
         />
 
-        {/* Top Metadata Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: isExiting ? 0 : 1, y: isExiting ? -12 : 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative z-10 flex items-center justify-between text-[10px] sm:text-xs font-mono text-zinc-400 uppercase tracking-[0.2em]"
-        >
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>PORTFOLIO / 2026</span>
-          </div>
-          <span className="text-zinc-200 font-bold font-mono">
-            {progress.toString().padStart(3, '0')}%
-          </span>
-        </motion.div>
+        {/* Empty placeholder spacer to keep vertical balance */}
+        <div className="h-6" aria-hidden="true" />
 
         {/* Center: The Name "SHLOKE BINANI" in Italiana High-Contrast Typography */}
         <div className="relative z-10 my-auto flex flex-col items-center justify-center py-8">
@@ -146,7 +111,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   }}
                   transition={{
                     duration: 0.85,
-                    delay: 0.15 + i * 0.045,
+                    delay: 0.2 + i * 0.05,
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   className="inline-block font-italiana text-white tracking-tight font-normal select-none"
@@ -174,7 +139,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   }}
                   transition={{
                     duration: 0.85,
-                    delay: 0.15 + (firstWord.length + i) * 0.045,
+                    delay: 0.2 + (firstWord.length + i) * 0.05,
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   className="inline-block font-italiana text-white tracking-tight font-normal select-none"
@@ -194,31 +159,31 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: isExiting ? 0 : 0.75, y: isExiting ? -10 : 0 }}
-            transition={{ delay: 0.65, duration: 0.6 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
             className="mt-6 sm:mt-8 text-center text-xs sm:text-sm font-inter tracking-[0.25em] uppercase text-zinc-300 font-light"
           >
             Engineering Systems • Data • Machine Learning
           </motion.div>
         </div>
 
-        {/* Bottom Section: Progress Bar & Status */}
+        {/* Bottom Section: Click Anywhere to Enter & 7-Second Progress Indicator */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: isExiting ? 0 : 1, y: isExiting ? 12 : 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative z-10 flex flex-col gap-3"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="relative z-10 flex flex-col items-center gap-3 text-center"
         >
-          <div className="flex items-center justify-between text-[10px] sm:text-xs font-mono text-zinc-400 uppercase tracking-widest">
-            <span className="hidden sm:inline">VEL-SYS-2027</span>
-            <span>CLICK ANYWHERE TO ENTER</span>
-            <span>VIT VELLORE</span>
+          <div className="text-[10px] sm:text-xs font-mono text-zinc-400 uppercase tracking-widest">
+            CLICK ANYWHERE TO ENTER
           </div>
 
-          {/* Minimalist Progress Track */}
-          <div className="w-full h-[2px] bg-white/10 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-white transition-all duration-75 ease-out rounded-full shadow-[0_0_8px_rgba(255,255,255,0.6)]"
-              style={{ width: `${progress}%` }}
+          {/* Minimalist 7s Progress Track */}
+          <div className="w-48 sm:w-64 h-[1.5px] bg-white/10 rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: '0%' }}
+              animate={{ width: isExiting ? '100%' : '100%' }}
+              transition={{ duration: 7, ease: 'linear' }}
+              className="h-full bg-white/60 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)]"
             />
           </div>
         </motion.div>
