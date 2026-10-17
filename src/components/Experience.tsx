@@ -44,9 +44,6 @@ export const Experience: React.FC = () => {
               </h2>
             </FadeIn>
           </div>
-          <p className="text-xs sm:text-sm font-mono text-[#D7E2EA]/70 max-w-sm leading-relaxed">
-            Production microservices, low-latency streaming voice AI, and automated operational pipelines.
-          </p>
         </div>
 
         {/* 3D Interactive Experience Card */}

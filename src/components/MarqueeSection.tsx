@@ -67,9 +67,6 @@ export const MarqueeSection: React.FC = () => {
                 <span className="hero-heading">Motion Reels</span>
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-[#D7E2EA]/70 font-mono max-w-xs">
-              Scroll-driven spatial explorations, interactive micro-interactions, and real-time visual engineering.
-            </p>
           </div>
         </FadeIn>
       </div>

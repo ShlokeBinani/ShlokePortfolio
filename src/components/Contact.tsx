@@ -70,19 +70,6 @@ export const Contact: React.FC = () => {
                 Open to software engineering opportunities, backend development, applied machine learning projects, and collaborative technical roles.
               </p>
             </FadeIn>
-
-            {/* Availability Status */}
-            <FadeIn delay={0.3} y={15}>
-              <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono">
-                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>AVAILABLE FOR SWE, BACKEND & AI ROLES</span>
-                </span>
-                <span className="text-zinc-500">
-                  AVG RESPONSE TIME &lt; 24H • UTC+5:30
-                </span>
-              </div>
-            </FadeIn>
           </div>
 
           {/* 3D Interactive Direct Inquiries Card */}
@@ -109,16 +96,6 @@ export const Contact: React.FC = () => {
               )}
 
               <div style={{ transform: 'translateZ(20px)', transformStyle: 'preserve-3d' }} className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[#D6C3B0] flex items-center gap-2">
-                    <Mail className="w-3.5 h-3.5" />
-                    Direct Dispatch
-                  </span>
-                  <span className="text-[11px] font-mono text-zinc-500">
-                    DIRECT INQUIRY
-                  </span>
-                </div>
-
                 <div className="flex items-center justify-between gap-3 p-3.5 rounded-2xl bg-[#0C0C0C] border border-white/10 group">
                   <span className="font-mono text-xs sm:text-sm text-[#F5F5F7] truncate select-all pl-2">
                     {email}

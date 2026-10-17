@@ -80,9 +80,6 @@ export const Leadership: React.FC = () => {
               </h2>
             </FadeIn>
           </div>
-          <p className="text-xs sm:text-sm font-mono text-[#D7E2EA]/70 max-w-sm leading-relaxed">
-            Engineering chapter branding, technical mentorship across student cohorts, and hackathon sprint execution.
-          </p>
         </div>
 
         {/* Leadership Roles (2 Column 3D Cards) */}
@@ -134,12 +131,6 @@ export const Leadership: React.FC = () => {
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Bottom Tag */}
-              <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono text-zinc-500">
-                <span>VIT VELLORE CHAPTER</span>
-                <span className="text-emerald-400">ACTIVE CONTRIBUTION</span>
               </div>
             </TiltCard>
           ))}
