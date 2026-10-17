@@ -88,7 +88,7 @@ export function App() {
         <Navbar />
 
         {/* 1. Hero Section with Video + Typographic Gradient */}
-        <Hero />
+        <Hero shouldPlayVideo={!isLoading} />
 
         {/* 2. Memory Slide: Dual-Row Scroll-Driven Film Reels */}
         <MarqueeSection />

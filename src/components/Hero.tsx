@@ -7,7 +7,11 @@ import { ContactButton } from './common/Buttons';
 import { Magnet } from './common/Magnet';
 import { FadeIn } from './common/FadeIn';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  shouldPlayVideo?: boolean;
+}
+
+export const Hero: React.FC<HeroProps> = ({ shouldPlayVideo = true }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
 
@@ -21,6 +25,12 @@ export const Hero: React.FC = () => {
     video.muted = true;
     video.defaultMuted = true;
     video.volume = 0;
+
+    if (!shouldPlayVideo) {
+      video.pause();
+      video.currentTime = 0;
+      return;
+    }
 
     let animId: number;
     const checkPause = () => {
@@ -41,6 +51,7 @@ export const Hero: React.FC = () => {
     video.addEventListener('timeupdate', handleTimeUpdate);
 
     const startPlay = () => {
+      video.currentTime = 0;
       const promise = video.play();
       if (promise !== undefined) {
         promise.then(() => {
@@ -55,7 +66,7 @@ export const Hero: React.FC = () => {
       cancelAnimationFrame(animId);
       video.removeEventListener('timeupdate', handleTimeUpdate);
     };
-  }, []);
+  }, [shouldPlayVideo]);
 
   // 3D Stage Tilt Math on Mouse Move
   const mouseX = useMotionValue(0);
@@ -208,7 +219,6 @@ export const Hero: React.FC = () => {
             ref={videoRef}
             src={`${import.meta.env.BASE_URL}hero-video.mp4`}
             poster={`${import.meta.env.BASE_URL}hero-studio-poster.jpg`}
-            autoPlay
             muted
             playsInline
             onTimeUpdate={(e) => {

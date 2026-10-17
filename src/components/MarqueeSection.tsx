@@ -1,14 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { MapPin, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { FadeIn } from './common/FadeIn';
 
 export interface MemoryItem {
   id: number;
   src: string;
   fallbackSrc: string;
-  title: string;
-  caption: string;
-  location: string;
 }
 
 const MEMORIES: MemoryItem[] = [
@@ -16,41 +13,26 @@ const MEMORIES: MemoryItem[] = [
     id: 1,
     src: 'images/memories/memory1.webp',
     fallbackSrc: 'images/memories/memory1.jpg',
-    title: 'Alpine Ridge Summit',
-    caption: 'High-altitude ridge trek across wild meadow trails with friends',
-    location: 'Himalayan Ridge',
   },
   {
     id: 2,
     src: 'images/memories/memory2.webp',
     fallbackSrc: 'images/memories/memory2.jpg',
-    title: 'Coastal Solitude',
-    caption: 'Pondering along the crashing shoreline under dynamic skies',
-    location: 'Ocean Shoreline',
   },
   {
     id: 3,
     src: 'images/memories/memory3.webp',
     fallbackSrc: 'images/memories/memory3.jpg',
-    title: 'Eternal Snow Peaks',
-    caption: 'Early dawn horizon rising above a vast blanket of clouds',
-    location: 'Great Himalayan Range',
   },
   {
     id: 4,
     src: 'images/memories/memory4.webp',
     fallbackSrc: 'images/memories/memory4.jpg',
-    title: 'Winding Trails',
-    caption: 'Ascending grassy slopes with trekking poles and backpacks',
-    location: 'Alpine Pass',
   },
   {
     id: 5,
     src: 'images/memories/memory5.webp',
     fallbackSrc: 'images/memories/memory5.jpg',
-    title: 'City Lights at Midnight',
-    caption: 'High vantage view overlooking the glowing metropolis avenues',
-    location: 'Urban Skyline',
   },
 ];
 
@@ -147,29 +129,15 @@ export const MarqueeSection: React.FC = () => {
             return (
               <div
                 key={`row1-${index}`}
-                className="relative flex-shrink-0 w-[300px] sm:w-[380px] md:w-[440px] h-[200px] sm:h-[250px] md:h-[285px] rounded-2xl sm:rounded-3xl overflow-hidden bg-[#141419] border border-white/10 hover:border-white/30 transition-all duration-300 group cursor-pointer shadow-lg"
+                className="relative flex-shrink-0 w-[300px] sm:w-[380px] md:w-[440px] h-[200px] sm:h-[250px] md:h-[285px] rounded-2xl sm:rounded-3xl overflow-hidden bg-[#141419] border border-white/10 hover:border-white/30 transition-all duration-300 group shadow-lg"
               >
                 <img
                   src={imgSrc}
-                  alt={item.title}
+                  alt="Memory Photograph"
                   loading="lazy"
                   onError={() => handleImageError(errorKey)}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                
-                {/* Atmospheric Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 flex flex-col justify-end p-4 sm:p-5">
-                  <div className="flex items-center gap-1.5 text-amber-300 text-[10px] sm:text-xs font-mono font-medium mb-1">
-                    <MapPin className="w-3 h-3" />
-                    <span>{item.location}</span>
-                  </div>
-                  <h3 className="text-white font-inter font-bold text-sm sm:text-base leading-snug drop-shadow-md">
-                    {item.title}
-                  </h3>
-                  <p className="text-[11px] sm:text-xs text-zinc-300 font-sans line-clamp-1 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {item.caption}
-                  </p>
-                </div>
               </div>
             );
           })}
@@ -193,29 +161,15 @@ export const MarqueeSection: React.FC = () => {
             return (
               <div
                 key={`row2-${index}`}
-                className="relative flex-shrink-0 w-[300px] sm:w-[380px] md:w-[440px] h-[200px] sm:h-[250px] md:h-[285px] rounded-2xl sm:rounded-3xl overflow-hidden bg-[#141419] border border-white/10 hover:border-white/30 transition-all duration-300 group cursor-pointer shadow-lg"
+                className="relative flex-shrink-0 w-[300px] sm:w-[380px] md:w-[440px] h-[200px] sm:h-[250px] md:h-[285px] rounded-2xl sm:rounded-3xl overflow-hidden bg-[#141419] border border-white/10 hover:border-white/30 transition-all duration-300 group shadow-lg"
               >
                 <img
                   src={imgSrc}
-                  alt={item.title}
+                  alt="Memory Photograph"
                   loading="lazy"
                   onError={() => handleImageError(errorKey)}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-
-                {/* Atmospheric Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 flex flex-col justify-end p-4 sm:p-5">
-                  <div className="flex items-center gap-1.5 text-emerald-400 text-[10px] sm:text-xs font-mono font-medium mb-1">
-                    <MapPin className="w-3 h-3" />
-                    <span>{item.location}</span>
-                  </div>
-                  <h3 className="text-white font-inter font-bold text-sm sm:text-base leading-snug drop-shadow-md">
-                    {item.title}
-                  </h3>
-                  <p className="text-[11px] sm:text-xs text-zinc-300 font-sans line-clamp-1 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {item.caption}
-                  </p>
-                </div>
               </div>
             );
           })}
