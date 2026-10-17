@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { ArrowUpRight, Download } from 'lucide-react';
 import { FadeIn } from './common/FadeIn';
 import { showToast } from './common/Toast';
 import { trackEvent } from '../utils/analytics';
+import { BranchingThread } from './common/BranchingThread';
 
 interface SkillSectionItem {
   number: string;
@@ -136,15 +137,21 @@ const SKILL_SECTIONS: SkillSectionItem[] = [
 ];
 
 export const ServicesSection: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
     <div
+      ref={containerRef}
       className="relative w-full bg-[#FFFFFF] text-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-12 py-20 sm:py-24 md:py-32 z-10 select-none overflow-hidden"
     >
       {/* Anchor for backward compatibility with #services */}
       <span id="services" className="absolute -top-20" aria-hidden="true" />
 
+      {/* Minimalist Scroll-Driven Branching Thread / Tree Effect in Background */}
+      <BranchingThread containerRef={containerRef} />
+
       {/* Part 1: Work Specializations Section */}
-      <section id="work" className="max-w-5xl mx-auto space-y-12 sm:space-y-16">
+      <section id="work" className="relative z-10 max-w-5xl mx-auto space-y-12 sm:space-y-16">
         <div className="text-center space-y-4">
           <FadeIn delay={0.1} y={25}>
             <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-[#0C0C0C] text-center flex flex-wrap items-center justify-center gap-x-4 mx-auto max-w-full">
@@ -209,10 +216,10 @@ export const ServicesSection: React.FC = () => {
       </section>
 
       {/* Elegant Separator */}
-      <div className="max-w-5xl mx-auto my-16 sm:my-24 border-t border-[#0C0C0C]/15" />
+      <div className="relative z-10 max-w-5xl mx-auto my-16 sm:my-24 border-t border-[#0C0C0C]/15" />
 
       {/* Part 2: Technical Skills Section */}
-      <section id="skills" className="max-w-5xl mx-auto space-y-12 sm:space-y-16">
+      <section id="skills" className="relative z-10 max-w-5xl mx-auto space-y-12 sm:space-y-16">
         <div className="text-center space-y-4">
           <FadeIn delay={0.1} y={25}>
             <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-[#0C0C0C] text-center flex flex-wrap items-center justify-center gap-x-4 mx-auto max-w-full">
