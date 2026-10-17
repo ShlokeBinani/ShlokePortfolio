@@ -1,5 +1,4 @@
-import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Server, Database, BrainCircuit, Download } from 'lucide-react';
 import { FadeIn } from './common/FadeIn';
 
 interface SkillSectionItem {
@@ -100,16 +99,25 @@ const SKILL_SECTIONS: SkillSectionItem[] = [
 
 const PROFILE_PILLARS = [
   {
+    icon: Server,
     title: 'Software Engineering (SWE)',
-    detail: 'Clean API architecture, row-level concurrency locks, OOP principles, and reliable backend microservices in Java and Python.',
+    shortName: 'SWE',
+    resumeFile: 'Shloke_Binani_SWE_Resume.pdf',
+    detail: 'Writing clean, maintainable backend code, implementing strict database row-level locking, and engineering reliable REST endpoints that perform predictably under load.',
   },
   {
+    icon: Database,
     title: 'Data Science & Analytics',
-    detail: 'Multi-source SQL ETL pipelines, data auditing, statistical hypothesis testing (ANOVA, Chi-Square), and executive Power BI storytelling.',
+    shortName: 'Data Science',
+    resumeFile: 'Shloke_Binani_Data_Science_Resume.pdf',
+    detail: 'Auditing multi-source datasets, testing statistical hypotheses, training robust classifiers, and building executive Power BI dashboards that guide business decisions.',
   },
   {
+    icon: BrainCircuit,
     title: 'System Design & Business Analysis',
-    detail: 'Low-level design (LLD), event-driven n8n automations, voice-AI integrations, and turning ambiguous business needs into clear specs.',
+    shortName: 'System Design',
+    resumeFile: 'Shloke_Binani_System_Design_Resume.pdf',
+    detail: 'Translating ambiguous operational needs into modular low-level design patterns, automated n8n workflows, and resilient technical architectures.',
   },
 ];
 
@@ -138,22 +146,47 @@ export const ServicesSection: React.FC = () => {
             </p>
           </FadeIn>
 
-          {/* 3 Core Profile Pillars */}
+          {/* 3 Core Profile Pillars with Logos & Role-Specific Resume Downloads */}
           <FadeIn delay={0.2} y={20}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 text-left">
-              {PROFILE_PILLARS.map((pillar) => (
-                <div
-                  key={pillar.title}
-                  className="p-5 rounded-2xl bg-[#0C0C0C]/[0.025] border border-[#0C0C0C]/10 flex flex-col justify-between hover:bg-[#0C0C0C]/[0.05] hover:border-[#0C0C0C]/25 transition-all duration-300"
-                >
-                  <div className="font-kanit font-bold text-base sm:text-lg text-[#0C0C0C] mb-1.5">
-                    {pillar.title}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-6 text-left">
+              {PROFILE_PILLARS.map((pillar) => {
+                const Icon = pillar.icon;
+                return (
+                  <div
+                    key={pillar.title}
+                    className="p-6 rounded-3xl bg-[#0C0C0C]/[0.025] border border-[#0C0C0C]/10 flex flex-col justify-between hover:bg-[#0C0C0C]/[0.05] hover:border-[#0C0C0C]/25 transition-all duration-300 group shadow-sm"
+                  >
+                    <div>
+                      {/* Role Logo in dark rounded container */}
+                      <div className="w-10 h-10 rounded-2xl bg-[#0C0C0C] text-white flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <Icon className="w-5 h-5 text-[#F4ECE1]" />
+                      </div>
+
+                      <div className="font-kanit font-bold text-lg sm:text-xl text-[#0C0C0C] mb-2 leading-snug">
+                        {pillar.title}
+                      </div>
+
+                      <p className="font-kanit font-light text-xs sm:text-sm text-[#0C0C0C]/75 leading-relaxed">
+                        {pillar.detail}
+                      </p>
+                    </div>
+
+                    {/* Role-Specific Download Resume Option */}
+                    <div className="pt-5 mt-4 border-t border-[#0C0C0C]/10">
+                      <a
+                        href={`${import.meta.env.BASE_URL}resumes/${pillar.resumeFile}`}
+                        download={pillar.resumeFile}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium text-[#0C0C0C] bg-[#0C0C0C]/5 hover:bg-[#0C0C0C] hover:text-white border border-[#0C0C0C]/10 transition-all duration-200 select-none"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                        <span>Download {pillar.shortName} Resume</span>
+                      </a>
+                    </div>
                   </div>
-                  <p className="font-kanit font-light text-xs sm:text-sm text-[#0C0C0C]/70 leading-relaxed">
-                    {pillar.detail}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </FadeIn>
         </div>
