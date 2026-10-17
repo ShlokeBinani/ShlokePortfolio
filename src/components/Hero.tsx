@@ -148,7 +148,7 @@ export const Hero: React.FC = () => {
           {/* Value Proposition Description */}
           <FadeIn delay={0.45} y={20}>
             <p className="text-[#D7E2EA] font-light tracking-wide leading-relaxed text-xs sm:text-sm md:text-base max-w-xl">
-              Third-year engineering student at VIT Vellore. Building reliable backend services, distributed network simulations, and machine learning models with a focus on real-world impact.
+              B.Tech Electronics and Communication Engineering student at VIT Vellore (2023 - 2027). Building reliable backend services, distributed network simulations, and machine learning models with a focus on real-world impact.
             </p>
           </FadeIn>
 

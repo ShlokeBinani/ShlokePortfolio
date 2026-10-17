@@ -86,7 +86,7 @@ export const About: React.FC = () => {
         {/* Grounded Human Story with Learning Attitude */}
         <div className="max-w-[720px] mx-auto px-4 mb-10 sm:mb-12">
           <AnimatedText
-            text="I am a third-year Electronics and Communication Engineering student at VIT Vellore with an 8.68 CGPA. I focus on backend systems, databases, and applied machine learning. During my internship at Kofuku Technologies, I worked on low-latency voice services and automated workflows that saved hours of manual effort. In research, I co-authored MS-HQNet for biological signal classification. I care deeply about writing clean, reliable code, understanding how systems break, and learning something new with every project."
+            text="I am an Electronics and Communication Engineering undergraduate at VIT Vellore (2023 - 2027) with an 8.68 CGPA. I focus on backend systems, databases, and applied machine learning. During my internship at Kofuku Technologies, I worked on low-latency voice services and automated workflows that saved hours of manual effort. In research, I co-authored MS-HQNet for biological signal classification. I care deeply about writing clean, reliable code, understanding how systems break, and learning something new with every project."
             className="text-[#D7E2EA] font-kanit font-medium text-center leading-relaxed tracking-wide"
             style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}
           />

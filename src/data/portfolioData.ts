@@ -63,7 +63,7 @@ export const portfolioData = {
     name: "Shloke Binani",
     monogram: "SB.",
     eyebrow: "Backend Systems • Data Engineering • Applied AI",
-    tagline: "Third-year engineering student at VIT Vellore. Building reliable backend services, distributed network simulations, and machine learning models with a focus on real-world impact.",
+    tagline: "B.Tech Electronics and Communication Engineering student at VIT Vellore (2023 - 2027). Building reliable backend services, distributed network simulations, and machine learning models with a focus on real-world impact.",
     heroSubtitle: "Class of 2027 • Open to SWE, Backend & AI Roles",
     degreeShort: "ECE @ VIT Vellore ('27)",
     location: "Kolkata & Vellore, India",
