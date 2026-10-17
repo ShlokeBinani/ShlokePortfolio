@@ -444,3 +444,112 @@ export const CustomerAttritionVisuals = {
     </div>
   ),
 };
+
+// 5. E-Commerce Value Maximization: Unsupervised ML & LTV Analytics Visuals
+export const EcommerceVisuals = {
+  Col1Top: () => (
+    <div className="w-full h-full bg-[#111116] p-4 sm:p-5 flex flex-col justify-between select-none font-mono">
+      <div className="flex items-center justify-between">
+        <span className="text-[11px] text-[#D6C3B0] tracking-wider uppercase flex items-center gap-1.5">
+          <Layers className="w-3.5 h-3.5 text-violet-400" />
+          PCA Dimensionality Reduction
+        </span>
+        <span className="text-[10px] px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">
+          85% Variance
+        </span>
+      </div>
+
+      <div className="my-auto space-y-2">
+        <div>
+          <div className="flex justify-between text-[10px] text-zinc-400 mb-1">
+            <span>Principal Component 1 (PC1)</span>
+            <span className="text-violet-400 font-semibold">58% Variance</span>
+          </div>
+          <div className="w-full h-1.5 rounded-full bg-black/60 overflow-hidden">
+            <div className="w-[58%] h-full bg-violet-400 rounded-full" />
+          </div>
+        </div>
+
+        <div>
+          <div className="flex justify-between text-[10px] text-zinc-400 mb-1">
+            <span>Principal Component 2 (PC2)</span>
+            <span className="text-violet-300 font-semibold">27% Variance</span>
+          </div>
+          <div className="w-full h-1.5 rounded-full bg-black/60 overflow-hidden">
+            <div className="w-[27%] h-full bg-violet-500/80 rounded-full" />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between text-[10px] text-zinc-500 pt-1 border-t border-white/5">
+        <span>Reduced feature noise</span>
+        <span className="text-[#D6C3B0]">NumPy & Scikit-Learn</span>
+      </div>
+    </div>
+  ),
+
+  Col1Bottom: () => (
+    <div className="w-full h-full bg-[#111116] p-4 sm:p-5 flex flex-col justify-between select-none font-mono">
+      <div className="flex items-center justify-between">
+        <span className="text-[11px] text-[#D6C3B0] uppercase tracking-wider flex items-center gap-1.5">
+          <Activity className="w-3.5 h-3.5 text-emerald-400" />
+          Hybrid DBSCAN + K-Means
+        </span>
+        <span className="text-[10px] text-emerald-400 font-semibold">4 Cohorts</span>
+      </div>
+
+      <div className="my-auto space-y-2 text-[10px]">
+        <div className="flex items-center justify-between p-2 rounded-lg bg-black/60 border border-white/5">
+          <span className="text-zinc-300">DBSCAN Noise Filter</span>
+          <span className="text-emerald-400">12% Outliers Reconciled</span>
+        </div>
+        <div className="flex items-center justify-between p-2 rounded-lg bg-black/60 border border-white/5">
+          <span className="text-zinc-300">K-Means Customer Clusters</span>
+          <span className="text-emerald-400">Optimal Silhouette Score</span>
+        </div>
+      </div>
+
+      <div className="text-[10px] text-zinc-500 pt-1">
+        Segmented purchasing frequency, ticket size & recency
+      </div>
+    </div>
+  ),
+
+  Col2Hero: () => (
+    <div className="w-full h-full bg-[#0E0E13] p-6 flex flex-col justify-between font-mono select-none">
+      <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="flex items-center gap-2">
+          <div className="w-2.5 h-2.5 rounded-full bg-violet-400 animate-pulse" />
+          <span className="text-xs text-[#F4ECE1] font-semibold">Power BI LTV Dashboard & A/B Testing</span>
+        </div>
+        <span className="text-[11px] text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-md border border-violet-500/20">
+          Sample Size Validated
+        </span>
+      </div>
+
+      <div className="py-4 space-y-3">
+        <div className="flex items-center justify-between p-3 rounded-xl bg-black/60 border border-violet-500/20">
+          <div className="flex items-center gap-2.5">
+            <BarChart3 className="w-4 h-4 text-violet-400" />
+            <span className="text-xs text-zinc-300">High-LTV Shopper Segment</span>
+          </div>
+          <span className="text-violet-400 font-bold text-sm">Top 24% Generating 68% Revenue</span>
+        </div>
+
+        <div className="flex items-center justify-between p-3 rounded-xl bg-black/60 border border-white/5">
+          <div className="flex items-center gap-2.5">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <span className="text-xs text-zinc-300">A/B Testing Retention Framework</span>
+          </div>
+          <span className="text-emerald-400 font-bold text-sm">p &lt; 0.05 Significance</span>
+        </div>
+      </div>
+
+      <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-400">
+        <span>Executive BI: Power BI, Pandas & SQL</span>
+        <span className="text-violet-400 font-semibold">Data-Driven Merchandising</span>
+      </div>
+    </div>
+  ),
+};
+

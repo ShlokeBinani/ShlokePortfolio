@@ -1,4 +1,5 @@
-import { ArrowUpRight, Server, Database, BrainCircuit, Download } from 'lucide-react';
+import React from 'react';
+import { ArrowUpRight, Download } from 'lucide-react';
 import { FadeIn } from './common/FadeIn';
 
 interface SkillSectionItem {
@@ -7,6 +8,41 @@ interface SkillSectionItem {
   description: string;
   tags: string[];
 }
+
+interface WorkSpecialization {
+  number: string;
+  title: string;
+  shortName: string;
+  resumeFile: string;
+  detail: string;
+}
+
+const WORK_SPECIALIZATIONS: WorkSpecialization[] = [
+  {
+    number: '01',
+    title: 'Software Engineering (SWE)',
+    shortName: 'SWE',
+    resumeFile: 'Shloke_Binani_SWE_Resume.pdf',
+    detail:
+      'Writing clean, maintainable backend code, implementing strict database row-level locking, and engineering reliable REST endpoints that perform predictably under load.',
+  },
+  {
+    number: '02',
+    title: 'Data Science & Analytics',
+    shortName: 'Data Science',
+    resumeFile: 'Shloke_Binani_Data_Science_Resume.pdf',
+    detail:
+      'Auditing multi-source datasets, testing statistical hypotheses, training robust classifiers, and building executive Power BI dashboards that guide business decisions.',
+  },
+  {
+    number: '03',
+    title: 'System Design & Business Analysis',
+    shortName: 'System Design',
+    resumeFile: 'Shloke_Binani_System_Design_Resume.pdf',
+    detail:
+      'Translating ambiguous operational needs into modular low-level design patterns, automated n8n workflows, and resilient technical architectures.',
+  },
+];
 
 const SKILL_SECTIONS: SkillSectionItem[] = [
   {
@@ -97,97 +133,91 @@ const SKILL_SECTIONS: SkillSectionItem[] = [
   },
 ];
 
-const PROFILE_PILLARS = [
-  {
-    icon: Server,
-    title: 'Software Engineering (SWE)',
-    shortName: 'SWE',
-    resumeFile: 'Shloke_Binani_SWE_Resume.pdf',
-    detail: 'Writing clean, maintainable backend code, implementing strict database row-level locking, and engineering reliable REST endpoints that perform predictably under load.',
-  },
-  {
-    icon: Database,
-    title: 'Data Science & Analytics',
-    shortName: 'Data Science',
-    resumeFile: 'Shloke_Binani_Data_Science_Resume.pdf',
-    detail: 'Auditing multi-source datasets, testing statistical hypotheses, training robust classifiers, and building executive Power BI dashboards that guide business decisions.',
-  },
-  {
-    icon: BrainCircuit,
-    title: 'System Design & Business Analysis',
-    shortName: 'System Design',
-    resumeFile: 'Shloke_Binani_System_Design_Resume.pdf',
-    detail: 'Translating ambiguous operational needs into modular low-level design patterns, automated n8n workflows, and resilient technical architectures.',
-  },
-];
-
 export const ServicesSection: React.FC = () => {
   return (
-    <section
-      id="skills"
+    <div
       className="relative w-full bg-[#FFFFFF] text-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-12 py-20 sm:py-24 md:py-32 z-10 select-none overflow-hidden"
     >
       {/* Anchor for backward compatibility with #services */}
       <span id="services" className="absolute -top-20" aria-hidden="true" />
 
-      <div className="max-w-5xl mx-auto space-y-16 sm:space-y-20">
-        
-        {/* Section Header */}
+      {/* Part 1: Work Specializations Section */}
+      <section id="work" className="max-w-5xl mx-auto space-y-12 sm:space-y-16">
         <div className="text-center space-y-4">
           <FadeIn delay={0.1} y={25}>
             <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-[#0C0C0C] text-center flex flex-wrap items-center justify-center gap-x-4 mx-auto max-w-full">
-              <span>Technical</span>
-              <span className="opacity-40">Skills & Design</span>
+              <span>Work</span>
+              <span className="opacity-40">Specializations</span>
             </h2>
           </FadeIn>
           <FadeIn delay={0.15} y={20}>
             <p className="font-kanit font-light text-[#0C0C0C]/75 leading-relaxed text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-              A comprehensive breakdown of my engineering foundations, system design coursework, AI tools, and data analytics competencies.
+              Three core engineering focus areas with dedicated resume downloads for each track.
             </p>
           </FadeIn>
 
-          {/* 3 Core Profile Pillars with Logos & Role-Specific Resume Downloads */}
+          {/* 3 Work Specialization Cards with big 01, 02, 03 numerals and download resume buttons */}
           <FadeIn delay={0.2} y={20}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-6 text-left">
-              {PROFILE_PILLARS.map((pillar) => {
-                const Icon = pillar.icon;
-                return (
-                  <div
-                    key={pillar.title}
-                    className="p-6 rounded-3xl bg-[#0C0C0C]/[0.025] border border-[#0C0C0C]/10 flex flex-col justify-between hover:bg-[#0C0C0C]/[0.05] hover:border-[#0C0C0C]/25 transition-all duration-300 group shadow-sm"
-                  >
-                    <div>
-                      {/* Role Logo in dark rounded container */}
-                      <div className="w-10 h-10 rounded-2xl bg-[#0C0C0C] text-white flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300">
-                        <Icon className="w-5 h-5 text-[#F4ECE1]" />
-                      </div>
+              {WORK_SPECIALIZATIONS.map((spec) => (
+                <div
+                  key={spec.number}
+                  className="p-6 sm:p-7 rounded-3xl bg-[#0C0C0C]/[0.025] border border-[#0C0C0C]/10 flex flex-col justify-between hover:bg-[#0C0C0C]/[0.05] hover:border-[#0C0C0C]/25 transition-all duration-300 group shadow-sm"
+                >
+                  <div>
+                    {/* Big Editorial Number instead of small square icon box */}
+                    <span
+                      className="font-kanit font-black text-[#0C0C0C] block mb-3 group-hover:scale-105 transition-transform duration-300 select-none leading-none"
+                      style={{ fontSize: 'clamp(2.5rem, 5vw, 64px)' }}
+                    >
+                      {spec.number}
+                    </span>
 
-                      <div className="font-kanit font-bold text-lg sm:text-xl text-[#0C0C0C] mb-2 leading-snug">
-                        {pillar.title}
-                      </div>
-
-                      <p className="font-kanit font-light text-xs sm:text-sm text-[#0C0C0C]/75 leading-relaxed">
-                        {pillar.detail}
-                      </p>
+                    <div className="font-kanit font-bold text-lg sm:text-xl text-[#0C0C0C] mb-2.5 leading-snug">
+                      {spec.title}
                     </div>
 
-                    {/* Role-Specific Download Resume Option */}
-                    <div className="pt-5 mt-4 border-t border-[#0C0C0C]/10">
-                      <a
-                        href={`${import.meta.env.BASE_URL}resumes/${pillar.resumeFile}`}
-                        download={pillar.resumeFile}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium text-[#0C0C0C] bg-[#0C0C0C]/5 hover:bg-[#0C0C0C] hover:text-white border border-[#0C0C0C]/10 transition-all duration-200 select-none"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        <span>Download {pillar.shortName} Resume</span>
-                      </a>
-                    </div>
+                    <p className="font-kanit font-light text-xs sm:text-sm text-[#0C0C0C]/75 leading-relaxed">
+                      {spec.detail}
+                    </p>
                   </div>
-                );
-              })}
+
+                  {/* Role-Specific Download Resume Button */}
+                  <div className="pt-5 mt-4 border-t border-[#0C0C0C]/10">
+                    <a
+                      href={`${import.meta.env.BASE_URL}resumes/${spec.resumeFile}`}
+                      download={spec.resumeFile}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium text-[#0C0C0C] bg-[#0C0C0C]/5 hover:bg-[#0C0C0C] hover:text-white border border-[#0C0C0C]/10 transition-all duration-200 select-none"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Download {spec.shortName} Resume</span>
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Elegant Separator */}
+      <div className="max-w-5xl mx-auto my-16 sm:my-24 border-t border-[#0C0C0C]/15" />
+
+      {/* Part 2: Technical Skills Section */}
+      <section id="skills" className="max-w-5xl mx-auto space-y-12 sm:space-y-16">
+        <div className="text-center space-y-4">
+          <FadeIn delay={0.1} y={25}>
+            <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-[#0C0C0C] text-center flex flex-wrap items-center justify-center gap-x-4 mx-auto max-w-full">
+              <span>Technical</span>
+              <span className="opacity-40">Skills</span>
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.15} y={20}>
+            <p className="font-kanit font-light text-[#0C0C0C]/75 leading-relaxed text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+              A comprehensive breakdown of my programming languages, system design coursework, AI tools, and data analytics competencies.
+            </p>
           </FadeIn>
         </div>
 
@@ -239,8 +269,7 @@ export const ServicesSection: React.FC = () => {
             </FadeIn>
           ))}
         </div>
-
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };

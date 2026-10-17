@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, ExternalLink } from 'lucide-react';
 import { portfolioData, Project } from '../data/portfolioData';
 import { setActiveDrawerProject } from '../utils/webglState';
 import { FadeIn } from './common/FadeIn';
@@ -10,6 +10,7 @@ import {
   ParadoxVisuals,
   MSHQNetVisuals,
   CustomerAttritionVisuals,
+  EcommerceVisuals,
 } from './ProjectVisuals';
 
 interface StickyCardProps {
@@ -35,6 +36,10 @@ const ProjectVisualSlot: React.FC<{ projectId: string; slot: 'col1Top' | 'col1Bo
       if (slot === 'col1Top') return <MSHQNetVisuals.Col1Top />;
       if (slot === 'col1Bottom') return <MSHQNetVisuals.Col1Bottom />;
       return <MSHQNetVisuals.Col2Hero />;
+    case 'ecommerce-value-maximization':
+      if (slot === 'col1Top') return <EcommerceVisuals.Col1Top />;
+      if (slot === 'col1Bottom') return <EcommerceVisuals.Col1Bottom />;
+      return <EcommerceVisuals.Col2Hero />;
     case 'customer-attrition':
     default:
       if (slot === 'col1Top') return <CustomerAttritionVisuals.Col1Top />;
@@ -58,7 +63,7 @@ const StickyProjectCard: React.FC<StickyCardProps> = ({ project, index, totalCar
     <div
       ref={containerRef}
       className="h-[88vh] min-h-[700px] flex items-center justify-center sticky"
-      style={{ top: `${90 + index * 26}px` }}
+      style={{ top: `${80 + index * 22}px` }}
     >
       <motion.div
         style={{ scale }}
@@ -93,12 +98,36 @@ const StickyProjectCard: React.FC<StickyCardProps> = ({ project, index, totalCar
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            {project.liveLink && (
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Open Live Application"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-emerald-400/40 text-emerald-400 hover:bg-emerald-400/10 text-xs font-mono transition-colors"
+              >
+                <span>Live App</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View GitHub Repository"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/20 text-zinc-300 hover:border-white/50 hover:text-white text-xs font-mono transition-colors"
+              >
+                <span>GitHub</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </a>
+            )}
             <Magnet padding={35} strength={4}>
               <button
                 onClick={() => setActiveDrawerProject(project.id)}
                 type="button"
-                className="inline-flex items-center justify-center rounded-full border border-[#D7E2EA]/40 text-[#D7E2EA] hover:border-[#D7E2EA] hover:bg-[#D7E2EA]/10 px-5 py-2 sm:px-7 sm:py-2.5 text-xs sm:text-sm font-medium uppercase tracking-wider transition-all duration-300 cursor-pointer"
+                className="inline-flex items-center justify-center rounded-full border border-[#D7E2EA]/40 text-[#D7E2EA] hover:border-[#D7E2EA] hover:bg-[#D7E2EA]/10 px-4 py-1.5 sm:px-6 sm:py-2 text-xs sm:text-sm font-medium uppercase tracking-wider transition-all duration-300 cursor-pointer"
               >
                 <span>Case Study</span>
                 <ArrowUpRight className="w-3.5 h-3.5 ml-1.5" />

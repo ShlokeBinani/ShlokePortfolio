@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowRight, ArrowLeft, Cpu, Activity, ShieldCheck, Database, Layers, CheckCircle } from 'lucide-react';
+import { X, ArrowRight, ArrowLeft, Cpu, Activity, ShieldCheck, Database, Layers, CheckCircle, ExternalLink } from 'lucide-react';
+import { GithubIcon } from './Icons';
 import { portfolioData, Project } from '../data/portfolioData';
 import { webglState, setActiveDrawerProject, subscribeWebGL } from '../utils/webglState';
 import { MagneticButton } from './Navbar';
@@ -100,7 +101,7 @@ export const ProjectDrawer: React.FC = () => {
             <div className="px-6 sm:px-10 lg:px-12 py-6 border-b border-white/10 flex items-center justify-between bg-[#070709]/80 backdrop-blur-md shrink-0">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs text-[#D6C3B0] tracking-widest uppercase">
-                  PROJECT {currentProject.number} OF 04
+                  PROJECT {currentProject.number} OF 0{projects.length}
                 </span>
                 <span className="text-zinc-600">·</span>
                 <span className="text-xs font-mono text-zinc-400">
@@ -161,12 +162,36 @@ export const ProjectDrawer: React.FC = () => {
                   {currentProject.subtitle}
                 </p>
 
-                {/* Headline Metric Badge */}
-                <div className="pt-2">
+                {/* Headline Metric Badge & External Action Links */}
+                <div className="flex flex-wrap items-center gap-3 pt-2">
                   <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#F4ECE1]/10 border border-[#F4ECE1]/25 text-[#F4ECE1] text-xs sm:text-sm font-mono font-semibold">
                     <Activity className="w-4 h-4 text-[#F4ECE1]" />
                     <span>{currentProject.headlineMetric}</span>
                   </div>
+
+                  {currentProject.liveLink && (
+                    <a
+                      href={currentProject.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-mono font-medium transition-all group"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      <span>Launch Live Application</span>
+                    </a>
+                  )}
+
+                  {currentProject.github && (
+                    <a
+                      href={currentProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 text-[#F4ECE1] text-xs sm:text-sm font-mono font-medium transition-all group"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5 text-zinc-300 group-hover:text-white transition-colors" />
+                      <span>View GitHub Repository</span>
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -270,23 +295,44 @@ export const ProjectDrawer: React.FC = () => {
             </div>
 
             {/* Bottom Footer Action */}
-            <div className="px-6 sm:px-10 lg:px-12 py-5 border-t border-white/10 bg-[#070709]/80 backdrop-blur-md flex items-center justify-between shrink-0">
-              <span className="text-xs font-mono text-zinc-500 hidden sm:inline">
-                Project Case Study
-              </span>
+            <div className="px-6 sm:px-10 lg:px-12 py-5 border-t border-white/10 bg-[#070709]/80 backdrop-blur-md flex flex-wrap items-center justify-between gap-4 shrink-0">
+              <div className="flex items-center gap-2.5">
+                {currentProject.liveLink && (
+                  <a
+                    href={currentProject.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 text-xs font-mono transition-colors"
+                  >
+                    <span>Live App</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
+                {currentProject.github && (
+                  <a
+                    href={currentProject.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 text-xs font-mono transition-colors"
+                  >
+                    <span>GitHub</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
+              </div>
 
-              <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+              <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
                 <button
                   onClick={handlePrev}
                   className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-mono text-zinc-300 transition-colors"
                 >
-                  ← Prev Project
+                  ← Prev
                 </button>
                 <button
                   onClick={handleNext}
                   className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-mono text-zinc-300 transition-colors"
                 >
-                  Next Project →
+                  Next →
                 </button>
                 <button
                   onClick={() => setActiveDrawerProject(null)}

@@ -68,8 +68,8 @@ export const portfolioData = {
     degreeShort: "ECE @ VIT Vellore (Final Year)",
     location: "Kolkata & Vellore, India",
     email: "shlokebinani@gmail.com",
-    github: "https://github.com/ShlokeBinani",
-    linkedin: "https://linkedin.com/in/shloke-binani",
+    github: "https://github.com/shlokebinani",
+    linkedin: "https://linkedin.com/in/shlokebinani1501",
     resume: "#contact",
     education: {
       degree: "Bachelor of Technology in Electronics and Communication Engineering",
@@ -217,8 +217,8 @@ export const portfolioData = {
       description: "Core programming languages, data structures, and object-oriented fundamentals.",
       skills: [
         { name: "Java (DSA)", projects: ["resilinet"] },
-        { name: "Python", projects: ["resilinet", "ms-hqnet", "customer-attrition", "kofuku"] },
-        { name: "SQL (Postgres, MySQL)", projects: ["paradox", "customer-attrition", "kofuku"] },
+        { name: "Python", projects: ["resilinet", "ms-hqnet", "customer-attrition", "kofuku", "ecommerce-value-maximization"] },
+        { name: "SQL (Postgres, MySQL)", projects: ["paradox", "customer-attrition", "kofuku", "ecommerce-value-maximization"] },
         { name: "C++", projects: ["resilinet"] },
         { name: "Embedded C", projects: ["ms-hqnet"] },
         { name: "MATLAB", projects: ["ms-hqnet"] }
@@ -234,7 +234,7 @@ export const portfolioData = {
         { name: "REST APIs", projects: ["kofuku", "paradox"] },
         { name: "Docker", projects: ["kofuku"] },
         { name: "Render & Vercel", projects: ["paradox"] },
-        { name: "MySQL", projects: ["customer-attrition"] }
+        { name: "MySQL", projects: ["customer-attrition", "ecommerce-value-maximization"] }
       ]
     },
     {
@@ -244,7 +244,7 @@ export const portfolioData = {
         { name: "QCNN (Quantum ML)", projects: ["ms-hqnet"] },
         { name: "Random Forest", projects: ["customer-attrition"] },
         { name: "SM-SSA & NCA", projects: ["ms-hqnet"] },
-        { name: "Hypothesis Testing", projects: ["customer-attrition"] },
+        { name: "Hypothesis Testing", projects: ["customer-attrition", "ecommerce-value-maximization"] },
         { name: "LLM Voice-AI", projects: ["kofuku"] }
       ]
     },
@@ -254,9 +254,9 @@ export const portfolioData = {
       skills: [
         { name: "n8n Automation", projects: ["kofuku"] },
         { name: "Postman", projects: ["kofuku"] },
-        { name: "Power BI", projects: ["customer-attrition"] },
-        { name: "Git / GitHub", projects: ["resilinet", "paradox", "ms-hqnet", "customer-attrition"] },
-        { name: "Pandas & NumPy", projects: ["customer-attrition", "ms-hqnet"] }
+        { name: "Power BI", projects: ["customer-attrition", "ecommerce-value-maximization"] },
+        { name: "Git / GitHub", projects: ["resilinet", "paradox", "ms-hqnet", "customer-attrition", "ecommerce-value-maximization"] },
+        { name: "Pandas & NumPy", projects: ["customer-attrition", "ms-hqnet", "ecommerce-value-maximization"] }
       ]
     }
   ] as SkillCategory[],
@@ -315,7 +315,7 @@ export const portfolioData = {
       systemArchitecture: "Built a modular 3-node mesh testbed in Python simulating decentralized 6G routing. Implemented a priority-aware bandwidth reallocation protocol utilizing Web3 DePIN smart contract compensation logic and deep packet inspection (DPI) based Social Urgency Taxonomy.",
       measuredImpact: "Reduced peak latency by 89.8% and dropped packet loss to zero during heavy traffic bursts and node outage simulations compared against static shortest-path baselines.",
       tags: ["Python", "Network Routing", "6G Simulation", "DePIN", "Graph Algorithms"],
-      github: "https://github.com/ShlokeBinani",
+      github: "https://github.com/ShlokeBinani/ResiliNET",
       highlight: true
     },
     {
@@ -336,8 +336,8 @@ export const portfolioData = {
       systemArchitecture: "Designed a stateless backend on Neon PostgreSQL. Used strict row-level database locking (SELECT FOR UPDATE) to serialize checkout requests, and built automated waitlist queues using ACID transactions for atomic, time-limited seat reallocation upon booking cancellations.",
       measuredImpact: "Completely eliminated double-booking race conditions under high concurrent traffic, deploying the backend to Render and the frontend to Vercel.",
       tags: ["PostgreSQL", "Neon", "FastAPI", "Render", "Vercel", "ACID Transactions"],
-      github: "https://github.com/ShlokeBinani",
-      liveLink: "https://github.com/ShlokeBinani",
+      github: "https://github.com/shlokebinani",
+      liveLink: "https://ticket-booking-system-paradox-ticke.vercel.app/",
       highlight: true
     },
     {
@@ -359,7 +359,7 @@ export const portfolioData = {
       systemArchitecture: "Constructed end-to-end signal processing and data mining pipelines using SM-SSA (Shift-Invariant Singular Spectrum Analysis) and NCA (Neighborhood Component Analysis) to extract high-value features. Designed a hybrid QCNN combining a 6-qubit quantum circuit with a classical multi-layer perceptron bypass.",
       measuredImpact: "Achieved 99.17% classification accuracy across 600 biological EMG signals, outperforming standard Cubic SVM benchmark baselines.",
       tags: ["Python", "QCNN", "Quantum ML", "SM-SSA", "NCA", "Signal Processing"],
-      github: "https://github.com/ShlokeBinani",
+      github: "https://github.com/shlokebinani",
       highlight: true
     },
     {
@@ -380,7 +380,28 @@ export const portfolioData = {
       systemArchitecture: "Cleaned and reconciled missing data across 7,000+ customer records using SQL and Python. Isolated a 42% churn peak among specific billing tiers in Power BI. Evaluated statistical hypothesis tests on key churn drivers before training an ensemble Random Forest model.",
       measuredImpact: "Reached 80% classification accuracy, giving retention teams clear early-warning indicators for at-risk accounts.",
       tags: ["Python", "SQL", "Random Forest", "Power BI", "Hypothesis Testing", "Pandas"],
-      github: "https://github.com/ShlokeBinani"
+      github: "https://github.com/ShlokeBinani/Customer-Attrition-Modeling"
+    },
+    {
+      id: "ecommerce-value-maximization",
+      number: "05",
+      title: "E-Commerce Value Maximization",
+      subtitle: "Customer Segmentation & LTV Analytics",
+      category: "Unsupervised ML & Business Intelligence",
+      headlineMetric: "SQL data quality auditing, PCA variance extraction & hybrid DBSCAN/K-Means",
+      pipelineFlow: [
+        "Transactional SQL Data Audits",
+        "Missing Value Reconciliation",
+        "PCA & Hybrid DBSCAN / K-Means",
+        "Power BI LTV & A/B Framework"
+      ],
+      description: "An end-to-end customer value analysis project that audits transactional datasets, reduces dimensionality with PCA, clusters buyer cohorts with hybrid DBSCAN and K-Means, and tracks retention in Power BI.",
+      problemStatement: "Transactional e-commerce datasets frequently contain inconsistencies, outlier purchasing records, and noisy high-dimensional behavioral features that distort customer lifetime value (LTV) estimations and obscure high-value customer cohorts.",
+      systemArchitecture: "Conducted data quality audits across transactional datasets using SQL, reconciling inconsistencies before executing PCA and hybrid DBSCAN/K-Means clustering in Python. Built a Power BI LTV dashboard and designed an A/B testing framework with sample size estimation to evaluate retention impact.",
+      measuredImpact: "Isolated distinct high-value shopper cohorts, identified key customer attrition risk factors, and established a validated A/B testing retention framework for data-driven merchandising.",
+      tags: ["NumPy", "Pandas", "PCA", "K-Means", "DBSCAN", "Power BI", "SQL", "A/B Testing"],
+      github: "https://github.com/ShlokeBinani/Ecommerce-Value-Maximization",
+      highlight: true
     }
   ] as Project[],
 
