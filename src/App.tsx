@@ -9,6 +9,7 @@ import { ServicesSection } from './components/ServicesSection';
 import { Experience } from './components/Experience';
 import { ProjectsSection } from './components/ProjectsSection';
 import { Leadership } from './components/Leadership';
+import { Certifications } from './components/Certifications';
 import { Contact } from './components/Contact';
 import { ProjectDrawer } from './components/ProjectDrawer';
 import { ToastContainer } from './components/common/Toast';
@@ -76,7 +77,10 @@ export function App() {
       {/* 7. Leadership & Initiatives (IEEE Chapters & Hackathons) */}
       <Leadership />
 
-      {/* 8. Editorial Footer & Contact */}
+      {/* 8. Verified Certifications */}
+      <Certifications />
+
+      {/* 9. Editorial Footer & Contact */}
       <Contact />
 
       {/* Interactive Project Deep-Dive Drawer */}

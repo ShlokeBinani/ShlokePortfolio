@@ -58,6 +58,18 @@ export interface AchievementItem {
   badge?: string;
 }
 
+export interface CertificationItem {
+  id: string;
+  name: string;
+  issuer: string;
+  year: string;
+  category: string;
+  credentialUrl?: string;
+  description: string;
+  skills: string[];
+  badge?: string;
+}
+
 export const portfolioData = {
   personal: {
     name: "Shloke Binani",
@@ -445,8 +457,49 @@ export const portfolioData = {
   ] as AchievementItem[],
 
   certifications: [
-    { name: "Statistics OnRamp (2024)", issuer: "The MathWorks, Inc." },
-    { name: "MATLAB OnRamp (2024)", issuer: "The MathWorks, Inc." },
-    { name: "Pandas Data Science Certificate", issuer: "Kaggle" }
-  ]
+    {
+      id: "matlab-onramp",
+      name: "MATLAB OnRamp",
+      issuer: "The MathWorks, Inc.",
+      year: "2024",
+      category: "Computational Mathematics",
+      credentialUrl: "",
+      description: "Hands-on certification covering computational mathematics, matrix operations, data import pipelines, and visual data analysis in MATLAB.",
+      skills: ["MATLAB", "Matrix Computing", "Data Visualization", "Script Automation"],
+      badge: "MathWorks Certified"
+    },
+    {
+      id: "statistics-onramp",
+      name: "Statistics OnRamp",
+      issuer: "The MathWorks, Inc.",
+      year: "2024",
+      category: "Statistical Modeling",
+      credentialUrl: "",
+      description: "Core statistical training focusing on exploratory data analysis, probability distributions, hypothesis testing, and quantitative variance evaluation.",
+      skills: ["Statistics", "Hypothesis Testing", "Probability Distributions", "EDA"],
+      badge: "MathWorks Certified"
+    },
+    {
+      id: "pandas-kaggle",
+      name: "Pandas Data Science Certificate",
+      issuer: "Kaggle",
+      year: "2024",
+      category: "Data Analytics",
+      credentialUrl: "",
+      description: "Practical data wrangling and transformation credential covering indexing, grouping, aggregation, multi-table joins, and missing-value imputation in Python.",
+      skills: ["Pandas", "Python", "Data Wrangling", "Feature Engineering"],
+      badge: "Kaggle Certified"
+    },
+    {
+      id: "leadership-vit",
+      name: "Leadership Certificate from VIT",
+      issuer: "Vellore Institute of Technology (VIT)",
+      year: "2025",
+      category: "Student Leadership",
+      credentialUrl: "",
+      description: "University leadership credential awarded by Vellore Institute of Technology for exemplary student administration, cross-functional operations, and event leadership.",
+      skills: ["Team Leadership", "Operations", "Event Logistics", "Public Relations"],
+      badge: "University Award"
+    }
+  ] as CertificationItem[]
 };
