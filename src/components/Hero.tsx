@@ -123,18 +123,18 @@ export const Hero: React.FC = () => {
           {/* Academic & Systems Subtitle */}
           <FadeIn delay={0.4} y={20}>
             <div className="flex flex-wrap items-center gap-2.5 text-xs sm:text-sm font-mono text-[#A1A1AA]">
-              <span className="text-[#D7E2EA] font-semibold">ECE @ VIT Vellore (&apos;27)</span>
+              <span className="text-[#D7E2EA] font-semibold">ECE @ VIT Vellore</span>
               <span className="text-zinc-600">•</span>
               <span className="text-[#F4ECE1]">CGPA 8.68</span>
               <span className="text-zinc-600">•</span>
-              <span className="text-zinc-400">Class of 2027 • Open to SWE & AI Roles</span>
+              <span className="text-zinc-400">Final-Year Student • Open to SWE, Data & Systems Roles</span>
             </div>
           </FadeIn>
 
           {/* Value Proposition Description */}
           <FadeIn delay={0.45} y={20}>
             <p className="text-[#D7E2EA] font-light tracking-wide leading-relaxed text-xs sm:text-sm md:text-base max-w-xl">
-              B.Tech Electronics and Communication Engineering student at VIT Vellore (2023 - 2027). Building reliable backend services, distributed network simulations, and machine learning models with a focus on real-world impact.
+              Final-year Electronics and Communication Engineering student at VIT Vellore. Building reliable backend systems, automated data pipelines, and applied machine learning models with a grounded learning attitude.
             </p>
           </FadeIn>
 

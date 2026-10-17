@@ -62,10 +62,10 @@ export const portfolioData = {
   personal: {
     name: "Shloke Binani",
     monogram: "SB.",
-    eyebrow: "Backend Systems • Data Engineering • Applied AI",
-    tagline: "B.Tech Electronics and Communication Engineering student at VIT Vellore (2023 - 2027). Building reliable backend services, distributed network simulations, and machine learning models with a focus on real-world impact.",
-    heroSubtitle: "Class of 2027 • Open to SWE, Backend & AI Roles",
-    degreeShort: "ECE @ VIT Vellore ('27)",
+    eyebrow: "Software Engineering • Data Science • System Design",
+    tagline: "Final-year Electronics and Communication Engineering student at VIT Vellore (2023 - 2027). Building reliable backend services, automated data pipelines, and applied machine learning models with a grounded learning attitude.",
+    heroSubtitle: "Final-Year Student • Open to SWE, Data & Systems Roles",
+    degreeShort: "ECE @ VIT Vellore (Final Year)",
     location: "Kolkata & Vellore, India",
     email: "shlokebinani@gmail.com",
     github: "https://github.com/ShlokeBinani",
@@ -85,19 +85,129 @@ export const portfolioData = {
   skillsSummary: [
     {
       category: "Languages & Core Tech",
-      items: ["Java (DSA)", "Python", "SQL (PostgreSQL, MySQL)", "C++", "C", "Embedded C", "MATLAB"]
+      items: ["Java (DSA)", "Python (Pandas, NumPy)", "Embedded C", "C++", "SQL (PostgreSQL, MySQL)", "C", "Object-Oriented Design (OOD)"]
     },
     {
-      category: "Backend & Databases",
-      items: ["FastAPI", "PostgreSQL", "Neon", "MySQL", "MongoDB", "GraphQL", "Hasura", "REST APIs", "Docker", "Render", "Vercel"]
+      category: "Relevant Coursework & Systems",
+      items: ["Low-Level Design (LLD)", "OOPS", "DBMS", "Operating Systems", "Computer Networks (CCN)", "Cloud Computing", "Embedded Systems"]
     },
     {
-      category: "AI, ML & Data Systems",
-      items: ["QCNN", "Random Forest", "MLP", "SVM", "Data Engineering / ETL", "Pandas", "Power BI", "Hypothesis Testing", "Prompt Engineering"]
+      category: "AI Tools & Automation",
+      items: ["Prompt Engineering", "LLM Integration", "Workflow Automation (n8n, Python)", "Machine Learning (QCNN, Random Forest, SVM)", "SM-SSA & NCA"]
     },
     {
-      category: "Developer Tools & Workflow",
-      items: ["Git", "GitHub", "Postman", "n8n Automation", "Linux", "Databricks", "CI/CD", "Unit & Integration Testing"]
+      category: "Data Analytics & Engineering",
+      items: ["SQL ETL Pipelines", "Data Auditing", "Power BI Dashboards", "Hypothesis Testing", "PostgreSQL / Neon", "Hasura GraphQL", "MongoDB"]
+    },
+    {
+      category: "Developer Tools & Cloud",
+      items: ["AWS", "Linux", "Docker", "Git", "REST APIs", "FastAPI", "Postman", "CI/CD", "Vercel", "Render", "Databricks"]
+    }
+  ],
+
+  profilePillars: [
+    {
+      role: "Software Engineering (SWE)",
+      description: "Writing clean, maintainable backend code, implementing strict database row-level locking, and engineering reliable REST endpoints that perform predictably under load."
+    },
+    {
+      role: "Data Science & Analytics",
+      description: "Auditing multi-source datasets, testing statistical hypotheses, training robust classifiers, and building executive Power BI dashboards that guide business decisions."
+    },
+    {
+      role: "System Design & Business Analysis",
+      description: "Translating ambiguous operational needs into modular low-level design patterns, automated n8n workflows, and resilient technical architectures."
+    }
+  ],
+
+  skillsCategories: [
+    {
+      id: "languages",
+      title: "Languages & Core Tech",
+      summary: "Core programming languages for algorithmic problem-solving, backend systems, and low-level processing.",
+      items: [
+        { name: "Java (DSA)", level: "Advanced", note: "250+ LeetCode & GFG solved; OOP & algorithms" },
+        { name: "Python", level: "Proficient", note: "Pandas, NumPy, Scikit-Learn, PyTorch, SciPy" },
+        { name: "Embedded C", level: "Practical", note: "Hardware-level microcontroller programming" },
+        { name: "C++", level: "Proficient", note: "Systems programming & algorithmic efficiency" },
+        { name: "SQL (PostgreSQL, MySQL)", level: "Advanced", note: "Complex queries, ETL, CTEs & row locks" },
+        { name: "C", level: "Foundational", note: "Memory management & pointer logic" },
+        { name: "Object-Oriented Design (OOD)", level: "Core", note: "SOLID principles & modular architecture" }
+      ]
+    },
+    {
+      id: "coursework",
+      title: "Relevant Coursework & System Design",
+      summary: "Foundational engineering subjects providing deep architectural, networking, and algorithmic rigor.",
+      items: [
+        { name: "Low-Level Design (LLD)", level: "Core", note: "Design patterns, schemas, concurrency & class structures" },
+        { name: "Object-Oriented Programming (OOPS)", level: "Core", note: "Inheritance, encapsulation, polymorphism & abstraction" },
+        { name: "Database Management Systems (DBMS)", level: "Core", note: "ACID transactions, indexing, normalization & locking" },
+        { name: "Operating Systems (OS)", level: "Core", note: "Process scheduling, thread synchronization & memory allocation" },
+        { name: "Computer Networks (CCN)", level: "Core", note: "TCP/IP, routing protocols, socket programming & packet routing" },
+        { name: "Cloud Computing", level: "Applied", note: "Distributed services, virtual machines & cloud architecture" },
+        { name: "Embedded Systems & MATLAB", level: "Applied", note: "Signal processing, filter design & hardware testing" }
+      ]
+    },
+    {
+      id: "ai-automation",
+      title: "AI Tools, Prompt Engineering & Automation",
+      summary: "Leveraging cutting-edge LLMs, prompt engineering, and event-driven automation for engineering productivity.",
+      items: [
+        { name: "Prompt Engineering", level: "Applied", note: "Structured reasoning, multi-turn prompts & code generation workflows" },
+        { name: "LLM Pipeline Integration", level: "Applied", note: "Integrating LLM backends with voice-AI & customer endpoints" },
+        { name: "Workflow Automation (n8n & Python)", level: "Applied", note: "Event-driven cross-app pipelines saving 8 to 10 hrs/week" },
+        { name: "Machine Learning (Random Forest, SVM, MLP)", level: "Proficient", note: "Predictive classification, feature weights & validation" },
+        { name: "Quantum Neural Networks (QCNN)", level: "Research", note: "6-qubit circuit design with classical MLP bypass" },
+        { name: "Signal Feature Extraction (SM-SSA & NCA)", level: "Research", note: "Noise reduction & dimensionality reduction pipelines" }
+      ]
+    },
+    {
+      id: "data-analytics",
+      title: "Data Analytics & Engineering",
+      summary: "Extracting, transforming, auditing, and modeling datasets to uncover clear business signals and metrics.",
+      items: [
+        { name: "SQL ETL Pipelines", level: "Applied", note: "Reconciling data integrity across 7K+ customer records" },
+        { name: "Data Auditing & Data Cleaning", level: "Applied", note: "Null handling, outlier mitigation & schema normalization" },
+        { name: "Power BI Dashboards", level: "Applied", note: "Executive visual reports, churn spike analysis & drilldowns" },
+        { name: "Statistical Hypothesis Testing", level: "Analytical", note: "Chi-Square and ANOVA to validate behavioral churn drivers" },
+        { name: "Relational Modeling (PostgreSQL, Neon, MySQL)", level: "Proficient", note: "Normalized schemas, foreign keys & query plans" },
+        { name: "Hasura GraphQL & MongoDB", level: "Applied", note: "Instant GraphQL APIs & document storage" }
+      ]
+    },
+    {
+      id: "dev-tools",
+      title: "Developer Tools & Infrastructure",
+      summary: "Production tooling, containerization, debugging, and deployment infrastructure.",
+      items: [
+        { name: "AWS", level: "Cloud", note: "EC2, S3 & server deployment" },
+        { name: "Linux & Shell Scripting", level: "Core", note: "CLI navigation, bash scripts & daemon services" },
+        { name: "Docker", level: "DevOps", note: "Containerized reproducible application environments" },
+        { name: "Git & GitHub", level: "Version Control", note: "Branch management, code reviews & team workflows" },
+        { name: "REST APIs & FastAPI", level: "Backend", note: "High-throughput asynchronous endpoints" },
+        { name: "Postman", level: "Testing", note: "Endpoint validation, regression testing & mock servers" },
+        { name: "Deployment (Vercel & Render)", level: "Cloud", note: "Production web hosting & automated CI/CD builds" },
+        { name: "Databricks", level: "Analytics", note: "Collaborative big data exploration" }
+      ]
+    }
+  ],
+
+  interests: [
+    {
+      name: "AI Prompting & Automation",
+      detail: "Exploring structured prompt design, AI agent orchestration, and automated developer workflows."
+    },
+    {
+      name: "Quantitative Finance & Markets",
+      detail: "Studying market microstructure, valuation metrics, macroeconomic trends, and risk management."
+    },
+    {
+      name: "Travelling & Cultural Exploration",
+      detail: "Travelling to new regions, learning about different cultures, and gaining fresh perspectives."
+    },
+    {
+      name: "Continuous Learning & DSA",
+      detail: "Daily problem-solving in Java, reading systems engineering post-mortems, and building hands-on prototypes."
     }
   ],
 

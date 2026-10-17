@@ -78,7 +78,7 @@ export const About: React.FC = () => {
         {/* Grounded Human Story with Learning Attitude */}
         <div className="max-w-[720px] mx-auto px-4 mb-10 sm:mb-12">
           <AnimatedText
-            text="I am an Electronics and Communication Engineering undergraduate at VIT Vellore (2023 - 2027) with an 8.68 CGPA. I focus on backend systems, databases, and applied machine learning. During my internship at Kofuku Technologies, I worked on low-latency voice services and automated workflows that saved hours of manual effort. In research, I co-authored MS-HQNet for biological signal classification. I care deeply about writing clean, reliable code, understanding how systems break, and learning something new with every project."
+            text="I am a final-year Electronics and Communication Engineering student at VIT Vellore with an 8.68 CGPA. I focus on software engineering, data science, and system design. During my internship at Kofuku Technologies, I worked on low-latency voice services and automated operational workflows that saved hours of manual effort. In research, I co-authored MS-HQNet for biological signal classification. I care deeply about writing clean, reliable code, understanding how systems break, and learning something new with every project."
             className="text-[#D7E2EA] font-kanit font-medium text-center leading-relaxed tracking-wide"
             style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}
           />
@@ -89,7 +89,7 @@ export const About: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-14">
             <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm font-mono text-[#F4ECE1]">
               <GraduationCap className="w-4 h-4 text-[#D6C3B0]" />
-              <span>B.Tech ECE @ VIT Vellore (2023 - 2027)</span>
+              <span>B.Tech ECE @ VIT Vellore • Final Year</span>
             </div>
 
             <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-[#F4ECE1]/10 border border-[#F4ECE1]/20 text-xs sm:text-sm font-mono text-[#F4ECE1]">
