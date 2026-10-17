@@ -8,10 +8,10 @@ import { FadeIn } from './common/FadeIn';
 export const About: React.FC = () => {
   const [imgError, setImgError] = useState(false);
 
-  // Subtle 3D tilt interaction for the spotlight photo stage
+  // Subtle interactive 3D perspective shift on mouse hover
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springConfig = { damping: 20, stiffness: 140 };
+  const springConfig = { damping: 22, stiffness: 130 };
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [4, -4]), springConfig);
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), springConfig);
 
@@ -30,124 +30,113 @@ export const About: React.FC = () => {
 
   const photoSrc = imgError
     ? `${import.meta.env.BASE_URL}images/about-spotlight.jpg`
-    : `${import.meta.env.BASE_URL}images/about-spotlight.webp`;
+    : `${import.meta.env.BASE_URL}images/about-spotlight-blended.webp`;
 
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full bg-[#0C0C0C] flex items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-24 sm:py-32 overflow-x-clip select-none"
+      className="relative min-h-screen w-full bg-[#0C0C0C] flex items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-20 sm:py-28 md:py-36 overflow-x-clip select-none"
     >
-      {/* Main Grid: 2 Columns on Desktop */}
-      <div className="relative z-20 w-full max-w-[1520px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-20 items-center">
+      {/* Main Grid: Left Stage (Spotlight & ABOUT ME) + Right Stage (Narrative) */}
+      <div className="relative z-20 w-full max-w-[1520px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
         
-        {/* Left Column (5 Cols): Shloke Spotlight Photo Stage */}
+        {/* Left Column (5 Cols): Spotlight Figure Seamlessly Blended with "ABOUT ME" Behind */}
         <div className="lg:col-span-5 flex justify-center lg:justify-start relative">
-          <FadeIn delay={0.15} x={-40} y={0} duration={0.8}>
+          <FadeIn delay={0.15} x={-30} y={0} duration={0.8}>
             <div
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="relative w-full max-w-[340px] sm:max-w-[400px] md:max-w-[430px] aspect-[9/16] flex items-center justify-center"
+              className="relative w-full max-w-[360px] sm:max-w-[420px] md:max-w-[460px] flex items-center justify-center min-h-[480px] sm:min-h-[560px] md:min-h-[620px]"
               style={{ perspective: 1000 }}
             >
-              {/* Background Ghost Text "SHLOKE" behind the subject */}
+              {/* Massive Bold "ABOUT ME" Display Typography Sits Behind Shloke */}
               <div
-                className="absolute inset-x-0 -top-8 sm:-top-10 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden"
+                className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none z-0"
                 aria-hidden="true"
               >
                 <span
-                  className="font-anton uppercase text-transparent tracking-tighter"
+                  className="font-anton uppercase tracking-tight leading-none text-white/10"
                   style={{
-                    fontSize: 'clamp(54px, 11vw, 130px)',
-                    lineHeight: 1,
-                    letterSpacing: '-0.02em',
-                    WebkitTextStroke: '1.5px rgba(255, 255, 255, 0.12)',
+                    fontSize: 'clamp(70px, 13vw, 155px)',
+                    WebkitTextStroke: '2px rgba(255, 255, 255, 0.18)',
+                    textShadow: '0 0 50px rgba(255,255,255,0.05)',
                   }}
                 >
-                  SHLOKE
+                  ABOUT
+                </span>
+                <span
+                  className="font-anton uppercase tracking-tight leading-none text-transparent -mt-4 sm:-mt-8"
+                  style={{
+                    fontSize: 'clamp(70px, 13vw, 155px)',
+                    WebkitTextStroke: '2px rgba(244, 236, 225, 0.28)',
+                    background:
+                      'linear-gradient(180deg, rgba(244,236,225,0.2) 0%, rgba(244,236,225,0.02) 100%)',
+                    WebkitBackgroundClip: 'text',
+                  }}
+                >
+                  ME
                 </span>
               </div>
 
-              {/* Realistic Spotlight Beam Cone Effect */}
+              {/* Realistic Spotlight Overhead Cone Glow */}
               <div
-                className="absolute -top-24 right-0 w-64 sm:w-80 h-[500px] pointer-events-none z-10 opacity-70"
+                className="absolute -top-20 right-0 w-64 sm:w-80 h-[500px] pointer-events-none z-10 opacity-60"
                 style={{
                   background:
-                    'radial-gradient(ellipse 65% 55% at 75% 0%, rgba(244, 236, 225, 0.22) 0%, rgba(244, 236, 225, 0.05) 45%, transparent 75%)',
+                    'radial-gradient(ellipse 65% 55% at 75% 0%, rgba(244, 236, 225, 0.24) 0%, rgba(244, 236, 225, 0.05) 50%, transparent 75%)',
                   transform: 'rotate(12deg)',
                   filter: 'blur(16px)',
                 }}
                 aria-hidden="true"
               />
 
-              {/* Tilting 3D Card Container */}
+              {/* 3D Interactive Tilting Figure (No Card, Fully Seamless Background Blend) */}
               <motion.div
                 style={{
                   rotateX,
                   rotateY,
                   transformStyle: 'preserve-3d',
                 }}
-                className="relative z-10 w-full h-full rounded-[28px] sm:rounded-[36px] overflow-hidden bg-[#0C0C0C] border border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.85)] group cursor-pointer"
+                className="relative z-10 w-full flex items-center justify-center pointer-events-auto cursor-pointer"
               >
-                {/* Spotlight Portrait Image */}
                 <img
                   src={photoSrc}
                   alt="Shloke Binani under studio spotlight"
                   loading="lazy"
                   onError={() => setImgError(true)}
-                  className="w-full h-full object-cover filter contrast-[1.06] brightness-[0.98] transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-auto max-h-[520px] sm:max-h-[600px] md:max-h-[660px] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.95)] filter contrast-[1.05] brightness-[0.98] transition-transform duration-700 hover:scale-[1.02]"
                 />
-
-                {/* 4-Sided Seamless Black Feather Vignette */}
-                <div
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    background: `
-                      linear-gradient(to right, #0C0C0C 0%, rgba(12,12,12,0.7) 6%, transparent 22%),
-                      linear-gradient(to left, #0C0C0C 0%, rgba(12,12,12,0.7) 6%, transparent 22%),
-                      linear-gradient(to bottom, #0C0C0C 0%, rgba(12,12,12,0.65) 6%, transparent 20%),
-                      linear-gradient(to top, #0C0C0C 0%, rgba(12,12,12,0.85) 6%, transparent 22%)
-                    `,
-                  }}
-                  aria-hidden="true"
-                />
-
-                {/* Bottom Card Monogram Badge */}
-                <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono text-zinc-300">
-                  <span className="text-[#F4ECE1] font-semibold">SHLOKE BINANI</span>
-                  <span className="text-zinc-500">VIT &apos;27</span>
-                </div>
               </motion.div>
             </div>
           </FadeIn>
         </div>
 
-        {/* Right Column (7 Cols): About Content Shifted to Right */}
-        <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8 text-left">
+        {/* Right Column (7 Cols): Narrative Body Shifted to Right with Scroll Animation */}
+        <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-7 text-left">
           
-          {/* Header */}
+          {/* Eyebrow & Headline */}
           <FadeIn delay={0.1} y={20}>
             <div className="space-y-2">
-              <div className="text-xs font-mono uppercase tracking-[0.2em] text-[#D6C3B0] flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#D6C3B0]" />
-                <span>Profile & Background</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D6C3B0] uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Background & Engineering Philosophy</span>
               </div>
-              <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight flex flex-wrap items-center gap-x-4 select-none">
-                <span className="hero-heading">About</span>
-                <span className="text-stroke-hollow">Shloke</span>
+              <h2 className="font-kanit font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-white select-none">
+                Software & Systems Craftsman
               </h2>
             </div>
           </FadeIn>
 
-          {/* Grounded Human Story with Animated Character-by-Character Scroll Reveal */}
+          {/* Character-by-Character Scroll-Revealed Narrative */}
           <div className="max-w-2xl">
             <AnimatedText
               text="I am a final-year Electronics and Communication Engineering student at VIT Vellore with an 8.68 CGPA. I focus on software engineering, data science, and system design. During my internship at Kofuku Technologies, I worked on low-latency voice services and automated operational workflows that saved hours of manual effort. In research, I co-authored MS-HQNet for biological signal classification. I care deeply about writing clean, reliable code, understanding how systems break, and learning something new with every project."
               className="text-[#D7E2EA] font-kanit font-normal text-left leading-relaxed tracking-wide"
-              style={{ fontSize: 'clamp(1rem, 1.4vw, 1.25rem)' }}
+              style={{ fontSize: 'clamp(1rem, 1.35vw, 1.2rem)' }}
             />
           </div>
 
-          {/* Academic Badges & Verified Facts */}
+          {/* Academic & Problem Solving Credentials */}
           <FadeIn delay={0.25} y={20}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
               <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm font-mono text-[#F4ECE1]">

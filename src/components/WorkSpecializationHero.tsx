@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Download, X, FileText, CheckCircle2 } from 'lucide-react';
 import { showToast } from './common/Toast';
@@ -174,6 +175,27 @@ export const WorkSpecializationHero: React.FC = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [navigate, resetAutoTimer, isResumeModalOpen]);
+
+  // Lock body scroll and pause Lenis when resume modal is open
+  useEffect(() => {
+    if (isResumeModalOpen) {
+      document.body.style.overflow = 'hidden';
+      if ((window as any).__lenis) {
+        (window as any).__lenis.stop();
+      }
+    } else {
+      document.body.style.overflow = '';
+      if ((window as any).__lenis) {
+        (window as any).__lenis.start();
+      }
+    }
+    return () => {
+      document.body.style.overflow = '';
+      if ((window as any).__lenis) {
+        (window as any).__lenis.start();
+      }
+    };
+  }, [isResumeModalOpen]);
 
   const activeSpec = SPECIALIZATIONS[activeIndex];
 
@@ -375,14 +397,16 @@ export const WorkSpecializationHero: React.FC = () => {
         </div>
 
         {/* 5. Bottom-Right Button "DOWNLOAD RESUME" (Opens 3-Option Modal) */}
-        <div className="absolute bottom-5 right-5 sm:bottom-10 sm:right-10 z-[60] pointer-events-auto">
+        <div className="absolute bottom-5 right-5 sm:bottom-10 sm:right-10 z-[70] pointer-events-auto">
           <button
             type="button"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               setIsResumeModalOpen(true);
               trackEvent('toonhub_resume_modal_open', 'click', 'bottom_right_cta');
             }}
-            className="flex items-center gap-2 sm:gap-3 text-[#0C0C0C] hover:text-[#0C0C0C] transition-opacity duration-200 group no-underline cursor-pointer bg-transparent border-none p-0"
+            className="flex items-center gap-2 sm:gap-3 text-[#0C0C0C] hover:opacity-80 transition-opacity duration-200 group no-underline cursor-pointer bg-transparent border-none p-0 select-none"
             style={{
               fontFamily: 'Anton, sans-serif',
               fontSize: 'clamp(20px, 4vw, 56px)',
@@ -399,117 +423,125 @@ export const WorkSpecializationHero: React.FC = () => {
 
       </div>
 
-      {/* 6. Resume Selection Modal (3 Options to Download) */}
-      <AnimatePresence>
-        {isResumeModalOpen && (
-          <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6 select-auto">
-            {/* Backdrop Blur Overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => setIsResumeModalOpen(false)}
-              className="fixed inset-0 bg-black/70 backdrop-blur-md"
-              aria-hidden="true"
-            />
-
-            {/* Modal Dialog Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="relative w-full max-w-2xl bg-[#121216] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl z-10 text-white overflow-hidden"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="resume-modal-title"
-            >
-              {/* Close Button */}
-              <button
-                type="button"
-                onClick={() => setIsResumeModalOpen(false)}
-                className="absolute top-5 right-5 sm:top-6 sm:right-6 p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-                aria-label="Close resume options modal"
+      {/* 6. Resume Selection Modal (3 Options to Download) via React Portal */}
+      {typeof document !== 'undefined' &&
+        createPortal(
+          <AnimatePresence>
+            {isResumeModalOpen && (
+              <div
+                data-lenis-prevent="true"
+                className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 select-auto"
+                style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
               >
-                <X className="w-5 h-5" />
-              </button>
+                {/* Backdrop Blur Overlay */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => setIsResumeModalOpen(false)}
+                  className="fixed inset-0 bg-black/75 backdrop-blur-md"
+                  aria-hidden="true"
+                />
 
-              {/* Modal Header */}
-              <div className="mb-6 sm:mb-8 pr-8">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-mono text-zinc-300 uppercase tracking-wider mb-2.5">
-                  <FileText className="w-3.5 h-3.5 text-[#F4ECE1]" />
-                  <span>Curriculum Vitae</span>
-                </div>
-                <h3
-                  id="resume-modal-title"
-                  className="font-anton text-2xl sm:text-3xl uppercase tracking-tight text-white mb-1.5"
+                {/* Modal Dialog Card */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  className="relative w-full max-w-2xl bg-[#121216] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.85)] z-10 text-white overflow-hidden max-h-[90vh] overflow-y-auto"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="resume-modal-title"
                 >
-                  Select Resume to Download
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-400 font-inter leading-relaxed">
-                  Choose the specialized resume tailored to your team or role requirements.
-                </p>
-              </div>
-
-              {/* 3 Resume Options Grid */}
-              <div className="space-y-3 sm:space-y-3.5">
-                {SPECIALIZATIONS.map((spec) => (
-                  <div
-                    key={spec.id}
-                    className="p-4 sm:p-4.5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-white/25 hover:bg-white/[0.07] transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 group"
+                  {/* Close Button */}
+                  <button
+                    type="button"
+                    onClick={() => setIsResumeModalOpen(false)}
+                    className="absolute top-5 right-5 sm:top-6 sm:right-6 p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                    aria-label="Close resume options modal"
                   >
-                    <div className="flex-1 space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="font-anton text-lg sm:text-xl text-white uppercase tracking-tight">
-                          {spec.role}
-                        </span>
-                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-white/10 text-zinc-300 border border-white/10">
-                          {spec.domainBadge}
-                        </span>
-                      </div>
-                      <p className="text-xs text-zinc-400 font-inter line-clamp-1">
-                        {spec.tagline}
-                      </p>
-                      <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                        {spec.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/40 text-zinc-300 border border-white/5"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
+                    <X className="w-5 h-5" />
+                  </button>
+
+                  {/* Modal Header */}
+                  <div className="mb-6 sm:mb-8 pr-8">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-mono text-zinc-300 uppercase tracking-wider mb-2.5">
+                      <FileText className="w-3.5 h-3.5 text-[#F4ECE1]" />
+                      <span>Curriculum Vitae</span>
                     </div>
-
-                    <a
-                      href={`${import.meta.env.BASE_URL}resumes/${spec.resumeFile}`}
-                      download={spec.resumeFile}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => handleDownload(spec)}
-                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-inter font-bold text-xs uppercase tracking-wider hover:bg-[#F4ECE1] hover:scale-105 active:scale-95 transition-all shadow-md shrink-0 cursor-pointer group/btn"
+                    <h3
+                      id="resume-modal-title"
+                      className="font-anton text-2xl sm:text-3xl uppercase tracking-tight text-white mb-1.5"
                     >
-                      <Download className="w-3.5 h-3.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                      <span>Download PDF</span>
-                    </a>
+                      Select Resume to Download
+                    </h3>
+                    <p className="text-xs sm:text-sm text-zinc-400 font-inter leading-relaxed">
+                      Choose the specialized resume tailored to your team or role requirements.
+                    </p>
                   </div>
-                ))}
-              </div>
 
-              {/* Footer Note */}
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-zinc-400">
-                <span className="flex items-center gap-1.5 text-emerald-400">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>ATS-Friendly & Formatted</span>
-                </span>
-                <span>PDF Format</span>
+                  {/* 3 Resume Options Grid */}
+                  <div className="space-y-3 sm:space-y-3.5">
+                    {SPECIALIZATIONS.map((spec) => (
+                      <div
+                        key={spec.id}
+                        className="p-4 sm:p-4.5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-white/25 hover:bg-white/[0.07] transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 group"
+                      >
+                        <div className="flex-1 space-y-1">
+                          <div className="flex items-center gap-2">
+                            <span className="font-anton text-lg sm:text-xl text-white uppercase tracking-tight">
+                              {spec.role}
+                            </span>
+                            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-white/10 text-zinc-300 border border-white/10">
+                              {spec.domainBadge}
+                            </span>
+                          </div>
+                          <p className="text-xs text-zinc-400 font-inter line-clamp-1">
+                            {spec.tagline}
+                          </p>
+                          <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                            {spec.skills.map((skill) => (
+                              <span
+                                key={skill}
+                                className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/40 text-zinc-300 border border-white/5"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <a
+                          href={`${import.meta.env.BASE_URL}resumes/${spec.resumeFile}`}
+                          download={spec.resumeFile}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => handleDownload(spec)}
+                          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-inter font-bold text-xs uppercase tracking-wider hover:bg-[#F4ECE1] hover:scale-105 active:scale-95 transition-all shadow-md shrink-0 cursor-pointer group/btn"
+                        >
+                          <Download className="w-3.5 h-3.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                          <span>Download PDF</span>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Footer Note */}
+                  <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-zinc-400">
+                    <span className="flex items-center gap-1.5 text-emerald-400">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>ATS-Friendly & Formatted</span>
+                    </span>
+                    <span>PDF Format</span>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-          </div>
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </div>
   );
 };
