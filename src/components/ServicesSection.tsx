@@ -1,50 +1,131 @@
-import React, { useState } from 'react';
-import { 
-  Code2, 
-  Layers, 
-  Wrench, 
-  TrendingUp, 
-  Plane, 
-  BookOpen, 
-  Bot,
-  BrainCircuit,
-  Server,
-  Database,
-  Compass
-} from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { FadeIn } from './common/FadeIn';
 
+interface SkillSectionItem {
+  number: string;
+  name: string;
+  description: string;
+  tags: string[];
+}
+
+const SKILL_SECTIONS: SkillSectionItem[] = [
+  {
+    number: '01',
+    name: 'Languages & Core Tech',
+    description:
+      'Foundational programming languages for algorithmic problem-solving, backend services, and low-level system execution. Regular practice across data structures, algorithms, and memory management.',
+    tags: [
+      'Java (DSA - 250+ Solved)',
+      'Python (Pandas, NumPy, Scikit-Learn)',
+      'Embedded C',
+      'C++',
+      'SQL (PostgreSQL, MySQL)',
+      'C',
+      'Object-Oriented Design (OOD)',
+    ],
+  },
+  {
+    number: '02',
+    name: 'Relevant Coursework & System Design',
+    description:
+      'Rigorous academic computer science foundations covering low-level architectural patterns, thread synchronization, process scheduling, network protocols, and ACID-compliant relational schemas.',
+    tags: [
+      'Low-Level Design (LLD)',
+      'Object-Oriented Programming (OOPS)',
+      'Database Management Systems (DBMS)',
+      'Operating Systems (OS)',
+      'Computer Networks (CCN)',
+      'Cloud Computing',
+      'Embedded Systems & MATLAB',
+    ],
+  },
+  {
+    number: '03',
+    name: 'AI Tools, Prompt Engineering & Automation',
+    description:
+      'Leveraging prompt engineering, multi-turn reasoning, and event-driven workflow automation to accelerate engineering velocity and deploy practical machine learning systems.',
+    tags: [
+      'Prompt Engineering & Structured Prompts',
+      'LLM Pipeline Integration (AWS & Voice-AI)',
+      'Workflow Automation (n8n & Python)',
+      'Machine Learning (Random Forest, SVM, MLP)',
+      'Quantum Neural Networks (QCNN)',
+      'Feature Extraction (SM-SSA & NCA)',
+    ],
+  },
+  {
+    number: '04',
+    name: 'Data Analytics & Data Engineering',
+    description:
+      'Extracting, transforming, auditing, and modeling datasets. Conducting statistical hypothesis testing to validate business patterns and building interactive executive dashboards for decision-makers.',
+    tags: [
+      'SQL ETL Pipelines (7K+ Records)',
+      'Data Auditing & Data Cleaning',
+      'Power BI Executive Dashboards',
+      'Statistical Hypothesis Testing (ANOVA, Chi-Square)',
+      'Relational Modeling (PostgreSQL, Neon, MySQL)',
+      'Hasura GraphQL & MongoDB',
+    ],
+  },
+  {
+    number: '05',
+    name: 'Developer Tools & Infrastructure',
+    description:
+      'Production toolchains, containerization, API contracts, automated integration testing, and continuous cloud deployment pipelines for resilient software delivery.',
+    tags: [
+      'AWS (EC2, S3)',
+      'Linux & Shell Scripting',
+      'Docker Containerization',
+      'Git & GitHub Workflows',
+      'REST APIs & FastAPI',
+      'Postman (API Testing & Debugging)',
+      'CI/CD & Cloud Deployment (Vercel & Render)',
+      'Databricks',
+    ],
+  },
+  {
+    number: '06',
+    name: 'Personal Interests & Curiosity',
+    description:
+      'Areas of curiosity that keep me learning outside coursework and internships, exploring how technology intersects with real-world human systems and markets.',
+    tags: [
+      'AI Prompting & Autonomous Workflows',
+      'Quantitative Finance & Market Systems',
+      'Travelling & Cultural Exploration',
+      'Continuous Learning & DSA Problem Solving',
+    ],
+  },
+];
+
+const PROFILE_PILLARS = [
+  {
+    title: 'Software Engineering (SWE)',
+    detail: 'Clean API architecture, row-level concurrency locks, OOP principles, and reliable backend microservices in Java and Python.',
+  },
+  {
+    title: 'Data Science & Analytics',
+    detail: 'Multi-source SQL ETL pipelines, data auditing, statistical hypothesis testing (ANOVA, Chi-Square), and executive Power BI storytelling.',
+  },
+  {
+    title: 'System Design & Business Analysis',
+    detail: 'Low-level design (LLD), event-driven n8n automations, voice-AI integrations, and turning ambiguous business needs into clear specs.',
+  },
+];
+
 export const ServicesSection: React.FC = () => {
-  const { skillsCategories, profilePillars, interests } = portfolioData;
-  const [activeTab, setActiveTab] = useState<string>('all');
-
-  const categoryIcons: Record<string, React.ElementType> = {
-    languages: Code2,
-    coursework: Layers,
-    'ai-automation': Bot,
-    'data-analytics': Database,
-    'dev-tools': Wrench,
-  };
-
-  const pillarIcons = [Server, Database, BrainCircuit];
-
-  const filteredCategories = activeTab === 'all' 
-    ? skillsCategories 
-    : skillsCategories.filter((cat) => cat.id === activeTab);
-
   return (
     <section
       id="skills"
-      className="relative w-full bg-[#FFFFFF] text-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-12 py-20 sm:py-24 md:py-28 z-10 select-none overflow-hidden"
+      className="relative w-full bg-[#FFFFFF] text-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-12 py-20 sm:py-24 md:py-32 z-10 select-none overflow-hidden"
     >
       {/* Anchor for backward compatibility with #services */}
       <span id="services" className="absolute -top-20" aria-hidden="true" />
 
-      <div className="max-w-6xl mx-auto space-y-16 sm:space-y-20">
+      <div className="max-w-5xl mx-auto space-y-16 sm:space-y-20">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-center space-y-4">
           <FadeIn delay={0.1} y={25}>
             <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-[#0C0C0C] text-center flex flex-wrap items-center justify-center gap-x-4 mx-auto max-w-full">
               <span>Technical</span>
@@ -52,164 +133,79 @@ export const ServicesSection: React.FC = () => {
             </h2>
           </FadeIn>
           <FadeIn delay={0.15} y={20}>
-            <p className="font-kanit font-light text-[#0C0C0C]/75 leading-relaxed text-sm sm:text-base md:text-lg">
-              A comprehensive view of my programming foundations, system design coursework, AI tools, and data analytics competencies. Structured to demonstrate readiness across software engineering, data science, and technical systems roles.
+            <p className="font-kanit font-light text-[#0C0C0C]/75 leading-relaxed text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+              A comprehensive breakdown of my engineering foundations, system design coursework, AI tools, and data analytics competencies.
             </p>
+          </FadeIn>
+
+          {/* 3 Core Profile Pillars */}
+          <FadeIn delay={0.2} y={20}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 text-left">
+              {PROFILE_PILLARS.map((pillar) => (
+                <div
+                  key={pillar.title}
+                  className="p-5 rounded-2xl bg-[#0C0C0C]/[0.025] border border-[#0C0C0C]/10 flex flex-col justify-between hover:bg-[#0C0C0C]/[0.05] hover:border-[#0C0C0C]/25 transition-all duration-300"
+                >
+                  <div className="font-kanit font-bold text-base sm:text-lg text-[#0C0C0C] mb-1.5">
+                    {pillar.title}
+                  </div>
+                  <p className="font-kanit font-light text-xs sm:text-sm text-[#0C0C0C]/70 leading-relaxed">
+                    {pillar.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
           </FadeIn>
         </div>
 
-        {/* 3 Core Functional Role Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {profilePillars.map((pillar, idx) => {
-            const Icon = pillarIcons[idx % pillarIcons.length];
-            return (
-              <FadeIn key={pillar.role} delay={0.1 + idx * 0.08} y={25}>
-                <div className="h-full p-6 sm:p-7 rounded-2xl bg-[#0C0C0C]/[0.02] border border-[#0C0C0C]/10 flex flex-col justify-between hover:border-[#0C0C0C]/30 hover:bg-[#0C0C0C]/[0.04] transition-all duration-300">
-                  <div className="space-y-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#0C0C0C] text-white flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-[#F4ECE1]" />
-                    </div>
-                    <h3 className="font-kanit font-bold text-xl sm:text-2xl text-[#0C0C0C] tracking-tight">
-                      {pillar.role}
-                    </h3>
-                    <p className="font-kanit font-light text-xs sm:text-sm text-[#0C0C0C]/75 leading-relaxed">
-                      {pillar.description}
-                    </p>
-                  </div>
+        {/* Big Editorial 01-06 List Layout */}
+        <div className="divide-y divide-[#0C0C0C]/15 border-t border-b border-[#0C0C0C]/15">
+          {SKILL_SECTIONS.map((section, index) => (
+            <FadeIn key={section.number} delay={index * 0.08} y={25}>
+              <div className="group py-8 sm:py-10 md:py-12 flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-12 transition-all duration-300 hover:px-4 rounded-2xl hover:bg-[#0C0C0C]/[0.02]">
+                
+                {/* Left: Giant Editorial Number */}
+                <div className="flex items-center gap-6 md:w-1/4 shrink-0">
+                  <span
+                    className="font-kanit font-black text-[#0C0C0C] transition-transform duration-300 group-hover:scale-105 inline-block select-none"
+                    style={{ fontSize: 'clamp(2.5rem, 8vw, 110px)', lineHeight: 0.9 }}
+                  >
+                    {section.number}
+                  </span>
                 </div>
-              </FadeIn>
-            );
-          })}
-        </div>
 
-        {/* Category Filter Tabs */}
-        <FadeIn delay={0.2} y={15}>
-          <div className="flex flex-wrap items-center justify-center gap-2 border-b border-[#0C0C0C]/10 pb-4">
-            <button
-              onClick={() => setActiveTab('all')}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-mono transition-all duration-200 ${
-                activeTab === 'all'
-                  ? 'bg-[#0C0C0C] text-white shadow-md'
-                  : 'bg-[#0C0C0C]/5 text-[#0C0C0C]/70 hover:bg-[#0C0C0C]/10'
-              }`}
-            >
-              All Skills ({skillsCategories.reduce((acc, cat) => acc + cat.items.length, 0)})
-            </button>
-            {skillsCategories.map((cat) => {
-              const Icon = categoryIcons[cat.id] || Code2;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveTab(cat.id)}
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-mono transition-all duration-200 ${
-                    activeTab === cat.id
-                      ? 'bg-[#0C0C0C] text-white shadow-md'
-                      : 'bg-[#0C0C0C]/5 text-[#0C0C0C]/70 hover:bg-[#0C0C0C]/10'
-                  }`}
-                >
-                  <Icon className="w-3.5 h-3.5" />
-                  <span>{cat.title}</span>
-                </button>
-              );
-            })}
-          </div>
-        </FadeIn>
-
-        {/* Detailed Skills Categories Display */}
-        <div className="space-y-12">
-          {filteredCategories.map((cat, catIdx) => {
-            const Icon = categoryIcons[cat.id] || Code2;
-            return (
-              <FadeIn key={cat.id} delay={catIdx * 0.08} y={25}>
-                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#0C0C0C]/10 shadow-[0_4px_25px_rgba(0,0,0,0.03)] space-y-6">
-                  {/* Category Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#0C0C0C]/10 pb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2.5 rounded-xl bg-[#0C0C0C]/5 text-[#0C0C0C]">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h3 className="font-kanit font-black text-2xl sm:text-3xl text-[#0C0C0C] tracking-tight uppercase">
-                          {cat.title}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-[#0C0C0C]/70 font-mono mt-0.5">
-                          {cat.summary}
-                        </p>
-                      </div>
-                    </div>
-                    <span className="text-xs font-mono font-semibold text-[#0C0C0C]/40 self-start sm:self-auto">
-                      {cat.items.length} competencies
-                    </span>
+                {/* Right: Category Name, Description & Skill Tags */}
+                <div className="flex-1 flex flex-col justify-center space-y-3">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3
+                      className="font-kanit font-semibold uppercase tracking-tight text-[#0C0C0C] group-hover:text-black transition-colors"
+                      style={{ fontSize: 'clamp(1.1rem, 2vw, 1.8rem)' }}
+                    >
+                      {section.name}
+                    </h3>
+                    <ArrowUpRight className="w-5 h-5 text-[#0C0C0C]/30 group-hover:text-[#0C0C0C] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 shrink-0" />
                   </div>
 
-                  {/* Skills Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {cat.items.map((item) => (
-                      <div
-                        key={item.name}
-                        className="p-4 rounded-2xl bg-[#0C0C0C]/[0.02] border border-[#0C0C0C]/10 hover:border-[#0C0C0C]/30 hover:bg-[#0C0C0C]/[0.04] transition-all duration-200 flex flex-col justify-between space-y-2 group"
+                  <p className="font-kanit font-light text-[#0C0C0C]/75 leading-relaxed max-w-2xl text-xs sm:text-sm md:text-base">
+                    {section.description}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-1.5 pt-2">
+                    {section.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-[#0C0C0C]/5 text-[#0C0C0C]/85 border border-[#0C0C0C]/10 hover:bg-[#0C0C0C]/10 transition-colors"
                       >
-                        <div className="flex items-start justify-between gap-2">
-                          <span className="font-kanit font-semibold text-base sm:text-lg text-[#0C0C0C] group-hover:text-black">
-                            {item.name}
-                          </span>
-                          <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-[#0C0C0C]/5 text-[#0C0C0C]/70 border border-[#0C0C0C]/10 shrink-0">
-                            {item.level}
-                          </span>
-                        </div>
-                        <p className="text-xs font-mono text-[#0C0C0C]/65 leading-relaxed">
-                          {item.note}
-                        </p>
-                      </div>
+                        {tag}
+                      </span>
                     ))}
                   </div>
                 </div>
-              </FadeIn>
-            );
-          })}
+
+              </div>
+            </FadeIn>
+          ))}
         </div>
-
-        {/* Interests & Engineering Curiosity */}
-        <FadeIn delay={0.25} y={20}>
-          <div className="p-6 sm:p-8 rounded-3xl bg-[#0C0C0C]/[0.03] border border-[#0C0C0C]/10 space-y-6">
-            <div className="flex items-center gap-3 border-b border-[#0C0C0C]/10 pb-4">
-              <div className="p-2.5 rounded-xl bg-[#0C0C0C] text-white">
-                <Compass className="w-5 h-5 text-[#F4ECE1]" />
-              </div>
-              <div>
-                <h3 className="font-kanit font-black text-2xl sm:text-3xl text-[#0C0C0C] tracking-tight uppercase">
-                  Personal Interests & Curiosity
-                </h3>
-                <p className="text-xs sm:text-sm text-[#0C0C0C]/70 font-mono mt-0.5">
-                  Beyond core coursework and engineering tasks, what keeps me curious and learning outside work.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {interests.map((interest, idx) => {
-                const interestIcons = [Bot, TrendingUp, Plane, BookOpen];
-                const IIcon = interestIcons[idx % interestIcons.length];
-                return (
-                  <div
-                    key={interest.name}
-                    className="p-4 rounded-2xl bg-white border border-[#0C0C0C]/10 flex flex-col justify-between space-y-2 shadow-sm"
-                  >
-                    <div className="flex items-center gap-2 text-[#0C0C0C]">
-                      <IIcon className="w-4 h-4 text-[#0C0C0C]/70" />
-                      <span className="font-kanit font-bold text-sm sm:text-base text-[#0C0C0C]">
-                        {interest.name}
-                      </span>
-                    </div>
-                    <p className="text-xs font-mono text-[#0C0C0C]/70 leading-relaxed">
-                      {interest.detail}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </FadeIn>
 
       </div>
     </section>
