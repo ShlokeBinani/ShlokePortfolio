@@ -104,7 +104,7 @@ export const About: React.FC = () => {
 
             <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm font-mono text-zinc-400">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <span>250+ LeetCode & GFG Solved</span>
+              <span>250+ DSA & SQL Problems (LeetCode & GFG)</span>
             </div>
           </div>
         </FadeIn>

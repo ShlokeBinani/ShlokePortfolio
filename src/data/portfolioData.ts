@@ -126,7 +126,7 @@ export const portfolioData = {
       title: "Languages & Core Tech",
       summary: "Core programming languages for algorithmic problem-solving, backend systems, and low-level processing.",
       items: [
-        { name: "Java (DSA)", level: "Advanced", note: "250+ LeetCode & GFG solved; OOP & algorithms" },
+        { name: "Java (DSA)", level: "Advanced", note: "250+ DSA & SQL problems solved on LeetCode & GFG; OOP principles" },
         { name: "Python", level: "Proficient", note: "Pandas, NumPy, Scikit-Learn, PyTorch, SciPy" },
         { name: "Embedded C", level: "Practical", note: "Hardware-level microcontroller programming" },
         { name: "C++", level: "Proficient", note: "Systems programming & algorithmic efficiency" },

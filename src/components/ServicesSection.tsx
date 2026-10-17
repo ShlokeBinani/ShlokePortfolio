@@ -16,7 +16,7 @@ const SKILL_SECTIONS: SkillSectionItem[] = [
     description:
       'Foundational programming languages for algorithmic problem-solving, backend services, and low-level system execution. Regular practice across data structures, algorithms, and memory management.',
     tags: [
-      'Java (DSA - 250+ Solved)',
+      'Java (DSA - 250+ Problems Solved)',
       'Python (Pandas, NumPy, Scikit-Learn)',
       'Embedded C',
       'C++',
