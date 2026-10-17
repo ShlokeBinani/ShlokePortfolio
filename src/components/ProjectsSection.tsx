@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowUpRight,
   ExternalLink,
@@ -12,18 +12,17 @@ import {
   AlertTriangle,
   Zap,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  BookOpen,
+  FileText,
+  Sparkles,
 } from 'lucide-react';
 import { portfolioData, Project } from '../data/portfolioData';
-import { setActiveDrawerProject } from '../utils/webglState';
+import { setActiveDrawerProject, webglState } from '../utils/webglState';
 import { FadeIn } from './common/FadeIn';
 
 const getProjectImg = (filename: string) => `${import.meta.env.BASE_URL}images/projects/${filename}`;
-
-interface StickyCardProps {
-  project: Project;
-  index: number;
-  totalCards: number;
-}
 
 // 1. ResiliNet Bento Visuals (Empirical Latency + Queue Depth + Hero 4-Tier SUT Architecture)
 const ResiliNetBento: React.FC = () => {
@@ -682,127 +681,426 @@ const ProjectBentoSlot: React.FC<{ projectId: string }> = ({ projectId }) => {
   }
 };
 
-const StickyProjectCard: React.FC<StickyCardProps> = ({ project, index, totalCards }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+interface ProjectTabProps {
+  project: Project;
+  index: number;
+  isActive: boolean;
+  onClick: () => void;
+}
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'start start'],
-  });
+const ProjectTab: React.FC<ProjectTabProps> = ({ project, index, isActive, onClick }) => {
+  // Unique accent color per project tab
+  const getTabAccent = (idx: number) => {
+    switch (idx) {
+      case 0:
+        return { dot: 'bg-sky-400', border: 'border-sky-400/50', text: 'text-sky-300' };
+      case 1:
+        return { dot: 'bg-amber-400', border: 'border-amber-400/50', text: 'text-amber-300' };
+      case 2:
+        return { dot: 'bg-purple-400', border: 'border-purple-400/50', text: 'text-purple-300' };
+      case 3:
+        return { dot: 'bg-red-400', border: 'border-red-400/50', text: 'text-red-300' };
+      case 4:
+      default:
+        return { dot: 'bg-emerald-400', border: 'border-emerald-400/50', text: 'text-emerald-300' };
+    }
+  };
 
-  // Staggered scale for the authentic physical catalogue deck look
-  const targetScale = 1 - (totalCards - 1 - index) * 0.028;
-  const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
+  const accent = getTabAccent(index);
 
   return (
-    <div
-      ref={containerRef}
-      className="h-[92vh] min-h-[660px] max-h-[880px] flex items-center justify-center sticky mb-10 sm:mb-14"
-      style={{ top: `${75 + index * 20}px` }}
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative px-3 sm:px-5 py-2 sm:py-2.5 rounded-t-xl sm:rounded-t-2xl font-mono text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 border-t border-l border-r shrink-0 cursor-pointer ${
+        isActive
+          ? `bg-[#131317] text-white ${accent.border} shadow-[0_-4px_16px_rgba(0,0,0,0.5)] -mb-[1px] z-20 translate-y-[-2px]`
+          : 'bg-[#0A0A0D]/70 text-zinc-400 border-white/10 hover:text-zinc-200 hover:bg-[#121216] translate-y-0'
+      }`}
     >
-      <motion.div
-        style={{ scale }}
-        className="w-full max-w-6xl rounded-[32px] sm:rounded-[42px] md:rounded-[48px] border border-white/10 bg-[#121215] p-5 sm:p-7 md:p-8 shadow-[0_24px_65px_rgba(0,0,0,0.85)] flex flex-col justify-between transition-all duration-300 hover:border-white/25 relative overflow-hidden"
-      >
-        {/* TOP ROW: Exactly matching reference image (Giant Number + Category + Title on left, Pill Button on right) */}
-        <div className="flex items-center justify-between gap-4 pb-4 border-b border-white/10">
-          {/* Left: Giant Bold Number + Category + Title */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            <span
-              className="font-anton text-white/95 leading-none select-none tracking-tight block"
-              style={{ fontSize: 'clamp(3rem, 6.5vw, 5.2rem)' }}
-            >
-              {project.number}
-            </span>
-
-            <div className="space-y-0.5">
-              <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-[0.16em] text-zinc-400 block">
-                {project.category}
-              </span>
-              <h3 className="font-inter font-extrabold text-base sm:text-xl md:text-2xl text-white tracking-tight">
-                {project.title}
-              </h3>
-            </div>
-          </div>
-
-          {/* Right: Pill Button (Live Project / Case Study) */}
-          <div className="flex items-center gap-2.5">
-            {project.liveLink ? (
-              <a
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Launch Live Project"
-                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-emerald-400/50 text-emerald-300 hover:bg-emerald-400/15 hover:border-emerald-300 text-xs font-mono uppercase tracking-wider transition-all duration-200 shadow-sm"
-              >
-                <span>Live Project</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            ) : project.github ? (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="View GitHub Repository"
-                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-white/20 text-zinc-300 hover:border-white hover:text-white hover:bg-white/5 text-xs font-mono uppercase tracking-wider transition-all duration-200"
-              >
-                <span>GitHub</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-            ) : null}
-
-            <button
-              onClick={() => setActiveDrawerProject(project.id)}
-              type="button"
-              className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-white/20 text-zinc-200 hover:border-white hover:text-white hover:bg-white/10 text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer"
-            >
-              <span>Case Study</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
-
-        {/* BODY: The 3-Item Bento Visual Gallery (2 Stacked Left + 1 Large Hero Right) */}
-        <div
-          onClick={() => setActiveDrawerProject(project.id)}
-          className="pt-4 flex-1 cursor-pointer"
-        >
-          <ProjectBentoSlot projectId={project.id} />
-        </div>
-      </motion.div>
-    </div>
+      <span className={`w-2 h-2 rounded-full ${isActive ? `${accent.dot} animate-pulse shadow-[0_0_8px_currentColor]` : 'bg-zinc-600'}`} />
+      <span className="font-bold text-[#F5F5F7]">{project.number}</span>
+      <span className="opacity-90 font-medium">
+        {project.id === 'resilinet'
+          ? 'ResiliNet'
+          : project.id === 'paradox'
+          ? 'Paradox'
+          : project.id === 'ms-hqnet'
+          ? 'MS-HQNet'
+          : project.id === 'customer-attrition'
+          ? 'Churn Analytics'
+          : 'E-Commerce RFM'}
+      </span>
+      {isActive && (
+        <span className={`hidden md:inline text-[9px] px-1.5 py-0.5 rounded-full bg-white/10 ${accent.text} border border-white/10 font-bold ml-1`}>
+          ACTIVE LOG
+        </span>
+      )}
+    </button>
   );
 };
 
 export const ProjectsSection: React.FC = () => {
   const projects = portfolioData.projects;
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [direction, setDirection] = useState<number>(1);
+  const touchStartX = useRef<number | null>(null);
+  const lastWheelTime = useRef<number>(0);
+
+  const currentProject = projects[currentPage];
+
+  const handlePageChange = (newIndex: number) => {
+    if (newIndex === currentPage || newIndex < 0 || newIndex >= projects.length) return;
+    setDirection(newIndex > currentPage ? 1 : -1);
+    setCurrentPage(newIndex);
+  };
+
+  const handleNext = () => {
+    if (currentPage < projects.length - 1) {
+      handlePageChange(currentPage + 1);
+    } else {
+      handlePageChange(0);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 0) {
+      handlePageChange(currentPage - 1);
+    } else {
+      handlePageChange(projects.length - 1);
+    }
+  };
+
+  // Keyboard navigation when modal is not open
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (webglState.activeDrawerProject) return;
+      if (e.key === 'ArrowRight') {
+        handleNext();
+      } else if (e.key === 'ArrowLeft') {
+        handlePrev();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentPage]);
+
+  // Touch swipe support for mobile devices
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (diff > 45) {
+      handleNext();
+    } else if (diff < -45) {
+      handlePrev();
+    }
+    touchStartX.current = null;
+  };
+
+  // Subtle mouse wheel flipping with cooldown
+  const handleWheel = (e: React.WheelEvent) => {
+    const now = Date.now();
+    if (now - lastWheelTime.current < 450) return;
+    if (Math.abs(e.deltaY) > 55) {
+      if (e.deltaY > 0 && currentPage < projects.length - 1) {
+        lastWheelTime.current = now;
+        handlePageChange(currentPage + 1);
+      } else if (e.deltaY < 0 && currentPage > 0) {
+        lastWheelTime.current = now;
+        handlePageChange(currentPage - 1);
+      }
+    }
+  };
 
   return (
     <section
       id="projects"
-      className="relative w-full bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-20 px-4 sm:px-8 md:px-12 pt-24 sm:pt-32 pb-32 select-none"
+      className="relative w-full bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-20 px-3 sm:px-6 md:px-12 pt-24 sm:pt-32 pb-32 select-none"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header: Perfectly Centered */}
-        <div className="w-full text-center mb-16 sm:mb-20">
+        <div className="w-full text-center mb-10 sm:mb-14">
           <FadeIn delay={0.1} y={25}>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D6C3B0] uppercase tracking-wider mb-4">
+              <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Architectural Field Journal</span>
+              <span className="text-zinc-600">·</span>
+              <span>Binder Edition</span>
+            </div>
             <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-center flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mx-auto max-w-full">
               <span className="hero-heading">Featured</span>
               <span className="text-stroke-hollow">Projects</span>
             </h2>
+            <p className="text-xs sm:text-sm text-zinc-400 font-mono mt-3 max-w-xl mx-auto">
+              Flip through project journal pages or click any tab to inspect architecture logs and empirical case studies.
+            </p>
           </FadeIn>
         </div>
 
-        {/* 5 Stacking Project Catalogue Cards */}
-        <div className="relative">
-          {projects.map((project, index) => (
-            <StickyProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              totalCards={projects.length}
-            />
-          ))}
+        {/* The Notebook Binder Stage */}
+        <div className="relative w-full max-w-6xl mx-auto">
+          {/* Top Index Tabs: Tabbed Binder Dividers */}
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar px-2 sm:px-6 z-10 relative">
+            {projects.map((project, idx) => (
+              <ProjectTab
+                key={project.id}
+                project={project}
+                index={idx}
+                isActive={idx === currentPage}
+                onClick={() => handlePageChange(idx)}
+              />
+            ))}
+          </div>
+
+          {/* The Physical Notebook Outer Chassis */}
+          <div
+            onWheel={handleWheel}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            className="relative rounded-2xl sm:rounded-3xl md:rounded-[40px] bg-[#09090C] border border-white/15 p-2 sm:p-4 md:p-5 shadow-[0_32px_100px_rgba(0,0,0,0.95)] overflow-hidden"
+          >
+            {/* Metallic Corner Rivets in the 4 corners of the binder */}
+            <div className="absolute top-3 left-3 w-3 h-3 rounded-full bg-gradient-to-br from-zinc-300 via-zinc-600 to-zinc-900 border border-white/20 shadow-sm pointer-events-none z-30" />
+            <div className="absolute top-3 right-3 w-3 h-3 rounded-full bg-gradient-to-br from-zinc-300 via-zinc-600 to-zinc-900 border border-white/20 shadow-sm pointer-events-none z-30" />
+            <div className="absolute bottom-3 left-3 w-3 h-3 rounded-full bg-gradient-to-br from-zinc-300 via-zinc-600 to-zinc-900 border border-white/20 shadow-sm pointer-events-none z-30" />
+            <div className="absolute bottom-3 right-3 w-3 h-3 rounded-full bg-gradient-to-br from-zinc-300 via-zinc-600 to-zinc-900 border border-white/20 shadow-sm pointer-events-none z-30" />
+
+            {/* Inner Binder Stage: Left Spiral Spine + Turned Page */}
+            <div className="relative flex w-full items-stretch min-h-[640px] md:min-h-[720px] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-[#0D0D11]">
+              
+              {/* Left Ring Binder Spine */}
+              <div className="w-10 sm:w-14 md:w-18 shrink-0 bg-[#07070A] border-r border-white/10 flex flex-col justify-around items-center py-6 sm:py-8 relative select-none z-20">
+                {/* Dual Vertical Metallic Backbone Wire */}
+                <div className="absolute top-4 bottom-4 w-1 bg-gradient-to-b from-zinc-700 via-zinc-500 to-zinc-700 rounded-full left-1/2 -translate-x-1/2 opacity-60 pointer-events-none" />
+
+                {/* 8 Stamped Multi-Ring Binder Wire Loops */}
+                {Array.from({ length: 8 }).map((_, rIdx) => (
+                  <div key={rIdx} className="relative w-full flex items-center justify-center my-1.5">
+                    {/* Punch Hole */}
+                    <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#030305] border border-white/15 shadow-[inset_0_2px_4px_rgba(0,0,0,0.95)] relative flex items-center justify-center">
+                      {/* Curved Metallic Wire Loop */}
+                      <div className="absolute -right-3.5 sm:-right-4 w-7 sm:w-8 h-2 sm:h-2.5 rounded-full bg-gradient-to-r from-zinc-500 via-zinc-100 to-zinc-600 shadow-[0_3px_6px_rgba(0,0,0,0.9)] border-t border-white/60 pointer-events-none z-30" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Crease Shadow Overlay directly to the right of the spine */}
+              <div className="absolute left-10 sm:left-14 md:left-18 top-0 bottom-0 w-8 sm:w-12 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none z-20" />
+
+              {/* Stacked Sheet Depth Simulation on the Right Edge */}
+              <div className="absolute right-0 top-3 bottom-3 w-2.5 sm:w-3 flex flex-col justify-between pointer-events-none z-20">
+                <div className="h-full border-r border-white/5 mr-0.5" />
+                <div className="h-full border-r border-white/10 mr-1" />
+                <div className="h-full border-r border-white/15 mr-1.5" />
+              </div>
+
+              {/* The Active Notebook Page with 3D Page Turn Animation */}
+              <div
+                className="flex-1 relative overflow-hidden"
+                style={{ perspective: 1400 }}
+              >
+                <AnimatePresence mode="wait" custom={direction}>
+                  <motion.div
+                    key={currentProject.id}
+                    custom={direction}
+                    variants={{
+                      initial: (dir: number) => ({
+                        rotateY: dir > 0 ? 24 : -24,
+                        opacity: 0,
+                        x: dir > 0 ? 30 : -30,
+                        scale: 0.985,
+                      }),
+                      animate: {
+                        rotateY: 0,
+                        opacity: 1,
+                        x: 0,
+                        scale: 1,
+                        transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
+                      },
+                      exit: (dir: number) => ({
+                        rotateY: dir > 0 ? -24 : 24,
+                        opacity: 0,
+                        x: dir > 0 ? -30 : 30,
+                        scale: 0.985,
+                        transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+                      }),
+                    }}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    style={{ transformOrigin: 'left center' }}
+                    className="w-full h-full bg-[#131317] p-4 sm:p-6 md:p-8 flex flex-col justify-between relative text-[#F5F5F7]"
+                  >
+                    {/* Engineering Blueprint Dot-Grid Texture */}
+                    <div
+                      className="absolute inset-0 opacity-[0.06] pointer-events-none"
+                      style={{
+                        backgroundImage: `radial-gradient(#ffffff 1px, transparent 1px)`,
+                        backgroundSize: '18px 18px',
+                      }}
+                      aria-hidden="true"
+                    />
+
+                    {/* Classic Engineering Pad Red Margin Line on the left */}
+                    <div className="absolute left-3 sm:left-5 top-0 bottom-0 w-[1px] bg-red-500/25 pointer-events-none" />
+
+                    {/* TOP PAGE ROW: Stamped Log Metadata + Pill Actions */}
+                    <div className="pl-4 sm:pl-6 pb-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 relative z-10">
+                      {/* Left: Stamped Technical Reference */}
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                        <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest text-[#D6C3B0] flex items-center gap-1.5">
+                          <FileText className="w-3.5 h-3.5 text-emerald-400" />
+                          <span>LOG ENTRY {currentProject.number} / 0{projects.length}</span>
+                        </span>
+                        <span className="text-zinc-600 hidden sm:inline">·</span>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-300 uppercase">
+                          {currentProject.category}
+                        </span>
+                      </div>
+
+                      {/* Right: Quick Action Links & Prominent Case Study Button */}
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        {currentProject.liveLink && (
+                          <a
+                            href={currentProject.liveLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Launch Live Application"
+                            className="inline-flex items-center gap-1 px-3 sm:px-4 py-1.5 rounded-full border border-emerald-400/40 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 text-[11px] font-mono uppercase tracking-wider transition-all"
+                          >
+                            <span>Live App</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
+
+                        {currentProject.github && (
+                          <a
+                            href={currentProject.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="View GitHub Code"
+                            className="inline-flex items-center gap-1 px-3 sm:px-4 py-1.5 rounded-full border border-white/15 bg-white/5 text-zinc-300 hover:border-white hover:text-white text-[11px] font-mono uppercase tracking-wider transition-all"
+                          >
+                            <span>GitHub</span>
+                            <ArrowUpRight className="w-3 h-3" />
+                          </a>
+                        )}
+
+                        {/* Standout Prominent Case Study Button */}
+                        <button
+                          onClick={() => setActiveDrawerProject(currentProject.id)}
+                          type="button"
+                          className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-emerald-500/25 to-white/10 hover:from-emerald-500/35 hover:to-white/20 border border-emerald-400/50 text-white hover:border-emerald-300 shadow-[0_0_18px_rgba(16,185,129,0.18)] text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer group"
+                        >
+                          <Sparkles className="w-3.5 h-3.5 text-emerald-300" />
+                          <span>Open Case Study</span>
+                          <ArrowUpRight className="w-3.5 h-3.5 text-emerald-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* PROJECT TITLE & HERO BANNER */}
+                    <div className="pl-4 sm:pl-6 pt-3 pb-2 flex flex-wrap items-baseline justify-between gap-3 relative z-10">
+                      <div className="flex items-center gap-3 sm:gap-5">
+                        <span
+                          className="font-anton text-white/95 leading-none select-none tracking-tight block text-4xl sm:text-6xl md:text-7xl"
+                        >
+                          {currentProject.number}
+                        </span>
+
+                        <div className="space-y-0.5">
+                          <h3 className="font-inter font-extrabold text-lg sm:text-2xl md:text-3xl text-white tracking-tight leading-snug">
+                            {currentProject.title}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-[#D6C3B0] font-medium line-clamp-1">
+                            {currentProject.subtitle}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Headline Metric Badge */}
+                      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-zinc-300">
+                        <Activity className="w-3.5 h-3.5 text-emerald-400" />
+                        <span className="font-bold text-white">{currentProject.headlineMetric}</span>
+                      </div>
+                    </div>
+
+                    {/* CENTER BODY: Bento Visual Artifacts (Clicking opens case study) */}
+                    <div
+                      onClick={() => setActiveDrawerProject(currentProject.id)}
+                      title="Click anywhere to inspect full case study"
+                      className="pl-4 sm:pl-6 py-3 flex-1 cursor-pointer relative z-10"
+                    >
+                      <ProjectBentoSlot projectId={currentProject.id} />
+                    </div>
+
+                    {/* BOTTOM PAGE BAR: Stamped Sign-off & Page Flipping Controls */}
+                    <div className="pl-4 sm:pl-6 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs font-mono relative z-10">
+                      {/* Left: Stamped Author / Status */}
+                      <div className="flex items-center gap-2 text-zinc-400 text-[11px]">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                        <span>AUTHOR: SHLOKE BINANI // VIT VELLORE</span>
+                      </div>
+
+                      {/* Center: Interactive Page Indicator Pips */}
+                      <div className="flex items-center gap-1.5">
+                        {projects.map((_, pIdx) => (
+                          <button
+                            key={pIdx}
+                            onClick={() => handlePageChange(pIdx)}
+                            title={`Jump to Page 0${pIdx + 1}`}
+                            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                              pIdx === currentPage
+                                ? 'w-6 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]'
+                                : 'w-2 bg-white/20 hover:bg-white/40'
+                            }`}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Right: Tactile Page Flipper Controls */}
+                      <div className="flex items-center gap-2">
+                        <span className="hidden sm:inline text-[10px] text-zinc-500 mr-1">
+                          [ Use arrows or swipe ]
+                        </span>
+
+                        <button
+                          type="button"
+                          onClick={handlePrev}
+                          className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-zinc-300 hover:text-white border border-white/10 transition-all flex items-center gap-1 text-[11px]"
+                          title="Previous Page (Arrow Left)"
+                        >
+                          <ChevronLeft className="w-3.5 h-3.5" />
+                          <span>Prev</span>
+                        </button>
+
+                        <span className="text-[11px] font-bold text-[#F4ECE1] px-1">
+                          0{currentPage + 1} / 0{projects.length}
+                        </span>
+
+                        <button
+                          type="button"
+                          onClick={handleNext}
+                          className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-zinc-300 hover:text-white border border-white/10 transition-all flex items-center gap-1 text-[11px]"
+                          title="Next Page (Arrow Right)"
+                        >
+                          <span>Next</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -810,3 +1108,4 @@ export const ProjectsSection: React.FC = () => {
 };
 
 export default ProjectsSection;
+
