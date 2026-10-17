@@ -272,6 +272,206 @@ export const ProjectDrawer: React.FC = () => {
                   </p>
                 </div>
 
+                {/* Published Research Artifacts & Empirical Figures (For Verified Research Papers) */}
+                {currentProject.id === 'ms-hqnet' && (
+                  <div className="p-6 sm:p-8 rounded-3xl bg-[#0A0A0C] border border-amber-500/30 space-y-6">
+                    <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
+                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-300">
+                        <Activity className="w-4 h-4 text-amber-400" />
+                        <span className="font-bold">Published IEEE Paper Figures & Empirical Visuals</span>
+                      </div>
+                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                        Peer-Reviewed IEEE TETCI
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      {/* Figure 1: Full System Architecture Pipeline */}
+                      <div className="rounded-2xl bg-black/80 border border-white/10 overflow-hidden flex flex-col justify-between group">
+                        <div className="p-3 bg-white flex items-center justify-center min-h-[160px]">
+                          <img
+                            src={`${import.meta.env.BASE_URL}images/projects/mshqnet_p1_img1_42.png`}
+                            alt="MS-HQNet System Architecture Pipeline"
+                            className="w-full h-auto max-h-[180px] object-contain filter contrast-110"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-4 space-y-1.5 font-mono text-xs">
+                          <div className="text-amber-300 font-bold">
+                            Fig. 1: Full System Architecture Pipeline
+                          </div>
+                          <p className="text-zinc-400 text-[11px] leading-relaxed">
+                            Dual-channel EOG/EMG biosignals decomposed through SM-SSA, routed into a 6-qubit parametric quantum circuit with a classical Mish MLP bypass to eliminate barren plateaus.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Figure 2: Barren Plateau Mitigation Plot */}
+                      <div className="rounded-2xl bg-black/80 border border-red-500/30 overflow-hidden flex flex-col justify-between group">
+                        <div className="p-3 bg-white flex items-center justify-center min-h-[160px]">
+                          <img
+                            src={`${import.meta.env.BASE_URL}images/projects/mshqnet_p4_img1_10.png`}
+                            alt="Fig. 4 Training and Validation Dynamics (Barren Plateau Mitigation)"
+                            className="w-full h-auto max-h-[180px] object-contain filter contrast-125"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-4 space-y-1.5 font-mono text-xs">
+                          <div className="text-red-400 font-bold flex items-center justify-between">
+                            <span>Fig. 4: Barren Plateau Mitigation Dynamics</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-red-500/20 text-red-300">Loss & Accuracy</span>
+                          </div>
+                          <p className="text-zinc-400 text-[11px] leading-relaxed">
+                            Standard QCNN training stalls at high loss due to barren plateaus (red dashed curve). The hybrid MS-HQNet architecture (blue solid curve) converges rapidly down to 0.02 loss and 99.17% accuracy.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Figure 3: 2D t-SNE Feature Space Distribution */}
+                      <div className="rounded-2xl bg-black/80 border border-purple-500/30 overflow-hidden flex flex-col justify-between group">
+                        <div className="p-3 bg-white flex items-center justify-center min-h-[160px]">
+                          <img
+                            src={`${import.meta.env.BASE_URL}images/projects/mshqnet_p3_img1_6.png`}
+                            alt="Fig. 3 t-SNE Feature Space Before and After NCA"
+                            className="w-full h-auto max-h-[180px] object-contain filter contrast-125"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-4 space-y-1.5 font-mono text-xs">
+                          <div className="text-purple-300 font-bold flex items-center justify-between">
+                            <span>Fig. 3: 2D t-SNE Feature Manifold</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300">260 → 64 NCA</span>
+                          </div>
+                          <p className="text-zinc-400 text-[11px] leading-relaxed">
+                            (a) Raw features exhibit chaotic overlapping distributions across 6 eye movements. (b) NCA reduction yields 6 tightly isolated, high-margin colored clusters.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Figure 4: 5-Fold Cross Validation Benchmark */}
+                      <div className="rounded-2xl bg-black/80 border border-emerald-500/30 overflow-hidden flex flex-col justify-between group">
+                        <div className="p-3 bg-white flex items-center justify-center min-h-[160px]">
+                          <img
+                            src={`${import.meta.env.BASE_URL}images/projects/mshqnet_p5_img1_16.png`}
+                            alt="Cross Validation Performance Comparison Across 600 Samples"
+                            className="w-full h-auto max-h-[180px] object-contain filter contrast-125"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-4 space-y-1.5 font-mono text-xs">
+                          <div className="text-emerald-400 font-bold flex items-center justify-between">
+                            <span>Fig. 5: SOTA Baseline Benchmark</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">99.17% vs 97.50%</span>
+                          </div>
+                          <p className="text-zinc-400 text-[11px] leading-relaxed">
+                            Empirical cross-validation across 600 muscle signals proves MS-HQNet outperforms Cubic SVM (97.50%), standard MLP (98.33%), 1D-CNN (93.33%), and LSTM (75.00%).
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Published Research Artifacts & Empirical Figures (For ResiliNet) */}
+                {currentProject.id === 'resilinet' && (
+                  <div className="p-6 sm:p-8 rounded-3xl bg-[#0A0A0C] border border-sky-500/30 space-y-6">
+                    <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
+                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-sky-300">
+                        <Activity className="w-4 h-4 text-sky-400" />
+                        <span className="font-bold">Published IEEE Paper Figures & Empirical Results</span>
+                      </div>
+                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30">
+                        Peer-Reviewed 6G DePIN Protocol
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      {/* Figure 1: 3-Layer Decentralized Architecture */}
+                      <div className="rounded-2xl bg-black/80 border border-white/10 overflow-hidden flex flex-col justify-between group">
+                        <div className="p-3 bg-white flex items-center justify-center min-h-[160px]">
+                          <img
+                            src={`${import.meta.env.BASE_URL}images/projects/resilinet_p1_img1_40.png`}
+                            alt="ResiliNet 3-Layer Architecture Diagram"
+                            className="w-full h-auto max-h-[180px] object-contain filter contrast-110"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-4 space-y-1.5 font-mono text-xs">
+                          <div className="text-sky-300 font-bold">
+                            Fig. 1: 3-Layer Decentralized Protocol Architecture
+                          </div>
+                          <p className="text-zinc-400 text-[11px] leading-relaxed">
+                            Layer 1 Edge Mesh Plane for sub-millisecond local forwarding, Layer 2 AI Reasoning Plane with Digital Twin state estimation, and Layer 3 Web3 Trust Plane with Proof-of-Guardian consensus.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Figure 2: M/M/1 Latency Cliff */}
+                      <div className="rounded-2xl bg-black/80 border border-red-500/30 overflow-hidden flex flex-col justify-between group">
+                        <div className="p-3 bg-white flex items-center justify-center min-h-[160px]">
+                          <img
+                            src={`${import.meta.env.BASE_URL}images/projects/resilinet_fig2_latency.png`}
+                            alt="Fig. 2 End-to-end Latency vs Link Utilization"
+                            className="w-full h-auto max-h-[180px] object-contain filter contrast-125"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-4 space-y-1.5 font-mono text-xs">
+                          <div className="text-red-400 font-bold flex items-center justify-between">
+                            <span>Fig. 2: M/M/1 Congestion Cliff (ρ = 85%)</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-red-500/20 text-red-300">-89.8% Latency Drop</span>
+                          </div>
+                          <p className="text-zinc-400 text-[11px] leading-relaxed">
+                            Blind QoS suffers exponential buffer saturation reaching 365ms (red curve with squares). ResiliNet Social Slice maintains flat 37ms latency across 0-100% link utilization (blue curve with circles).
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Figure 3: Social Slice Bandwidth Allocation */}
+                      <div className="rounded-2xl bg-black/80 border border-emerald-500/30 overflow-hidden flex flex-col justify-between group">
+                        <div className="p-3 bg-white flex items-center justify-center min-h-[160px]">
+                          <img
+                            src={`${import.meta.env.BASE_URL}images/projects/resilinet_fig3_throughput.png`}
+                            alt="Fig. 3 Social Slice Dynamic Throughput Allocation"
+                            className="w-full h-auto max-h-[180px] object-contain filter contrast-125"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-4 space-y-1.5 font-mono text-xs">
+                          <div className="text-emerald-400 font-bold flex items-center justify-between">
+                            <span>Fig. 3: 4-Tier SUT Dynamic Re-Allocation</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">DPI Verified</span>
+                          </div>
+                          <p className="text-zinc-400 text-[11px] leading-relaxed">
+                            Under congestion, Tier 1 DICOM telesurgery traffic retains 100% bandwidth (800 Mbps), while Tier 4 UDP Gaming is compressed dynamically to α = 0.40 (144 Mbps).
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Figure 4: 24-Hour Bimodal Load & Queue Depth */}
+                      <div className="rounded-2xl bg-black/80 border border-purple-500/30 overflow-hidden flex flex-col justify-between group">
+                        <div className="p-3 bg-white flex items-center justify-center min-h-[160px]">
+                          <img
+                            src={`${import.meta.env.BASE_URL}images/projects/resilinet_fig4_bimodal_load.png`}
+                            alt="Fig. 4 24-Hour Bimodal Traffic Load Profile"
+                            className="w-full h-auto max-h-[180px] object-contain filter contrast-125"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-4 space-y-1.5 font-mono text-xs">
+                          <div className="text-purple-300 font-bold flex items-center justify-between">
+                            <span>Fig. 4: 24-Hour Bimodal Traffic Ceiling</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300">85% Safety Ceiling</span>
+                          </div>
+                          <p className="text-zinc-400 text-[11px] leading-relaxed">
+                            Captures diurnal morning rush breaching the 85% safety boundary (97% peak), activating AI Sentinel autonomous slice reallocation before packet loss occurs.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* 4. Technologies Used */}
                 <div className="p-6 sm:p-8 rounded-3xl bg-[#0A0A0C] border border-white/10 space-y-4">
                   <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#D6C3B0]">

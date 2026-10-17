@@ -43,13 +43,13 @@ export const BranchingThread: React.FC<BranchingThreadProps> = ({ containerRef }
         preserveAspectRatio="none"
         className="w-full h-full"
       >
-        {/* Central Primary Trunk / Thread */}
+        {/* Central Primary Trunk / Thread - Darker & Clearly Visible */}
         <motion.path
           d="M 500,0 C 490,150 460,300 480,450 C 500,600 530,750 510,900 C 490,1050 460,1200 480,1350 C 500,1500 535,1650 515,1800 C 495,1950 470,2100 490,2250 C 498,2310 500,2370 500,2400"
           fill="none"
-          stroke="#0C0C0C"
-          strokeOpacity="0.32"
-          strokeWidth="2.2"
+          stroke="#000000"
+          strokeOpacity="0.75"
+          strokeWidth="3.2"
           vectorEffect="non-scaling-stroke"
           style={{ pathLength: trunkLength }}
         />
@@ -58,9 +58,9 @@ export const BranchingThread: React.FC<BranchingThreadProps> = ({ containerRef }
         <motion.path
           d="M 480,220 C 420,280 250,340 180,440 C 110,540 120,680 220,780 C 320,880 580,820 680,940 C 780,1060 840,1220 780,1360 C 720,1500 460,1560 380,1700 C 300,1840 320,2000 420,2120 C 480,2200 500,2320 500,2400"
           fill="none"
-          stroke="#0C0C0C"
-          strokeOpacity="0.26"
-          strokeWidth="1.8"
+          stroke="#000000"
+          strokeOpacity="0.65"
+          strokeWidth="2.6"
           vectorEffect="non-scaling-stroke"
           style={{ pathLength: branch1Length }}
         />
@@ -69,9 +69,9 @@ export const BranchingThread: React.FC<BranchingThreadProps> = ({ containerRef }
         <motion.path
           d="M 485,260 C 550,320 740,380 820,480 C 900,580 890,720 790,820 C 690,920 420,860 320,980 C 220,1100 160,1260 220,1400 C 280,1540 540,1600 620,1740 C 700,1880 680,2040 580,2160 C 520,2240 500,2340 500,2400"
           fill="none"
-          stroke="#0C0C0C"
-          strokeOpacity="0.26"
-          strokeWidth="1.8"
+          stroke="#000000"
+          strokeOpacity="0.65"
+          strokeWidth="2.6"
           vectorEffect="non-scaling-stroke"
           style={{ pathLength: branch2Length }}
         />
@@ -80,10 +80,10 @@ export const BranchingThread: React.FC<BranchingThreadProps> = ({ containerRef }
         <motion.path
           d="M 180,440 C 130,480 80,540 60,620 C 40,700 70,780 110,840"
           fill="none"
-          stroke="#0C0C0C"
-          strokeOpacity="0.22"
-          strokeWidth="1.5"
-          strokeDasharray="4 4"
+          stroke="#000000"
+          strokeOpacity="0.55"
+          strokeWidth="2.2"
+          strokeDasharray="5 5"
           vectorEffect="non-scaling-stroke"
           style={{ pathLength: branch3Length }}
         />
@@ -92,10 +92,10 @@ export const BranchingThread: React.FC<BranchingThreadProps> = ({ containerRef }
         <motion.path
           d="M 820,480 C 880,520 930,580 950,660 C 970,740 940,820 900,880"
           fill="none"
-          stroke="#0C0C0C"
-          strokeOpacity="0.22"
-          strokeWidth="1.5"
-          strokeDasharray="4 4"
+          stroke="#000000"
+          strokeOpacity="0.55"
+          strokeWidth="2.2"
+          strokeDasharray="5 5"
           vectorEffect="non-scaling-stroke"
           style={{ pathLength: branch4Length }}
         />
@@ -104,9 +104,9 @@ export const BranchingThread: React.FC<BranchingThreadProps> = ({ containerRef }
         <motion.path
           d="M 220,1400 C 150,1460 90,1540 80,1640 C 70,1740 120,1820 180,1880"
           fill="none"
-          stroke="#0C0C0C"
-          strokeOpacity="0.24"
-          strokeWidth="1.6"
+          stroke="#000000"
+          strokeOpacity="0.60"
+          strokeWidth="2.4"
           vectorEffect="non-scaling-stroke"
           style={{ pathLength: branch5Length }}
         />
@@ -115,9 +115,9 @@ export const BranchingThread: React.FC<BranchingThreadProps> = ({ containerRef }
         <motion.path
           d="M 780,1360 C 850,1420 910,1500 920,1600 C 930,1700 880,1780 820,1840"
           fill="none"
-          stroke="#0C0C0C"
-          strokeOpacity="0.24"
-          strokeWidth="1.6"
+          stroke="#000000"
+          strokeOpacity="0.60"
+          strokeWidth="2.4"
           vectorEffect="non-scaling-stroke"
           style={{ pathLength: branch6Length }}
         />
@@ -126,86 +126,86 @@ export const BranchingThread: React.FC<BranchingThreadProps> = ({ containerRef }
         <motion.path
           d="M 515,1800 C 450,1920 390,2040 430,2170 C 460,2260 485,2340 500,2400"
           fill="none"
-          stroke="#0C0C0C"
-          strokeOpacity="0.24"
-          strokeWidth="1.6"
+          stroke="#000000"
+          strokeOpacity="0.60"
+          strokeWidth="2.4"
           vectorEffect="non-scaling-stroke"
           style={{ pathLength: branch5Length }}
         />
         <motion.path
           d="M 515,1800 C 580,1920 640,2040 600,2170 C 570,2260 530,2340 500,2400"
           fill="none"
-          stroke="#0C0C0C"
-          strokeOpacity="0.24"
-          strokeWidth="1.6"
+          stroke="#000000"
+          strokeOpacity="0.60"
+          strokeWidth="2.4"
           vectorEffect="non-scaling-stroke"
           style={{ pathLength: branch6Length }}
         />
 
-        {/* Delicate Hollow Nodes at Branch Junctions */}
+        {/* Crisp Hollow Nodes at Branch Junctions */}
         <motion.circle
           cx="480"
           cy="220"
-          r="4.5"
+          r="5.5"
           fill="#FFFFFF"
-          stroke="#0C0C0C"
-          strokeOpacity="0.6"
-          strokeWidth="1.6"
+          stroke="#000000"
+          strokeOpacity="0.9"
+          strokeWidth="2.5"
           vectorEffect="non-scaling-stroke"
           style={{ scale: node1Scale }}
         />
         <motion.circle
           cx="485"
           cy="260"
-          r="4.5"
+          r="5.5"
           fill="#FFFFFF"
-          stroke="#0C0C0C"
-          strokeOpacity="0.6"
-          strokeWidth="1.6"
+          stroke="#000000"
+          strokeOpacity="0.9"
+          strokeWidth="2.5"
           vectorEffect="non-scaling-stroke"
           style={{ scale: node2Scale }}
         />
         <motion.circle
           cx="180"
           cy="440"
-          r="4"
+          r="5"
           fill="#FFFFFF"
-          stroke="#0C0C0C"
-          strokeOpacity="0.6"
-          strokeWidth="1.6"
+          stroke="#000000"
+          strokeOpacity="0.9"
+          strokeWidth="2.2"
           vectorEffect="non-scaling-stroke"
           style={{ scale: node3Scale }}
         />
         <motion.circle
           cx="820"
           cy="480"
-          r="4"
+          r="5"
           fill="#FFFFFF"
-          stroke="#0C0C0C"
-          strokeOpacity="0.6"
-          strokeWidth="1.6"
+          stroke="#000000"
+          strokeOpacity="0.9"
+          strokeWidth="2.2"
           vectorEffect="non-scaling-stroke"
           style={{ scale: node3Scale }}
         />
         <motion.circle
           cx="780"
           cy="1360"
-          r="4"
+          r="5"
           fill="#FFFFFF"
-          stroke="#0C0C0C"
-          strokeOpacity="0.6"
-          strokeWidth="1.6"
+          stroke="#000000"
+          strokeOpacity="0.9"
+          strokeWidth="2.2"
           vectorEffect="non-scaling-stroke"
           style={{ scale: node4Scale }}
         />
         <motion.circle
           cx="515"
           cy="1800"
-          r="4.5"
+          r="5.5"
           fill="#FFFFFF"
-          stroke="#0C0C0C"
-          strokeOpacity="0.6"
-          strokeWidth="1.6"
+          stroke="#000000"
+          strokeOpacity="0.9"
+          strokeWidth="2.5"
           vectorEffect="non-scaling-stroke"
           style={{ scale: node5Scale }}
         />
