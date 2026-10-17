@@ -1,3 +1,9 @@
+export interface ProjectStep {
+  step: string;
+  title: string;
+  detail: string;
+}
+
 export interface Project {
   id: string;
   number: string;
@@ -7,6 +13,7 @@ export interface Project {
   category: string;
   headlineMetric: string;
   pipelineFlow: string[];
+  sequentialSteps?: ProjectStep[];
   description: string;
   problemStatement: string;
   systemArchitecture: string;
@@ -315,7 +322,7 @@ export const portfolioData = {
       number: "01",
       title: "ResiliNet",
       subtitle: "Decentralized 6G Social Protocol",
-      roleBadge: "IEEE Research Paper",
+      roleBadge: "Distributed Systems",
       category: "6G Networks & Web3 DePIN",
       headlineMetric: "89.8% peak latency reduction & 0% packet loss at 97% load",
       pipelineFlow: [
@@ -324,7 +331,29 @@ export const portfolioData = {
         "Social Slice Dynamic Compression (α = 0.40)",
         "Proof of Guardian (PoG) DePIN Token Rewards"
       ],
-      description: "A decentralized 6G network orchestration framework that resolves network social blindness during extreme congestion by prioritizing life-critical telemetry (DICOM telesurgery) over recreational traffic through DPI classification, M/M/1 queuing theory, and Web3 DePIN economic incentives.",
+      sequentialSteps: [
+        {
+          step: "01",
+          title: "Deep Packet Inspection (DPI)",
+          detail: "Categorized incoming traffic into a 4-Tier Social Urgency Taxonomy, separating critical telesurgery from recreational entertainment."
+        },
+        {
+          step: "02",
+          title: "Congestion Sentinel (ρ = 85%)",
+          detail: "Derived an autonomous 1Hz monitoring loop using M/M/1 queuing theory to detect when bandwidth reaches 85% capacity before buffers collapse."
+        },
+        {
+          step: "03",
+          title: "Social Slice Dynamic Compression",
+          detail: "Engineered an algorithmic throttle (α = 0.40) compressing recreational traffic by 60%, dropping total load to 46.4% while preserving 100% throughput (800 Mbps) for medical feeds."
+        },
+        {
+          step: "04",
+          title: "Web3 DePIN Token Incentives",
+          detail: "Integrated Proof of Guardian smart contracts on-chain to automatically reward yielding nodes with staking rewards for stabilizing the mesh."
+        }
+      ],
+      description: "During peak network surges, conventional mobile networks treat life-critical medical streams (like remote surgery feeds) identically to recreational video and gaming. ResiliNet is a decentralized 6G protocol that detects network congestion early and prioritizes critical medical telemetry over non-urgent traffic, guaranteeing zero packet loss.",
       problemStatement: "During peak network congestion, conventional wireless schedulers are socially blind: life-critical streams (such as emergency telesurgery feeds on DICOM port 104) compete for bandwidth on equal footing with recreational UDP gaming and streaming. When link utilization crosses the 85% M/M/1 threshold, buffers saturate, latency triples exponentially, and packet loss degrades critical transmissions.",
       systemArchitecture: "Designed a continuous decentralized control loop uniting three subsystems: (1) Deep Packet Inspection (DPI) classifying flows into a 4-Tier Social Urgency Taxonomy (Tiers 1-3 critical and unthrottled; Tier 4 recreational); (2) Queuing-Theoretic Sentinel derived from M/M/1 queuing theory where an autonomous 1 Hz background loop detects bimodal traffic peaks and executes a Social Slice compression (α = 0.40 on Tier 4), reducing an 86% overloaded link to an optimal 46.4% effective load; (3) Proof of Guardian (PoG) DePIN smart contracts compensating yielding nodes with 12% APY and 50 $RNET rewards per event, paired with a bidirectional 3D geospatial Digital Twin.",
       measuredImpact: "Simulations on a 4-node wireless mesh testbed under 97% peak morning load demonstrated an 89.8% latency reduction (365 ms down to 37 ms), an 83.3% jitter reduction (12.0 ms to 2.0 ms), zero packet loss (down from 4.2%), and 100% throughput retention for 800 Mbps critical DICOM traffic, structurally outperforming EvoNetSlice, NetChain, and SliceOps.",
@@ -337,7 +366,7 @@ export const portfolioData = {
       number: "02",
       title: "Paradox",
       subtitle: "Scalable Ticket Booking System",
-      roleBadge: "Full-Stack Backend System",
+      roleBadge: "High-Concurrency Backend",
       category: "High-Concurrency Backend",
       headlineMetric: "Zero double-booking race conditions with PostgreSQL row locks",
       pipelineFlow: [
@@ -346,7 +375,29 @@ export const portfolioData = {
         "10-Min Configurable TTL & Auto-Release Expiry",
         "ACID Waitlist Queue & Automated Seat Offer Flow"
       ],
-      description: "A stateless, high-concurrency ticket reservation engine built on FastAPI, Neon PostgreSQL, Render, and Vercel, designed to prevent race conditions during high-demand concert and movie sales with strict row-level database locks, TTL seat holds, and automatic waitlist reallocation on cancellations.",
+      sequentialSteps: [
+        {
+          step: "01",
+          title: "Interactive Seat Selection",
+          detail: "Built a dynamic visual venue map (Standard and Premium tiers) providing instant seat status feedback and real-time state updates."
+        },
+        {
+          step: "02",
+          title: "Row-Level Database Locking",
+          detail: "Implemented PostgreSQL atomic transactions with SELECT FOR UPDATE to serialize simultaneous seat claims, ensuring zero double bookings."
+        },
+        {
+          step: "03",
+          title: "10-Minute Hold & Auto-Release",
+          detail: "Placed a temporary 10-minute hold on selected seats for checkout; if abandoned, background workers automatically return seats to the open pool."
+        },
+        {
+          step: "04",
+          title: "FIFO Waitlist & QR Dispatch",
+          detail: "Constructed an atomic waitlist queue offering released seats to next-in-line buyers, generating cryptographic HMAC QR tickets dispatched via email."
+        }
+      ],
+      description: "During viral concert or movie ticket drops, thousands of fans try to book the exact same seat at the same millisecond. Paradox is a high-concurrency ticket reservation platform engineered with strict database row-level locks, temporary hold timers, and automated waitlists to completely eliminate double-booking race conditions.",
       problemStatement: "High-demand ticket sales trigger extreme traffic surges where hundreds of users attempt to purchase the exact same seat simultaneously. Without serialized concurrency control, systems suffer from double-booking race conditions and database deadlocks. Furthermore, checkout abandonment locks up inventory, and manual cancellation workflows leave seats unsold.",
       systemArchitecture: "Constructed a stateless backend on Neon PostgreSQL: (1) Concurrency Control: Uses strict row-level locking via SELECT ... FOR UPDATE inside atomic transactions to serialize seat reservation attempts, preventing any two users from claiming the same seat simultaneously; (2) Seat Hold TTL: Places a configurable 10-minute hold with real-time seat map synchronization, auto-releasing abandoned seats back to the available pool via scheduled expiry tasks; (3) Dynamic Waitlists: Category-specific waitlist queues that atomically reassign cancelled seats to next-in-line users with time-limited purchase links; (4) Cryptographic QR Code tickets generated upon booking and dispatched via email.",
       measuredImpact: "Completely eliminated double bookings and race conditions across simultaneous booking attempts. Delivered live frontend on Vercel with real-time seat map updates, robust role-based authentication (Admin, Organiser, Customer), and automated event analytics.",
@@ -360,7 +411,7 @@ export const portfolioData = {
       number: "03",
       title: "MS-HQNet",
       subtitle: "Multi-Stream Hybrid Quantum Framework",
-      roleBadge: "Research First Author (IEEE TETCI)",
+      roleBadge: "Quantum ML Research",
       category: "Quantum ML & Biosignal Processing",
       headlineMetric: "99.17% testing accuracy across 600 EOG/EMG biosignals",
       pipelineFlow: [
@@ -371,11 +422,33 @@ export const portfolioData = {
         "6-Qubit Quantum Circuit (RX, RY, RZ + Circular CNOT)",
         "Parallel Classical MLP Bypass (Mish, LayerNorm)"
       ],
-      description: "Research paper accepted/submitted to IEEE Transactions on Emerging Topics in Computational Intelligence presenting a multi-stream hybrid quantum convolutional neural network combining SM-SSA, Temporal Amplitude Profiling, a 6-qubit amplitude-encoded quantum circuit, and a classical MLP bypass to classify 6 eye movements from electromyographic signals.",
+      sequentialSteps: [
+        {
+          step: "01",
+          title: "Biosignal Noise Deconstruction",
+          detail: "Captured 600 raw muscle biosignals (120Hz, 2-Ch) and applied SM-SSA to strip electrical artifacts from actual muscular activations."
+        },
+        {
+          step: "02",
+          title: "Feature Extraction & Selection",
+          detail: "Extracted 260 temporal amplitude metrics (RMS, Waveform Length, MAV) and used NCA to isolate the top 64 dominant predictive features into distinct clusters."
+        },
+        {
+          step: "03",
+          title: "Quantum Circuit + Classical Bypass",
+          detail: "Amplitude-encoded features into a 6-qubit quantum circuit while running a parallel classical MLP bypass with Mish activation to preserve gradient flow and eliminate barren plateaus."
+        },
+        {
+          step: "04",
+          title: "SOTA Benchmark Validation",
+          detail: "Demonstrated 99.17% accuracy across 5-fold cross-validation, outperforming standard LSTM (75.00%), 1D-CNN (93.33%), and Cubic SVM (97.50%)."
+        }
+      ],
+      description: "Decoding subtle eye movements from electrical muscle signals enables hands-free assistive interfaces for paralyzed individuals. However, raw biosignals are chaotic and standard Quantum Neural Networks fail due to barren plateaus (vanishing optimization gradients). MS-HQNet is a hybrid quantum-classical architecture that bypasses barren plateaus to reach 99.17% classification accuracy.",
       problemStatement: "Electromyographic (EMG) signals recorded from extraocular muscles (EOM) are highly chaotic, non-stationary, and prone to extreme voltage spikes across 6 movement classifications. Standard deep learning baselines (CNNs, LSTMs, GRUs) overfit or plateau below 98%, while pure quantum circuits encounter barren plateaus (exponential vanishing gradients during optimization).",
       systemArchitecture: "Engineered an end-to-end multi-stream pipeline: (1) Sliding Mode Singular Spectrum Analysis (SM-SSA) maps 1D biosignals into multidimensional Hankel trajectory matrices and applies SVD to extract reconstructed components; (2) Temporal Amplitude Profiling extracts RMS, Waveform Length (WL), and Mean Absolute Value (MAV), expanding features to 260 parameters; (3) Quantile Transformation normalizes chaotic voltage distributions into Gaussian densities, and Neighbourhood Component Analysis (NCA) selects the 64 dominant features; (4) Data is L2-normalized (xnorm = x / ||x||2) and amplitude-encoded into a 6-qubit quantum circuit with parameterized RX, RY, RZ gates and circular CNOT entanglement; (5) A parallel classical MLP bypass with Layer Normalization, 0.3 dropout, and smooth Mish activation compresses features to a 16-node tensor, maintaining stable gradient flow and eliminating barren plateaus.",
       measuredImpact: "Across stratified cross-validation (5-fold, 10-fold, 20-fold), MS-HQNet reached average testing accuracies of 99.17%, 98.90%, and 98.50%, outperforming Cubic SVM (97.50%), Standard 1D-CNN (93.33%), Standard MLP (98.33%), LSTM (75.00%), GRU (81.67%), and previous state-of-the-art literature (Makam et al. 98.70%, Khan & Pachori 98.91%). SHAP beeswarm analysis proved temporal amplitude features are top global predictors.",
-      tags: ["Quantum ML", "QCNN", "Python", "SM-SSA & SVD", "NCA", "EOG / EMG Biosignals", "SHAP Explainability", "IEEE Research"],
+      tags: ["Quantum ML", "QCNN", "Python", "SM-SSA & SVD", "NCA", "EOG / EMG Biosignals", "SHAP Explainability"],
       github: "https://github.com/shlokebinani",
       highlight: true
     },
@@ -384,6 +457,7 @@ export const portfolioData = {
       number: "04",
       title: "Customer Attrition Modeling",
       subtitle: "Predictive Analytics & Retention Engine",
+      roleBadge: "Data Science & ML",
       category: "Data Engineering & Machine Learning",
       headlineMetric: "80% predictive accuracy across 7,000+ customer records",
       pipelineFlow: [
@@ -392,7 +466,29 @@ export const portfolioData = {
         "Hypothesis Testing (Chi-Square / ANOVA)",
         "Random Forest Classifier & Power BI"
       ],
-      description: "An end-to-end churn prediction project that audits customer transactional data, isolates churn drivers via hypothesis testing, and trains a Random Forest classifier paired with Power BI dashboards.",
+      sequentialSteps: [
+        {
+          step: "01",
+          title: "SQL ETL & Data Cleaning",
+          detail: "Audited and cleaned 7,000+ subscriber records in PostgreSQL and Python, reconciling missing values and engineering RFM customer lifetime metrics."
+        },
+        {
+          step: "02",
+          title: "Statistical Hypothesis Testing",
+          detail: "Executed Chi-Square and ANOVA tests (p < 0.05) to mathematically confirm strong correlations between contract duration, charges, and churn."
+        },
+        {
+          step: "03",
+          title: "Supervised Model Training",
+          detail: "Trained an ensemble Random Forest classifier achieving 80.0% precision and a 0.84 ROC-AUC score to accurately identify at-risk subscribers."
+        },
+        {
+          step: "04",
+          title: "Executive Power BI Dashboard",
+          detail: "Delivered an interactive dashboard revealing that 42% of churn was concentrated in month-to-month contracts, giving retention teams clear actionable targets."
+        }
+      ],
+      description: "Subscription businesses usually find out a customer has left only after they cancel. This project builds an early-warning retention system that audits subscriber behavior, statistically verifies why users churn, and trains a machine learning classifier to flag at-risk accounts before they leave.",
       problemStatement: "Customer support teams often react after a customer has already canceled their service, rather than identifying behavioral risk factors early.",
       systemArchitecture: "Cleaned and reconciled missing data across 7,000+ customer records using SQL and Python. Isolated a 42% churn peak among specific billing tiers in Power BI. Evaluated statistical hypothesis tests on key churn drivers before training an ensemble Random Forest model.",
       measuredImpact: "Reached 80% classification accuracy, giving retention teams clear early-warning indicators for at-risk accounts.",
@@ -404,6 +500,7 @@ export const portfolioData = {
       number: "05",
       title: "E-Commerce Value Maximization",
       subtitle: "Customer Segmentation & LTV Analytics",
+      roleBadge: "Unsupervised ML & Analytics",
       category: "Unsupervised ML & Business Intelligence",
       headlineMetric: "SQL data quality auditing, PCA variance extraction & hybrid DBSCAN/K-Means",
       pipelineFlow: [
@@ -412,7 +509,29 @@ export const portfolioData = {
         "PCA & Hybrid DBSCAN / K-Means",
         "Power BI LTV & A/B Framework"
       ],
-      description: "An end-to-end customer value analysis project that audits transactional datasets, reduces dimensionality with PCA, clusters buyer cohorts with hybrid DBSCAN and K-Means, and tracks retention in Power BI.",
+      sequentialSteps: [
+        {
+          step: "01",
+          title: "SQL Data Quality Audits",
+          detail: "Cleaned and verified raw purchase transactions, resolving duplicate records and filtering invalid entries across multi-table datasets."
+        },
+        {
+          step: "02",
+          title: "PCA Dimensionality Reduction",
+          detail: "Extracted 85% of total variance across two principal components (PC1 58%, PC2 27%), eliminating noisy multi-collinear features."
+        },
+        {
+          step: "03",
+          title: "Hybrid DBSCAN & K-Means",
+          detail: "Used DBSCAN to filter out 12% margin-leakage anomalies, then applied K-Means to identify 4 clean customer behavioral clusters."
+        },
+        {
+          step: "04",
+          title: "Power BI LTV & A/B Framework",
+          detail: "Built an executive dashboard demonstrating that the top 24% of VIP shoppers drove 68% of total revenue, and designed a validated A/B retention framework."
+        }
+      ],
+      description: "Online retailers often struggle to distinguish high-value shoppers from margin-eroding returners. This project audits high-volume transactional data, reduces feature dimensionality, and clusters buyers into distinct behavioral cohorts to guide merchandising and retention.",
       problemStatement: "Transactional e-commerce datasets frequently contain inconsistencies, outlier purchasing records, and noisy high-dimensional behavioral features that distort customer lifetime value (LTV) estimations and obscure high-value customer cohorts.",
       systemArchitecture: "Conducted data quality audits across transactional datasets using SQL, reconciling inconsistencies before executing PCA and hybrid DBSCAN/K-Means clustering in Python. Built a Power BI LTV dashboard and designed an A/B testing framework with sample size estimation to evaluate retention impact.",
       measuredImpact: "Isolated distinct high-value shopper cohorts, identified key customer attrition risk factors, and established a validated A/B testing retention framework for data-driven merchandising.",

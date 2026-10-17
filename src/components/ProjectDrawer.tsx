@@ -278,10 +278,10 @@ export const ProjectDrawer: React.FC = () => {
                     <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
                       <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-300">
                         <Activity className="w-4 h-4 text-amber-400" />
-                        <span className="font-bold">Published IEEE Paper Figures & Empirical Visuals</span>
+                        <span className="font-bold">Published Research Figures & Empirical Visuals</span>
                       </div>
                       <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                        Peer-Reviewed IEEE TETCI
+                        Quantum ML Research
                       </span>
                     </div>
 
