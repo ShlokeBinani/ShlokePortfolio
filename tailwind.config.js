@@ -35,8 +35,10 @@ export default {
         },
       },
       fontFamily: {
+        anton: ['Anton', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
         kanit: ['Kanit', 'sans-serif'],
-        sans: ['Kanit', 'Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'Kanit', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       letterSpacing: {

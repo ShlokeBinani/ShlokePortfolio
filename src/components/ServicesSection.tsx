@@ -1,9 +1,8 @@
 import React, { useRef } from 'react';
-import { ArrowUpRight, Download } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { FadeIn } from './common/FadeIn';
-import { showToast } from './common/Toast';
-import { trackEvent } from '../utils/analytics';
 import { BranchingThread } from './common/BranchingThread';
+import { WorkSpecializationHero } from './WorkSpecializationHero';
 
 interface SkillSectionItem {
   number: string;
@@ -11,41 +10,6 @@ interface SkillSectionItem {
   description: string;
   tags: string[];
 }
-
-interface WorkSpecialization {
-  number: string;
-  title: string;
-  shortName: string;
-  resumeFile: string;
-  detail: string;
-}
-
-const WORK_SPECIALIZATIONS: WorkSpecialization[] = [
-  {
-    number: '01',
-    title: 'Software Engineering (SWE)',
-    shortName: 'SWE',
-    resumeFile: 'Shloke_Binani_SWE_Resume.pdf',
-    detail:
-      'Writing clean, maintainable backend code, implementing strict database row-level locking, and engineering reliable REST endpoints that perform predictably under load.',
-  },
-  {
-    number: '02',
-    title: 'Data Science & Analytics',
-    shortName: 'Data Science',
-    resumeFile: 'Shloke_Binani_Data_Science_Resume.pdf',
-    detail:
-      'Auditing multi-source datasets, testing statistical hypotheses, training robust classifiers, and building executive Power BI dashboards that guide business decisions.',
-  },
-  {
-    number: '03',
-    title: 'System Design & Business Analysis',
-    shortName: 'System Design',
-    resumeFile: 'Shloke_Binani_System_Design_Resume.pdf',
-    detail:
-      'Translating ambiguous operational needs into modular low-level design patterns, automated n8n workflows, and resilient technical architectures.',
-  },
-];
 
 const SKILL_SECTIONS: SkillSectionItem[] = [
   {
@@ -150,69 +114,9 @@ export const ServicesSection: React.FC = () => {
       {/* Minimalist Scroll-Driven Branching Thread / Tree Effect in Background */}
       <BranchingThread containerRef={containerRef} />
 
-      {/* Part 1: Work Specializations Section */}
-      <section id="work" className="relative z-10 max-w-5xl mx-auto space-y-12 sm:space-y-16">
-        <div className="text-center space-y-4">
-          <FadeIn delay={0.1} y={25}>
-            <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-[#0C0C0C] text-center flex flex-wrap items-center justify-center gap-x-4 mx-auto max-w-full">
-              <span>Work</span>
-              <span className="opacity-40">Specializations</span>
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.15} y={20}>
-            <p className="font-kanit font-light text-[#0C0C0C]/75 leading-relaxed text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-              Three core engineering focus areas with dedicated resume downloads for each track.
-            </p>
-          </FadeIn>
-
-          {/* 3 Work Specialization Cards with big 01, 02, 03 numerals and download resume buttons */}
-          <FadeIn delay={0.2} y={20}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-6 text-left">
-              {WORK_SPECIALIZATIONS.map((spec) => (
-                <div
-                  key={spec.number}
-                  className="relative z-10 p-6 sm:p-7 rounded-3xl bg-white border border-[#0C0C0C]/10 flex flex-col justify-between hover:border-[#0C0C0C]/25 transition-all duration-300 group shadow-[0_12px_36px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]"
-                >
-                  <div>
-                    {/* Big Editorial Number instead of small square icon box */}
-                    <span
-                      className="font-kanit font-black text-[#0C0C0C] block mb-3 group-hover:scale-105 transition-transform duration-300 select-none leading-none"
-                      style={{ fontSize: 'clamp(2.5rem, 5vw, 64px)' }}
-                    >
-                      {spec.number}
-                    </span>
-
-                    <div className="font-kanit font-bold text-lg sm:text-xl text-[#0C0C0C] mb-2.5 leading-snug">
-                      {spec.title}
-                    </div>
-
-                    <p className="font-kanit font-light text-xs sm:text-sm text-[#0C0C0C]/75 leading-relaxed">
-                      {spec.detail}
-                    </p>
-                  </div>
-
-                  {/* Role-Specific Download Resume Button */}
-                  <div className="pt-5 mt-4 border-t border-[#0C0C0C]/10">
-                    <a
-                      href={`${import.meta.env.BASE_URL}resumes/${spec.resumeFile}`}
-                      download={spec.resumeFile}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => {
-                        showToast(`Downloading ${spec.shortName} Resume...`);
-                        trackEvent('download_resume', 'engagement', spec.shortName);
-                      }}
-                      className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium text-[#0C0C0C] bg-[#0C0C0C]/5 hover:bg-[#0C0C0C] hover:text-white border border-[#0C0C0C]/10 transition-all duration-200 select-none"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>Download {spec.shortName} Resume</span>
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
+      {/* Part 1: Work Specializations Section (TOONHUB 3D Carousel Hero) */}
+      <section id="work" className="relative z-10 w-full">
+        <WorkSpecializationHero />
       </section>
 
       {/* Elegant Separator */}
