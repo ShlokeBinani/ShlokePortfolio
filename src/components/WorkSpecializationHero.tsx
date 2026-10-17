@@ -1,595 +1,464 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Download,
-  Sparkles,
-  Code2,
-  BarChart3,
-  Brain,
-  ExternalLink,
-  CheckCircle2,
-  Layers,
-} from 'lucide-react';
+import { ArrowLeft, ArrowRight, Download, Sparkles } from 'lucide-react';
 import { showToast } from './common/Toast';
 import { trackEvent } from '../utils/analytics';
 
-export interface Specialization {
+export interface SpecializationCharacter {
   id: number;
   role: string;
+  speech: string;
   src: string;
+  localSrc: string;
+  resumeFile: string;
   resumeLink: string;
+  bg: string;
+  panel: string;
+  ghostText: string;
   tagline: string;
-  ghostTitle: string;
   description: string;
-  specificResumeFile: string;
-  shortName: string;
-  badge: string;
-  accentColor: string;
-  glowColor: string;
-  iconName: 'code' | 'chart' | 'brain';
-  skills: string[];
-  metrics: { label: string; value: string }[];
 }
 
-export const SPECIALIZATIONS: Specialization[] = [
+export const SPECIALIZATIONS: SpecializationCharacter[] = [
   {
     id: 0,
     role: 'Software Engineer',
-    src: '/path/to/char1.png',
+    speech: 'I am Shloke, the Software Engineer.',
+    src: 'https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/1.02464a56.png',
+    localSrc: 'images/characters/toon1.png',
+    resumeFile: 'Shloke_Binani_SWE_Resume.pdf',
     resumeLink: '/resume.pdf',
-    shortName: 'SWE',
-    ghostTitle: 'SOFTWARE ENGINEER',
-    tagline: 'High-concurrency microservices, row-level locking & robust REST architectures.',
+    bg: '#F4845F',
+    panel: '#F79B7F',
+    ghostText: 'SOFTWARE ENGINEER',
+    tagline: 'High-Concurrency Backends & Low-Latency APIs',
     description:
-      'Writing clean, maintainable backend code, implementing strict database row-level locking, and engineering reliable REST endpoints that perform predictably under load.',
-    specificResumeFile: 'Shloke_Binani_SWE_Resume.pdf',
-    badge: 'Core Backend & Distributed Systems',
-    accentColor: '#38bdf8',
-    glowColor: 'rgba(56, 189, 248, 0.28)',
-    iconName: 'code',
-    skills: [
-      'Java (DSA - 250+ Solved)',
-      'FastAPI & Python',
-      'PostgreSQL & Neon',
-      'Docker Containerization',
-      'Row-Level Locking',
-      'RESTful APIs',
-    ],
-    metrics: [
-      { label: 'DSA Problems', value: '250+' },
-      { label: 'Target Uptime', value: '99.9%' },
-      { label: 'Sub-20ms', value: 'P99 Latency' },
-    ],
+      'Writing clean, maintainable backend services, implementing database row-level locking, and engineering resilient REST architectures.',
   },
   {
     id: 1,
     role: 'Data Analyst',
-    src: '/path/to/char2.png',
+    speech: 'I am Shloke, the Data Analyst.',
+    src: 'https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/2.b977faab.png',
+    localSrc: 'images/characters/toon2.png',
+    resumeFile: 'Shloke_Binani_Data_Science_Resume.pdf',
     resumeLink: '/resume.pdf',
-    shortName: 'Data Analyst',
-    ghostTitle: 'DATA ANALYST',
-    tagline: 'Multi-source data auditing, statistical testing & executive Power BI intelligence.',
+    bg: '#6BBF7A',
+    panel: '#85CC92',
+    ghostText: 'DATA ANALYST',
+    tagline: 'Statistical Testing & Executive BI Dashboards',
     description:
-      'Auditing multi-source datasets, testing statistical hypotheses, training robust classifiers, and building executive Power BI dashboards that guide business decisions.',
-    specificResumeFile: 'Shloke_Binani_Data_Science_Resume.pdf',
-    badge: 'Business Intelligence & Statistical Modeling',
-    accentColor: '#fbbf24',
-    glowColor: 'rgba(251, 191, 36, 0.28)',
-    iconName: 'chart',
-    skills: [
-      'Python (Pandas, NumPy)',
-      'Power BI Executive Dashboards',
-      'SQL & Relational Modeling',
-      'Hypothesis Testing (ANOVA, Chi-Sq)',
-      'Data Auditing & Cleaning',
-      'Exploratory Data Analysis',
-    ],
-    metrics: [
-      { label: 'Records Cleaned', value: '7,000+' },
-      { label: 'Statistical Tests', value: 'ANOVA / Chi-Sq' },
-      { label: 'Custom Visuals', value: '15+ Dashboards' },
-    ],
+      'Auditing multi-source datasets, testing statistical hypotheses (ANOVA, Chi-Sq), and engineering executive Power BI intelligence systems.',
   },
   {
     id: 2,
     role: 'AI Engineer',
-    src: '/path/to/char3.png',
+    speech: 'I am Shloke, the AI Engineer.',
+    src: 'https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/4.4457fbce.png',
+    localSrc: 'images/characters/toon4.png',
+    resumeFile: 'Shloke_Binani_AI_Engineer_Resume.pdf',
     resumeLink: '/resume.pdf',
-    shortName: 'AI Engineer',
-    ghostTitle: 'AI ENGINEER',
-    tagline: 'Applied ML models, quantum neural networks & autonomous agent workflows.',
+    bg: '#6EB5FF',
+    panel: '#8DC4FF',
+    ghostText: 'AI ENGINEER',
+    tagline: 'Applied ML Pipelines & Autonomous Workflows',
     description:
-      'Designing applied ML pipelines, exploring quantum convolutional neural networks (QCNN), fine-tuning LLM prompts, and automating business workflows with event-driven architectures.',
-    specificResumeFile: 'Shloke_Binani_AI_Engineer_Resume.pdf',
-    badge: 'Applied ML & Autonomous Automation',
-    accentColor: '#ec4899',
-    glowColor: 'rgba(236, 72, 153, 0.28)',
-    iconName: 'brain',
-    skills: [
-      'PyTorch & Scikit-Learn',
-      'Prompt Engineering & Structured Output',
-      'Quantum Neural Networks (QCNN)',
-      'n8n Workflow Automation',
-      'FastAPI AI Microservices',
-      'SM-SSA & NCA Feature Selection',
-    ],
-    metrics: [
-      { label: 'Model Architectures', value: 'SVM / QCNN / RF' },
-      { label: 'Agent Workflows', value: 'n8n & Voice-AI' },
-      { label: 'Feature Extraction', value: 'SM-SSA / NCA' },
-    ],
+      'Designing applied ML models, exploring quantum convolutional neural networks (QCNN), fine-tuning LLMs, and deploying event-driven agent workflows.',
   },
 ];
 
 export const WorkSpecializationHero: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
-  const sectionRef = useRef<HTMLDivElement>(null);
 
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const total = SPECIALIZATIONS.length;
 
-  const nextSlide = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % total);
+  // Responsive mobile detector
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Preload all character images on mount
+  useEffect(() => {
+    SPECIALIZATIONS.forEach((item) => {
+      const imgLocal = new Image();
+      imgLocal.src = `${import.meta.env.BASE_URL}${item.localSrc}`;
+      const imgRemote = new Image();
+      imgRemote.src = item.src;
+    });
+  }, []);
+
+  // Navigation function with 650ms cubic-bezier lock
+  const navigate = useCallback(
+    (direction: 'next' | 'prev') => {
+      if (isAnimating) return;
+      setIsAnimating(true);
+      setActiveIndex((prev) => {
+        if (direction === 'next') {
+          return (prev + 1) % total;
+        } else {
+          return (prev - 1 + total) % total;
+        }
+      });
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 650);
+    },
+    [isAnimating, total]
+  );
+
+  // Direct selection by character click or tab
+  const goToIndex = useCallback(
+    (index: number) => {
+      if (isAnimating || index === activeIndex) return;
+      setIsAnimating(true);
+      setActiveIndex(index);
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 650);
+    },
+    [isAnimating, activeIndex]
+  );
+
+  // Auto-advance every 5 seconds if no click, resetting on any interaction
+  const resetAutoTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % total);
+    }, 5000);
   }, [total]);
 
-  const prevSlide = useCallback(() => {
-    setActiveIndex((prev) => (prev - 1 + total) % total);
-  }, [total]);
+  useEffect(() => {
+    resetAutoTimer();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [resetAutoTimer, activeIndex]);
 
-  // Keyboard navigation support
+  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA') {
         return;
       }
       if (e.key === 'ArrowLeft') {
-        prevSlide();
+        resetAutoTimer();
+        navigate('prev');
       } else if (e.key === 'ArrowRight') {
-        nextSlide();
+        resetAutoTimer();
+        navigate('next');
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [nextSlide, prevSlide]);
+  }, [navigate, resetAutoTimer]);
 
   const activeSpec = SPECIALIZATIONS[activeIndex];
 
-  // Helper to safely resolve asset URLs with Vite base path
-  const resolveAsset = (path: string) => {
-    if (path.startsWith('http://') || path.startsWith('https://')) return path;
-    const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-    const cleanPath = path.startsWith('/') ? path : `/${path}`;
-    return `${base}${cleanPath}`;
-  };
-
-  const getRoleIcon = (name: 'code' | 'chart' | 'brain', className: string) => {
-    switch (name) {
-      case 'code':
-        return <Code2 className={className} />;
-      case 'chart':
-        return <BarChart3 className={className} />;
-      case 'brain':
-        return <Brain className={className} />;
-      default:
-        return <Sparkles className={className} />;
-    }
-  };
-
-  // Get position index: -1 (left flank), 0 (active center), 1 (right flank)
-  const getRelativePosition = (index: number) => {
+  // Helper to determine relative position role: 'center', 'left', 'right'
+  const getRole = (index: number): 'center' | 'left' | 'right' => {
     const diff = (index - activeIndex + total) % total;
-    if (diff === 0) return 0;
-    if (diff === 1) return 1;
-    return -1; // diff === 2 is left flank
+    if (diff === 0) return 'center';
+    if (diff === 1) return 'right';
+    return 'left'; // diff === 2
+  };
+
+  const getItemStyle = (role: 'center' | 'left' | 'right'): React.CSSProperties => {
+    if (role === 'center') {
+      return {
+        transform: `translateX(-50%) scale(${isMobile ? 1.25 : 1.62})`,
+        filter: 'none',
+        opacity: 1,
+        zIndex: 20,
+        left: '50%',
+        height: isMobile ? '60%' : '90%',
+        bottom: isMobile ? '20%' : '0',
+      };
+    }
+    if (role === 'left') {
+      return {
+        transform: 'translateX(-50%) scale(1)',
+        filter: 'blur(2px)',
+        opacity: 0.82,
+        zIndex: 10,
+        left: isMobile ? '18%' : '26%',
+        height: isMobile ? '18%' : '28%',
+        bottom: isMobile ? '30%' : '12%',
+      };
+    }
+    // role === 'right'
+    return {
+      transform: 'translateX(-50%) scale(1)',
+      filter: 'blur(2px)',
+      opacity: 0.82,
+      zIndex: 10,
+      left: isMobile ? '82%' : '74%',
+      height: isMobile ? '18%' : '28%',
+      bottom: isMobile ? '30%' : '12%',
+    };
   };
 
   return (
     <div
-      ref={sectionRef}
-      className="relative w-full py-8 sm:py-12 md:py-16 select-none overflow-hidden"
+      className="relative w-full overflow-hidden select-none"
+      style={{ fontFamily: 'Inter, sans-serif' }}
       role="region"
       aria-roledescription="carousel"
-      aria-label="Work Specialization 3D Showcase"
+      aria-label="TOONHUB Work Specialization Showcase"
     >
-      {/* 1. SECTION EYEBROW & TITLE */}
-      <div className="text-center space-y-3 mb-8 sm:mb-12 relative z-20 max-w-3xl mx-auto bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#0C0C0C]/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0C0C0C]/5 border border-[#0C0C0C]/10 text-xs font-mono font-medium text-[#0C0C0C]/80 shadow-sm backdrop-blur-sm">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>CAREER DISCIPLINES & FOCUS TRACKS</span>
+      {/* Container: Sits on white bg with crisp framing and clean rounded corners */}
+      <div className="relative w-full h-[88vh] sm:h-[92vh] md:h-[95vh] min-h-[620px] max-h-[960px] overflow-hidden rounded-[32px] sm:rounded-[44px] bg-[#FFFFFF] border border-[#0C0C0C]/10 shadow-[0_12px_44px_rgba(0,0,0,0.06)]">
+        
+        {/* Soft Dynamic Atmospheric Radial Aura behind Center Character */}
+        <div
+          className="absolute inset-0 pointer-events-none z-0 transition-all duration-700"
+          style={{
+            background: `radial-gradient(ellipse at 50% 65%, ${activeSpec.bg}22 0%, rgba(255,255,255,0) 65%)`,
+          }}
+          aria-hidden="true"
+        />
+
+        {/* 1. Grain Overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none z-50 select-none opacity-40"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")`,
+            backgroundSize: '200px 200px',
+            backgroundRepeat: 'repeat',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* 2. Giant Ghost Text "3D SHAPE" / ROLE in Font Anton */}
+        <div
+          className="absolute inset-x-0 flex items-center justify-center pointer-events-none select-none z-[2] overflow-hidden"
+          style={{ top: isMobile ? '12%' : '15%' }}
+          aria-hidden="true"
+        >
+          <span
+            className="font-anton uppercase text-center block text-transparent select-none whitespace-nowrap tracking-tight transition-all duration-700"
+            style={{
+              fontSize: 'clamp(70px, 19vw, 290px)',
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+              fontWeight: 900,
+              WebkitTextStroke: '3px rgba(12, 12, 12, 0.12)',
+              textShadow: '0 10px 40px rgba(0,0,0,0.04)',
+            }}
+          >
+            {activeSpec.ghostText}
+          </span>
         </div>
 
-        <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-[#0C0C0C] flex flex-wrap items-center justify-center gap-x-3.5">
-          <span>Work</span>
-          <span className="opacity-35">Specializations</span>
-        </h2>
+        {/* 3. Top-Left Brand Label "TOONHUB" */}
+        <div className="absolute top-6 left-5 sm:left-10 z-[60] flex items-center gap-3">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0C0C0C]/90 font-inter">
+            TOONHUB // WORK SPECIALIZATION
+          </span>
+          <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-medium text-[#0C0C0C]/80 bg-[#0C0C0C]/5 border border-[#0C0C0C]/10">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Interactive 3D Stage</span>
+          </span>
+        </div>
 
-        <p className="font-inter font-normal text-sm sm:text-base text-[#0C0C0C]/75 max-w-2xl mx-auto leading-relaxed px-4">
-          Interactive 3D role carousel. Explore core engineering competencies, architectural focus areas, and track-specific resume documentation.
-        </p>
-
-        {/* Role Segmented Tabs with Smooth Layout Switcher */}
-        <div className="flex items-center justify-center gap-2 sm:gap-3 pt-3 flex-wrap">
+        {/* Top-Right Quick Track Switcher Pills */}
+        <div className="absolute top-6 right-5 sm:right-10 z-[60] flex items-center gap-2">
           {SPECIALIZATIONS.map((spec, i) => {
             const isActive = i === activeIndex;
             return (
               <button
                 key={spec.id}
                 onClick={() => {
-                  setActiveIndex(i);
-                  trackEvent('specialization_tab_select', 'engagement', spec.role);
+                  resetAutoTimer();
+                  goToIndex(i);
+                  trackEvent('toonhub_pill_click', 'engagement', spec.role);
                 }}
-                className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-inter font-semibold transition-all duration-300 flex items-center gap-2 ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-inter font-bold transition-all duration-300 ${
                   isActive
-                    ? 'text-white bg-[#0C0C0C] shadow-lg scale-105'
-                    : 'text-[#0C0C0C]/70 hover:text-[#0C0C0C] bg-white border border-[#0C0C0C]/15 hover:border-[#0C0C0C]/30 shadow-sm'
+                    ? 'text-white bg-[#0C0C0C] shadow-md scale-105'
+                    : 'text-[#0C0C0C]/70 hover:text-[#0C0C0C] bg-white/90 border border-[#0C0C0C]/15 hover:border-[#0C0C0C]/35'
                 }`}
                 aria-selected={isActive}
               >
-                <span className="font-mono text-[11px] opacity-70">0{i + 1}</span>
-                <span>{spec.shortName}</span>
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTabIndicator"
-                    className="absolute inset-0 rounded-xl border-2 border-[#0C0C0C] pointer-events-none"
-                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                  />
-                )}
+                0{i + 1} {spec.role.split(' ')[0]}
               </button>
             );
           })}
         </div>
-      </div>
 
-      {/* 2. THE TOONHUB 3D CHARACTER STAGE */}
-      <div className="relative w-full max-w-6xl mx-auto min-h-[460px] sm:min-h-[520px] md:min-h-[560px] flex items-center justify-center">
-        {/* A. Huge Ghost Display Text Watermark (Anton Font) */}
+        {/* 4. Active Center Character Speech Bubble */}
         <div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden"
-          aria-hidden="true"
+          className="absolute z-[35] pointer-events-none flex flex-col items-center justify-center transition-all duration-500"
+          style={{
+            top: isMobile ? '23%' : '25%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            maxWidth: isMobile ? '92%' : '480px',
+            width: '100%',
+          }}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeSpec.ghostTitle}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -30, scale: 1.05 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full text-center px-4"
-            >
-              <span
-                className="font-anton uppercase tracking-tighter block text-transparent select-none whitespace-nowrap text-center"
-                style={{
-                  fontSize: 'clamp(3.5rem, 13vw, 150px)',
-                  WebkitTextStroke: '2.5px rgba(12, 12, 12, 0.08)',
-                  textShadow: '0 10px 40px rgba(0, 0, 0, 0.02)',
-                  lineHeight: 0.85,
-                }}
-              >
-                {activeSpec.ghostTitle}
+          <div className="relative bg-white/95 backdrop-blur-md px-5 sm:px-7 py-4 sm:py-5 rounded-2xl border-2 border-[#0C0C0C]/15 shadow-[0_20px_50px_rgba(0,0,0,0.12)] text-center pointer-events-auto">
+            {/* Top Indicator */}
+            <div className="flex items-center justify-center gap-1.5 mb-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+              <span className="font-mono text-[11px] font-bold text-[#0C0C0C]/60 uppercase tracking-widest">
+                TRACK 0{activeSpec.id + 1} // AUTO-ROTATE 5S
               </span>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+
+            {/* Speech Dialogue */}
+            <h3 className="font-inter font-extrabold text-base sm:text-xl md:text-2xl text-[#0C0C0C] tracking-tight mb-3">
+              "{activeSpec.speech}"
+            </h3>
+
+            {/* Role-Specific Resume Download CTA */}
+            <div className="flex items-center justify-center gap-2.5 flex-wrap">
+              <a
+                href={`${import.meta.env.BASE_URL}resumes/${activeSpec.resumeFile}`}
+                download={activeSpec.resumeFile}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  showToast(`Downloading ${activeSpec.role} Resume...`);
+                  trackEvent('download_resume', 'toonhub_speech_cta', activeSpec.role);
+                }}
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-mono font-bold text-white bg-[#0C0C0C] hover:bg-[#262626] shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 select-none group"
+              >
+                <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+                <span>Download {activeSpec.role} Resume</span>
+              </a>
+            </div>
+
+            {/* Speech Bubble Downward Tail pointing to character */}
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-r-2 border-b-2 border-[#0C0C0C]/15 rotate-45" />
+          </div>
         </div>
 
-        {/* B. 3D Character Carousel Viewport */}
-        <div
-          className="relative w-full h-[440px] sm:h-[480px] md:h-[520px] flex items-center justify-center z-10"
-          style={{ perspective: 1200 }}
-        >
-          {SPECIALIZATIONS.map((spec, index) => {
-            const pos = getRelativePosition(index);
-            const isActive = pos === 0;
-            const isLeft = pos === -1;
-            const isRight = pos === 1;
+        {/* 5. The 3D Figurine Carousel Viewport */}
+        <div className="absolute inset-0 z-[3] overflow-hidden pointer-events-none">
+          {SPECIALIZATIONS.map((item, index) => {
+            const role = getRole(index);
+            const style = getItemStyle(role);
+            const isCenter = role === 'center';
+            const hasError = imageErrors[item.id];
 
-            // Responsive horizontal translation offsets
-            const xOffset = isActive ? '0%' : isLeft ? '-48%' : '48%';
-            const rotateY = isActive ? 0 : isLeft ? 24 : -24;
-            const scale = isActive ? 1.05 : 0.78;
-            const opacity = isActive ? 1 : 0.45;
-            const zIndex = isActive ? 30 : 10;
-
-            const resolvedImgSrc = resolveAsset(spec.src);
-            const hasError = imageErrors[spec.id];
+            // Primary source tries local downloaded image, fallback to Figma URL
+            const resolvedLocal = `${import.meta.env.BASE_URL}${item.localSrc}`;
+            const displaySrc = hasError ? item.src : resolvedLocal;
 
             return (
-              <motion.div
-                key={spec.id}
-                initial={false}
-                animate={{
-                  x: xOffset,
-                  scale,
-                  rotateY,
-                  opacity,
-                  zIndex,
-                }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 260,
-                  damping: 26,
-                  mass: 0.8,
-                }}
+              <div
+                key={item.id}
                 onClick={() => {
-                  if (!isActive) {
-                    setActiveIndex(index);
-                    trackEvent('specialization_card_click', 'engagement', spec.role);
+                  if (!isCenter) {
+                    resetAutoTimer();
+                    goToIndex(index);
+                    trackEvent('toonhub_figurine_click', 'engagement', item.role);
                   }
                 }}
-                className={`absolute w-[280px] sm:w-[320px] md:w-[360px] h-[400px] sm:h-[450px] md:h-[480px] flex flex-col items-center justify-end pb-8 ${
-                  !isActive ? 'cursor-pointer hover:opacity-75 transition-opacity' : ''
+                className={`absolute select-none ${
+                  !isCenter ? 'pointer-events-auto cursor-pointer hover:opacity-100 transition-opacity' : 'pointer-events-none'
                 }`}
                 style={{
-                  transformStyle: 'preserve-3d',
+                  ...style,
+                  aspectRatio: '0.6 / 1',
+                  transition:
+                    'transform 650ms cubic-bezier(0.4, 0, 0.2, 1), filter 650ms cubic-bezier(0.4, 0, 0.2, 1), opacity 650ms cubic-bezier(0.4, 0, 0.2, 1), left 650ms cubic-bezier(0.4, 0, 0.2, 1)',
+                  willChange: 'transform, filter, opacity, left',
                 }}
-                aria-hidden={!isActive}
+                aria-hidden={!isCenter}
               >
-                {/* 3D Pedestal Stage Platform underneath character */}
-                <div
-                  className="absolute bottom-2 left-1/2 -translate-x-1/2 pointer-events-none transition-all duration-500"
-                  style={{
-                    width: isActive ? '320px' : '240px',
-                    height: '70px',
+                <img
+                  src={displaySrc}
+                  alt={`${item.role} 3D Figurine`}
+                  onError={() => {
+                    if (!hasError) {
+                      setImageErrors((prev) => ({ ...prev, [item.id]: true }));
+                    }
                   }}
-                >
-                  {/* Concentric Pedestal Glow */}
-                  <div
-                    className="absolute inset-0 rounded-[100%] transition-opacity duration-500"
-                    style={{
-                      background: `radial-gradient(ellipse at center, ${spec.glowColor} 0%, rgba(0,0,0,0.06) 50%, transparent 75%)`,
-                      opacity: isActive ? 1 : 0.35,
-                      filter: 'blur(8px)',
-                    }}
-                  />
-
-                  {/* Elliptical Ground Platform */}
-                  <div
-                    className="absolute inset-x-6 bottom-2 h-7 rounded-[100%] bg-white border border-[#0C0C0C]/15 shadow-[0_12px_28px_rgba(0,0,0,0.12)] flex items-center justify-center transition-all duration-300"
-                    style={{
-                      boxShadow: isActive
-                        ? `0 16px 36px ${spec.glowColor}, 0 2px 8px rgba(0,0,0,0.1)`
-                        : '0 8px 18px rgba(0,0,0,0.08)',
-                    }}
-                  >
-                    <div
-                      className="w-16 h-2 rounded-[100%]"
-                      style={{
-                        backgroundColor: spec.accentColor,
-                        opacity: isActive ? 0.6 : 0.2,
-                        filter: 'blur(1px)',
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* Character Floating Artwork */}
-                <motion.div
-                  animate={
-                    isActive
-                      ? {
-                          y: [0, -10, 0],
-                        }
-                      : { y: 0 }
-                  }
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className="relative z-10 w-full flex flex-col items-center justify-center"
-                >
-                  {/* Floating Tech Badge (Visible on Active Card) */}
-                  {isActive && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 15 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="absolute -top-3 z-30 px-3 py-1 rounded-full bg-white text-[#0C0C0C] text-[11px] font-mono font-bold tracking-wide uppercase border border-[#0C0C0C]/15 shadow-md flex items-center gap-1.5"
-                    >
-                      {getRoleIcon(spec.iconName, 'w-3.5 h-3.5 text-[#0C0C0C]')}
-                      <span>{spec.badge}</span>
-                    </motion.div>
-                  )}
-
-                  {/* Character Illustration / Image */}
-                  <div className="relative w-[260px] sm:w-[300px] md:w-[340px] h-[340px] sm:h-[380px] md:h-[400px] flex items-center justify-center">
-                    {!hasError ? (
-                      <img
-                        src={resolvedImgSrc}
-                        alt={`${spec.role} 3D Character`}
-                        onError={() => {
-                          // Graceful fallback to rich stylized vector avatar if image fails to load
-                          setImageErrors((prev) => ({ ...prev, [spec.id]: true }));
-                        }}
-                        className="w-full h-full object-contain filter drop-shadow-[0_20px_28px_rgba(0,0,0,0.18)] select-none pointer-events-none transition-transform duration-300"
-                        draggable={false}
-                      />
-                    ) : (
-                      /* Rich Fallback Avatar Card */
-                      <div className="w-[240px] h-[320px] rounded-3xl bg-white border-2 border-[#0C0C0C]/15 shadow-2xl p-6 flex flex-col items-center justify-between text-center relative overflow-hidden">
-                        <div
-                          className="absolute inset-0 opacity-15 pointer-events-none"
-                          style={{
-                            background: `radial-gradient(circle at 50% 30%, ${spec.accentColor} 0%, transparent 70%)`,
-                          }}
-                        />
-                        <div
-                          className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-md mt-6"
-                          style={{ backgroundColor: `${spec.accentColor}25`, border: `2px solid ${spec.accentColor}` }}
-                        >
-                          {getRoleIcon(spec.iconName, 'w-10 h-10 text-[#0C0C0C]')}
-                        </div>
-                        <div>
-                          <span className="font-mono text-xs font-bold text-[#0C0C0C]/60 block mb-1">
-                            ROLE 0{spec.id + 1}
-                          </span>
-                          <h4 className="font-kanit font-black text-xl text-[#0C0C0C]">{spec.role}</h4>
-                        </div>
-                        <span className="text-[11px] font-mono text-[#0C0C0C]/70 bg-[#0C0C0C]/5 px-3 py-1 rounded-full border border-[#0C0C0C]/10">
-                          3D Interactive Asset
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              </motion.div>
+                  className="w-full h-full object-contain object-bottom filter drop-shadow-[0_24px_36px_rgba(0,0,0,0.18)]"
+                  draggable={false}
+                />
+              </div>
             );
           })}
         </div>
 
-        {/* C. Interactive Left / Right Arrow Buttons */}
-        <div className="absolute inset-x-2 sm:inset-x-8 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-none z-40">
-          <button
-            onClick={() => {
-              prevSlide();
-              trackEvent('specialization_nav_arrow', 'click', 'prev');
-            }}
-            aria-label="Previous Specialization"
-            className="pointer-events-auto w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white text-[#0C0C0C] border border-[#0C0C0C]/15 shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:bg-[#0C0C0C] hover:text-white hover:border-[#0C0C0C] hover:scale-110 active:scale-95 transition-all duration-200 flex items-center justify-center group"
+        {/* 6. Bottom-Left Text + Navigation Buttons */}
+        <div
+          className="absolute bottom-6 left-5 sm:bottom-12 sm:left-12 z-[60] max-w-[320px] pointer-events-auto"
+        >
+          <p
+            className="font-inter font-black uppercase text-base sm:text-[22px] text-[#0C0C0C] mb-2 sm:mb-3 tracking-wide"
+            style={{ letterSpacing: '0.02em' }}
           >
-            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 group-hover:-translate-x-0.5 transition-transform" />
-          </button>
+            {activeSpec.role}
+          </p>
 
-          <button
-            onClick={() => {
-              nextSlide();
-              trackEvent('specialization_nav_arrow', 'click', 'next');
-            }}
-            aria-label="Next Specialization"
-            className="pointer-events-auto w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white text-[#0C0C0C] border border-[#0C0C0C]/15 shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:bg-[#0C0C0C] hover:text-white hover:border-[#0C0C0C] hover:scale-110 active:scale-95 transition-all duration-200 flex items-center justify-center group"
-          >
-            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-0.5 transition-transform" />
-          </button>
+          <p className="hidden sm:block text-xs sm:text-sm text-[#0C0C0C]/80 leading-relaxed mb-4 sm:mb-5">
+            {activeSpec.description}
+          </p>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => {
+                resetAutoTimer();
+                navigate('prev');
+                trackEvent('toonhub_arrow_nav', 'click', 'prev');
+              }}
+              aria-label="Previous Character"
+              className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/90 border-2 border-[#0C0C0C] text-[#0C0C0C] shadow-md hover:bg-[#0C0C0C] hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 flex items-center justify-center group"
+            >
+              <ArrowLeft className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.25] group-hover:-translate-x-0.5 transition-transform" />
+            </button>
+
+            <button
+              onClick={() => {
+                resetAutoTimer();
+                navigate('next');
+                trackEvent('toonhub_arrow_nav', 'click', 'next');
+              }}
+              aria-label="Next Character"
+              className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/90 border-2 border-[#0C0C0C] text-[#0C0C0C] shadow-md hover:bg-[#0C0C0C] hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 flex items-center justify-center group"
+            >
+              <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.25] group-hover:translate-x-0.5 transition-transform" />
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* 3. ACTIVE ROLE SHOWCASE CARD & RESUME DOWNLOAD DOCK */}
-      <div className="relative z-20 max-w-4xl mx-auto mt-4 px-4 sm:px-6">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeSpec.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="p-6 sm:p-8 md:p-10 rounded-3xl bg-white border border-[#0C0C0C]/15 shadow-[0_16px_48px_rgba(0,0,0,0.08)] relative overflow-hidden"
+        {/* 7. Bottom-Right Link "DISCOVER IT" / "DOWNLOAD RESUME" in Font Anton */}
+        <div className="absolute bottom-6 right-5 sm:bottom-12 sm:right-10 z-[60] pointer-events-auto">
+          <a
+            href={`${import.meta.env.BASE_URL}resumes/${activeSpec.resumeFile}`}
+            download={activeSpec.resumeFile}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              showToast(`Downloading ${activeSpec.role} Resume...`);
+              trackEvent('download_resume', 'toonhub_bottom_right', activeSpec.role);
+            }}
+            className="flex items-center gap-2 sm:gap-3 text-[#0C0C0C] hover:text-[#0C0C0C] transition-opacity duration-200 group no-underline"
+            style={{
+              fontFamily: 'Anton, sans-serif',
+              fontSize: 'clamp(20px, 4vw, 56px)',
+              fontWeight: 400,
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+              textTransform: 'uppercase',
+            }}
           >
-            {/* Top Row: Track Number & Role Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#0C0C0C]/10">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs font-bold text-[#0C0C0C]/60 uppercase tracking-widest">
-                    TRACK 0{activeSpec.id + 1} // {activeSpec.badge}
-                  </span>
-                </div>
-                <h3 className="font-kanit font-black text-2xl sm:text-3xl md:text-4xl text-[#0C0C0C] tracking-tight">
-                  {activeSpec.role}
-                </h3>
-              </div>
+            <span>DOWNLOAD RESUME</span>
+            <ArrowRight className="w-5 h-5 sm:w-8 sm:h-8 stroke-[2.25] group-hover:translate-x-1.5 transition-transform" />
+          </a>
+        </div>
 
-              {/* Quick Dots / Indicator */}
-              <div className="flex items-center gap-2">
-                {SPECIALIZATIONS.map((_, dotIndex) => (
-                  <button
-                    key={dotIndex}
-                    onClick={() => setActiveIndex(dotIndex)}
-                    aria-label={`Jump to ${SPECIALIZATIONS[dotIndex].role}`}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      dotIndex === activeIndex
-                        ? 'w-8 bg-[#0C0C0C]'
-                        : 'w-2 bg-[#0C0C0C]/25 hover:bg-[#0C0C0C]/50'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Middle Row: Tagline & Description */}
-            <div className="py-5 space-y-3">
-              <p className="font-inter font-medium text-sm sm:text-base text-[#0C0C0C] leading-snug">
-                {activeSpec.tagline}
-              </p>
-              <p className="font-inter font-normal text-xs sm:text-sm text-[#0C0C0C]/75 leading-relaxed">
-                {activeSpec.description}
-              </p>
-            </div>
-
-            {/* Metrics Row */}
-            <div className="grid grid-cols-3 gap-3 py-4 my-2 rounded-2xl bg-[#0C0C0C]/[0.03] border border-[#0C0C0C]/10 px-4 text-center">
-              {activeSpec.metrics.map((metric, mi) => (
-                <div key={mi} className="space-y-0.5">
-                  <span className="font-mono text-[10px] sm:text-xs text-[#0C0C0C]/60 uppercase block">
-                    {metric.label}
-                  </span>
-                  <span className="font-kanit font-bold text-sm sm:text-base md:text-lg text-[#0C0C0C] block">
-                    {metric.value}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Core Tech Stack Chips */}
-            <div className="pt-3 pb-6">
-              <span className="font-mono text-xs font-semibold text-[#0C0C0C]/70 block mb-2.5">
-                Key Track Competencies:
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {activeSpec.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-[#0C0C0C] bg-white border border-[#0C0C0C]/15 shadow-sm hover:border-[#0C0C0C]/40 transition-colors"
-                  >
-                    <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
-                    <span>{skill}</span>
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Action Buttons Row */}
-            <div className="pt-5 border-t border-[#0C0C0C]/10 flex flex-col sm:flex-row items-center justify-between gap-3.5">
-              <div className="flex items-center gap-2 text-xs font-mono text-[#0C0C0C]/60">
-                <Layers className="w-3.5 h-3.5" />
-                <span>Specialized Engineering Track {activeIndex + 1} of 3</span>
-              </div>
-
-              <div className="flex items-center gap-3 w-full sm:w-auto">
-                {/* Primary Track-Specific Resume Download Button */}
-                <a
-                  href={`${import.meta.env.BASE_URL}resumes/${activeSpec.specificResumeFile}`}
-                  download={activeSpec.specificResumeFile}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    showToast(`Downloading ${activeSpec.shortName} Resume...`);
-                    trackEvent('download_resume', 'hero_carousel', activeSpec.shortName);
-                  }}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-mono font-semibold text-white bg-[#0C0C0C] hover:bg-[#1a1a1a] shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 select-none group"
-                >
-                  <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
-                  <span>Download {activeSpec.shortName} Resume</span>
-                </a>
-
-                {/* Secondary Direct Link for default resumeLink requirement */}
-                <a
-                  href={`${import.meta.env.BASE_URL}resume.pdf`}
-                  download="Shloke_Binani_Resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    showToast('Downloading Master Resume...');
-                    trackEvent('download_master_resume', 'hero_carousel', activeSpec.shortName);
-                  }}
-                  title="Download standard master resume.pdf"
-                  className="p-3 rounded-xl text-xs font-mono text-[#0C0C0C]/80 bg-white border border-[#0C0C0C]/15 hover:border-[#0C0C0C]/40 hover:bg-[#0C0C0C]/5 transition-all duration-200 hidden md:inline-flex items-center justify-center"
-                  aria-label="Download master resume PDF"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
       </div>
     </div>
   );
