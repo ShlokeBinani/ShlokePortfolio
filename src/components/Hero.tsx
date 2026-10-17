@@ -245,8 +245,8 @@ export const Hero: React.FC = () => {
       {/* Subtle Bottom Scroll Indicator */}
       <div className="w-full flex justify-center pt-2">
         <a
-          href="#marquee"
-          aria-label="Scroll to portfolio preview"
+          href="#memory-slide"
+          aria-label="Scroll to Memory Slide"
           className="flex flex-col items-center gap-1 text-zinc-500 hover:text-[#F4ECE1] transition-colors group"
         >
           <span className="text-[10px] tracking-widest uppercase font-mono group-hover:text-[#F4ECE1]">Explore</span>

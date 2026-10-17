@@ -90,7 +90,7 @@ export function App() {
         {/* 1. Hero Section with Video + Typographic Gradient */}
         <Hero />
 
-        {/* 2. Marquee Section with Dual-Row Scroll-Driven GIFs */}
+        {/* 2. Memory Slide: Dual-Row Scroll-Driven Film Reels */}
         <MarqueeSection />
 
         {/* 3. About Section with 4 Corner 3D Magnets & Character-by-Character Scroll Reveal */}
