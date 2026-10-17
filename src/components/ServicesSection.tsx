@@ -171,7 +171,7 @@ export const ServicesSection: React.FC = () => {
               {WORK_SPECIALIZATIONS.map((spec) => (
                 <div
                   key={spec.number}
-                  className="p-6 sm:p-7 rounded-3xl bg-[#0C0C0C]/[0.025] border border-[#0C0C0C]/10 flex flex-col justify-between hover:bg-[#0C0C0C]/[0.05] hover:border-[#0C0C0C]/25 transition-all duration-300 group shadow-sm"
+                  className="relative z-10 p-6 sm:p-7 rounded-3xl bg-white border border-[#0C0C0C]/10 flex flex-col justify-between hover:border-[#0C0C0C]/25 transition-all duration-300 group shadow-[0_12px_36px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]"
                 >
                   <div>
                     {/* Big Editorial Number instead of small square icon box */}
@@ -235,10 +235,10 @@ export const ServicesSection: React.FC = () => {
         </div>
 
         {/* Big Editorial 01-06 List Layout */}
-        <div className="divide-y divide-[#0C0C0C]/15 border-t border-b border-[#0C0C0C]/15">
+        <div className="divide-y divide-[#0C0C0C]/15 border-t border-b border-[#0C0C0C]/15 relative z-10">
           {SKILL_SECTIONS.map((section, index) => (
             <FadeIn key={section.number} delay={index * 0.08} y={25}>
-              <div className="group py-8 sm:py-10 md:py-12 flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-12 transition-all duration-300 hover:px-4 rounded-2xl hover:bg-[#0C0C0C]/[0.02]">
+              <div className="group py-8 sm:py-10 md:py-12 flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-12 transition-all duration-300 hover:px-6 rounded-2xl hover:bg-white hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
                 
                 {/* Left: Giant Editorial Number */}
                 <div className="flex items-center gap-6 md:w-1/4 shrink-0">
@@ -270,7 +270,7 @@ export const ServicesSection: React.FC = () => {
                     {section.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-[#0C0C0C]/5 text-[#0C0C0C]/85 border border-[#0C0C0C]/10 hover:bg-[#0C0C0C]/10 transition-colors"
+                        className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-white text-[#0C0C0C]/85 border border-[#0C0C0C]/10 shadow-sm hover:bg-[#0C0C0C] hover:text-white transition-colors"
                       >
                         {tag}
                       </span>
