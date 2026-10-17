@@ -15,6 +15,51 @@ export const ProjectDrawer: React.FC = () => {
     });
   }, []);
 
+  // Check URL on initial load for deep-linking (e.g. ?project=paradox or #resilinet)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const projectFromQuery = params.get('project');
+    const hash = window.location.hash.replace('#', '');
+    const validIds = portfolioData.projects.map((p) => p.id);
+
+    if (projectFromQuery && validIds.includes(projectFromQuery)) {
+      setActiveDrawerProject(projectFromQuery);
+    } else if (hash && validIds.includes(hash)) {
+      setActiveDrawerProject(hash);
+    }
+  }, []);
+
+  // Synchronize URL query parameter when active drawer project changes
+  useEffect(() => {
+    if (activeId) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('project', activeId);
+      window.history.replaceState({ project: activeId }, '', url.toString());
+    } else {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has('project')) {
+        url.searchParams.delete('project');
+        window.history.replaceState({}, '', url.pathname + (url.hash || ''));
+      }
+    }
+  }, [activeId]);
+
+  // Support browser Back/Forward navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const projectFromQuery = params.get('project');
+      const validIds = portfolioData.projects.map((p) => p.id);
+      if (projectFromQuery && validIds.includes(projectFromQuery)) {
+        setActiveDrawerProject(projectFromQuery);
+      } else {
+        setActiveDrawerProject(null);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
