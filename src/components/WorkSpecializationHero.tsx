@@ -95,7 +95,7 @@ export const WorkSpecializationHero: React.FC = () => {
     });
   }, []);
 
-  // Navigation function with 650ms cubic-bezier lock
+  // Navigation function with 650ms lock
   const navigate = useCallback(
     (direction: 'next' | 'prev') => {
       if (isAnimating) return;
@@ -127,7 +127,7 @@ export const WorkSpecializationHero: React.FC = () => {
     [isAnimating, activeIndex]
   );
 
-  // Auto-advance every 5 seconds if no click, resetting on any interaction
+  // Auto-advance every 5 seconds if no click, resetting on interaction
   const resetAutoTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
@@ -167,41 +167,41 @@ export const WorkSpecializationHero: React.FC = () => {
     const diff = (index - activeIndex + total) % total;
     if (diff === 0) return 'center';
     if (diff === 1) return 'right';
-    return 'left'; // diff === 2
+    return 'left';
   };
 
   const getItemStyle = (role: 'center' | 'left' | 'right'): React.CSSProperties => {
     if (role === 'center') {
       return {
-        transform: `translateX(-50%) scale(${isMobile ? 1.25 : 1.62})`,
+        transform: `translateX(-50%) scale(${isMobile ? 1.15 : 1.38})`,
         filter: 'none',
         opacity: 1,
         zIndex: 20,
         left: '50%',
-        height: isMobile ? '60%' : '90%',
-        bottom: isMobile ? '20%' : '0',
+        height: isMobile ? '56%' : '76%',
+        bottom: '0',
       };
     }
     if (role === 'left') {
       return {
-        transform: 'translateX(-50%) scale(1)',
+        transform: 'translateX(-50%) scale(0.92)',
         filter: 'blur(2px)',
-        opacity: 0.82,
+        opacity: 0.78,
         zIndex: 10,
-        left: isMobile ? '18%' : '26%',
+        left: isMobile ? '15%' : '20%',
         height: isMobile ? '18%' : '28%',
-        bottom: isMobile ? '30%' : '12%',
+        bottom: isMobile ? '20%' : '8%',
       };
     }
     // role === 'right'
     return {
-      transform: 'translateX(-50%) scale(1)',
+      transform: 'translateX(-50%) scale(0.92)',
       filter: 'blur(2px)',
-      opacity: 0.82,
+      opacity: 0.78,
       zIndex: 10,
-      left: isMobile ? '82%' : '74%',
+      left: isMobile ? '85%' : '80%',
       height: isMobile ? '18%' : '28%',
-      bottom: isMobile ? '30%' : '12%',
+      bottom: isMobile ? '20%' : '8%',
     };
   };
 
@@ -213,14 +213,14 @@ export const WorkSpecializationHero: React.FC = () => {
       aria-roledescription="carousel"
       aria-label="TOONHUB Work Specialization Showcase"
     >
-      {/* Container: Sits on white bg with crisp framing and clean rounded corners */}
-      <div className="relative w-full h-[88vh] sm:h-[92vh] md:h-[95vh] min-h-[620px] max-h-[960px] overflow-hidden rounded-[32px] sm:rounded-[44px] bg-[#FFFFFF] border border-[#0C0C0C]/10 shadow-[0_12px_44px_rgba(0,0,0,0.06)]">
+      {/* Container: Sits on white bg with generous dimensions */}
+      <div className="relative w-full h-[88vh] sm:h-[92vh] md:h-[95vh] min-h-[640px] max-h-[960px] overflow-hidden rounded-[32px] sm:rounded-[44px] bg-[#FFFFFF] border border-[#0C0C0C]/10 shadow-[0_12px_44px_rgba(0,0,0,0.06)]">
         
         {/* Soft Dynamic Atmospheric Radial Aura behind Center Character */}
         <div
           className="absolute inset-0 pointer-events-none z-0 transition-all duration-700"
           style={{
-            background: `radial-gradient(ellipse at 50% 65%, ${activeSpec.bg}22 0%, rgba(255,255,255,0) 65%)`,
+            background: `radial-gradient(ellipse at 50% 70%, ${activeSpec.bg}22 0%, rgba(255,255,255,0) 65%)`,
           }}
           aria-hidden="true"
         />
@@ -236,90 +236,92 @@ export const WorkSpecializationHero: React.FC = () => {
           aria-hidden="true"
         />
 
-        {/* 2. Giant Ghost Text "3D SHAPE" / ROLE in Font Anton */}
+        {/* 2. Giant Ghost Text in Font Anton */}
         <div
           className="absolute inset-x-0 flex items-center justify-center pointer-events-none select-none z-[2] overflow-hidden"
-          style={{ top: isMobile ? '12%' : '15%' }}
+          style={{ top: isMobile ? '10%' : '11%' }}
           aria-hidden="true"
         >
           <span
             className="font-anton uppercase text-center block text-transparent select-none whitespace-nowrap tracking-tight transition-all duration-700"
             style={{
-              fontSize: 'clamp(70px, 19vw, 290px)',
+              fontSize: 'clamp(55px, 14vw, 230px)',
               lineHeight: 1,
               letterSpacing: '-0.02em',
               fontWeight: 900,
-              WebkitTextStroke: '3px rgba(12, 12, 12, 0.12)',
-              textShadow: '0 10px 40px rgba(0,0,0,0.04)',
+              WebkitTextStroke: '2.5px rgba(12, 12, 12, 0.11)',
+              textShadow: '0 8px 30px rgba(0,0,0,0.03)',
             }}
           >
             {activeSpec.ghostText}
           </span>
         </div>
 
-        {/* 3. Top-Left Brand Label "TOONHUB" */}
-        <div className="absolute top-6 left-5 sm:left-10 z-[60] flex items-center gap-3">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0C0C0C]/90 font-inter">
-            TOONHUB // WORK SPECIALIZATION
-          </span>
-          <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-medium text-[#0C0C0C]/80 bg-[#0C0C0C]/5 border border-[#0C0C0C]/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Interactive 3D Stage</span>
-          </span>
+        {/* 3. Top-Left Brand Label + Role Selector Pills (Cleanly placed away from navbar) */}
+        <div className="absolute top-5 left-5 sm:top-7 sm:left-10 z-[60] flex flex-col gap-2.5">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0C0C0C]/90 font-inter">
+              TOONHUB // WORK SPECIALIZATION
+            </span>
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium text-[#0C0C0C]/80 bg-[#0C0C0C]/5 border border-[#0C0C0C]/10">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>3D Figurine Stage</span>
+            </span>
+          </div>
+
+          {/* Quick Track Switcher Pills */}
+          <div className="flex items-center gap-2">
+            {SPECIALIZATIONS.map((spec, i) => {
+              const isActive = i === activeIndex;
+              return (
+                <button
+                  key={spec.id}
+                  onClick={() => {
+                    resetAutoTimer();
+                    goToIndex(i);
+                    trackEvent('toonhub_pill_click', 'engagement', spec.role);
+                  }}
+                  className={`px-3 py-1 rounded-xl text-xs font-inter font-bold transition-all duration-300 ${
+                    isActive
+                      ? 'text-white bg-[#0C0C0C] shadow-md scale-105'
+                      : 'text-[#0C0C0C]/70 hover:text-[#0C0C0C] bg-white/90 border border-[#0C0C0C]/15 hover:border-[#0C0C0C]/35'
+                  }`}
+                  aria-selected={isActive}
+                >
+                  0{i + 1} {spec.role.split(' ')[0]}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Top-Right Quick Track Switcher Pills */}
-        <div className="absolute top-6 right-5 sm:right-10 z-[60] flex items-center gap-2">
-          {SPECIALIZATIONS.map((spec, i) => {
-            const isActive = i === activeIndex;
-            return (
-              <button
-                key={spec.id}
-                onClick={() => {
-                  resetAutoTimer();
-                  goToIndex(i);
-                  trackEvent('toonhub_pill_click', 'engagement', spec.role);
-                }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-inter font-bold transition-all duration-300 ${
-                  isActive
-                    ? 'text-white bg-[#0C0C0C] shadow-md scale-105'
-                    : 'text-[#0C0C0C]/70 hover:text-[#0C0C0C] bg-white/90 border border-[#0C0C0C]/15 hover:border-[#0C0C0C]/35'
-                }`}
-                aria-selected={isActive}
-              >
-                0{i + 1} {spec.role.split(' ')[0]}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* 4. Active Center Character Speech Bubble */}
+        {/* 4. Active Center Character Speech Bubble (Positioned cleanly ABOVE the head, never covering face) */}
         <div
           className="absolute z-[35] pointer-events-none flex flex-col items-center justify-center transition-all duration-500"
           style={{
-            top: isMobile ? '23%' : '25%',
+            top: isMobile ? '8%' : '9%',
             left: '50%',
             transform: 'translateX(-50%)',
-            maxWidth: isMobile ? '92%' : '480px',
+            maxWidth: isMobile ? '90%' : '440px',
             width: '100%',
           }}
         >
-          <div className="relative bg-white/95 backdrop-blur-md px-5 sm:px-7 py-4 sm:py-5 rounded-2xl border-2 border-[#0C0C0C]/15 shadow-[0_20px_50px_rgba(0,0,0,0.12)] text-center pointer-events-auto">
+          <div className="relative bg-white/95 backdrop-blur-md px-5 sm:px-6 py-3.5 sm:py-4 rounded-2xl border-2 border-[#0C0C0C]/15 shadow-[0_16px_40px_rgba(0,0,0,0.12)] text-center pointer-events-auto">
             {/* Top Indicator */}
-            <div className="flex items-center justify-center gap-1.5 mb-1.5">
+            <div className="flex items-center justify-center gap-1.5 mb-1">
               <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              <span className="font-mono text-[11px] font-bold text-[#0C0C0C]/60 uppercase tracking-widest">
+              <span className="font-mono text-[10px] sm:text-[11px] font-bold text-[#0C0C0C]/60 uppercase tracking-widest">
                 TRACK 0{activeSpec.id + 1} // AUTO-ROTATE 5S
               </span>
             </div>
 
             {/* Speech Dialogue */}
-            <h3 className="font-inter font-extrabold text-base sm:text-xl md:text-2xl text-[#0C0C0C] tracking-tight mb-3">
+            <h3 className="font-inter font-black text-sm sm:text-lg md:text-xl text-[#0C0C0C] tracking-tight mb-2.5">
               "{activeSpec.speech}"
             </h3>
 
             {/* Role-Specific Resume Download CTA */}
-            <div className="flex items-center justify-center gap-2.5 flex-wrap">
+            <div className="flex items-center justify-center">
               <a
                 href={`${import.meta.env.BASE_URL}resumes/${activeSpec.resumeFile}`}
                 download={activeSpec.resumeFile}
@@ -329,15 +331,15 @@ export const WorkSpecializationHero: React.FC = () => {
                   showToast(`Downloading ${activeSpec.role} Resume...`);
                   trackEvent('download_resume', 'toonhub_speech_cta', activeSpec.role);
                 }}
-                className="inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-mono font-bold text-white bg-[#0C0C0C] hover:bg-[#262626] shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 select-none group"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold text-white bg-[#0C0C0C] hover:bg-[#262626] shadow-md hover:scale-105 active:scale-95 transition-all duration-200 select-none group"
               >
-                <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+                <Download className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
                 <span>Download {activeSpec.role} Resume</span>
               </a>
             </div>
 
-            {/* Speech Bubble Downward Tail pointing to character */}
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-r-2 border-b-2 border-[#0C0C0C]/15 rotate-45" />
+            {/* Speech Bubble Downward Tail pointing toward character beanie */}
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white border-r-2 border-b-2 border-[#0C0C0C]/15 rotate-45" />
           </div>
         </div>
 
@@ -393,16 +395,16 @@ export const WorkSpecializationHero: React.FC = () => {
 
         {/* 6. Bottom-Left Text + Navigation Buttons */}
         <div
-          className="absolute bottom-6 left-5 sm:bottom-12 sm:left-12 z-[60] max-w-[320px] pointer-events-auto"
+          className="absolute bottom-5 left-5 sm:bottom-10 sm:left-10 z-[60] max-w-[320px] pointer-events-auto"
         >
           <p
-            className="font-inter font-black uppercase text-base sm:text-[22px] text-[#0C0C0C] mb-2 sm:mb-3 tracking-wide"
+            className="font-inter font-black uppercase text-base sm:text-[22px] text-[#0C0C0C] mb-1.5 sm:mb-2 tracking-wide"
             style={{ letterSpacing: '0.02em' }}
           >
             {activeSpec.role}
           </p>
 
-          <p className="hidden sm:block text-xs sm:text-sm text-[#0C0C0C]/80 leading-relaxed mb-4 sm:mb-5">
+          <p className="hidden sm:block text-xs sm:text-sm text-[#0C0C0C]/80 leading-relaxed mb-3 sm:mb-4">
             {activeSpec.description}
           </p>
 
@@ -414,9 +416,9 @@ export const WorkSpecializationHero: React.FC = () => {
                 trackEvent('toonhub_arrow_nav', 'click', 'prev');
               }}
               aria-label="Previous Character"
-              className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/90 border-2 border-[#0C0C0C] text-[#0C0C0C] shadow-md hover:bg-[#0C0C0C] hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 flex items-center justify-center group"
+              className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/90 border-2 border-[#0C0C0C] text-[#0C0C0C] shadow-md hover:bg-[#0C0C0C] hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 flex items-center justify-center group"
             >
-              <ArrowLeft className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.25] group-hover:-translate-x-0.5 transition-transform" />
+              <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.25] group-hover:-translate-x-0.5 transition-transform" />
             </button>
 
             <button
@@ -426,15 +428,15 @@ export const WorkSpecializationHero: React.FC = () => {
                 trackEvent('toonhub_arrow_nav', 'click', 'next');
               }}
               aria-label="Next Character"
-              className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/90 border-2 border-[#0C0C0C] text-[#0C0C0C] shadow-md hover:bg-[#0C0C0C] hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 flex items-center justify-center group"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/90 border-2 border-[#0C0C0C] text-[#0C0C0C] shadow-md hover:bg-[#0C0C0C] hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 flex items-center justify-center group"
             >
-              <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.25] group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.25] group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
         </div>
 
-        {/* 7. Bottom-Right Link "DISCOVER IT" / "DOWNLOAD RESUME" in Font Anton */}
-        <div className="absolute bottom-6 right-5 sm:bottom-12 sm:right-10 z-[60] pointer-events-auto">
+        {/* 7. Bottom-Right Link "DOWNLOAD RESUME" in Font Anton */}
+        <div className="absolute bottom-5 right-5 sm:bottom-10 sm:right-10 z-[60] pointer-events-auto">
           <a
             href={`${import.meta.env.BASE_URL}resumes/${activeSpec.resumeFile}`}
             download={activeSpec.resumeFile}

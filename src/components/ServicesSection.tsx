@@ -115,7 +115,7 @@ export const ServicesSection: React.FC = () => {
       <BranchingThread containerRef={containerRef} />
 
       {/* Part 1: Work Specializations Section (TOONHUB 3D Carousel Hero) */}
-      <section id="work" className="relative z-10 w-full">
+      <section id="work" className="relative z-10 w-full scroll-mt-28">
         <WorkSpecializationHero />
       </section>
 
