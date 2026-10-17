@@ -36,61 +36,76 @@ export const About: React.FC = () => {
       id="about"
       className="relative min-h-screen w-full bg-[#0C0C0C] flex items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-16 sm:py-20 md:py-24 lg:py-28 overflow-x-clip select-none"
     >
-      {/* 3-Column Triptych Grid: Left (Spacious Story Text) + Center (Prominent Shloke & ABOUT ME) + Right (Borderless Telemetry Pointers Across Height) */}
+      {/* 3-Column Triptych Grid: Left (Glass Box Story) + Center (Prominent Shloke & Tight ABOUT ME) + Right (Borderless Telemetry Pointers Across Height) */}
       <div className="relative z-20 w-full max-w-[1520px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
         
-        {/* Column 1: Left Stage (Story with character-by-character scroll effect and generous spacing) */}
-        <div className="order-2 lg:order-1 lg:col-span-4 flex flex-col justify-center text-left max-w-xl mx-auto lg:mx-0 pr-0 lg:pr-4">
+        {/* Column 1: Left Stage (Story in a Sleek Translucent Glass Box with Inter typography) */}
+        <div className="order-2 lg:order-1 lg:col-span-4 flex flex-col justify-center text-left max-w-xl mx-auto lg:mx-0 pr-0 lg:pr-2">
           <FadeIn delay={0.1} y={20}>
-            <AnimatedText
-              text="I am a final-year Electronics and Communication Engineering student at VIT Vellore with an 8.68 CGPA. I focus on software engineering, data science, and system design. During my internship at Kofuku Technologies, I worked on low-latency voice services and automated operational workflows that saved hours of manual effort. In research, I co-authored MS-HQNet for biological signal classification. I care deeply about writing clean, reliable code, understanding how systems break, and learning something new with every project."
-              className="text-[#E2E8F0] font-kanit font-light text-left leading-relaxed tracking-normal"
-              style={{ fontSize: 'clamp(1.05rem, 1.25vw, 1.22rem)', lineHeight: 2.05 }}
-            />
+            <div className="relative rounded-2xl sm:rounded-3xl bg-[#111116]/85 border border-white/10 p-6 sm:p-7 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.7)] backdrop-blur-md overflow-hidden group hover:border-white/20 transition-all duration-300">
+              {/* Header Badge Inside Box */}
+              <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-white/[0.08]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#D6C3B0] font-bold">
+                    Engineering Profile
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-zinc-500">
+                  VIT Vellore
+                </span>
+              </div>
+
+              {/* High-Readability Inter Body Text with Character-by-Character Scroll Reveal */}
+              <AnimatedText
+                text="I am a final-year Electronics and Communication Engineering student at VIT Vellore with an 8.68 CGPA. I focus on software engineering, data science, and system design. During my internship at Kofuku Technologies, I worked on low-latency voice services and automated operational workflows that saved hours of manual effort. In research, I co-authored MS-HQNet for biological signal classification. I care deeply about writing clean, reliable code, understanding how systems break, and learning something new with every project."
+                className="text-[#E2E8F0] font-inter font-normal text-left tracking-normal antialiased"
+                style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.05rem)', lineHeight: 1.85 }}
+              />
+            </div>
           </FadeIn>
         </div>
 
-        {/* Column 2: Center Stage (Prominent Cutout Figure with ABOUT ME Layered Directly Behind) */}
-        <div className="order-1 lg:order-2 lg:col-span-5 flex justify-center items-center relative">
-          <FadeIn delay={0.15} y={0} duration={0.8}>
+        {/* Column 2: Center Stage (Prominent Large Cutout Figure with Tight ABOUT ME Behind) */}
+        <div className="order-1 lg:order-2 lg:col-span-5 flex justify-center items-end relative min-h-[580px] sm:min-h-[660px] md:min-h-[720px] lg:min-h-[760px]">
+          <FadeIn delay={0.15} y={0} duration={0.8} className="w-full flex items-end justify-center">
             <div
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="relative w-full max-w-[480px] sm:max-w-[540px] md:max-w-[580px] lg:max-w-[620px] flex items-center justify-center min-h-[540px] sm:min-h-[600px] md:min-h-[660px]"
+              className="relative w-full max-w-[500px] sm:max-w-[560px] md:max-w-[620px] flex items-end justify-center h-full min-h-[580px] sm:min-h-[660px] md:min-h-[720px] lg:min-h-[760px]"
               style={{ perspective: 1000 }}
             >
-              {/* Bold "ABOUT ME" Display Typography Sits Behind Shloke */}
+              {/* Bold "ABOUT ME" Display Typography Sits Behind Shloke (Tight, Natural Kerning like Car Poster) */}
               <div
-                className="absolute -inset-x-12 sm:-inset-x-18 md:-inset-x-22 top-[2%] sm:top-[4%] flex flex-col items-center justify-center pointer-events-none select-none z-0 overflow-visible"
+                className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none z-0 overflow-visible pb-12 sm:pb-16"
                 aria-hidden="true"
               >
                 <span
-                  className="font-anton uppercase tracking-wider text-center select-none block text-transparent whitespace-nowrap"
+                  className="font-anton uppercase tracking-tight text-center select-none block text-transparent whitespace-nowrap"
                   style={{
-                    fontSize: 'clamp(95px, 11.5vw, 165px)',
-                    lineHeight: 0.85,
-                    letterSpacing: '0.05em',
-                    WebkitTextStroke: '2px rgba(244, 236, 225, 0.55)',
+                    fontSize: 'clamp(85px, 11vw, 155px)',
+                    lineHeight: 0.86,
+                    letterSpacing: '-0.02em',
+                    WebkitTextStroke: '2px rgba(244, 236, 225, 0.45)',
                     background:
-                      'linear-gradient(180deg, rgba(244, 236, 225, 0.45) 0%, rgba(244, 236, 225, 0.1) 100%)',
+                      'linear-gradient(180deg, rgba(244, 236, 225, 0.42) 0%, rgba(244, 236, 225, 0.08) 100%)',
                     WebkitBackgroundClip: 'text',
-                    textShadow: '0 0 50px rgba(244, 236, 225, 0.2)',
+                    textShadow: '0 0 50px rgba(244, 236, 225, 0.22)',
                   }}
                 >
                   ABOUT
                 </span>
                 <span
-                  className="font-anton uppercase text-center select-none block text-transparent whitespace-nowrap -mt-3 sm:-mt-5"
+                  className="font-anton uppercase tracking-tight text-center select-none block text-transparent whitespace-nowrap -mt-2 sm:-mt-4 md:-mt-6"
                   style={{
-                    fontSize: 'clamp(95px, 11.5vw, 165px)',
-                    lineHeight: 0.85,
-                    letterSpacing: '0.35em',
-                    textIndent: '0.35em',
-                    WebkitTextStroke: '2px rgba(244, 236, 225, 0.55)',
+                    fontSize: 'clamp(85px, 11vw, 155px)',
+                    lineHeight: 0.86,
+                    letterSpacing: '-0.02em',
+                    WebkitTextStroke: '2px rgba(244, 236, 225, 0.45)',
                     background:
-                      'linear-gradient(180deg, rgba(244, 236, 225, 0.35) 0%, rgba(244, 236, 225, 0.06) 100%)',
+                      'linear-gradient(180deg, rgba(244, 236, 225, 0.35) 0%, rgba(244, 236, 225, 0.05) 100%)',
                     WebkitBackgroundClip: 'text',
-                    textShadow: '0 0 50px rgba(244, 236, 225, 0.2)',
+                    textShadow: '0 0 50px rgba(244, 236, 225, 0.22)',
                   }}
                 >
                   ME
@@ -99,39 +114,39 @@ export const About: React.FC = () => {
 
               {/* Subtle Atmospheric Spotlight Warm Aura */}
               <div
-                className="absolute -top-14 left-1/2 -translate-x-1/2 w-80 sm:w-96 h-[380px] pointer-events-none z-0 opacity-40"
+                className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-80 sm:w-96 md:w-[440px] h-[440px] pointer-events-none z-0 opacity-45"
                 style={{
                   background:
-                    'radial-gradient(ellipse 60% 50% at 50% 25%, rgba(244, 236, 225, 0.22) 0%, transparent 70%)',
-                  filter: 'blur(28px)',
+                    'radial-gradient(ellipse 60% 50% at 50% 35%, rgba(244, 236, 225, 0.25) 0%, transparent 70%)',
+                  filter: 'blur(32px)',
                 }}
                 aria-hidden="true"
               />
 
-              {/* 3D Interactive Tilting Cutout Figure */}
+              {/* 3D Interactive Tilting Cutout Figure: Large, Commanding Scale */}
               <motion.div
                 style={{
                   rotateX,
                   rotateY,
                   transformStyle: 'preserve-3d',
                 }}
-                className="relative z-10 w-full flex items-center justify-center pointer-events-auto cursor-pointer"
+                className="relative z-10 w-full flex items-end justify-center pointer-events-auto cursor-pointer"
               >
                 <img
                   src={photoSrc}
                   alt="Shloke Binani"
                   loading="lazy"
                   onError={() => setImgError(true)}
-                  className="w-full h-auto max-h-[560px] sm:max-h-[640px] md:max-h-[680px] lg:max-h-[720px] object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.9)] transition-transform duration-700 hover:scale-[1.02]"
+                  className="w-auto h-[540px] sm:h-[620px] md:h-[680px] lg:h-[750px] max-w-none object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.95)] transition-transform duration-700 hover:scale-[1.02]"
                 />
 
                 {/* Ground Contact Shadow */}
                 <div
-                  className="absolute bottom-1 w-[80%] h-6 pointer-events-none z-0 opacity-75"
+                  className="absolute bottom-0 w-[75%] h-6 pointer-events-none z-0 opacity-80"
                   style={{
                     background:
                       'radial-gradient(ellipse 65% 50% at 50% 50%, rgba(0,0,0,0.95) 0%, transparent 75%)',
-                    filter: 'blur(7px)',
+                    filter: 'blur(8px)',
                   }}
                   aria-hidden="true"
                 />
