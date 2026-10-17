@@ -188,11 +188,6 @@ export const ProjectsSection: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header: Perfectly Centered & Responsive */}
         <div className="w-full text-center mb-16 sm:mb-20">
-          <FadeIn delay={0.05} y={15}>
-            <span className="inline-block text-xs font-mono font-medium tracking-[0.25em] text-[#D6C3B0] uppercase mb-3">
-              Academic & Engineering Projects
-            </span>
-          </FadeIn>
           <FadeIn delay={0.1} y={25}>
             <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-center flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mx-auto max-w-full">
               <span className="hero-heading">Featured</span>

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Copy, Check, ArrowUp, Send, Mail, Sparkles } from 'lucide-react';
+import { Copy, Check, ArrowUp, Send, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 import { Magnet } from './common/Magnet';
@@ -58,13 +58,6 @@ export const Contact: React.FC = () => {
         {/* Main CTA Grid */}
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12 pb-20 border-b border-white/5">
           <div className="max-w-2xl space-y-6">
-            <FadeIn delay={0.05} y={15}>
-              <div className="inline-flex items-center gap-2 text-xs font-mono font-medium tracking-[0.25em] text-[#D6C3B0] uppercase">
-                <Sparkles className="w-3.5 h-3.5 text-[#F4ECE1]" />
-                Initiate Project / Inquiries
-              </div>
-            </FadeIn>
-
             <FadeIn delay={0.1} y={30}>
               <h2 className="font-kanit font-black text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-none uppercase">
                 <span className="hero-heading mr-3">Let&apos;s</span>

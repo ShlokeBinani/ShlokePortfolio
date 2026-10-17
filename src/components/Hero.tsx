@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ArrowDown, Mail, Check, Sparkles } from 'lucide-react';
+import { ArrowDown, Mail, Check } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 import { ContactButton } from './common/Buttons';
@@ -105,20 +105,6 @@ export const Hero: React.FC = () => {
           style={{ transformStyle: 'preserve-3d', transform: 'translateZ(25px)' }}
           className="w-full lg:w-[58%] flex flex-col justify-center py-6 lg:py-0 space-y-6 lg:space-y-7 z-20"
         >
-          {/* Eyebrow Micro-Copy with Hollow / Solid Tag */}
-          <FadeIn delay={0.1} y={-10}>
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#D7E2EA]/20 bg-[#D7E2EA]/5 text-[10px] sm:text-xs font-mono font-medium tracking-widest text-[#D7E2EA] uppercase">
-                <Sparkles className="w-3 h-3 text-[#F4ECE1]" />
-                Backend & Distributed Systems
-              </span>
-              <span className="text-[#D6C3B0]/60 text-xs font-mono hidden sm:inline">•</span>
-              <span className="tracking-[0.25em] text-[11px] uppercase text-[#D6C3B0]/80 font-mono select-none">
-                Data Engineering • Applied AI
-              </span>
-            </div>
-          </FadeIn>
-
           {/* Kinetic Typography Headline: Solid Gradient + Hollow Stroke */}
           <div className="space-y-1">
             <FadeIn delay={0.2} y={30}>

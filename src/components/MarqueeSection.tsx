@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Sparkles } from 'lucide-react';
 import { FadeIn } from './common/FadeIn';
 
 const ROW1_IMAGES = [
@@ -63,10 +62,6 @@ export const MarqueeSection: React.FC = () => {
         <FadeIn delay={0.1} y={20}>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
             <div>
-              <span className="inline-flex items-center gap-2 text-xs font-mono font-medium tracking-widest text-[#D6C3B0] uppercase mb-2">
-                <Sparkles className="w-3.5 h-3.5 text-[#F4ECE1]" />
-                Visual Synthesis & Creative Motion
-              </span>
               <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight font-kanit">
                 <span className="text-stroke-hollow mr-3">Selected</span>
                 <span className="hero-heading">Motion Reels</span>

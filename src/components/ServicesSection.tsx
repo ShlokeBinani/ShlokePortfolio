@@ -49,11 +49,6 @@ export const ServicesSection: React.FC = () => {
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 sm:mb-20 md:mb-24">
-          <FadeIn delay={0.05} y={15}>
-            <span className="inline-block text-xs font-mono font-medium tracking-[0.25em] text-[#0C0C0C]/60 uppercase mb-3">
-              Core Technical Focus
-            </span>
-          </FadeIn>
           <FadeIn delay={0.1} y={25}>
             <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-[#0C0C0C] text-center flex flex-wrap items-center justify-center gap-x-4 mx-auto max-w-full">
               <span>What I</span>

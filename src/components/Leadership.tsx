@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Award, Users, Terminal, Sparkles, Trophy } from 'lucide-react';
+import { Award, Users, Terminal, Trophy } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import { FadeIn } from './common/FadeIn';
 
@@ -73,12 +73,6 @@ export const Leadership: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-6">
           <div>
-            <FadeIn delay={0.05} y={15}>
-              <div className="inline-flex items-center gap-2 text-xs font-mono font-medium tracking-[0.25em] text-[#D6C3B0] uppercase mb-2">
-                <Sparkles className="w-3.5 h-3.5 text-[#F4ECE1]" />
-                Organizational Impact & Initiatives
-              </div>
-            </FadeIn>
             <FadeIn delay={0.1} y={30}>
               <h2 className="font-kanit font-black text-4xl sm:text-6xl uppercase tracking-tight">
                 <span className="hero-heading mr-3">Leadership &</span>

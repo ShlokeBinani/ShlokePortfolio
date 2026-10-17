@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, Award, Code, Sparkles, MapPin, CheckCircle2 } from 'lucide-react';
+import { GraduationCap, Award, Code, MapPin, CheckCircle2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import { ContactButton } from './common/Buttons';
 import { AnimatedText } from './common/AnimatedText';
@@ -67,14 +67,6 @@ export const About: React.FC = () => {
 
       {/* Center Content Stack */}
       <div className="relative z-20 max-w-4xl mx-auto flex flex-col items-center text-center">
-        {/* Eyebrow */}
-        <FadeIn delay={0.05} y={15}>
-          <div className="inline-flex items-center gap-2 tracking-[0.25em] text-[11px] uppercase text-[#D6C3B0] font-mono mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#F4ECE1]" />
-            Background & Engineering Focus
-          </div>
-        </FadeIn>
-
         {/* Heading: Centered & Balanced */}
         <FadeIn delay={0.1} y={25}>
           <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-center flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mx-auto max-w-full mb-8 sm:mb-10 select-none">

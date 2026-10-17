@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ArrowRight, Cpu, Network, BarChart3, Sparkles, Activity, Layers } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Cpu, Network, BarChart3, Activity, Layers } from 'lucide-react';
 import { portfolioData, Project } from '../data/portfolioData';
 import { webglState, setActiveDrawerProject, setViewMode, subscribeWebGL, setCurrentProjectIndex } from '../utils/webglState';
 import { MagneticButton } from './Navbar';
