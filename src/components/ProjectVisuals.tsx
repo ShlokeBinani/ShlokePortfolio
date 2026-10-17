@@ -153,8 +153,8 @@ export const ParadoxVisuals = {
 
       <div className="py-2 space-y-1.5 text-[11px]">
         <div className="p-2 rounded-lg bg-black/70 border border-white/5 text-zinc-300">
-          <span className="text-purple-400 font-semibold">SELECT</span> * FROM seats{' '}
-          <span className="text-amber-400 font-semibold">FOR UPDATE</span>;
+          <span className="text-[#F4ECE1] font-semibold">SELECT</span> * FROM seats{' '}
+          <span className="text-[#D6C3B0] font-semibold">FOR UPDATE</span>;
         </div>
         <p className="text-[10px] text-zinc-400 leading-snug">
           Serializes concurrent requests for identical seats to prevent double bookings.
@@ -248,10 +248,10 @@ export const MSHQNetVisuals = {
     <div className="w-full h-full bg-[#111116] p-4 sm:p-5 flex flex-col justify-between select-none font-mono">
       <div className="flex items-center justify-between">
         <span className="text-[11px] text-[#D6C3B0] tracking-wider uppercase flex items-center gap-1.5">
-          <Cpu className="w-3.5 h-3.5 text-purple-400" />
+          <Cpu className="w-3.5 h-3.5 text-[#F4ECE1]" />
           6-Qubit Quantum Circuit
         </span>
-        <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">
+        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#F4ECE1]/10 text-[#F4ECE1] border border-[#F4ECE1]/25">
           QCNN Framework
         </span>
       </div>
@@ -260,12 +260,12 @@ export const MSHQNetVisuals = {
       <div className="py-2 space-y-1.5">
         {['|q0⟩', '|q1⟩', '|q2⟩', '|q3⟩'].map((wire, idx) => (
           <div key={idx} className="flex items-center gap-2 text-[10px] text-zinc-400">
-            <span className="text-purple-300 font-bold">{wire}</span>
-            <div className="flex-1 h-[1px] bg-purple-500/30 relative flex items-center justify-around">
-              <span className="w-4 h-4 rounded bg-black border border-purple-400 text-[8px] flex items-center justify-center text-white">
+            <span className="text-[#D7E2EA] font-bold">{wire}</span>
+            <div className="flex-1 h-[1px] bg-[#D7E2EA]/30 relative flex items-center justify-around">
+              <span className="w-4 h-4 rounded bg-black border border-[#D7E2EA] text-[8px] flex items-center justify-center text-white">
                 Ry
               </span>
-              <span className="w-2 h-2 rounded-full bg-purple-400" />
+              <span className="w-2 h-2 rounded-full bg-[#F4ECE1]" />
             </div>
           </div>
         ))}
@@ -273,7 +273,7 @@ export const MSHQNetVisuals = {
 
       <div className="text-[10px] text-zinc-500 pt-2 border-t border-white/5 flex justify-between">
         <span>Classical MLP Bypass</span>
-        <span className="text-purple-300">Variational QCNN</span>
+        <span className="text-[#D6C3B0]">Variational QCNN</span>
       </div>
     </div>
   ),
@@ -311,10 +311,10 @@ export const MSHQNetVisuals = {
     <div className="w-full h-full bg-[#0E0E13] p-6 flex flex-col justify-between font-mono select-none">
       <div className="flex items-center justify-between border-b border-white/10 pb-4">
         <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-purple-400 animate-pulse" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#F4ECE1] animate-pulse" />
           <span className="text-xs text-[#F4ECE1] font-semibold">MS-HQNet Benchmark Evaluation</span>
         </div>
-        <span className="text-[11px] text-purple-300 bg-purple-500/10 px-2.5 py-1 rounded-md border border-purple-500/20">
+        <span className="text-[11px] text-[#D7E2EA] bg-white/5 px-2.5 py-1 rounded-md border border-white/10">
           Research Co-Author
         </span>
       </div>
@@ -323,7 +323,7 @@ export const MSHQNetVisuals = {
       <div className="py-6 flex flex-col sm:flex-row items-center justify-around gap-6">
         <div className="text-center sm:text-left">
           <div className="text-4xl sm:text-5xl font-black text-[#F4ECE1] font-kanit">
-            99.17<span className="text-purple-400">%</span>
+            99.17<span className="text-[#D6C3B0]">%</span>
           </div>
           <div className="text-xs text-zinc-400 mt-1 uppercase tracking-wider">
             MS-HQNet Classification Accuracy
@@ -339,16 +339,16 @@ export const MSHQNetVisuals = {
             <span>Standard CNN:</span>
             <span className="text-zinc-500">92.15%</span>
           </div>
-          <div className="flex justify-between gap-6 text-emerald-400 font-bold border-t border-white/10 pt-1">
+          <div className="flex justify-between gap-6 text-white font-bold border-t border-white/10 pt-1">
             <span>MS-HQNet (6-Qubit + MLP):</span>
-            <span>99.17% (Top)</span>
+            <span className="text-[#F4ECE1]">99.17% (Top)</span>
           </div>
         </div>
       </div>
 
       <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-400">
         <span>Evaluated on 600 EMG Biological Signals</span>
-        <span className="text-purple-300 font-semibold">Outperformed Traditional ML Baselines</span>
+        <span className="text-[#D6C3B0] font-semibold">Outperformed Traditional ML Baselines</span>
       </div>
     </div>
   ),
@@ -451,10 +451,10 @@ export const EcommerceVisuals = {
     <div className="w-full h-full bg-[#111116] p-4 sm:p-5 flex flex-col justify-between select-none font-mono">
       <div className="flex items-center justify-between">
         <span className="text-[11px] text-[#D6C3B0] tracking-wider uppercase flex items-center gap-1.5">
-          <Layers className="w-3.5 h-3.5 text-violet-400" />
+          <Layers className="w-3.5 h-3.5 text-[#F4ECE1]" />
           PCA Dimensionality Reduction
         </span>
-        <span className="text-[10px] px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">
+        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#F4ECE1]/10 text-[#F4ECE1] border border-[#F4ECE1]/25">
           85% Variance
         </span>
       </div>
@@ -463,20 +463,20 @@ export const EcommerceVisuals = {
         <div>
           <div className="flex justify-between text-[10px] text-zinc-400 mb-1">
             <span>Principal Component 1 (PC1)</span>
-            <span className="text-violet-400 font-semibold">58% Variance</span>
+            <span className="text-[#D7E2EA] font-semibold">58% Variance</span>
           </div>
           <div className="w-full h-1.5 rounded-full bg-black/60 overflow-hidden">
-            <div className="w-[58%] h-full bg-violet-400 rounded-full" />
+            <div className="w-[58%] h-full bg-[#D7E2EA] rounded-full" />
           </div>
         </div>
 
         <div>
           <div className="flex justify-between text-[10px] text-zinc-400 mb-1">
             <span>Principal Component 2 (PC2)</span>
-            <span className="text-violet-300 font-semibold">27% Variance</span>
+            <span className="text-[#D6C3B0] font-semibold">27% Variance</span>
           </div>
           <div className="w-full h-1.5 rounded-full bg-black/60 overflow-hidden">
-            <div className="w-[27%] h-full bg-violet-500/80 rounded-full" />
+            <div className="w-[27%] h-full bg-[#F4ECE1] rounded-full" />
           </div>
         </div>
       </div>
@@ -519,35 +519,35 @@ export const EcommerceVisuals = {
     <div className="w-full h-full bg-[#0E0E13] p-6 flex flex-col justify-between font-mono select-none">
       <div className="flex items-center justify-between border-b border-white/10 pb-4">
         <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-violet-400 animate-pulse" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#F4ECE1] animate-pulse" />
           <span className="text-xs text-[#F4ECE1] font-semibold">Power BI LTV Dashboard & A/B Testing</span>
         </div>
-        <span className="text-[11px] text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-md border border-violet-500/20">
+        <span className="text-[11px] text-[#D7E2EA] bg-white/5 px-2.5 py-1 rounded-md border border-white/10">
           Sample Size Validated
         </span>
       </div>
 
       <div className="py-4 space-y-3">
-        <div className="flex items-center justify-between p-3 rounded-xl bg-black/60 border border-violet-500/20">
+        <div className="flex items-center justify-between p-3 rounded-xl bg-black/60 border border-white/10">
           <div className="flex items-center gap-2.5">
-            <BarChart3 className="w-4 h-4 text-violet-400" />
+            <BarChart3 className="w-4 h-4 text-[#D6C3B0]" />
             <span className="text-xs text-zinc-300">High-LTV Shopper Segment</span>
           </div>
-          <span className="text-violet-400 font-bold text-sm">Top 24% Generating 68% Revenue</span>
+          <span className="text-[#F4ECE1] font-bold text-sm">Top 24% Generating 68% Revenue</span>
         </div>
 
         <div className="flex items-center justify-between p-3 rounded-xl bg-black/60 border border-white/5">
           <div className="flex items-center gap-2.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <CheckCircle2 className="w-4 h-4 text-[#D7E2EA]" />
             <span className="text-xs text-zinc-300">A/B Testing Retention Framework</span>
           </div>
-          <span className="text-emerald-400 font-bold text-sm">p &lt; 0.05 Significance</span>
+          <span className="text-[#F5F5F7] font-bold text-sm">p &lt; 0.05 Significance</span>
         </div>
       </div>
 
       <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-400">
         <span>Executive BI: Power BI, Pandas & SQL</span>
-        <span className="text-violet-400 font-semibold">Data-Driven Merchandising</span>
+        <span className="text-[#D6C3B0] font-semibold">Data-Driven Merchandising</span>
       </div>
     </div>
   ),

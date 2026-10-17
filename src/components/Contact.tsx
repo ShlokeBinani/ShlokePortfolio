@@ -130,15 +130,9 @@ export const Contact: React.FC = () => {
                   <a
                     href={`mailto:${email}`}
                     onClick={() => trackEvent('send_email_click', 'contact', email)}
-                    className="inline-flex items-center justify-center gap-2.5 w-full py-4 rounded-2xl text-white font-semibold text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
-                    style={{
-                      background: 'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)',
-                      boxShadow: '0px 4px 4px rgba(181, 1, 167, 0.25), inset 4px 4px 12px #7721B1',
-                      outline: '2px solid #FFFFFF',
-                      outlineOffset: '-3px',
-                    }}
+                    className="inline-flex items-center justify-center gap-2.5 w-full py-4 rounded-2xl text-[#0A0A0C] bg-[#F4ECE1] hover:bg-white font-bold text-sm uppercase tracking-wider border-2 border-white shadow-[0_4px_24px_rgba(244,236,225,0.25)] hover:shadow-[0_6px_32px_rgba(255,255,255,0.35)] transition-all hover:scale-[1.02] active:scale-[0.98] select-none"
                   >
-                    <Send className="w-4 h-4" />
+                    <Send className="w-4 h-4 text-[#0A0A0C]" />
                     <span>Send Message</span>
                   </a>
                 </Magnet>

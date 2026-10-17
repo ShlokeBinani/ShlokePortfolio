@@ -77,12 +77,18 @@ section {
   color: #D7E2EA;
 }
 
-/* Vibrant Radial Pill Contact Button */
+/* High-Contrast Champagne & White Pill Contact Button */
 .contact-btn-glow {
-  background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%);
-  box-shadow: 0px 4px 4px rgba(181, 1, 167, 0.25), inset 4px 4px 12px #7721B1;
-  outline: 2px solid #FFFFFF;
-  outline-offset: -3px;
+  background: #F4ECE1;
+  color: #0A0A0C;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0px 4px 24px rgba(244, 236, 225, 0.25);
+  transition: all 0.3s ease;
+}
+.contact-btn-glow:hover {
+  background: #FFFFFF;
+  color: #000000;
+  box-shadow: 0px 6px 32px rgba(255, 255, 255, 0.35);
 }
 
 /* Zero-Seam Spotlight Video Blending (Pure #0C0C0C / #000000 Canvas) */
@@ -96,7 +102,7 @@ video {
   background: radial-gradient(
     circle at 75% 20%,
     rgba(244, 236, 225, 0.08) 0%,
-    rgba(78, 76, 130, 0.05) 35%,
+    rgba(215, 226, 234, 0.04) 35%,
     rgba(0, 0, 0, 0) 70%
   );
 }
