@@ -59,6 +59,17 @@ section {
   color: #D7E2EA;
 }
 
+.text-stroke-hollow-pure {
+  -webkit-text-stroke: 1.5px rgba(215, 226, 234, 0.7);
+  color: transparent;
+  letter-spacing: 0.04em;
+  transition: all 0.3s ease;
+}
+.text-stroke-hollow-pure:hover {
+  -webkit-text-stroke: 1.5px #FFFFFF;
+  text-shadow: 0 0 20px rgba(244, 236, 225, 0.25);
+}
+
 .text-stroke-champagne {
   -webkit-text-stroke: 1.5px rgba(244, 236, 225, 0.4);
   color: transparent;

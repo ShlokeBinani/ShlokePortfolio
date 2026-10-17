@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Award, Users, Terminal, Trophy } from 'lucide-react';
+import { Users, Terminal } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import { FadeIn } from './common/FadeIn';
 
@@ -88,7 +88,7 @@ export const Leadership: React.FC = () => {
             <TiltCard key={idx}>
               <div>
                 {/* Meta Header */}
-                <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+                <div className="flex items-center justify-between mb-5 pb-3 border-b border-white/10">
                   <div className="flex items-center gap-2">
                     {idx === 0 ? (
                       <Users className="w-4 h-4 text-[#D6C3B0]" />
@@ -105,17 +105,18 @@ export const Leadership: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Role Title & Badge */}
-                <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <h3 className="font-kanit text-2xl sm:text-3xl font-bold text-[#F5F5F7] tracking-tight">
-                    {role.title}
+                {/* Hollow Chapter Acronym */}
+                <div className="mb-4">
+                  <h3 className="font-kanit font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-stroke-hollow-pure leading-tight">
+                    {role.organizationAcronym || role.organization}
                   </h3>
-                  {role.badge && (
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-medium bg-[#F4ECE1]/10 text-[#F4ECE1] border border-[#F4ECE1]/25">
-                      <Award className="w-3.5 h-3.5 mr-1.5 text-[#F4ECE1]" />
-                      {role.badge}
-                    </span>
-                  )}
+                </div>
+
+                {/* Role Title */}
+                <div className="mb-4">
+                  <h4 className="font-kanit text-2xl sm:text-3xl font-bold text-[#F5F5F7] tracking-tight">
+                    {role.title}
+                  </h4>
                 </div>
 
                 <p className="text-sm text-[#D7E2EA]/80 font-kanit font-light leading-relaxed mb-6">

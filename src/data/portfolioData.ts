@@ -37,6 +37,7 @@ export interface ExperienceItem {
 export interface LeadershipItem {
   title: string;
   organization: string;
+  organizationAcronym?: string;
   period: string;
   description: string;
   highlights: string[];
@@ -424,7 +425,8 @@ export const portfolioData = {
   leadership: [
     {
       title: "Marketing, Design & PR Head",
-      organization: "Society of Automotive Engineers (SAE-VIT)",
+      organization: "Society of Automotive Engineers",
+      organizationAcronym: "SAE-VIT",
       period: "May 2024 - May 2026",
       description: "Leading branding, public relations, and cross-functional operations for one of the largest collegiate technical chapters at VIT Vellore.",
       highlights: [
@@ -432,8 +434,20 @@ export const portfolioData = {
         "Managed operations and 40+ volunteers as Point of Contact for SAE AirShow 25, increasing attendee participation by 30% to 45%.",
         "Streamlined cross-functional logistics and team workflows across 12 major university events during graVITas 25, ensuring 100% on-time execution.",
         "Helped the chapter earn the Elite Category Chapter Award for excellence in operations (2025 - 2026)."
-      ],
-      badge: "Elite Category Chapter Award"
+      ]
+    },
+    {
+      title: "Core Committee Member",
+      organization: "CodeChef Student Chapter",
+      organizationAcronym: "CODECHEF-VIT",
+      period: "May 2024 - June 2025",
+      description: "Orchestrating technical initiatives, competitive programming contests, and algorithmic problem-solving workshops across VIT Vellore.",
+      highlights: [
+        "Organized university-wide competitive programming contests and code sprints, engaging 500+ student participants.",
+        "Mentored junior engineering undergraduates in Data Structures & Algorithms (Java / C++) and problem-solving techniques.",
+        "Collaborated with cross-functional technical teams to design contest problem sets, test cases, and editorial breakdowns.",
+        "Coordinated technical workshops and hackathon logistics, fostering a culture of algorithmic excellence and peer collaboration."
+      ]
     }
   ] as LeadershipItem[],
 
