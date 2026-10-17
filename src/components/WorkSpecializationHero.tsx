@@ -34,7 +34,7 @@ export const SPECIALIZATIONS: SpecializationCharacter[] = [
     domainBadge: 'Backend & Systems',
     tagline: 'High-Concurrency Backends & Low-Latency APIs',
     description:
-      'Writing clean, maintainable backend services, implementing database row-level locking, and engineering resilient REST architectures.',
+      'This version of Shloke is a Software Engineer who builds high-concurrency backend services, implements atomic row-level database locks, and engineers resilient REST architectures.',
     skills: ['Go', 'TypeScript', 'PostgreSQL', 'Docker', 'System Design'],
   },
   {
@@ -50,7 +50,7 @@ export const SPECIALIZATIONS: SpecializationCharacter[] = [
     domainBadge: 'Analytics & BI',
     tagline: 'Statistical Testing & Executive BI Dashboards',
     description:
-      'Auditing multi-source datasets, testing statistical hypotheses (ANOVA, Chi-Sq), and engineering executive Power BI intelligence systems.',
+      'This version of Shloke is a Data Analyst who conducts statistical hypothesis testing, audits complex multi-source datasets, and engineers executive Power BI dashboards.',
     skills: ['Python', 'SQL', 'Power BI', 'Hypothesis Testing', 'ETL'],
   },
   {
@@ -66,7 +66,7 @@ export const SPECIALIZATIONS: SpecializationCharacter[] = [
     domainBadge: 'Applied ML & AI',
     tagline: 'Applied ML Pipelines & Autonomous Workflows',
     description:
-      'Designing applied ML models, exploring quantum convolutional neural networks (QCNN), fine-tuning LLMs, and deploying event-driven agent workflows.',
+      'This version of Shloke is an AI Engineer who designs applied deep learning pipelines, explores quantum neural network architectures (QCNN), and deploys autonomous multi-agent workflows.',
     skills: ['PyTorch', 'QCNN', 'Scikit-Learn', 'LLMs', 'Multi-Agent'],
   },
 ];
@@ -188,35 +188,38 @@ export const WorkSpecializationHero: React.FC = () => {
   const getItemStyle = (role: 'center' | 'left' | 'right'): React.CSSProperties => {
     if (role === 'center') {
       return {
-        transform: `translateX(-50%) scale(${isMobile ? 1.15 : 1.38})`,
+        transform: `translateX(-50%) scale(${isMobile ? 0.92 : 0.98})`,
+        transformOrigin: 'bottom center',
         filter: 'none',
         opacity: 1,
         zIndex: 20,
         left: '50%',
-        height: isMobile ? '58%' : '78%',
-        bottom: '0',
+        height: isMobile ? '62%' : '75%',
+        bottom: isMobile ? '3%' : '4%',
       };
     }
     if (role === 'left') {
       return {
-        transform: 'translateX(-50%) scale(0.92)',
+        transform: 'translateX(-50%) scale(0.8)',
+        transformOrigin: 'bottom center',
         filter: 'blur(2px)',
-        opacity: 0.78,
+        opacity: 0.72,
         zIndex: 10,
-        left: isMobile ? '15%' : '20%',
-        height: isMobile ? '18%' : '28%',
-        bottom: isMobile ? '20%' : '8%',
+        left: isMobile ? '16%' : '20%',
+        height: isMobile ? '22%' : '28%',
+        bottom: isMobile ? '16%' : '9%',
       };
     }
     // role === 'right'
     return {
-      transform: 'translateX(-50%) scale(0.92)',
+      transform: 'translateX(-50%) scale(0.8)',
+      transformOrigin: 'bottom center',
       filter: 'blur(2px)',
-      opacity: 0.78,
+      opacity: 0.72,
       zIndex: 10,
-      left: isMobile ? '85%' : '80%',
-      height: isMobile ? '18%' : '28%',
-      bottom: isMobile ? '20%' : '8%',
+      left: isMobile ? '84%' : '80%',
+      height: isMobile ? '22%' : '28%',
+      bottom: isMobile ? '16%' : '9%',
     };
   };
 
@@ -256,7 +259,7 @@ export const WorkSpecializationHero: React.FC = () => {
           aria-hidden="true"
         />
 
-        {/* 2. Refined Background Ghost Text in Font Anton (Reduced size for clean backdrop) */}
+        {/* 2. Refined Background Ghost Text in Font Anton */}
         <div
           className="absolute inset-x-0 flex items-center justify-center pointer-events-none select-none z-[2] overflow-hidden"
           style={{ top: isMobile ? '13%' : '15%' }}
@@ -277,7 +280,7 @@ export const WorkSpecializationHero: React.FC = () => {
           </span>
         </div>
 
-        {/* 3. The 3D Figurine Carousel Viewport */}
+        {/* 3. The 3D Figurine Carousel Viewport (Optimized Sizing: Full Character Uncut) */}
         <div className="absolute inset-0 z-[3] overflow-hidden pointer-events-none">
           {SPECIALIZATIONS.map((item, index) => {
             const role = getRole(index);
@@ -306,7 +309,7 @@ export const WorkSpecializationHero: React.FC = () => {
                 }`}
                 style={{
                   ...style,
-                  aspectRatio: '0.6 / 1',
+                  aspectRatio: '0.75 / 1',
                   transition:
                     'transform 650ms cubic-bezier(0.4, 0, 0.2, 1), filter 650ms cubic-bezier(0.4, 0, 0.2, 1), opacity 650ms cubic-bezier(0.4, 0, 0.2, 1), left 650ms cubic-bezier(0.4, 0, 0.2, 1)',
                   willChange: 'transform, filter, opacity, left',
@@ -332,7 +335,7 @@ export const WorkSpecializationHero: React.FC = () => {
         </div>
 
         {/* 4. Bottom-Left Text + Navigation Buttons */}
-        <div className="absolute bottom-5 left-5 sm:bottom-10 sm:left-10 z-[60] max-w-[320px] pointer-events-auto">
+        <div className="absolute bottom-5 left-5 sm:bottom-10 sm:left-10 z-[60] max-w-[340px] sm:max-w-[420px] pointer-events-auto">
           <p
             className="font-inter font-black uppercase text-base sm:text-[22px] text-[#0C0C0C] mb-1.5 sm:mb-2 tracking-wide"
             style={{ letterSpacing: '0.02em' }}
@@ -340,7 +343,7 @@ export const WorkSpecializationHero: React.FC = () => {
             {activeSpec.role}
           </p>
 
-          <p className="hidden sm:block text-xs sm:text-sm text-[#0C0C0C]/80 leading-relaxed mb-3 sm:mb-4">
+          <p className="hidden sm:block text-xs sm:text-sm text-[#0C0C0C]/85 leading-relaxed mb-3 sm:mb-4 font-sans">
             {activeSpec.description}
           </p>
 
