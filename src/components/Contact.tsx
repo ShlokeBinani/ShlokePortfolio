@@ -73,8 +73,8 @@ export const Contact: React.FC = () => {
             </FadeIn>
 
             <FadeIn delay={0.2} y={20}>
-              <p className="text-sm sm:text-base lg:text-lg text-[#D7E2EA]/80 font-kanit font-light leading-relaxed max-w-xl">
-                Open to 3D creative direction, high-scale software architectures, interactive spatial web applications, and collaborative engineering roles.
+              <p className="text-sm sm:text-base lg:text-lg text-[#D7E2EA]/85 font-kanit font-light leading-relaxed max-w-xl">
+                Open to software engineering opportunities, backend development, applied machine learning projects, and collaborative technical roles.
               </p>
             </FadeIn>
 
@@ -83,7 +83,7 @@ export const Contact: React.FC = () => {
               <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono">
                 <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>AVAILABLE FOR 3D, SWE & AI ROLES</span>
+                  <span>AVAILABLE FOR SWE, BACKEND & AI ROLES</span>
                 </span>
                 <span className="text-zinc-500">
                   AVG RESPONSE TIME &lt; 24H • UTC+5:30
@@ -180,7 +180,7 @@ export const Contact: React.FC = () => {
             </span>
             <span className="text-zinc-700">·</span>
             <span className="font-mono text-xs text-zinc-500">
-              3D Creator & Systems Architecture
+              Backend Systems & Applied AI • VIT Vellore
             </span>
           </div>
 

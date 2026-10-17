@@ -110,11 +110,11 @@ export const Hero: React.FC = () => {
             <div className="flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#D7E2EA]/20 bg-[#D7E2EA]/5 text-[10px] sm:text-xs font-mono font-medium tracking-widest text-[#D7E2EA] uppercase">
                 <Sparkles className="w-3 h-3 text-[#F4ECE1]" />
-                3D & Creative Systems
+                Backend & Distributed Systems
               </span>
               <span className="text-[#D6C3B0]/60 text-xs font-mono hidden sm:inline">•</span>
               <span className="tracking-[0.25em] text-[11px] uppercase text-[#D6C3B0]/80 font-mono select-none">
-                Software • Spatial • AI
+                Data Engineering • Applied AI
               </span>
             </div>
           </FadeIn>
@@ -141,14 +141,14 @@ export const Hero: React.FC = () => {
               <span className="text-zinc-600">•</span>
               <span className="text-[#F4ECE1]">CGPA 8.68</span>
               <span className="text-zinc-600">•</span>
-              <span className="text-zinc-400">Class of &apos;27 • Open to SWE, 3D & AI Roles</span>
+              <span className="text-zinc-400">Class of 2027 • Open to SWE & AI Roles</span>
             </div>
           </FadeIn>
 
           {/* Value Proposition Description */}
           <FadeIn delay={0.45} y={20}>
-            <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug text-xs sm:text-sm md:text-base max-w-xl">
-              A 3D creator and systems engineer driven by crafting striking, unforgettable digital projects and resilient high-scale architectures.
+            <p className="text-[#D7E2EA] font-light tracking-wide leading-relaxed text-xs sm:text-sm md:text-base max-w-xl">
+              Third-year engineering student at VIT Vellore. Building reliable backend services, distributed network simulations, and machine learning models with a focus on real-world impact.
             </p>
           </FadeIn>
 
