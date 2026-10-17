@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Sparkles } from 'lucide-react';
 import { FadeIn } from './common/FadeIn';
 
 export interface MemoryItem {
@@ -95,10 +94,6 @@ export const MarqueeSection: React.FC = () => {
         <FadeIn delay={0.1} y={20}>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-zinc-400 uppercase tracking-widest mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>Life Outside The Terminal</span>
-              </div>
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight font-kanit">
                 <span className="text-stroke-hollow mr-3">Memory</span>
                 <span className="hero-heading">Slide</span>
