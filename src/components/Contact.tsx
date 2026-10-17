@@ -5,6 +5,8 @@ import { GithubIcon, LinkedinIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 import { Magnet } from './common/Magnet';
 import { FadeIn } from './common/FadeIn';
+import { showToast } from './common/Toast';
+import { trackEvent } from '../utils/analytics';
 
 export const Contact: React.FC = () => {
   const [copied, setCopied] = useState<boolean>(false);
@@ -37,6 +39,8 @@ export const Contact: React.FC = () => {
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
     setCopied(true);
+    showToast('Email address copied to clipboard!');
+    trackEvent('copy_email', 'contact', email);
     setTimeout(() => setCopied(false), 2200);
   };
 
@@ -125,6 +129,7 @@ export const Contact: React.FC = () => {
                 <Magnet padding={40} strength={4} className="w-full">
                   <a
                     href={`mailto:${email}`}
+                    onClick={() => trackEvent('send_email_click', 'contact', email)}
                     className="inline-flex items-center justify-center gap-2.5 w-full py-4 rounded-2xl text-white font-semibold text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
                     style={{
                       background: 'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)',

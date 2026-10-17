@@ -21,6 +21,7 @@ export const About: React.FC = () => {
               alt="3D Decorative Moon"
               className="w-[100px] sm:w-[140px] md:w-[180px] object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)]"
               loading="lazy"
+              decoding="async"
             />
           </Magnet>
         </FadeIn>
@@ -34,6 +35,7 @@ export const About: React.FC = () => {
               alt="3D Decorative Block"
               className="w-[100px] sm:w-[140px] md:w-[180px] object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)]"
               loading="lazy"
+              decoding="async"
             />
           </Magnet>
         </FadeIn>
@@ -47,6 +49,7 @@ export const About: React.FC = () => {
               alt="3D Decorative Crystal"
               className="w-[85px] sm:w-[120px] md:w-[150px] object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)]"
               loading="lazy"
+              decoding="async"
             />
           </Magnet>
         </FadeIn>
@@ -60,6 +63,7 @@ export const About: React.FC = () => {
               alt="3D Decorative Cluster"
               className="w-[100px] sm:w-[140px] md:w-[180px] object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)]"
               loading="lazy"
+              decoding="async"
             />
           </Magnet>
         </FadeIn>

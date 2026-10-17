@@ -1,4 +1,4 @@
-﻿# Logs
+# Logs
 logs
 *.log
 npm-debug.log*
@@ -25,6 +25,7 @@ dist-ssr
 
 # Scratch scripts and temp media
 take_screenshots.js
+scratch/
 *.tmp
 WhatsApp*
 colourportfolio*

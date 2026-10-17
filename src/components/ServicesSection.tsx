@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowUpRight, Download } from 'lucide-react';
 import { FadeIn } from './common/FadeIn';
+import { showToast } from './common/Toast';
+import { trackEvent } from '../utils/analytics';
 
 interface SkillSectionItem {
   number: string;
@@ -189,6 +191,10 @@ export const ServicesSection: React.FC = () => {
                       download={spec.resumeFile}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => {
+                        showToast(`Downloading ${spec.shortName} Resume...`);
+                        trackEvent('download_resume', 'engagement', spec.shortName);
+                      }}
                       className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium text-[#0C0C0C] bg-[#0C0C0C]/5 hover:bg-[#0C0C0C] hover:text-white border border-[#0C0C0C]/10 transition-all duration-200 select-none"
                     >
                       <Download className="w-3.5 h-3.5" />

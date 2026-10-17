@@ -11,6 +11,7 @@ import { ProjectsSection } from './components/ProjectsSection';
 import { Leadership } from './components/Leadership';
 import { Contact } from './components/Contact';
 import { ProjectDrawer } from './components/ProjectDrawer';
+import { ToastContainer } from './components/common/Toast';
 
 export function App() {
   useEffect(() => {
@@ -78,6 +79,9 @@ export function App() {
 
       {/* Interactive Project Deep-Dive Drawer */}
       <ProjectDrawer />
+
+      {/* Global Non-Intrusive Toast System */}
+      <ToastContainer />
     </div>
   );
 }
