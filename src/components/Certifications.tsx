@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Award, ExternalLink, CheckCircle2, BarChart3, Database, Cpu, ShieldCheck } from 'lucide-react';
+import { Award, ExternalLink, BarChart3, Database, Cpu, ShieldCheck } from 'lucide-react';
 import { portfolioData, CertificationItem } from '../data/portfolioData';
 import { FadeIn } from './common/FadeIn';
 import { showToast } from './common/Toast';
@@ -87,7 +87,7 @@ export const Certifications: React.FC = () => {
     if (cert.credentialUrl && cert.credentialUrl !== '#') {
       window.open(cert.credentialUrl, '_blank', 'noopener,noreferrer');
     } else {
-      showToast(`${cert.name} credential link will be linked soon`, 'info');
+      showToast(`Credential link for ${cert.name} coming soon`, 'info');
     }
   };
 
@@ -98,21 +98,15 @@ export const Certifications: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-white/10 pb-6">
           <div>
             <FadeIn delay={0.1} y={30}>
-              <div className="flex items-center gap-2 mb-3">
-                <ShieldCheck className="w-4 h-4 text-[#D6C3B0]" />
-                <span className="font-mono text-xs text-[#D6C3B0] tracking-widest uppercase font-semibold">
-                  Accredited Credentials & Proof of Work
-                </span>
-              </div>
               <h2 className="font-kanit font-black text-4xl sm:text-6xl uppercase tracking-tight">
-                <span className="hero-heading mr-3">Verified</span>
+                <span className="hero-heading mr-3">Courses &</span>
                 <span className="text-stroke-hollow">Certifications</span>
               </h2>
             </FadeIn>
           </div>
           <FadeIn delay={0.2} y={20}>
             <p className="text-sm font-mono text-zinc-400 max-w-md">
-              Industry credentials and university awards validating systems, statistics, and organizational leadership.
+              Courses and awards behind the skills I use in my projects: statistics, data work in Python and MATLAB, and student leadership.
             </p>
           </FadeIn>
         </div>
@@ -140,17 +134,11 @@ export const Certifications: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Title & Badge */}
+                    {/* Title */}
                     <div className="flex flex-wrap items-center gap-3 mb-3">
                       <h3 className="font-kanit text-2xl sm:text-3xl font-bold text-[#F5F5F7] tracking-tight">
                         {cert.name}
                       </h3>
-                      {cert.badge && (
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-medium bg-[#F4ECE1]/10 text-[#F4ECE1] border border-[#F4ECE1]/25">
-                          <CheckCircle2 className="w-3.5 h-3.5 mr-1.5 text-[#F4ECE1]" />
-                          {cert.badge}
-                        </span>
-                      )}
                     </div>
 
                     {/* Category Label */}
@@ -177,11 +165,7 @@ export const Certifications: React.FC = () => {
                   </div>
 
                   {/* Footer Action */}
-                  <div className="pt-5 border-t border-white/10 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>Verified Completion</span>
-                    </div>
+                  <div className="pt-5 border-t border-white/10 flex items-center justify-end">
 
                     {hasLiveUrl ? (
                       <a

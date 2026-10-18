@@ -16,7 +16,7 @@ const SKILL_SECTIONS: SkillSectionItem[] = [
     number: '01',
     name: 'Languages & Core Tech',
     description:
-      'Foundational programming languages for algorithmic problem-solving, backend services, and low-level system execution. Regular practice across data structures, algorithms, and memory management.',
+      'The languages I use for problem solving, backend work and low-level programming. I practice data structures, algorithms and memory handling regularly to keep the basics sharp.',
     tags: [
       'Java (DSA - 250+ Problems Solved)',
       'Python (Pandas, NumPy, Scikit-Learn)',
@@ -31,7 +31,7 @@ const SKILL_SECTIONS: SkillSectionItem[] = [
     number: '02',
     name: 'Relevant Coursework & System Design',
     description:
-      'Rigorous academic computer science foundations covering low-level architectural patterns, thread synchronization, process scheduling, network protocols, and ACID-compliant relational schemas.',
+      'Coursework that gave me a base in how software and systems actually work: design patterns, threads and scheduling, networking and database transactions.',
     tags: [
       'Low-Level Design (LLD)',
       'Object-Oriented Programming (OOPS)',
@@ -46,7 +46,7 @@ const SKILL_SECTIONS: SkillSectionItem[] = [
     number: '03',
     name: 'AI Tools, Prompt Engineering & Automation',
     description:
-      'Leveraging prompt engineering, multi-turn reasoning, and event-driven workflow automation to accelerate engineering velocity and deploy practical machine learning systems.',
+      'I like trying new AI tools as they come out and learning how to prompt them well. I use structured prompts, multi-step conversations and workflow automation to work faster and to build practical machine learning projects, and I check the output before I trust it.',
     tags: [
       'Prompt Engineering & Structured Prompts',
       'LLM Pipeline Integration (AWS & Voice-AI)',
@@ -60,7 +60,7 @@ const SKILL_SECTIONS: SkillSectionItem[] = [
     number: '04',
     name: 'Data Analytics & Data Engineering',
     description:
-      'Extracting, transforming, auditing, and modeling datasets. Conducting statistical hypothesis testing to validate business patterns and building interactive executive dashboards for decision-makers.',
+      'Pulling data, cleaning it, checking it and modeling it. I use statistical tests to see whether a pattern is real, and I build dashboards that help people make decisions.',
     tags: [
       'SQL ETL Pipelines (7K+ Records)',
       'Data Auditing & Data Cleaning',
@@ -74,7 +74,7 @@ const SKILL_SECTIONS: SkillSectionItem[] = [
     number: '05',
     name: 'Developer Tools & Infrastructure',
     description:
-      'Production toolchains, containerization, API contracts, automated integration testing, and continuous cloud deployment pipelines for resilient software delivery.',
+      'The tools I use to build, test and ship software: containers, API testing, version control and cloud deployment.',
     tags: [
       'AWS (EC2, S3)',
       'Linux & Shell Scripting',
@@ -90,10 +90,12 @@ const SKILL_SECTIONS: SkillSectionItem[] = [
     number: '06',
     name: 'Personal Interests & Curiosity',
     description:
-      'Areas of curiosity that keep me learning outside coursework and internships, exploring how technology intersects with real-world human systems and markets.',
+      'What keeps me learning outside coursework and internships: how technology connects with markets, businesses and people.',
     tags: [
       'AI Prompting & Autonomous Workflows',
+      'Trying New AI Tools',
       'Quantitative Finance & Market Systems',
+      'Business & Market Analysis',
       'Travelling & Cultural Exploration',
       'Continuous Learning & DSA Problem Solving',
     ],
@@ -133,7 +135,7 @@ export const ServicesSection: React.FC = () => {
           </FadeIn>
           <FadeIn delay={0.15} y={20}>
             <p className="font-kanit font-light text-[#0C0C0C]/75 leading-relaxed text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-              A comprehensive breakdown of my programming languages, system design coursework, AI tools, and data analytics competencies.
+              A look at what I work with today and what I am learning next, across programming, system design, AI tools and data analytics.
             </p>
           </FadeIn>
         </div>

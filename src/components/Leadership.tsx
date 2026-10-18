@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Users, Terminal } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import { FadeIn } from './common/FadeIn';
 
@@ -87,19 +86,8 @@ export const Leadership: React.FC = () => {
           {leadershipRoles.map((role, idx) => (
             <TiltCard key={idx}>
               <div>
-                {/* Meta Header */}
-                <div className="flex items-center justify-between mb-5 pb-3 border-b border-white/10">
-                  <div className="flex items-center gap-2">
-                    {idx === 0 ? (
-                      <Users className="w-4 h-4 text-[#D6C3B0]" />
-                    ) : (
-                      <Terminal className="w-4 h-4 text-[#D6C3B0]" />
-                    )}
-                    <span className="font-mono text-xs text-[#D6C3B0] tracking-wider uppercase font-semibold">
-                      {role.organization}
-                    </span>
-                  </div>
-
+                {/* Meta Header: Period Badge */}
+                <div className="flex items-center justify-end mb-4">
                   <span className="font-mono text-xs text-zinc-400 bg-white/5 px-2.5 py-1 rounded-md border border-white/5">
                     {role.period}
                   </span>

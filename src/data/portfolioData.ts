@@ -82,9 +82,9 @@ export const portfolioData = {
   personal: {
     name: "Shloke Binani",
     monogram: "SB.",
-    eyebrow: "Software Engineering • Data Science • System Design",
-    tagline: "Final-year Electronics and Communication Engineering student at VIT Vellore (2023 - 2027). Building reliable backend services, automated data pipelines, and applied machine learning models with a grounded learning attitude.",
-    heroSubtitle: "Final-Year Student • Open to SWE, Data & Systems Roles",
+    eyebrow: "Software • Data • Business Analysis • AI",
+    tagline: "Final-year Electronics and Communication Engineering student at VIT Vellore. I build reliable backend services, automated data pipelines and machine learning models, and I keep learning across software, data, business and AI.",
+    heroSubtitle: "Final-Year Student • Open to SWE, Data, Business & AI Roles",
     degreeShort: "ECE @ VIT Vellore (Final Year)",
     location: "Kolkata & Vellore, India",
     email: "shlokebinani@gmail.com",
@@ -98,7 +98,7 @@ export const portfolioData = {
       cgpa: "8.68 / 10.0",
       school: "Calcutta Boys' School",
       schoolMetric: "93.2% ICSE Class 10",
-      focus: "Focusing on data structures, computer networks, database management, and scalable backend design."
+      focus: "Alongside my core ECE subjects, I focus on data structures, computer networks, databases and backend design."
     }
   },
 
@@ -128,15 +128,15 @@ export const portfolioData = {
   profilePillars: [
     {
       role: "Software Engineering (SWE)",
-      description: "Writing clean, maintainable backend code, implementing strict database row-level locking, and engineering reliable REST endpoints that perform predictably under load."
+      description: "I write backend code that stays clean and predictable. That includes database row-level locking and REST endpoints that hold up under load, and I keep learning more about system design."
     },
     {
       role: "Data Science & Analytics",
-      description: "Auditing multi-source datasets, testing statistical hypotheses, training robust classifiers, and building executive Power BI dashboards that guide business decisions."
+      description: "I check messy data from different sources, test whether patterns are real, train classifiers and build Power BI dashboards that help people make decisions."
     },
     {
       role: "System Design & Business Analysis",
-      description: "Translating ambiguous operational needs into modular low-level design patterns, automated n8n workflows, and resilient technical architectures."
+      description: "I like turning unclear business needs into simple designs, automated n8n workflows and systems that keep working."
     }
   ],
 
@@ -144,7 +144,7 @@ export const portfolioData = {
     {
       id: "languages",
       title: "Languages & Core Tech",
-      summary: "Core programming languages for algorithmic problem-solving, backend systems, and low-level processing.",
+      summary: "The languages I use for problem solving, backend work and low-level programming.",
       items: [
         { name: "Java (DSA)", level: "Advanced", note: "250+ DSA & SQL problems solved on LeetCode & GFG; OOP principles" },
         { name: "Python", level: "Proficient", note: "Pandas, NumPy, Scikit-Learn, PyTorch, SciPy" },
@@ -158,7 +158,7 @@ export const portfolioData = {
     {
       id: "coursework",
       title: "Relevant Coursework & System Design",
-      summary: "Foundational engineering subjects providing deep architectural, networking, and algorithmic rigor.",
+      summary: "Subjects that gave me a base in architecture, networking and algorithms.",
       items: [
         { name: "Low-Level Design (LLD)", level: "Core", note: "Design patterns, schemas, concurrency & class structures" },
         { name: "Object-Oriented Programming (OOPS)", level: "Core", note: "Inheritance, encapsulation, polymorphism & abstraction" },
@@ -172,11 +172,11 @@ export const portfolioData = {
     {
       id: "ai-automation",
       title: "AI Tools, Prompt Engineering & Automation",
-      summary: "Leveraging cutting-edge LLMs, prompt engineering, and event-driven automation for engineering productivity.",
+      summary: "How I use LLMs, prompt design and automation to work faster, and keep learning new tools.",
       items: [
         { name: "Prompt Engineering", level: "Applied", note: "Structured reasoning, multi-turn prompts & code generation workflows" },
         { name: "LLM Pipeline Integration", level: "Applied", note: "Integrating LLM backends with voice-AI & customer endpoints" },
-        { name: "Workflow Automation (n8n & Python)", level: "Applied", note: "Event-driven cross-app pipelines saving 8 to 10 hrs/week" },
+        { name: "Workflow Automation (n8n & Python)", level: "Applied", note: "Event-driven cross-app pipelines saving 8 to 12 hrs/week" },
         { name: "Machine Learning (Random Forest, SVM, MLP)", level: "Proficient", note: "Predictive classification, feature weights & validation" },
         { name: "Quantum Neural Networks (QCNN)", level: "Research", note: "6-qubit circuit design with classical MLP bypass" },
         { name: "Signal Feature Extraction (SM-SSA & NCA)", level: "Research", note: "Noise reduction & dimensionality reduction pipelines" }
@@ -185,7 +185,7 @@ export const portfolioData = {
     {
       id: "data-analytics",
       title: "Data Analytics & Engineering",
-      summary: "Extracting, transforming, auditing, and modeling datasets to uncover clear business signals and metrics.",
+      summary: "Pulling, cleaning, checking and modeling data to find clear business signals.",
       items: [
         { name: "SQL ETL Pipelines", level: "Applied", note: "Reconciling data integrity across 7K+ customer records" },
         { name: "Data Auditing & Data Cleaning", level: "Applied", note: "Null handling, outlier mitigation & schema normalization" },
@@ -198,7 +198,7 @@ export const portfolioData = {
     {
       id: "dev-tools",
       title: "Developer Tools & Infrastructure",
-      summary: "Production tooling, containerization, debugging, and deployment infrastructure.",
+      summary: "The tools I use to build, test, debug and deploy software.",
       items: [
         { name: "AWS", level: "Cloud", note: "EC2, S3 & server deployment" },
         { name: "Linux & Shell Scripting", level: "Core", note: "CLI navigation, bash scripts & daemon services" },
@@ -215,19 +215,19 @@ export const portfolioData = {
   interests: [
     {
       name: "AI Prompting & Automation",
-      detail: "Exploring structured prompt design, AI agent orchestration, and automated developer workflows."
+      detail: "I try new AI tools as they come out, practice writing clear structured prompts, and look for where each tool genuinely saves time."
     },
     {
       name: "Quantitative Finance & Markets",
-      detail: "Studying market microstructure, valuation metrics, macroeconomic trends, and risk management."
+      detail: "I read about how markets work, valuation, macro trends and risk, and I want to connect that with data work."
     },
     {
       name: "Travelling & Cultural Exploration",
-      detail: "Travelling to new regions, learning about different cultures, and gaining fresh perspectives."
+      detail: "Visiting new places, learning how other people live and getting a fresh point of view."
     },
     {
       name: "Continuous Learning & DSA",
-      detail: "Daily problem-solving in Java, reading systems engineering post-mortems, and building hands-on prototypes."
+      detail: "Solving problems in Java most days, reading engineering post-mortems and building small prototypes to learn by doing."
     }
   ],
 
@@ -285,32 +285,32 @@ export const portfolioData = {
     {
       company: "Kofuku Technologies Pvt. Ltd.",
       role: "Software Engineer Intern",
-      period: "May 2025 - July 2025",
+      period: "May 2025 to July 2025",
       location: "On-Site",
       type: "Internship",
-      summary: "Engineered backend services and automation pipelines to improve operational efficiency and API reliability.",
+      summary: "I built backend services and automation at Kofuku to make internal processes faster and APIs more reliable.",
       metrics: [
         {
           stat: "30%",
           label: "Fewer API Failures",
-          detail: "Reduced API failure rates across build and release cycles by debugging and validating REST endpoints with Postman and Hasura GraphQL."
+          detail: "I debugged and tested REST endpoints with Postman and Hasura GraphQL, which cut API failures by 30% across build and release cycles."
         },
         {
           stat: "60%",
-          label: "Faster Booking Latency",
-          detail: "Cut facility scheduling response latency by deploying an in-house voice-AI system integrating speech-to-text APIs with real-time calendar syncing."
+          label: "Faster Booking Response",
+          detail: "I built an in-house voice-AI scheduling tool that connects speech-to-text with live calendar sync, and booking response time dropped by 60%."
         },
         {
           stat: "8-12 hrs",
           label: "Saved Every Week",
-          detail: "Automated cross-team data reporting and tracking workflows in n8n, eliminating repetitive manual coordination."
+          detail: "I automated cross-team reporting and tracking in n8n, so people no longer had to coordinate it by hand."
         }
       ],
       bullets: [
-        "Debugged and validated core REST APIs using Postman and Hasura GraphQL, cutting API failure rates by 30% across build and release cycles.",
-        "Engineered an in-house voice-AI facility scheduling pipeline with real-time calendar synchronization, reducing booking latency by 60%.",
-        "Automated multi-app reporting workflows and social analytics tracking in n8n, saving 8 to 12 hours per week in manual tasks.",
-        "Executed API, manual, and integration tests on staging builds, reducing QA rework cycles by 20% through standardized documentation and testing suites."
+        "Debugged and tested core REST APIs with Postman and Hasura GraphQL, which cut API failure rates by 30% across build and release cycles.",
+        "Built an in-house voice-AI scheduling flow with live calendar sync. Booking latency dropped by 60%.",
+        "Automated reporting and social analytics tracking in n8n, saving 8 to 12 hours of manual work every week.",
+        "Ran API, manual and integration tests on staging builds and wrote clear test documentation, which cut QA rework by 20%."
       ],
       skills: ["FastAPI", "Python", "PostgreSQL", "Hasura GraphQL", "n8n", "Postman", "REST APIs", "AWS", "Voice-AI"]
     }
@@ -324,7 +324,7 @@ export const portfolioData = {
       subtitle: "Decentralized 6G Social Protocol",
       roleBadge: "Distributed Systems",
       category: "6G Networks & Web3 DePIN",
-      headlineMetric: "89.8% peak latency reduction & 0% packet loss at 97% load",
+      headlineMetric: "89.8% lower peak latency and 0% packet loss at 97% load",
       pipelineFlow: [
         "DPI & 4-Tier Social Urgency Taxonomy (SUT)",
         "M/M/1 Queuing & 85% Congestion Cliff Sentinel",
@@ -353,10 +353,10 @@ export const portfolioData = {
           detail: "Integrated Proof of Guardian smart contracts on-chain to automatically reward yielding nodes with staking rewards for stabilizing the mesh."
         }
       ],
-      description: "During peak network surges, conventional mobile networks treat life-critical medical streams (like remote surgery feeds) identically to recreational video and gaming. ResiliNet is a decentralized 6G protocol that detects network congestion early and prioritizes critical medical telemetry over non-urgent traffic, guaranteeing zero packet loss.",
-      problemStatement: "During peak network congestion, conventional wireless schedulers are socially blind: life-critical streams (such as emergency telesurgery feeds on DICOM port 104) compete for bandwidth on equal footing with recreational UDP gaming and streaming. When link utilization crosses the 85% M/M/1 threshold, buffers saturate, latency triples exponentially, and packet loss degrades critical transmissions.",
-      systemArchitecture: "Designed a continuous decentralized control loop uniting three subsystems: (1) Deep Packet Inspection (DPI) classifying flows into a 4-Tier Social Urgency Taxonomy (Tiers 1-3 critical and unthrottled; Tier 4 recreational); (2) Queuing-Theoretic Sentinel derived from M/M/1 queuing theory where an autonomous 1 Hz background loop detects bimodal traffic peaks and executes a Social Slice compression (α = 0.40 on Tier 4), reducing an 86% overloaded link to an optimal 46.4% effective load; (3) Proof of Guardian (PoG) DePIN smart contracts compensating yielding nodes with 12% APY and 50 $RNET rewards per event, paired with a bidirectional 3D geospatial Digital Twin.",
-      measuredImpact: "Simulations on a 4-node wireless mesh testbed under 97% peak morning load demonstrated an 89.8% latency reduction (365 ms down to 37 ms), an 83.3% jitter reduction (12.0 ms to 2.0 ms), zero packet loss (down from 4.2%), and 100% throughput retention for 800 Mbps critical DICOM traffic, structurally outperforming EvoNetSlice, NetChain, and SliceOps.",
+      description: "On a congested mobile network, a remote surgery feed gets treated the same as a gaming stream. ResiliNet is a 6G protocol that spots congestion early and gives life-critical medical traffic priority, so it keeps flowing without packet loss.",
+      problemStatement: "Normal wireless schedulers do not care what the traffic is for. Emergency telesurgery data (DICOM, port 104) competes for bandwidth with games and video. Once link utilization passes the 85% point in an M/M/1 queue, buffers fill up, latency rises sharply and packets start getting dropped, including the critical ones.",
+      systemArchitecture: "I designed a control loop with three parts. First, deep packet inspection sorts traffic into a 4-tier Social Urgency Taxonomy, where tiers 1 to 3 are critical and never throttled and tier 4 is recreational. Second, a sentinel based on M/M/1 queuing theory checks the link once per second, and when load crosses the 85% point it compresses tier 4 traffic (α = 0.40), bringing an 86% overloaded link down to an effective 46.4%. Third, Proof of Guardian smart contracts reward nodes that help stabilize the network, with 12% APY and 50 $RNET per event, alongside a bidirectional 3D geospatial Digital Twin.",
+      measuredImpact: "On a 4-node wireless mesh testbed under a 97% morning peak, latency dropped by 89.8% (365 ms to 37 ms), jitter dropped by 83.3% (12.0 ms to 2.0 ms), packet loss went from 4.2% to zero, and critical 800 Mbps DICOM traffic kept 100% of its throughput. In the same comparison it did better than EvoNetSlice, NetChain and SliceOps.",
       tags: ["6G Architecture", "M/M/1 Queuing", "DePIN & Smart Contracts", "Deep Packet Inspection", "Digital Twin", "Python", "Network Slicing"],
       github: "https://github.com/ShlokeBinani/ResiliNET",
       highlight: true
@@ -379,7 +379,7 @@ export const portfolioData = {
         {
           step: "01",
           title: "Interactive Seat Selection",
-          detail: "Built a dynamic visual venue map (Standard and Premium tiers) providing instant seat status feedback and real-time state updates."
+          detail: "Built an interactive venue map (Standard and Premium tiers) providing instant seat status feedback and real-time state updates."
         },
         {
           step: "02",
@@ -397,10 +397,10 @@ export const portfolioData = {
           detail: "Constructed an atomic waitlist queue offering released seats to next-in-line buyers, generating cryptographic HMAC QR tickets dispatched via email."
         }
       ],
-      description: "During viral concert or movie ticket drops, thousands of fans try to book the exact same seat at the same millisecond. Paradox is a high-concurrency ticket reservation platform engineered with strict database row-level locks, temporary hold timers, and automated waitlists to completely eliminate double-booking race conditions.",
-      problemStatement: "High-demand ticket sales trigger extreme traffic surges where hundreds of users attempt to purchase the exact same seat simultaneously. Without serialized concurrency control, systems suffer from double-booking race conditions and database deadlocks. Furthermore, checkout abandonment locks up inventory, and manual cancellation workflows leave seats unsold.",
-      systemArchitecture: "Constructed a stateless backend on Neon PostgreSQL: (1) Concurrency Control: Uses strict row-level locking via SELECT ... FOR UPDATE inside atomic transactions to serialize seat reservation attempts, preventing any two users from claiming the same seat simultaneously; (2) Seat Hold TTL: Places a configurable 10-minute hold with real-time seat map synchronization, auto-releasing abandoned seats back to the available pool via scheduled expiry tasks; (3) Dynamic Waitlists: Category-specific waitlist queues that atomically reassign cancelled seats to next-in-line users with time-limited purchase links; (4) Cryptographic QR Code tickets generated upon booking and dispatched via email.",
-      measuredImpact: "Completely eliminated double bookings and race conditions across simultaneous booking attempts. Delivered live frontend on Vercel with real-time seat map updates, robust role-based authentication (Admin, Organiser, Customer), and automated event analytics.",
+      description: "When tickets for a popular show go live, thousands of people try to grab the same seat at the same moment. Paradox is a ticket booking platform that uses database row-level locks, hold timers and automatic waitlists, so one seat can never be sold twice.",
+      problemStatement: "When a sale goes viral, hundreds of users try to buy the same seat at once. Without proper concurrency control you get double bookings and database deadlocks. Abandoned checkouts also keep seats locked, and cancelled seats can stay unsold if someone has to release them by hand.",
+      systemArchitecture: "The backend is stateless and runs on Neon PostgreSQL. Seat reservations use SELECT ... FOR UPDATE inside atomic transactions, so two users can never claim the same seat. A seat is held for a configurable 10 minutes while the seat map updates live, and scheduled tasks release abandoned seats. Each ticket category has a waitlist that automatically offers cancelled seats to the next person in line with a time-limited purchase link. After booking, a cryptographic QR ticket is generated and emailed.",
+      measuredImpact: "Double bookings and race conditions were eliminated across simultaneous booking attempts. The frontend is live on Vercel with real-time seat map updates, role-based login (Admin, Organiser, Customer) and event analytics.",
       tags: ["PostgreSQL / Neon", "FastAPI", "Python", "Render", "Vercel", "Row-Level Locking", "ACID Transactions", "QR Code Engine"],
       github: "https://github.com/shlokebinani",
       liveLink: "https://ticket-booking-system-paradox-ticke.vercel.app/",
@@ -444,10 +444,10 @@ export const portfolioData = {
           detail: "Demonstrated 99.17% accuracy across 5-fold cross-validation, outperforming standard LSTM (75.00%), 1D-CNN (93.33%), and Cubic SVM (97.50%)."
         }
       ],
-      description: "Decoding subtle eye movements from electrical muscle signals enables hands-free assistive interfaces for paralyzed individuals. However, raw biosignals are chaotic and standard Quantum Neural Networks fail due to barren plateaus (vanishing optimization gradients). MS-HQNet is a hybrid quantum-classical architecture that bypasses barren plateaus to reach 99.17% classification accuracy.",
-      problemStatement: "Electromyographic (EMG) signals recorded from extraocular muscles (EOM) are highly chaotic, non-stationary, and prone to extreme voltage spikes across 6 movement classifications. Standard deep learning baselines (CNNs, LSTMs, GRUs) overfit or plateau below 98%, while pure quantum circuits encounter barren plateaus (exponential vanishing gradients during optimization).",
-      systemArchitecture: "Engineered an end-to-end multi-stream pipeline: (1) Sliding Mode Singular Spectrum Analysis (SM-SSA) maps 1D biosignals into multidimensional Hankel trajectory matrices and applies SVD to extract reconstructed components; (2) Temporal Amplitude Profiling extracts RMS, Waveform Length (WL), and Mean Absolute Value (MAV), expanding features to 260 parameters; (3) Quantile Transformation normalizes chaotic voltage distributions into Gaussian densities, and Neighbourhood Component Analysis (NCA) selects the 64 dominant features; (4) Data is L2-normalized (xnorm = x / ||x||2) and amplitude-encoded into a 6-qubit quantum circuit with parameterized RX, RY, RZ gates and circular CNOT entanglement; (5) A parallel classical MLP bypass with Layer Normalization, 0.3 dropout, and smooth Mish activation compresses features to a 16-node tensor, maintaining stable gradient flow and eliminating barren plateaus.",
-      measuredImpact: "Across stratified cross-validation (5-fold, 10-fold, 20-fold), MS-HQNet reached average testing accuracies of 99.17%, 98.90%, and 98.50%, outperforming Cubic SVM (97.50%), Standard 1D-CNN (93.33%), Standard MLP (98.33%), LSTM (75.00%), GRU (81.67%), and previous state-of-the-art literature (Makam et al. 98.70%, Khan & Pachori 98.91%). SHAP beeswarm analysis proved temporal amplitude features are top global predictors.",
+      description: "Eye movements can be read from the electrical signals of the muscles around the eye, which can help build hands-free tools for people who are paralyzed. The raw signals are messy, and standard quantum neural networks often get stuck because of barren plateaus, where training gradients vanish. MS-HQNet is a hybrid quantum-classical model that avoids that problem and reaches 99.17% accuracy.",
+      problemStatement: "Electromyographic signals from the muscles around the eye are noisy, change over time and have sharp voltage spikes, across 6 movement classes. Standard deep learning baselines (CNNs, LSTMs, GRUs) overfit or level off below 98%, and pure quantum circuits hit barren plateaus, where gradients shrink exponentially during training.",
+      systemArchitecture: "The pipeline has five parts. (1) Sliding Mode Singular Spectrum Analysis (SM-SSA) turns each 1D signal into a Hankel trajectory matrix and uses SVD to pull out the reconstructed components. (2) Temporal amplitude features (RMS, Waveform Length and Mean Absolute Value) expand the feature set to 260 values. (3) A quantile transform makes the voltage distributions Gaussian, and Neighbourhood Component Analysis (NCA) keeps the 64 most useful features. (4) The data is L2-normalized and amplitude-encoded into a 6-qubit circuit with parameterized RX, RY and RZ gates and circular CNOT entanglement. (5) A classical MLP runs in parallel with Layer Normalization, 0.3 dropout and Mish activation, compressing features to a 16-node tensor so gradients keep flowing and barren plateaus are avoided.",
+      measuredImpact: "Across stratified cross-validation (5, 10 and 20 folds), MS-HQNet averaged 99.17%, 98.90% and 98.50% test accuracy. The 5-fold result of 99.17% was ahead of Cubic SVM (97.50%), a standard 1D-CNN (93.33%), a standard MLP (98.33%), LSTM (75.00%), GRU (81.67%) and earlier published results (Makam et al. 98.70%, Khan & Pachori 98.91%). SHAP analysis showed that temporal amplitude features were the strongest predictors overall.",
       tags: ["Quantum ML", "QCNN", "Python", "SM-SSA & SVD", "NCA", "EOG / EMG Biosignals", "SHAP Explainability"],
       github: "https://github.com/shlokebinani",
       highlight: true
@@ -488,10 +488,10 @@ export const portfolioData = {
           detail: "Delivered an interactive dashboard revealing that 42% of churn was concentrated in month-to-month contracts, giving retention teams clear actionable targets."
         }
       ],
-      description: "Subscription businesses usually find out a customer has left only after they cancel. This project builds an early-warning retention system that audits subscriber behavior, statistically verifies why users churn, and trains a machine learning classifier to flag at-risk accounts before they leave.",
-      problemStatement: "Customer support teams often react after a customer has already canceled their service, rather than identifying behavioral risk factors early.",
-      systemArchitecture: "Cleaned and reconciled missing data across 7,000+ customer records using SQL and Python. Isolated a 42% churn peak among specific billing tiers in Power BI. Evaluated statistical hypothesis tests on key churn drivers before training an ensemble Random Forest model.",
-      measuredImpact: "Reached 80% classification accuracy, giving retention teams clear early-warning indicators for at-risk accounts.",
+      description: "Subscription businesses often learn a customer has left only after they cancel. This project is an early-warning system. It checks subscriber data, tests statistically why people churn, and trains a classifier to flag accounts at risk before they leave.",
+      problemStatement: "Support teams usually react after a customer has already cancelled, instead of spotting the warning signs earlier.",
+      systemArchitecture: "I cleaned and reconciled missing data across 7,000+ customer records using SQL and Python. In Power BI I found a 42% churn peak in specific billing tiers. Before training an ensemble Random Forest model, I ran statistical tests on the main churn drivers to check they were real.",
+      measuredImpact: "The model reached 80% classification accuracy, which gives retention teams early signs of which accounts are at risk.",
       tags: ["Python", "SQL", "Random Forest", "Power BI", "Hypothesis Testing", "Pandas"],
       github: "https://github.com/ShlokeBinani/Customer-Attrition-Modeling"
     },
@@ -502,7 +502,7 @@ export const portfolioData = {
       subtitle: "Customer Segmentation & LTV Analytics",
       roleBadge: "Unsupervised ML & Analytics",
       category: "Unsupervised ML & Business Intelligence",
-      headlineMetric: "SQL data quality auditing, PCA variance extraction & hybrid DBSCAN/K-Means",
+      headlineMetric: "SQL data audits, PCA and hybrid DBSCAN / K-Means clustering",
       pipelineFlow: [
         "Transactional SQL Data Audits",
         "Missing Value Reconciliation",
@@ -531,10 +531,10 @@ export const portfolioData = {
           detail: "Built an executive dashboard demonstrating that the top 24% of VIP shoppers drove 68% of total revenue, and designed a validated A/B retention framework."
         }
       ],
-      description: "Online retailers often struggle to distinguish high-value shoppers from margin-eroding returners. This project audits high-volume transactional data, reduces feature dimensionality, and clusters buyers into distinct behavioral cohorts to guide merchandising and retention.",
-      problemStatement: "Transactional e-commerce datasets frequently contain inconsistencies, outlier purchasing records, and noisy high-dimensional behavioral features that distort customer lifetime value (LTV) estimations and obscure high-value customer cohorts.",
-      systemArchitecture: "Conducted data quality audits across transactional datasets using SQL, reconciling inconsistencies before executing PCA and hybrid DBSCAN/K-Means clustering in Python. Built a Power BI LTV dashboard and designed an A/B testing framework with sample size estimation to evaluate retention impact.",
-      measuredImpact: "Isolated distinct high-value shopper cohorts, identified key customer attrition risk factors, and established a validated A/B testing retention framework for data-driven merchandising.",
+      description: "Online stores often cannot tell their best shoppers apart from customers who return a lot and cut into margin. This project audits a large set of transactions, reduces the number of features, and groups buyers into behavior-based segments to guide merchandising and retention.",
+      problemStatement: "Transaction data often has inconsistencies, outlier purchases and noisy features. These distort customer lifetime value (LTV) estimates and hide the high-value customers.",
+      systemArchitecture: "I audited transaction data with SQL and fixed inconsistencies before running PCA and hybrid DBSCAN and K-Means clustering in Python. I then built a Power BI LTV dashboard and designed an A/B testing framework, including sample size estimation, to measure the effect of retention efforts.",
+      measuredImpact: "I identified distinct high-value shopper groups, found key risk factors for customer attrition and set up an A/B testing framework for retention decisions.",
       tags: ["NumPy", "Pandas", "PCA", "K-Means", "DBSCAN", "Power BI", "SQL", "A/B Testing"],
       github: "https://github.com/ShlokeBinani/Ecommerce-Value-Maximization",
       highlight: true
@@ -546,26 +546,26 @@ export const portfolioData = {
       title: "Marketing, Design & PR Head",
       organization: "Society of Automotive Engineers",
       organizationAcronym: "SAE-VIT",
-      period: "May 2024 - May 2026",
-      description: "Leading branding, public relations, and cross-functional operations for one of the largest collegiate technical chapters at VIT Vellore.",
+      period: "May 2024 to May 2026",
+      description: "I led branding, public relations and cross-team operations for one of the largest technical chapters at VIT Vellore.",
       highlights: [
-        "Directed multi-channel branding campaigns reaching 1,000+ students, securing university administration buy-in and expanding chapter outreach.",
-        "Managed operations and 40+ volunteers as Point of Contact for SAE AirShow 25, increasing attendee participation by 30% to 45%.",
-        "Streamlined cross-functional logistics and team workflows across 12 major university events during graVITas 25, ensuring 100% on-time execution.",
-        "Helped the chapter earn the Elite Category Chapter Award for excellence in operations (2025 - 2026)."
+        "Ran branding campaigns across several channels that reached 1,000+ students, and got the university administration on board, which widened the chapter's reach.",
+        "Managed operations and 40+ volunteers as Point of Contact for SAE AirShow 25. Attendee participation rose by 30% to 45%.",
+        "Kept logistics and team workflows organized across 12 major university events during graVITas 25, and all of them ran on time.",
+        "Helped the chapter win the Elite Category Chapter Award for operations (2025 to 2026)."
       ]
     },
     {
       title: "Core Committee Member",
       organization: "CodeChef Student Chapter",
       organizationAcronym: "CODECHEF-VIT",
-      period: "May 2024 - June 2025",
-      description: "Orchestrating technical initiatives, competitive programming contests, and algorithmic problem-solving workshops across VIT Vellore.",
+      period: "May 2024 to June 2025",
+      description: "I helped run coding contests, problem-solving sessions and workshops for students at VIT Vellore.",
       highlights: [
-        "Organized university-wide competitive programming contests and code sprints, engaging 500+ student participants.",
-        "Mentored junior engineering undergraduates in Data Structures & Algorithms (Java / C++) and problem-solving techniques.",
-        "Collaborated with cross-functional technical teams to design contest problem sets, test cases, and editorial breakdowns.",
-        "Coordinated technical workshops and hackathon logistics, fostering a culture of algorithmic excellence and peer collaboration."
+        "Organized university-wide competitive programming contests and code sprints with 500+ student participants.",
+        "Mentored junior students in Data Structures & Algorithms (Java / C++) and problem-solving.",
+        "Worked with other technical teams to write contest problems, test cases and editorial explanations.",
+        "Coordinated technical workshops and hackathon logistics."
       ]
     }
   ] as LeadershipItem[],
@@ -573,12 +573,12 @@ export const portfolioData = {
   achievements: [
     {
       title: "250+ DSA & SQL Problems Solved",
-      detail: "Solved 250+ problems across LeetCode and GeeksforGeeks, focusing on data structures, tree algorithms, dynamic programming, and SQL.",
+      detail: "Solved 250+ problems on LeetCode and GeeksforGeeks, mostly on data structures, trees, dynamic programming and SQL.",
       badge: "LeetCode / GFG"
     },
     {
       title: "Runner-Up at Central Hack",
-      detail: "Won 2nd place in a 36-hour sprint for building decentralized Web3 Crisis Protocols.",
+      detail: "Won 2nd place in a 36-hour sprint building decentralized Web3 crisis protocols.",
       badge: "Hackathon Finalist"
     },
     {
@@ -588,7 +588,7 @@ export const portfolioData = {
     },
     {
       title: "Leadership Certificate from VIT",
-      detail: "Awarded by Vellore Institute of Technology for exceptional student leadership and event management.",
+      detail: "Awarded by VIT for student leadership and event management.",
       badge: "University Award"
     }
   ] as AchievementItem[],
@@ -601,9 +601,9 @@ export const portfolioData = {
       year: "2024",
       category: "Computational Mathematics",
       credentialUrl: "",
-      description: "Hands-on certification covering computational mathematics, matrix operations, data import pipelines, and visual data analysis in MATLAB.",
+      description: "A hands-on course on computing with matrices, importing data and visualizing results in MATLAB.",
       skills: ["MATLAB", "Matrix Computing", "Data Visualization", "Script Automation"],
-      badge: "MathWorks Certified"
+      badge: "MathWorks Course"
     },
     {
       id: "statistics-onramp",
@@ -612,9 +612,9 @@ export const portfolioData = {
       year: "2024",
       category: "Statistical Modeling",
       credentialUrl: "",
-      description: "Core statistical training focusing on exploratory data analysis, probability distributions, hypothesis testing, and quantitative variance evaluation.",
+      description: "A course on exploratory data analysis, probability distributions, hypothesis testing and measuring variation.",
       skills: ["Statistics", "Hypothesis Testing", "Probability Distributions", "EDA"],
-      badge: "MathWorks Certified"
+      badge: "MathWorks Course"
     },
     {
       id: "pandas-kaggle",
@@ -623,9 +623,9 @@ export const portfolioData = {
       year: "2024",
       category: "Data Analytics",
       credentialUrl: "",
-      description: "Practical data wrangling and transformation credential covering indexing, grouping, aggregation, multi-table joins, and missing-value imputation in Python.",
+      description: "A practical Kaggle course on indexing, grouping, aggregation, joining tables and filling missing values in Python.",
       skills: ["Pandas", "Python", "Data Wrangling", "Feature Engineering"],
-      badge: "Kaggle Certified"
+      badge: "Kaggle Course"
     },
     {
       id: "leadership-vit",
@@ -634,7 +634,7 @@ export const portfolioData = {
       year: "2025",
       category: "Student Leadership",
       credentialUrl: "",
-      description: "University leadership credential awarded by Vellore Institute of Technology for exemplary student administration, cross-functional operations, and event leadership.",
+      description: "Awarded by VIT for student leadership, cross-team operations and running events.",
       skills: ["Team Leadership", "Operations", "Event Logistics", "Public Relations"],
       badge: "University Award"
     }

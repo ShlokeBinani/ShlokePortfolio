@@ -71,7 +71,7 @@ export const Contact: React.FC = () => {
 
             <FadeIn delay={0.2} y={20}>
               <p className="text-sm sm:text-base lg:text-lg text-[#D7E2EA]/85 font-kanit font-light leading-relaxed max-w-xl">
-                Open to software engineering opportunities, backend development, applied machine learning projects, and collaborative technical roles.
+                I am looking for software engineering, data, business analyst and AI engineering opportunities, and I am happy to work on projects with other people. If you think I could be a fit, send me a message.
               </p>
             </FadeIn>
           </div>
@@ -89,7 +89,7 @@ export const Contact: React.FC = () => {
               }}
               className="relative rounded-3xl p-8 sm:p-10 bg-[#121217] border border-white/10 hover:border-[#D7E2EA]/40 transition-all duration-300 flex flex-col gap-6 shadow-2xl"
             >
-              {/* Dynamic Cursor Spotlight */}
+              {/* Cursor Spotlight */}
               {mousePos.active && (
                 <div
                   className="pointer-events-none absolute -inset-px opacity-30 transition-opacity duration-300 rounded-3xl"
@@ -128,7 +128,9 @@ export const Contact: React.FC = () => {
 
                 <Magnet padding={40} strength={4} className="w-full">
                   <a
-                    href={`mailto:${email}`}
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => trackEvent('send_email_click', 'contact', email)}
                     className="inline-flex items-center justify-center gap-2.5 w-full py-4 rounded-2xl text-[#0A0A0C] bg-[#F4ECE1] hover:bg-white font-bold text-sm uppercase tracking-wider border-2 border-white shadow-[0_4px_24px_rgba(244,236,225,0.25)] hover:shadow-[0_6px_32px_rgba(255,255,255,0.35)] transition-all hover:scale-[1.02] active:scale-[0.98] select-none"
                   >
@@ -149,7 +151,7 @@ export const Contact: React.FC = () => {
             </span>
             <span className="text-zinc-700">·</span>
             <span className="font-mono text-xs text-zinc-500">
-              Backend Systems & Applied AI • VIT Vellore
+              Software, Data & Applied AI • VIT Vellore
             </span>
           </div>
 

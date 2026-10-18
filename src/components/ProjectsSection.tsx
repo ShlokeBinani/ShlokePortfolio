@@ -119,9 +119,9 @@ const ResiliNetBento: React.FC = () => {
           <div className="p-3 rounded-xl bg-red-950/30 border border-red-500/30 text-red-200 flex items-center justify-between">
             <div className="space-y-0.5">
               <div className="text-xs font-bold">Tier 4: Recreational UDP Gaming & Video</div>
-              <div className="text-[10px] text-zinc-300">Dynamically compressed by 60% (α = 0.40) during congestion</div>
+              <div className="text-[10px] text-zinc-300">Compressed by 60% (α = 0.40) during congestion</div>
             </div>
-            <span className="text-xs font-mono font-bold text-red-400">Dynamic Throttle</span>
+            <span className="text-xs font-mono font-bold text-red-400">Throttled</span>
           </div>
         </div>
 
@@ -226,7 +226,7 @@ const ParadoxBento: React.FC = () => {
               ;
             </div>
             <div className="text-[10px] text-zinc-400 leading-snug">
-              Serializes concurrent checkouts, eliminating double booking.
+              Checkouts for the same seat run one at a time, so no seat is sold twice.
             </div>
           </div>
 
@@ -367,7 +367,7 @@ const MSHQNetBento: React.FC = () => {
             <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
             6-Qubit Quantum Circuit with Classical Mish Bypass
           </span>
-          <span className="text-[10px] font-mono text-emerald-400 font-bold">Published Benchmark</span>
+          <span className="text-[10px] font-mono text-emerald-400 font-bold">Benchmark Result</span>
         </div>
 
         {/* Quantum Circuit Architecture Image */}
@@ -432,13 +432,13 @@ const CustomerAttritionBento: React.FC = () => {
               <span className="text-sky-300 font-bold">F = 184.2</span>
             </div>
             <p className="text-[10px] text-zinc-400 pt-1 border-t border-white/5">
-              Mathematically confirmed tenure and billing method are prime churn drivers.
+              The tests point to tenure and billing method as the main churn drivers.
             </p>
           </div>
 
           <div className="flex items-center justify-between text-[10px] text-zinc-400">
             <span>7,000+ Cleaned Records</span>
-            <span className="text-emerald-400 font-bold">Statistically Proven</span>
+            <span className="text-emerald-400 font-bold">Tested</span>
           </div>
         </div>
 
@@ -467,7 +467,7 @@ const CustomerAttritionBento: React.FC = () => {
 
           <div className="flex items-center justify-between text-[10px] text-zinc-400">
             <span>Scikit-Learn Pipeline</span>
-            <span className="text-sky-300 font-bold">Early Warning Active</span>
+            <span className="text-sky-300 font-bold">Early Warning</span>
           </div>
         </div>
       </div>
@@ -490,7 +490,7 @@ const CustomerAttritionBento: React.FC = () => {
               <span className="text-red-400 font-black text-lg">42% Peak Churn</span>
             </div>
             <p className="text-[11px] text-zinc-300 leading-relaxed font-sans">
-              Power BI dashboard visualizes that 42% of subscriber loss is concentrated in month-to-month contracts, compared to only 8% on 2-year subscriptions.
+              The Power BI dashboard shows that 42% of subscriber loss comes from month-to-month contracts, compared with only 8% on 2-year contracts.
             </p>
           </div>
 
@@ -522,7 +522,7 @@ const CustomerAttritionBento: React.FC = () => {
           </div>
           <div className="p-2 rounded-xl bg-black/60 border border-white/10">
             <span className="text-[10px] text-zinc-400 block">Deliverable</span>
-            <span className="font-bold text-amber-300">Power BI BI</span>
+            <span className="font-bold text-amber-300">Power BI</span>
           </div>
         </div>
       </div>
@@ -561,7 +561,7 @@ const EcommerceBento: React.FC = () => {
 
           <div className="flex items-center justify-between text-[10px] text-zinc-400">
             <span>Relational Transactions</span>
-            <span className="text-amber-300 font-bold">Clean Foundation</span>
+            <span className="text-amber-300 font-bold">Clean Data</span>
           </div>
         </div>
 
@@ -632,7 +632,7 @@ const EcommerceBento: React.FC = () => {
             <div className="space-y-0.5">
               <div className="font-bold text-red-300">DBSCAN Margin Leakage Outliers</div>
               <div className="text-[10px] text-zinc-300 font-sans">
-                Filtered 12% anomalous high-return low-margin purchase rings
+                Filtered out 12% of data: unusual purchases with high returns and low margin
               </div>
             </div>
             <span className="text-xs font-bold text-red-400">12% Leakage Cut</span>
@@ -640,7 +640,7 @@ const EcommerceBento: React.FC = () => {
 
           <div className="p-3 rounded-xl bg-black/60 border border-white/10 flex items-center justify-between text-zinc-300">
             <span>A/B Testing Framework:</span>
-            <span className="text-emerald-400 font-bold">Dynamic Cohort Pricing Engine</span>
+            <span className="text-emerald-400 font-bold">Retention Experiments</span>
           </div>
         </div>
 
@@ -733,7 +733,7 @@ const ProjectTab: React.FC<ProjectTabProps> = ({ project, index, isActive, onCli
       </span>
       {isActive && (
         <span className={`hidden md:inline text-[9px] px-1.5 py-0.5 rounded-full bg-white/10 ${accent.text} border border-white/10 font-bold ml-1`}>
-          ACTIVE LOG
+          OPEN
         </span>
       )}
     </button>
@@ -825,18 +825,12 @@ export const ProjectsSection: React.FC = () => {
         {/* Section Header: Perfectly Centered */}
         <div className="w-full text-center mb-10 sm:mb-14">
           <FadeIn delay={0.1} y={25}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D6C3B0] uppercase tracking-wider mb-4">
-              <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Architectural Field Journal</span>
-              <span className="text-zinc-600">·</span>
-              <span>Binder Edition</span>
-            </div>
             <h2 className="font-kanit font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-center flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mx-auto max-w-full">
               <span className="hero-heading">Featured</span>
               <span className="text-stroke-hollow">Projects</span>
             </h2>
             <p className="text-xs sm:text-sm text-zinc-400 font-mono mt-3 max-w-xl mx-auto">
-              Flip through project journal pages or click any tab to inspect architecture logs and empirical case studies.
+              Flip through the pages or click a tab to see how each project was built and what came out of it.
             </p>
           </FadeIn>
         </div>

@@ -162,7 +162,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="mt-6 sm:mt-8 text-center text-xs sm:text-sm font-inter tracking-[0.25em] uppercase text-zinc-300 font-light"
           >
-            Engineering Systems • Data • Machine Learning
+            Software • Data • Business • AI
           </motion.div>
         </div>
 
@@ -188,7 +188,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           </div>
         </motion.div>
 
-        {/* Dynamic Curved SVG Edge on Curtain Exit */}
+        {/* Curved SVG Edge on Curtain Exit */}
         <svg
           className="absolute w-full h-[80px] -bottom-[79px] left-0 fill-[#070709] pointer-events-none"
           viewBox="0 0 1440 80"

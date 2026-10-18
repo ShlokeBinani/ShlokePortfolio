@@ -144,7 +144,7 @@ export const ParadoxVisual: React.FC = () => {
         </div>
       </div>
 
-      {/* SQL Atomic Row Lock Showcase */}
+      {/* SQL Atomic Row Lock Visual */}
       <div className="p-2.5 rounded-xl bg-black/80 border border-red-500/30 space-y-1">
         <div className="flex items-center justify-between text-[10px]">
           <span className="text-zinc-400">PostgreSQL Atomic Transaction</span>

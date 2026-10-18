@@ -72,7 +72,7 @@ export const MarqueeSection: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Quadruple items to ensure seamless infinite reel across 4K displays
+  // Quadruple items to ensure smooth infinite reel across 4K displays
   const row1Loop = [...ROW1_ITEMS, ...ROW1_ITEMS, ...ROW1_ITEMS, ...ROW1_ITEMS];
   const row2Loop = [...ROW2_ITEMS, ...ROW2_ITEMS, ...ROW2_ITEMS, ...ROW2_ITEMS];
 

@@ -61,7 +61,7 @@ export const Experience: React.FC = () => {
               }}
               className="relative rounded-[36px] p-8 sm:p-12 overflow-hidden bg-[#121217] border border-white/10 hover:border-[#D7E2EA]/40 transition-all duration-300 shadow-2xl"
             >
-              {/* Dynamic Cursor Spotlight */}
+              {/* Cursor Spotlight */}
               {mousePos.active && (
                 <div
                   className="pointer-events-none absolute -inset-px opacity-25 transition-opacity duration-300 rounded-[36px]"
@@ -102,7 +102,7 @@ export const Experience: React.FC = () => {
                 {/* 3 High-Impact Telemetry Metrics */}
                 <div className="py-8">
                   <div className="text-xs font-mono uppercase tracking-[0.2em] text-[#D6C3B0] mb-5">
-                    MEASURED PRODUCTION IMPACT
+                    WHAT CHANGED
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {exp.metrics.map((metric, mIdx) => (

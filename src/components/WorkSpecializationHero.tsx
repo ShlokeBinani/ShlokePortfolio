@@ -33,10 +33,10 @@ export const SPECIALIZATIONS: SpecializationCharacter[] = [
     panel: '#F79B7F',
     ghostText: 'SOFTWARE ENGINEER',
     domainBadge: 'Backend & Systems',
-    tagline: 'High-Concurrency Backends & Low-Latency APIs',
+    tagline: 'Reliable Backends & Clean APIs',
     description:
-      'This version of Shloke is a Software Engineer who builds high-concurrency backend services, implements atomic row-level database locks, and engineers resilient REST architectures.',
-    skills: ['Go', 'TypeScript', 'PostgreSQL', 'Docker', 'System Design'],
+      'As a software engineer, I build backend services that stay correct under load. I use atomic row-level database locks and design REST APIs that behave predictably, and I am still learning more about system design.',
+    skills: ['Java', 'Python', 'FastAPI', 'PostgreSQL', 'System Design'],
   },
   {
     id: 1,
@@ -48,10 +48,10 @@ export const SPECIALIZATIONS: SpecializationCharacter[] = [
     bg: '#6BBF7A',
     panel: '#85CC92',
     ghostText: 'DATA ANALYST',
-    domainBadge: 'Analytics & BI',
-    tagline: 'Statistical Testing & Executive BI Dashboards',
+    domainBadge: 'Analytics & Business',
+    tagline: 'Statistical Testing & Business Dashboards',
     description:
-      'This version of Shloke is a Data Analyst who conducts statistical hypothesis testing, audits complex multi-source datasets, and engineers executive Power BI dashboards.',
+      'As a data and business analyst, I audit messy datasets, test whether patterns hold up statistically, and turn the results into Power BI dashboards people can act on. I enjoy tying the numbers back to how the business works.',
     skills: ['Python', 'SQL', 'Power BI', 'Hypothesis Testing', 'ETL'],
   },
   {
@@ -65,9 +65,9 @@ export const SPECIALIZATIONS: SpecializationCharacter[] = [
     panel: '#8DC4FF',
     ghostText: 'AI ENGINEER',
     domainBadge: 'Applied ML & AI',
-    tagline: 'Applied ML Pipelines & Autonomous Workflows',
+    tagline: 'Applied ML Pipelines & Automated Workflows',
     description:
-      'This version of Shloke is an AI Engineer who designs applied deep learning pipelines, explores quantum neural network architectures (QCNN), and deploys autonomous multi-agent workflows.',
+      'As an AI engineer, I build applied machine learning pipelines, explore quantum neural networks (QCNN) in research, and set up automated workflows with LLMs. I also try new AI tools often and keep practicing how to prompt them well.',
     skills: ['PyTorch', 'QCNN', 'Scikit-Learn', 'LLMs', 'Multi-Agent'],
   },
 ];
@@ -256,12 +256,12 @@ export const WorkSpecializationHero: React.FC = () => {
       style={{ fontFamily: 'Inter, sans-serif' }}
       role="region"
       aria-roledescription="carousel"
-      aria-label="Work Specialization Showcase"
+      aria-label="Work Specializations"
     >
       {/* Container: Sits on white bg with clean rounded aesthetic */}
       <div className="relative w-full h-[84vh] sm:h-[88vh] md:h-[92vh] min-h-[600px] max-h-[920px] overflow-hidden rounded-[32px] sm:rounded-[44px] bg-[#FFFFFF] border border-[#0C0C0C]/10 shadow-[0_12px_44px_rgba(0,0,0,0.06)]">
         
-        {/* Soft Dynamic Atmospheric Radial Aura behind Center Character */}
+        {/* Soft Atmospheric Radial Aura behind Center Character */}
         <div
           className="absolute inset-0 pointer-events-none z-0 transition-all duration-700"
           style={{
@@ -338,6 +338,211 @@ export const WorkSpecializationHero: React.FC = () => {
                 }}
                 aria-hidden={!isCenter}
               >
+                {/* 3D Figurine Realistic Ground Shadow System */}
+                <div
+                  className="absolute inset-x-0 bottom-0 pointer-events-none z-0 overflow-visible"
+                  aria-hidden="true"
+                >
+                  {/* 1. Character-Specific Deep Contact Occlusion Shadows */}
+                  {item.id === 0 && (
+                    <>
+                      {/* Software Engineer Left Shoe (x: 14.5% - 42.5%, sole at 3.6% gap) */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '14.5%',
+                          bottom: '2.5%',
+                          width: '28%',
+                          height: '13px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 65% 50% at 50% 50%, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.35) 55%, transparent 80%)',
+                          filter: 'blur(3px)',
+                        }}
+                      />
+                      {/* Software Engineer Right Shoe (x: 64.5% - 91.5%, sole at 3.3% gap) */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '64.5%',
+                          bottom: '2.2%',
+                          width: '27%',
+                          height: '13px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 65% 50% at 50% 50%, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.35) 55%, transparent 80%)',
+                          filter: 'blur(3px)',
+                        }}
+                      />
+                      {/* Connecting body/bridge shadow between feet */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '18%',
+                          bottom: '1.2%',
+                          width: '64%',
+                          height: '16px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(15, 23, 42, 0.30) 0%, rgba(15, 23, 42, 0.12) 60%, transparent 85%)',
+                          filter: 'blur(7px)',
+                        }}
+                      />
+                      {/* Ambient ground falloff pool */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '10%',
+                          bottom: '0.2%',
+                          width: '80%',
+                          height: '24px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 75% 45% at 50% 50%, rgba(15, 23, 42, 0.16) 0%, rgba(15, 23, 42, 0.04) 65%, transparent 85%)',
+                          filter: 'blur(13px)',
+                        }}
+                      />
+                    </>
+                  )}
+
+                  {item.id === 1 && (
+                    <>
+                      {/* Data Analyst: Grounded sneaker (x: 40% - 52%, sole at 3.33% gap) */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '39%',
+                          bottom: '2.2%',
+                          width: '13.5%',
+                          height: '12px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 65% 50% at 50% 50%, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.40) 55%, transparent 80%)',
+                          filter: 'blur(2.5px)',
+                        }}
+                      />
+                      {/* Grounded sneaker penumbra */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '36.5%',
+                          bottom: '1.6%',
+                          width: '18%',
+                          height: '15px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 65% 50% at 50% 50%, rgba(15, 23, 42, 0.38) 0%, rgba(15, 23, 42, 0.14) 60%, transparent 85%)',
+                          filter: 'blur(5px)',
+                        }}
+                      />
+                      {/* Soft elevated ground shadow under lifted foot (x: 59% - 76%) */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '59%',
+                          bottom: '1.2%',
+                          width: '18%',
+                          height: '16px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 65% 50% at 50% 50%, rgba(15, 23, 42, 0.28) 0%, rgba(15, 23, 42, 0.08) 60%, transparent 85%)',
+                          filter: 'blur(8px)',
+                        }}
+                      />
+                      {/* Body ground pool under center of gravity */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '33%',
+                          bottom: '0.6%',
+                          width: '46%',
+                          height: '20px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(15, 23, 42, 0.24) 0%, rgba(15, 23, 42, 0.08) 60%, transparent 85%)',
+                          filter: 'blur(9px)',
+                        }}
+                      />
+                      {/* Ambient ground falloff */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '22%',
+                          bottom: '0%',
+                          width: '64%',
+                          height: '26px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 75% 45% at 50% 50%, rgba(15, 23, 42, 0.12) 0%, rgba(15, 23, 42, 0.03) 65%, transparent 85%)',
+                          filter: 'blur(14px)',
+                        }}
+                      />
+                    </>
+                  )}
+
+                  {item.id === 2 && (
+                    <>
+                      {/* AI Engineer Left Shoe (x: 21% - 43.5%, sole at 3.06% gap) */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '21%',
+                          bottom: '2.0%',
+                          width: '22.5%',
+                          height: '13px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 65% 50% at 50% 50%, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.35) 55%, transparent 80%)',
+                          filter: 'blur(3px)',
+                        }}
+                      />
+                      {/* AI Engineer Right Shoe (x: 62.5% - 76.5%, sole at 2.05% gap) */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '62%',
+                          bottom: '1.0%',
+                          width: '15%',
+                          height: '13px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 65% 50% at 50% 50%, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.35) 55%, transparent 80%)',
+                          filter: 'blur(3px)',
+                        }}
+                      />
+                      {/* Mid-stance bridge shadow */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '20%',
+                          bottom: '0.8%',
+                          width: '58%',
+                          height: '16px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(15, 23, 42, 0.30) 0%, rgba(15, 23, 42, 0.10) 60%, transparent 85%)',
+                          filter: 'blur(7px)',
+                        }}
+                      />
+                      {/* Ambient ground falloff */}
+                      <div
+                        className="absolute"
+                        style={{
+                          left: '12%',
+                          bottom: '0%',
+                          width: '74%',
+                          height: '24px',
+                          borderRadius: '50%',
+                          background:
+                            'radial-gradient(ellipse 75% 45% at 50% 50%, rgba(15, 23, 42, 0.14) 0%, rgba(15, 23, 42, 0.03) 65%, transparent 85%)',
+                          filter: 'blur(13px)',
+                        }}
+                      />
+                    </>
+                  )}
+                </div>
+
+                {/* Figurine Character Image */}
                 <img
                   src={displaySrc}
                   alt={`${item.role} 3D Figurine`}
@@ -348,7 +553,7 @@ export const WorkSpecializationHero: React.FC = () => {
                       setImageErrors((prev) => ({ ...prev, [item.id]: true }));
                     }
                   }}
-                  className="w-full h-full object-contain object-bottom filter drop-shadow-[0_24px_36px_rgba(0,0,0,0.18)]"
+                  className="relative z-10 w-full h-full object-contain object-bottom filter drop-shadow-[0_6px_12px_rgba(0,0,0,0.06)]"
                   draggable={false}
                 />
               </div>
@@ -475,10 +680,10 @@ export const WorkSpecializationHero: React.FC = () => {
                       id="resume-modal-title"
                       className="font-anton text-2xl sm:text-3xl uppercase tracking-tight text-white mb-1.5"
                     >
-                      Select Resume to Download
+                      Choose a Resume
                     </h3>
                     <p className="text-xs sm:text-sm text-zinc-400 font-inter leading-relaxed">
-                      Choose the specialized resume tailored to your team or role requirements.
+                      Pick the version closest to the role you are hiring for.
                     </p>
                   </div>
 
@@ -494,23 +699,10 @@ export const WorkSpecializationHero: React.FC = () => {
                             <span className="font-anton text-lg sm:text-xl text-white uppercase tracking-tight">
                               {spec.role}
                             </span>
-                            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-white/10 text-zinc-300 border border-white/10">
-                              {spec.domainBadge}
-                            </span>
                           </div>
                           <p className="text-xs text-zinc-400 font-inter line-clamp-1">
                             {spec.tagline}
                           </p>
-                          <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                            {spec.skills.map((skill) => (
-                              <span
-                                key={skill}
-                                className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/40 text-zinc-300 border border-white/5"
-                              >
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
                         </div>
 
                         <a
@@ -526,15 +718,6 @@ export const WorkSpecializationHero: React.FC = () => {
                         </a>
                       </div>
                     ))}
-                  </div>
-
-                  {/* Footer Note */}
-                  <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-zinc-400">
-                    <span className="flex items-center gap-1.5 text-emerald-400">
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>ATS-Friendly & Formatted</span>
-                    </span>
-                    <span>PDF Format</span>
                   </div>
                 </motion.div>
               </div>

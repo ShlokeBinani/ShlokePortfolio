@@ -167,14 +167,14 @@ export const ProjectDrawer: React.FC = () => {
             <div className="px-5 sm:px-8 lg:px-10 py-4 sm:py-5 border-b border-white/10 flex items-center justify-between bg-[#08080C]/80 backdrop-blur-md shrink-0 z-20">
               <div className="flex items-center gap-3">
                 <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider">
-                  CASE STUDY DOSSIER
+                  CASE STUDY
                 </span>
                 <span className="font-mono text-xs text-[#D6C3B0] tracking-widest uppercase hidden sm:inline">
                   PROJECT {currentProject.number} OF 0{projects.length}
                 </span>
                 <span className="text-zinc-600 hidden sm:inline">·</span>
                 <span className="text-xs font-mono text-zinc-400 hidden md:inline">
-                  {currentProject.roleBadge || 'Verified Architecture'}
+                  {currentProject.roleBadge || 'Project'}
                 </span>
               </div>
 
@@ -307,7 +307,7 @@ export const ProjectDrawer: React.FC = () => {
                     System Architecture & Pipeline Flow
                   </span>
                   <span className="text-[11px] font-mono text-zinc-400">
-                    4-STAGE EXECUTION
+                    HOW IT WORKS
                   </span>
                 </div>
 
@@ -339,10 +339,10 @@ export const ProjectDrawer: React.FC = () => {
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
                     <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-sky-300">
                       <Activity className="w-4 h-4 text-sky-400" />
-                      <span className="font-bold">Published IEEE Paper Figures & Empirical Results</span>
+                      <span className="font-bold">Figures & Results from the IEEE Paper</span>
                     </div>
                     <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30 font-bold">
-                      Peer-Reviewed 6G DePIN Protocol
+                      6G DePIN Protocol
                     </span>
                   </div>
 
@@ -362,7 +362,7 @@ export const ProjectDrawer: React.FC = () => {
                           Fig. 1: 3-Layer Decentralized Protocol Architecture
                         </div>
                         <p className="text-zinc-400 text-[11px] leading-relaxed font-sans">
-                          Layer 1 Edge Mesh Plane for sub-millisecond local forwarding, Layer 2 AI Reasoning Plane with Digital Twin state estimation, and Layer 3 Web3 Trust Plane with Proof-of-Guardian consensus.
+                          Layer 1 edge mesh plane for fast local forwarding, Layer 2 AI reasoning plane with Digital Twin state tracking, and Layer 3 trust plane with Proof of Guardian consensus.
                         </p>
                       </div>
                     </div>
@@ -383,7 +383,7 @@ export const ProjectDrawer: React.FC = () => {
                           <span className="text-[9px] px-1.5 py-0.5 rounded bg-red-500/20 text-red-300 font-bold">-89.8% Latency Drop</span>
                         </div>
                         <p className="text-zinc-400 text-[11px] leading-relaxed font-sans">
-                          Blind QoS suffers exponential buffer saturation reaching 365ms (red curve with squares). ResiliNet Social Slice maintains flat 37ms latency across 0-100% link utilization (blue curve with circles).
+                          Standard scheduling fills buffers and reaches 365 ms (red curve). The ResiliNet social slice stays near 37 ms across 0 to 100% link utilization (blue curve).
                         </p>
                       </div>
                     </div>
@@ -393,18 +393,18 @@ export const ProjectDrawer: React.FC = () => {
                       <div className="p-3 bg-white flex items-center justify-center min-h-[160px]">
                         <img
                           src={`${import.meta.env.BASE_URL}images/projects/resilinet_fig3_throughput.png`}
-                          alt="Fig. 3 Social Slice Dynamic Throughput Allocation"
+                          alt="Fig. 3 Social Slice Throughput Allocation"
                           className="w-full h-auto max-h-[180px] object-contain filter contrast-125"
                           loading="lazy"
                         />
                       </div>
                       <div className="p-4 space-y-1.5 font-mono text-xs">
                         <div className="text-emerald-400 font-bold flex items-center justify-between">
-                          <span>Fig. 3: 4-Tier SUT Dynamic Re-Allocation</span>
+                          <span>Fig. 3: 4-Tier SUT Re-Allocation</span>
                           <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">DPI Verified</span>
                         </div>
                         <p className="text-zinc-400 text-[11px] leading-relaxed font-sans">
-                          Under congestion, Tier 1 DICOM telesurgery traffic retains 100% bandwidth (800 Mbps), while Tier 4 UDP Gaming is compressed dynamically to α = 0.40 (144 Mbps).
+                          Under congestion, Tier 1 emergency surgery traffic keeps full bandwidth (800 Mbps), while Tier 4 gaming traffic is compressed (α = 0.40, down to 144 Mbps).
                         </p>
                       </div>
                     </div>
@@ -425,7 +425,7 @@ export const ProjectDrawer: React.FC = () => {
                           <span className="text-[9px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold">85% Safety Ceiling</span>
                         </div>
                         <p className="text-zinc-400 text-[11px] leading-relaxed font-sans">
-                          Captures diurnal morning rush breaching the 85% safety boundary (97% peak), activating AI Sentinel autonomous slice reallocation before packet loss occurs.
+                          A morning traffic surge passes the 85% safety line and peaks at 97%, triggering the sentinel to reallocate slices before packets get dropped.
                         </p>
                       </div>
                     </div>
@@ -511,7 +511,7 @@ export const ProjectDrawer: React.FC = () => {
                             ;
                           </div>
                           <div className="text-[11px] text-zinc-400 font-sans pt-1">
-                            Acquires an exclusive write barrier on Postgres row, queueing competing checkout workers in FIFO order to prevent double bookings.
+                            Locks the row so competing checkouts wait in line, one at a time, and no seat is sold twice.
                           </div>
                         </div>
                       </div>
@@ -537,7 +537,7 @@ export const ProjectDrawer: React.FC = () => {
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
                     <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-purple-300">
                       <Activity className="w-4 h-4 text-purple-400" />
-                      <span className="font-bold">Published Quantum ML Research Figures & Benchmarks</span>
+                      <span className="font-bold">Research Figures & Benchmarks</span>
                     </div>
                     <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/30 font-bold">
                       99.17% SOTA Accuracy
@@ -560,7 +560,7 @@ export const ProjectDrawer: React.FC = () => {
                           Fig. 1: Full System Architecture Pipeline
                         </div>
                         <p className="text-zinc-400 text-[11px] leading-relaxed font-sans">
-                          Dual-channel EOG/EMG biosignals decomposed through SM-SSA, routed into a 6-qubit parametric quantum circuit with a classical Mish MLP bypass to eliminate barren plateaus.
+                          Two-channel EOG/EMG signals decomposed with SM-SSA, routed into a 6-qubit quantum circuit with a classical Mish MLP bypass to prevent barren plateaus.
                         </p>
                       </div>
                     </div>
@@ -581,7 +581,7 @@ export const ProjectDrawer: React.FC = () => {
                           <span className="text-[9px] px-1.5 py-0.5 rounded bg-red-500/20 text-red-300 font-bold">Loss & Accuracy</span>
                         </div>
                         <p className="text-zinc-400 text-[11px] leading-relaxed font-sans">
-                          Standard QCNN training stalls at high loss due to barren plateaus (red dashed curve). The hybrid MS-HQNet architecture (blue solid curve) converges rapidly down to 0.02 loss and 99.17% accuracy.
+                          Standard QCNN training stalls at high loss because of barren plateaus (red dashed curve). The hybrid MS-HQNet architecture (blue solid curve) trains down to 0.02 loss and reaches 99.17% accuracy.
                         </p>
                       </div>
                     </div>
@@ -602,7 +602,7 @@ export const ProjectDrawer: React.FC = () => {
                           <span className="text-[9px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold">260 to 64 NCA</span>
                         </div>
                         <p className="text-zinc-400 text-[11px] leading-relaxed font-sans">
-                          Raw biosignal features exhibit chaotic overlapping distributions across 6 eye movements. NCA reduction yields 6 tightly isolated, high-margin colored clusters.
+                          Raw signal features overlap heavily across the 6 eye movements. Reducing them to 64 features with NCA produces 6 clean, separated clusters.
                         </p>
                       </div>
                     </div>
@@ -623,7 +623,7 @@ export const ProjectDrawer: React.FC = () => {
                           <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">99.17% vs 97.50%</span>
                         </div>
                         <p className="text-zinc-400 text-[11px] leading-relaxed font-sans">
-                          Empirical cross-validation across 600 muscle signals proves MS-HQNet outperforms Cubic SVM (97.50%), standard MLP (98.33%), 1D-CNN (93.33%), and LSTM (75.00%).
+                          Cross-validation on 600 biosignal samples shows MS-HQNet outperforms Cubic SVM (97.50%), standard MLP (98.33%), 1D-CNN (93.33%) and LSTM (75.00%).
                         </p>
                       </div>
                     </div>
@@ -661,7 +661,7 @@ export const ProjectDrawer: React.FC = () => {
                           <span className="font-bold text-sky-300 font-mono">F = 184.2 (Monthly Charges)</span>
                         </div>
                         <p className="text-[11px] text-zinc-400 pt-1">
-                          Statistically proved that customer tenure and electronic check billing method are primary leading churn indicators.
+                          Statistical tests confirmed that tenure and electronic check billing are the main factors linked to churn.
                         </p>
                       </div>
                     </div>
@@ -682,7 +682,7 @@ export const ProjectDrawer: React.FC = () => {
                           <span className="text-emerald-400 font-bold">58% Multi-Year Retained</span>
                         </div>
                         <p className="text-[11px] text-zinc-300 pt-1">
-                          Executive Power BI dashboard directly empowered stakeholders to introduce proactive annual renewal discounts, curbing voluntary cancellations.
+                          The Power BI dashboard helped the team test annual contract discounts for customers on month-to-month plans.
                         </p>
                       </div>
                     </div>
@@ -730,7 +730,7 @@ export const ProjectDrawer: React.FC = () => {
                           </div>
                         </div>
                         <p className="text-[11px] text-zinc-400 font-sans pt-1">
-                          Condensed multi-dimensional transactional attributes into 2 principal axes with minimal information loss.
+                          Reduced customer purchase patterns to 2 principal components while keeping 85% of the information.
                         </p>
                       </div>
                     </div>
@@ -748,7 +748,7 @@ export const ProjectDrawer: React.FC = () => {
                         </div>
                         <div className="p-2.5 rounded-xl bg-red-950/40 border border-red-500/40 text-red-200">
                           <div className="font-bold text-red-300 font-mono">DBSCAN Outlier Scrub (12% of data)</div>
-                          <div className="text-[11px] text-zinc-300">Pruned negative-margin return rings from marketing spend</div>
+                          <div className="text-[11px] text-zinc-300">Removed negative-margin buyers with high return rates from marketing spend</div>
                         </div>
                       </div>
                     </div>
@@ -765,7 +765,7 @@ export const ProjectDrawer: React.FC = () => {
                     <span>01 // Problem Statement</span>
                   </div>
                   <h3 className="text-lg font-bold text-[#F5F5F7]">
-                    Bottlenecks & Constraints
+                    The problem
                   </h3>
                   <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
                     {currentProject.problemStatement}
@@ -779,7 +779,7 @@ export const ProjectDrawer: React.FC = () => {
                     <span>02 // System Architecture</span>
                   </div>
                   <h3 className="text-lg font-bold text-[#F5F5F7]">
-                    Technical Implementation & Design
+                    How I built it
                   </h3>
                   <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
                     {currentProject.systemArchitecture}
@@ -793,7 +793,7 @@ export const ProjectDrawer: React.FC = () => {
                     <span>03 // Key Outcomes & Impact</span>
                   </div>
                   <h3 className="text-lg font-bold text-[#F5F5F7]">
-                    Empirical Results & Validation
+                    What came out of it
                   </h3>
                   <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
                     {currentProject.measuredImpact}

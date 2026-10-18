@@ -49,7 +49,7 @@ const PerspectiveSkillCard: React.FC<SkillCardProps> = ({ category, hoveredSkill
       }}
       className="relative rounded-3xl p-7 sm:p-8 bg-[#0A0A0C] border border-white/10 hover:border-[#F4ECE1]/30 transition-all duration-300 flex flex-col justify-between overflow-hidden"
     >
-      {/* Dynamic Cursor Spotlight */}
+      {/* Cursor Spotlight */}
       {mousePos.active && (
         <div
           className="pointer-events-none absolute -inset-px opacity-30 transition-opacity duration-300"

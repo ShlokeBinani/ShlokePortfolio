@@ -138,14 +138,14 @@ export const Hero: React.FC<HeroProps> = ({ shouldPlayVideo = true }) => {
               <span className="text-zinc-600">•</span>
               <span className="text-[#F4ECE1]">CGPA 8.68</span>
               <span className="text-zinc-600">•</span>
-              <span className="text-zinc-400">Final-Year Student • Open to SWE, Data & Systems Roles</span>
+              <span className="text-zinc-400">Final-Year Student • Open to SWE, Data, Business & AI Roles</span>
             </div>
           </FadeIn>
 
           {/* Value Proposition Description */}
           <FadeIn delay={0.45} y={20}>
             <p className="text-[#D7E2EA] font-light tracking-wide leading-relaxed text-xs sm:text-sm md:text-base max-w-xl">
-              Final-year Electronics and Communication Engineering student at VIT Vellore. Building reliable backend systems, automated data pipelines, and applied machine learning models with a grounded learning attitude.
+              Final-year Electronics and Communication Engineering student at VIT Vellore. I build reliable backend services, automated data pipelines and machine learning models, and I keep learning across software, data, business and AI.
             </p>
           </FadeIn>
 
@@ -213,7 +213,7 @@ export const Hero: React.FC<HeroProps> = ({ shouldPlayVideo = true }) => {
           </FadeIn>
         </div>
 
-        {/* Right Column: Seamless Spotlight Video */}
+        {/* Right Column: Spotlight Video */}
         <div className="relative h-[84vh] lg:h-[92vh] aspect-[9/16] select-none pointer-events-none flex items-center justify-center overflow-hidden bg-[#0C0C0C]">
           <video
             ref={videoRef}
